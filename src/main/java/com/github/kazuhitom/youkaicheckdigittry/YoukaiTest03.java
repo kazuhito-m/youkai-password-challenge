@@ -68,11 +68,8 @@ public class YoukaiTest03 {
                 // 以下メインルーチン
                 A = password.getOf(0);
 
-                //D8BD:
-                stackA.push(A);
-
                 A31F currentCheckDigit = attackTargetCheckDigit.prototype();
-                subroutineD8C0(currentCheckDigit);
+                subroutineD8C0(currentCheckDigit, A);
                 D880(currentCheckDigit, password);
 
 
@@ -103,7 +100,8 @@ public class YoukaiTest03 {
         }
     }
 
-    private static void subroutineD8C0(A31F a31f) {
+    private static void subroutineD8C0(A31F a31f, int targetCharCode) {
+        A = targetCharCode;
         for (int i = 0; i < 8; i++) {
             A = A << 1;
 
@@ -144,18 +142,21 @@ public class YoukaiTest03 {
             A = a1Work;
         }
 
-        A = stackA.pop(); // ここまでで31F4と31F5算出完了
+        A = targetCharCode; // ここまでで31F4と31F5算出完了
 
 //D8A4: // 31F7と31F8を生成(Complete)
-        stackA.push(A);
-        stackA.push(A);
+//        stackA.push(A);
+//        stackA.push(A);
+        final int a3Work = A;
+        final int a4Work = A;
         A = a31f.a31F4;
 
         int C3 = 0;
         if (A >= 0xE5) {
             C3 = 1;
         } //C5の値でキャリーを生成
-        A = stackA.pop();
+//        A = stackA.pop();
+        A = a4Work;
         A = A + a31f.a31F7 + C3;
 
         int C4 = 0;
@@ -173,18 +174,22 @@ public class YoukaiTest03 {
             C5 = 1;
         }
         a31f.a31F8 = A;
-        A = stackA.pop();
+//        A = stackA.pop();
+        A = a3Work;
 
         //D89B: // 31F9を生成(Complete)
-        stackA.push(A);
+//        stackA.push(A);
+        final int a5Work = A;
         A = A ^ a31f.a31F9;
         a31f.a31F9 = A;
-        A = stackA.pop();
+//        A = stackA.pop();
+        A = a5Work;
 
         // ここから下にまだバグがある
 
         //D88F: // 31FAを生成
-        stackA.push(A);
+//        stackA.push(A);
+        final int a6Work = A;
         // 31FAをローテート
         int work3 = a31f.a31FA & 0x01;
         a31f.a31FA = a31f.a31FA >> 1;
@@ -200,8 +205,8 @@ public class YoukaiTest03 {
         }
         a31f.a31FA = A;
 
-        A = stackA.pop();
-
+//        A = stackA.pop();
+        A = a6Work;
         //D87F:
         stackA.push(A);
     }
@@ -212,11 +217,7 @@ public class YoukaiTest03 {
             // 文字数分だけ演算をカウント
             if (X > 0) {
                 A = password.getOf(X);
-
-                //D8BD:
-                stackA.push(A);
-
-                subroutineD8C0(a31f);
+                subroutineD8C0(a31f, A);
             }
 
             // 31FBを生成
