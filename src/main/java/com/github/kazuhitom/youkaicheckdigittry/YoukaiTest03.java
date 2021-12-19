@@ -1,6 +1,7 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
+import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
 import com.github.kazuhitom.youkaicheckdigittry.state.CodeToCharacterConverter;
 import sun.misc.Signal;
 
@@ -12,7 +13,7 @@ public class YoukaiTest03 {
     // 文字コード変換テーブル
     static CodeToCharacterConverter converter = new CodeToCharacterConverter();
 
-    static int[] a31DC;
+    static AttackCharacters a31DC;
 
     static int stackApos = 0;
     static int[] stackA = new int[256];
@@ -43,7 +44,7 @@ public class YoukaiTest03 {
         printf("解析パスワード文字数 : %d 文字\n", atk.atk_count);
 
         // スタック配列クリア
-        a31DC = new int[atk.atk_count];
+        a31DC = AttackCharacters.Initialize(atk.atk_count);
         stackA = new int[256];
 
         printTime();
@@ -51,13 +52,14 @@ public class YoukaiTest03 {
 
         // コンテニュー
         if (args.length > 8) {
-            int continue_count = args.length - 8;
+            int continueCount = args.length - 8;
             printf("前回の続きからコンテニューします : ");
-            for (int i = 0; i < continue_count; i++) {
-                a31DC[i] = Integer.parseInt(args[8 + i], 16);
-                printf("%02X ", a31DC[i]);
+            int[] continueCodes = new int[continueCount];
+            for (int i = 0; i < continueCount; i++) {
+                continueCodes[i] = Integer.parseInt(args[8 + i], 16);
             }
-            printf("\n");
+            a31DC = new AttackCharacters(continueCodes);
+            printf("%s\n", a31DC.dumpHexText());
         }
 
         Signal.handle(new Signal("INT"),  // SIGINT
@@ -86,23 +88,14 @@ public class YoukaiTest03 {
         // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
         // 高速化できないか実験
         // 1桁目に出現した場合は最速スキップ
-        if (converter.isInvalidCharCode(a31DC[0])) {
-            a31DC[0]++;
-            return true;
-        }
         // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
-        for (int i = 1; i < atk.atk_count; i++) {
-            if (converter.isInvalidCharCode(a31DC[i])) {
-                for (int j = 0; j < i; j++) {
-                    a31DC[j] = 0;
-                }
-                a31DC[i]++;
-                return true;
-            }
+        if (a31DC.isInvalid()) {
+            a31DC.passInvalidChar();
+            return true;
         }
 
         // 以下メインルーチン
-        A = a31DC[0];
+        A = a31DC.getOf(0);
 
         //D8BD:
         stackA[stackApos++] = A;
@@ -210,7 +203,7 @@ public class YoukaiTest03 {
         for (int X = 0; X < atk.atk_count; X++) {
             // 文字数分だけ演算をカウント
             if (X > 0) {
-                A = a31DC[X];
+                A = a31DC.getOf(X);
 
                 //D8BD:
                 stackA[stackApos++] = A;
@@ -250,15 +243,7 @@ public class YoukaiTest03 {
             printCount();
 
             printTime();
-            printf("Hit! : ");
-            for (int i = 0; i < atk.atk_count; i++) {
-                printf("%02X ", a31DC[i]);
-            }
-            printf("= ");
-            for (int i = 0; i < atk.atk_count; i++) {
-                printf("%c", converter.convert(a31DC[i]));
-            }
-            printf("\n");
+            printf("Hit! : %s = %s\n", a31DC.dumpHexText(), a31DC.toString());
             printf("見つかったので、処理を終了します。\n");
 
             // debug
@@ -268,22 +253,12 @@ public class YoukaiTest03 {
         }
 
         // 0x00-0x35の範囲でループさせる
-        a31DC[0]++; // 1個目をインクリメント
-
-        for (int i = 0; i < atk.atk_count; i++) {
-            // 35を超えたら次の桁へ
-            if (a31DC[i] > 0x35) {
-                a31DC[i] = 0;
-                a31DC[i + 1]++;
-            }
-            // 最終桁が36になった瞬間に脱出
-            if (a31DC[atk.atk_count - 1] == 0x36) {
-                printCount();
-                printf("End.\n");
-                return false;
-            }
+        a31DC.increment();
+        if (a31DC.isFinalDestination()) {
+            printCount();
+            printf("End.\n");
+            return false;
         }
-
 
         // ESCキー判定。65535回に1度しかチェックしない
         if (checkedCount % 4294836225D == 0) {
@@ -310,7 +285,7 @@ public class YoukaiTest03 {
         printCount();
         printf("continue command : yokai03.exe %s %s %s %s %s %s %s %s ", argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
         for (int i = 0; i < atk.atk_count; i++) {
-            printf("%02X ", a31DC[i]);
+            printf("%s", a31DC.dumpHexText());
         }
         printf("\n");
     }
