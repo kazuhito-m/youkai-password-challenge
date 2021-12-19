@@ -7,13 +7,14 @@ import sun.misc.Signal;
 import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Stack;
 
 public class YoukaiTest03 {
     // 文字コード変換テーブル
     static AttackCharacters a31DC;
 
     static int stackApos = 0;
-    static int[] stackA = new int[256];
+    static Stack<Integer> stackA;
 
     static A31F atk;
     static A31F a31f;
@@ -42,7 +43,7 @@ public class YoukaiTest03 {
 
         // スタック配列クリア
         a31DC = AttackCharacters.Initialize(atk.atk_count);
-        stackA = new int[256];
+        stackA = new Stack<>();
 
         printTime();
         printf("解析開始(Cntl + C でコンテニュー値を表示して終了)\n");
@@ -95,7 +96,7 @@ public class YoukaiTest03 {
         A = a31DC.getOf(0);
 
         //D8BD:
-        stackA[stackApos++] = A;
+        stackA.push(A);
 
         subroutineD8C0();
         return D880();
@@ -111,7 +112,7 @@ public class YoukaiTest03 {
             } else {
                 C = 0;
             }
-            stackA[stackApos++] = A;
+            stackA.push(A);
             // 31F4と31F5を右1ビットローテート
             int work1 = a31f.a31F4 & 0x01;
             a31f.a31F4 = a31f.a31F4 >> 1;
@@ -132,27 +133,27 @@ public class YoukaiTest03 {
                 C = 1;
             } else C = 0;
             A = A ^ 0xFF;
-            stackA[stackApos++] = A;
+            stackA.push(A);
             A = A & 0x84;
             A = A ^ a31f.a31F4;
             a31f.a31F4 = A;
-            A = stackA[--stackApos];
+            A = stackA.pop();
             A = A & 0x08;
             A = A ^ a31f.a31F5;
             a31f.a31F5 = A;
-            A = stackA[--stackApos];
+            A = stackA.pop();
         }
 
-        A = stackA[--stackApos]; // ここまでで31F4と31F5算出完了
+        A = stackA.pop(); // ここまでで31F4と31F5算出完了
 
 //D8A4: // 31F7と31F8を生成(Complete)
-        stackA[stackApos++] = A;
-        stackA[stackApos++] = A;
+        stackA.push(A);
+        stackA.push(A);
         A = a31f.a31F4;
         if (A >= 0xE5) {
             C = 1;
         } else C = 0; //C5の値でキャリーを生成
-        A = stackA[--stackApos];
+        A = stackA.pop();
         A = A + a31f.a31F7 + C;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
@@ -166,18 +167,18 @@ public class YoukaiTest03 {
             C = 1;
         } else C = 0;
         a31f.a31F8 = A;
-        A = stackA[--stackApos];
+        A = stackA.pop();
 
         //D89B: // 31F9を生成(Complete)
-        stackA[stackApos++] = A;
+        stackA.push(A);
         A = A ^ a31f.a31F9;
         a31f.a31F9 = A;
-        A = stackA[--stackApos];
+        A = stackA.pop();
 
         // ここから下にまだバグがある
 
         //D88F: // 31FAを生成
-        stackA[stackApos++] = A;
+        stackA.push(A);
         // 31FAをローテート
         int work3 = a31f.a31FA & 0x01;
         a31f.a31FA = a31f.a31FA >> 1;
@@ -190,10 +191,10 @@ public class YoukaiTest03 {
         } else C = 0;
         a31f.a31FA = A;
 
-        A = stackA[--stackApos];
+        A = stackA.pop();
 
         //D87F:
-        stackA[stackApos++] = A;
+        stackA.push(A);
     }
 
     private static boolean D880() {
@@ -203,7 +204,7 @@ public class YoukaiTest03 {
                 A = a31DC.getOf(X);
 
                 //D8BD:
-                stackA[stackApos++] = A;
+                stackA.push(A);
 
                 subroutineD8C0();
             }
@@ -219,7 +220,7 @@ public class YoukaiTest03 {
                 }
                 Z = A == 0; // 演算結果がゼロの時Z=true;
 
-                stackA[stackApos++] = A; // スタックに値を保存
+                stackA.push(A); // スタックに値を保存
                 A = a31f.a31FB;
                 A = A + C;
                 if (A > 0xFF) { // ADCのキャリー処理
@@ -228,11 +229,11 @@ public class YoukaiTest03 {
                 } else C = 0;
                 a31f.a31FB = A;
 
-                A = stackA[--stackApos];
+                A = stackA.pop();
             } while (!Z);   // ローテ終わるまでループ
             //printf("a31FB=%x ",a31FB);
 
-            A = stackA[--stackApos];
+            A = stackA.pop();
         }
 
         // 検算終了後にチェック
