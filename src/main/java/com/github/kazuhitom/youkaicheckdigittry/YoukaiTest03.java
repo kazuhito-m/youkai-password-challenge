@@ -21,7 +21,6 @@ public class YoukaiTest03 {
     static A31F a31f;
 
     static int A = 0;
-    static int X = 0;
     static int C = 0;
 
     static int continue_count = 0;
@@ -81,7 +80,6 @@ public class YoukaiTest03 {
         ++checkedCount;
         // スタート
         a31f = new A31F();
-        X = 0;
         A = 1;
         a31f.a31FA = A;
         stackApos = 0;
@@ -106,21 +104,15 @@ public class YoukaiTest03 {
         }
 
         // 以下メインルーチン
-        A = a31DC[X];
+        A = a31DC[0];
 
         //D8BD:
         stackA[stackApos++] = A;
 
-        return D8C0();
+        return D8C0(0);
     }
 
-    private static boolean D8C0() {
-        A = a31DC[X];
-
-        //D8BD:
-        stackA[stackApos++] = A;
-
-
+    private static boolean D8C0(int X) {
         for (int i = 0; i < 8; i++) {
             A = A << 1;
 
@@ -214,46 +206,45 @@ public class YoukaiTest03 {
         //D87F:
         stackA[stackApos++] = A;
 
-        return D880();
+        return D880(X);
     }
 
-    private static boolean D880() {
+    private static boolean D880(int X) {
         // 31FBを生成
-        // Aを左ローテート
-        A = A << 1;
-        if (A > 0xFF) { // ADCのキャリー処理
-            A = A & 0xFF;
-            C = 1;
-        }
-        boolean Z = A == 0; // 演算結果がゼロの時Z=true;
+        boolean Z;
+        do {
+            // Aを左ローテート
+            A = A << 1;
+            if (A > 0xFF) { // ADCのキャリー処理
+                A = A & 0xFF;
+                C = 1;
+            }
+            Z = A == 0; // 演算結果がゼロの時Z=true;
 
-        stackA[stackApos++] = A; // スタックに値を保存
-        A = a31f.a31FB;
-        A = A + C;
-        if (A > 0xFF) { // ADCのキャリー処理
-            A = A & 0xFF;
-            C = 1;
-        } else C = 0;
-        a31f.a31FB = A;
+            stackA[stackApos++] = A; // スタックに値を保存
+            A = a31f.a31FB;
+            A = A + C;
+            if (A > 0xFF) { // ADCのキャリー処理
+                A = A & 0xFF;
+                C = 1;
+            } else C = 0;
+            a31f.a31FB = A;
 
-        A = stackA[--stackApos];
-        if (!Z) {
-            return D880(); // ローテ終わるまでループ
-        }
+            A = stackA[--stackApos];
+        } while (!Z);   // ローテ終わるまでループ
         //printf("a31FB=%x ",a31FB);
 
         A = stackA[--stackApos];
 
         // 文字数分だけ演算をカウント
         X++;
-
         if (atk.atk_count != X) {
             A = a31DC[X];
 
             //D8BD:
             stackA[stackApos++] = A;
 
-            return D8C0();
+            return D8C0(X);
         }
 
         // 検算終了後にチェック
