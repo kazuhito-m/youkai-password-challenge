@@ -20,7 +20,6 @@ public class YoukaiTest03 {
     static int atk31F4 = 0, atk31F5 = 0, atk31F7 = 0, atk31F8 = 0, atk31F9 = 0, atk31FA = 0, atk31FB = 0;
 
     static int A = 0, X = 0;
-    static int Y = 0;
     static int C = 0, Z = 0;
 
     static int a31F6 = 0; // 文字列長さ
@@ -137,54 +136,52 @@ public class YoukaiTest03 {
 
         //D8BD:
         stackA[stackApos++] = A;
-        Y = 8;
 
         return D8C0();
     }
 
     private static boolean D8C0() {
-        A = A << 1;
+        for (int i = 0; i < 8; i++) {
+            A = A << 1;
 
-        if (A > 0xFF) {
-            C = 1;
-            A = A & 0xFF;
-        } else {
-            C = 0;
-        }
-        stackA[stackApos++] = A;
-        // 31F4と31F5を右1ビットローテート
-        int work1 = a31F4 & 0x01;
-        a31F4 = a31F4 >> 1;
-        a31F4 = a31F4 | (C << 7); // C0000000
-        C = work1;
+            if (A > 0xFF) {
+                C = 1;
+                A = A & 0xFF;
+            } else {
+                C = 0;
+            }
+            stackA[stackApos++] = A;
+            // 31F4と31F5を右1ビットローテート
+            int work1 = a31F4 & 0x01;
+            a31F4 = a31F4 >> 1;
+            a31F4 = a31F4 | (C << 7); // C0000000
+            C = work1;
 
-        int work2 = a31F5 & 0x01;
-        a31F5 = a31F5 >> 1;
-        a31F5 = a31F5 | (C << 7); // C0000000
-        C = work2;
+            int work2 = a31F5 & 0x01;
+            a31F5 = a31F5 >> 1;
+            a31F5 = a31F5 | (C << 7); // C0000000
+            C = work2;
 
-        //printf("ror %02X %02X\n",a31F4,a31F5);
+            //printf("ror %02X %02X\n",a31F4,a31F5);
 
-        A = 0;
-        A = 0xFF + C;
-        if (A > 0xFF) {
             A = 0;
-            C = 1;
-        } else C = 0;
-        A = A ^ 0xFF;
-        stackA[stackApos++] = A;
-        A = A & 0x84;
-        A = A ^ a31F4;
-        a31F4 = A;
-        A = stackA[--stackApos];
-        A = A & 0x08;
-        A = A ^ a31F5;
-        a31F5 = A;
-        A = stackA[--stackApos];
-        Y--;
-        if (Y > 0) {
-            return D8C0();
+            A = 0xFF + C;
+            if (A > 0xFF) {
+                A = 0;
+                C = 1;
+            } else C = 0;
+            A = A ^ 0xFF;
+            stackA[stackApos++] = A;
+            A = A & 0x84;
+            A = A ^ a31F4;
+            a31F4 = A;
+            A = stackA[--stackApos];
+            A = A & 0x08;
+            A = A ^ a31F5;
+            a31F5 = A;
+            A = stackA[--stackApos];
         }
+
         A = stackA[--stackApos]; // ここまでで31F4と31F5算出完了
 
 //D8A4: // 31F7と31F8を生成(Complete)
