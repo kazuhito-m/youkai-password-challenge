@@ -75,8 +75,7 @@ public class YoukaiTest03 {
         ++checkedCount;
         // スタート
         a31f = new A31F();
-        A = 1;
-        a31f.a31FA = A;
+        a31f.a31FA = 1;
 
         // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
         // 高速化できないか実験
