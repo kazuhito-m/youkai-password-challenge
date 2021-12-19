@@ -23,8 +23,6 @@ public class YoukaiTest03 {
     static int A = 0;
     static int X = 0;
     static int C = 0;
-    static int Z = 0;
-
 
     static int continue_count = 0;
 
@@ -227,8 +225,7 @@ public class YoukaiTest03 {
             A = A & 0xFF;
             C = 1;
         }
-        if (A == 0) Z = 1;
-        else Z = 0; // 演算結果がゼロの時Z=1;
+        boolean Z = A == 0; // 演算結果がゼロの時Z=true;
 
         stackA[stackApos++] = A; // スタックに値を保存
         A = a31f.a31FB;
@@ -240,7 +237,7 @@ public class YoukaiTest03 {
         a31f.a31FB = A;
 
         A = stackA[--stackApos];
-        if (Z == 0) {
+        if (!Z) {
             return D880(); // ローテ終わるまでループ
         }
         //printf("a31FB=%x ",a31FB);
