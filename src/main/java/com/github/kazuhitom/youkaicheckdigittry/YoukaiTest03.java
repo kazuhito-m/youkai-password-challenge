@@ -24,8 +24,6 @@ public class YoukaiTest03 {
     static int A = 0;
     static int C = 0;
 
-    static int continue_count = 0;
-
     static String[] argv;   // Last console args
     static double checkedCount = 0;
 
@@ -54,7 +52,7 @@ public class YoukaiTest03 {
 
         // コンテニュー
         if (args.length > 8) {
-            continue_count = args.length - 8;
+            int continue_count = args.length - 8;
             printf("前回の続きからコンテニューします : ");
             for (int i = 0; i < continue_count; i++) {
                 a31DC[i] = (char) Integer.parseInt(args[8 + i], 16);
