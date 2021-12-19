@@ -7,6 +7,9 @@ export default class YoukaiPasswordAttacker {
     private A = 0;
     private cancellation = false;
 
+    private static readonly DUMP_INTERVAL = 67107840;
+    // private static readonly DUMP_INTERVAL = 100000;
+
     public execute(attackTargetCheckDigit: A31F, startPassword: AttackCharacters, hitPasswordEvent: any = () => { }): AttackCharacters[] {
         const results: AttackCharacters[] = [];
         let password = startPassword;
@@ -33,8 +36,7 @@ export default class YoukaiPasswordAttacker {
                 const D87F = this.subroutineD8C0(currentCheckDigit, this.A);
                 this.D880(currentCheckDigit, password, D87F);
 
-                // ESCキー判定。65535回に1度しかチェックしない
-                if (checkedCount % 67107840 == 0 || this.cancellation) {
+                if ((checkedCount % YoukaiPasswordAttacker.DUMP_INTERVAL) === 0 || this.cancellation) {
                     this.dumpContinueCommand(password, attackTargetCheckDigit, checkedCount);
                     if (this.cancellation) {
                         this.printf("キャンセルされました。\n");
@@ -201,7 +203,7 @@ export default class YoukaiPasswordAttacker {
                     this.A = this.A & 0xFF;
                     C1 = 1;
                 }
-                Z = this.A == 0; // 演算結果がゼロの時Z=true;
+                Z = this.A === 0; // 演算結果がゼロの時Z=true;
 
                 //                stackA.push(A); // スタックに値を保存
                 const a1Work = this.A;
@@ -238,7 +240,9 @@ export default class YoukaiPasswordAttacker {
     }
 
     private dumpContinueCommand(password: AttackCharacters, attackTargetCheckDigit: A31F, checkedCount: number): void {
-        // printf("continue command : java -jar youkai-console-java-1.0.0.jar %s %s (%,.0f 回目)\n", attackTargetCheckDigit, password.dumpHexText(), checkedCount);
+        const messge = `continue parameter : ${attackTargetCheckDigit.toString()} ${password.dumpHexText()} (${checkedCount} 回目)`;
+        console.log(messge);
+        // printf("continue parameter : %s %s (%,.0f 回目)\n", attackTargetCheckDigit, password.dumpHexText(), checkedCount);
     }
 
     public cancel(): void {

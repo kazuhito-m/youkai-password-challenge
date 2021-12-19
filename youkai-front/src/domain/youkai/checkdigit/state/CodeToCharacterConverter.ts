@@ -9,7 +9,7 @@ export default class CodeToCharacterConverter {
         return CodeToCharacterConverter.A_TO_Y[code];
     }
 
-    public isInvalidCharCode( code:number):boolean {
+    public isInvalidCharCode(code: number): boolean {
         return CodeToCharacterConverter.INVALID_CHAR === this.convert(code);
     }
 }

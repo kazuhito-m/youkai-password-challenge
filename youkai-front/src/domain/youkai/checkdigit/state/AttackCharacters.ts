@@ -33,7 +33,7 @@ export default class AttackCharacters {
         for (let i = 0; i < newCodes.length; i++) {
             if (!this.converter.isInvalidCharCode(newCodes[i])) continue;
 
-            if (i == 0) {
+            if (i === 0) {
                 newCodes[0]++;
                 break;
             }
@@ -66,7 +66,7 @@ export default class AttackCharacters {
             .trim();
     }
 
-    public static  Initialize( charCount: number): AttackCharacters {
+    public static Initialize(charCount: number): AttackCharacters {
         return new AttackCharacters(Array(charCount));
     }
 }
