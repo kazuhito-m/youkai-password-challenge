@@ -3,7 +3,6 @@ package com.github.kazuhitom.youkaicheckdigittry;
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
 import com.github.kazuhitom.youkaicheckdigittry.state.IntStack;
-import sun.misc.Signal;
 
 import java.io.PrintStream;
 import java.time.LocalDateTime;
@@ -11,10 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class YoukaiTest03 {
-    static AttackCharacters a31DC;
-
     static IntStack stackA;
-
     static int A = 0;
 
     static String[] argv;   // Last console args
@@ -36,7 +32,7 @@ public class YoukaiTest03 {
         printf("解析パスワード文字数 : %d 文字\n", attackTargetCheckDigit.atk_count);
 
         // スタック配列クリア
-        a31DC = AttackCharacters.Initialize(attackTargetCheckDigit.atk_count);
+        AttackCharacters password = AttackCharacters.Initialize(attackTargetCheckDigit.atk_count);
         stackA = new IntStack();
 
         printTime();
@@ -47,13 +43,13 @@ public class YoukaiTest03 {
             int[] continueCodes = Arrays.stream(Arrays.copyOfRange(args, 8, args.length))
                     .mapToInt(codeText -> Integer.parseInt(codeText, 16))
                     .toArray();
-            a31DC = new AttackCharacters(continueCodes);
-            printf("前回の続きからコンテニューします : %s\n", a31DC.dumpHexText());
+            password = new AttackCharacters(continueCodes);
+            printf("前回の続きからコンテニューします : %s\n", password.dumpHexText());
         }
 
         double checkedCount = 0;
-        Signal.handle(new Signal("INT"),  // SIGINT
-                signal -> dumpContinueCommand());
+//        Signal.handle(new Signal("INT"),  // SIGINT
+//                signal -> dumpContinueCommand());
 
         try {
             // a31DCにターゲット桁数の数値を入れて回転させて、値が一致するまでアタック
@@ -64,43 +60,43 @@ public class YoukaiTest03 {
                 // 高速化できないか実験
                 // 1桁目に出現した場合は最速スキップ
                 // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
-                if (a31DC.isInvalid()) {
-                    a31DC.passInvalidChar();
+                if (password.isInvalid()) {
+                    password.passInvalidChar();
                     continue;
                 }
 
                 A31F a31f = attackTargetCheckDigit.prototype();
 
                 // 以下メインルーチン
-                A = a31DC.getOf(0);
+                A = password.getOf(0);
 
                 //D8BD:
                 stackA.push(A);
 
                 subroutineD8C0(a31f);
-                D880(a31f);
+                D880(a31f, password);
 
 
                 // 検算終了後にチェック
                 if (a31f.equals(attackTargetCheckDigit)) {
                     printTime();
-                    printf("Hit! : %s = %s (%,.0f 回目)\n", a31DC.dumpHexText(), a31DC.toString(), checkedCount);
+                    printf("Hit! : %s = %s (%,.0f 回目)\n", password.dumpHexText(), password.toString(), checkedCount);
 //            printf("見つかったので、処理を終了します。\n");
 //            new Exception().printStackTrace(System.out); // debug
 //            return false;
                 }
 
                 // 0x00-0x35の範囲でループさせる
-                a31DC.increment();
-                if (a31DC.isFinalDestination()) {
+                password.increment();
+                if (password.isFinalDestination()) {
                     printCount(checkedCount);
                     printf("End.\n");
                     break;
                 }
 
                 // ESCキー判定。65535回に1度しかチェックしない
-                if (checkedCount % 4294836225D == 0) {
-                    dumpContinueCommand();
+                if (checkedCount % 67107840 == 0) {
+                    dumpContinueCommand(password, checkedCount);
                 }
             }
         } catch (Exception e) {
@@ -212,12 +208,12 @@ public class YoukaiTest03 {
         stackA.push(A);
     }
 
-    private static void D880(A31F a31f) {
+    private static void D880(A31F a31f, AttackCharacters password) {
         int C1 = 0;
         for (int X = 0; X < a31f.atk_count; X++) {
             // 文字数分だけ演算をカウント
             if (X > 0) {
-                A = a31DC.getOf(X);
+                A = password.getOf(X);
 
                 //D8BD:
                 stackA.push(A);
@@ -268,8 +264,8 @@ public class YoukaiTest03 {
         printf(LocalDateTime.now().format(formatter) + " - ");
     }
 
-    private static void dumpContinueCommand() {
+    private static void dumpContinueCommand(AttackCharacters password, double checkedCount) {
         printf("continue command : yokai03.exe %s %s %s %s %s %s %s %s ", argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
-        printf("%s\n", a31DC.dumpHexText());
+        printf("%s (%,.0f 回目)\n", password.dumpHexText(), checkedCount);
     }
 }
