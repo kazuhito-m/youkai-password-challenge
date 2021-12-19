@@ -112,7 +112,7 @@ public class YoukaiTest03 {
                 C1 = 1;
                 A = A & 0xFF;
             }
-            stackA.push(A);
+            int a1Work = A;
             // 31F4と31F5を右1ビットローテート
             int work1 = a31f.a31F4 & 0x01;
             a31f.a31F4 = a31f.a31F4 >> 1;
@@ -131,18 +131,17 @@ public class YoukaiTest03 {
             if (A > 0xFF) {
                 A = 0;
             }
-            ;
 
             A = A ^ 0xFF;
-            stackA.push(A);
+            int a2Work = A;
             A = A & 0x84;
             A = A ^ a31f.a31F4;
             a31f.a31F4 = A;
-            A = stackA.pop();
+            A = a2Work;
             A = A & 0x08;
             A = A ^ a31f.a31F5;
             a31f.a31F5 = A;
-            A = stackA.pop();
+            A = a1Work;
         }
 
         A = stackA.pop(); // ここまでで31F4と31F5算出完了
