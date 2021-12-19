@@ -10,17 +10,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class YoukaiTest03 {
-    // 文字コード変換テーブル
     static AttackCharacters a31DC;
 
-    static int stackApos = 0;
     static IntStack stackA;
 
     static A31F atk;
     static A31F a31f;
 
     static int A = 0;
-    static int C = 0;
 
     static String[] argv;   // Last console args
     static double checkedCount = 0;
@@ -80,8 +77,6 @@ public class YoukaiTest03 {
         a31f = new A31F();
         A = 1;
         a31f.a31FA = A;
-        stackApos = 0;
-        C = 0;
 
         // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
         // 高速化できないか実験
@@ -106,32 +101,32 @@ public class YoukaiTest03 {
         for (int i = 0; i < 8; i++) {
             A = A << 1;
 
+            int C1 = 0;
             if (A > 0xFF) {
-                C = 1;
+                C1 = 1;
                 A = A & 0xFF;
-            } else {
-                C = 0;
             }
             stackA.push(A);
             // 31F4と31F5を右1ビットローテート
             int work1 = a31f.a31F4 & 0x01;
             a31f.a31F4 = a31f.a31F4 >> 1;
-            a31f.a31F4 = a31f.a31F4 | (C << 7); // C0000000
-            C = work1;
+            a31f.a31F4 = a31f.a31F4 | (C1 << 7); // C0000000
+            C1 = work1;
 
             int work2 = a31f.a31F5 & 0x01;
             a31f.a31F5 = a31f.a31F5 >> 1;
-            a31f.a31F5 = a31f.a31F5 | (C << 7); // C0000000
-            C = work2;
+            a31f.a31F5 = a31f.a31F5 | (C1 << 7); // C0000000
+            C1 = work2;
 
             //printf("ror %02X %02X\n",a31F4,a31F5);
 
-            A = 0;
-            A = 0xFF + C;
+            A = 0xFF + C1;
+
             if (A > 0xFF) {
                 A = 0;
-                C = 1;
-            } else C = 0;
+            }
+            ;
+
             A = A ^ 0xFF;
             stackA.push(A);
             A = A & 0x84;
@@ -150,22 +145,28 @@ public class YoukaiTest03 {
         stackA.push(A);
         stackA.push(A);
         A = a31f.a31F4;
+
+        int C3 = 0;
         if (A >= 0xE5) {
-            C = 1;
-        } else C = 0; //C5の値でキャリーを生成
+            C3 = 1;
+        } //C5の値でキャリーを生成
         A = stackA.pop();
-        A = A + a31f.a31F7 + C;
+        A = A + a31f.a31F7 + C3;
+
+        int C4 = 0;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
-            C = 1;
-        } else C = 0;
+            C4 = 1;
+        }
         a31f.a31F7 = A;
         A = a31f.a31F8;
-        A = A + a31f.a31F5 + C;
+        A = A + a31f.a31F5 + C4;
+
+        int C5 = 0;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
-            C = 1;
-        } else C = 0;
+            C5 = 1;
+        }
         a31f.a31F8 = A;
         A = stackA.pop();
 
@@ -182,13 +183,16 @@ public class YoukaiTest03 {
         // 31FAをローテート
         int work3 = a31f.a31FA & 0x01;
         a31f.a31FA = a31f.a31FA >> 1;
-        a31f.a31FA = a31f.a31FA | (C << 7); // $31F8のCがここで入る
-        C = work3;
-        A = A + a31f.a31FA + C;
+        a31f.a31FA = a31f.a31FA | (C5 << 7); // $31F8のCがここで入る
+
+        int C6 = work3;
+        A = A + a31f.a31FA + C6;
+
+        int C7 = 0;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
-            C = 1;
-        } else C = 0;
+            C7 = 1;
+        }
         a31f.a31FA = A;
 
         A = stackA.pop();
@@ -198,6 +202,7 @@ public class YoukaiTest03 {
     }
 
     private static boolean D880() {
+        int C1 = 0;
         for (int X = 0; X < atk.atk_count; X++) {
             // 文字数分だけ演算をカウント
             if (X > 0) {
@@ -216,17 +221,19 @@ public class YoukaiTest03 {
                 A = A << 1;
                 if (A > 0xFF) { // ADCのキャリー処理
                     A = A & 0xFF;
-                    C = 1;
+                    C1 = 1;
                 }
                 Z = A == 0; // 演算結果がゼロの時Z=true;
 
                 stackA.push(A); // スタックに値を保存
                 A = a31f.a31FB;
-                A = A + C;
+                A = A + C1;
+
+                C1 = 0;
                 if (A > 0xFF) { // ADCのキャリー処理
                     A = A & 0xFF;
-                    C = 1;
-                } else C = 0;
+                    C1 = 1;
+                }
                 a31f.a31FB = A;
 
                 A = stackA.pop();
