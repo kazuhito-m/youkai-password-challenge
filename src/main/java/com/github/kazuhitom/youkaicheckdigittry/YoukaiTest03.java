@@ -1,6 +1,7 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
+import com.github.kazuhitom.youkaicheckdigittry.state.CodeToCharacterConverter;
 import sun.misc.Signal;
 
 import java.io.PrintStream;
@@ -9,9 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 public class YoukaiTest03 {
     // 文字コード変換テーブル
-    static char[] atoy = {
-            'A', 'H', 'O', 'V', '1', '6', '*', '*', 'B', 'I', 'P', 'W', '2', '7', '*', '*', 'C', 'J', 'Q', 'X', '3', '8', '*', '*', 'D', 'K', 'R', 'Y', '4', '9', '*', '*', 'E', 'L', 'S', 'Z', '5', '0', '*', '*', 'F', 'M', 'T', '-', 'n', '!', '*', '*', 'G', 'N', 'U', '.', 'm', 'c'
-    };
+    static CodeToCharacterConverter converter = new CodeToCharacterConverter();
 
     static char[] a31DC = new char[256];
 
@@ -87,13 +86,13 @@ public class YoukaiTest03 {
         // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
         // 高速化できないか実験
         // 1桁目に出現した場合は最速スキップ
-        if (atoy[a31DC[0]] == '*') {
+        if (converter.convert(a31DC[0]) == '*') {
             a31DC[0]++;
             return true;
         }
         // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
         for (int i = 1; i < atk.atk_count; i++) {
-            if (atoy[a31DC[i]] == '*') {
+            if (converter.convert(a31DC[i]) == '*') {
                 for (int j = 0; j < i; j++) {
                     a31DC[j] = 0;
                 }
@@ -257,7 +256,7 @@ public class YoukaiTest03 {
             }
             printf("= ");
             for (int i = 0; i < atk.atk_count; i++) {
-                printf("%c", atoy[a31DC[i]]);
+                printf("%c", converter.convert(a31DC[i]));
             }
             printf("\n");
             printf("見つかったので、処理を終了します。\n");
