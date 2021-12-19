@@ -86,13 +86,13 @@ public class YoukaiTest03 {
         // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
         // 高速化できないか実験
         // 1桁目に出現した場合は最速スキップ
-        if (converter.convert(a31DC[0]) == '*') {
+        if (converter.isInvalidCharCode(a31DC[0])) {
             a31DC[0]++;
             return true;
         }
         // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
         for (int i = 1; i < atk.atk_count; i++) {
-            if (converter.convert(a31DC[i]) == '*') {
+            if (converter.isInvalidCharCode(a31DC[i])) {
                 for (int j = 0; j < i; j++) {
                     a31DC[j] = 0;
                 }
