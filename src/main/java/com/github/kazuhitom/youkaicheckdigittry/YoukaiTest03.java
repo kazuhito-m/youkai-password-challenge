@@ -12,7 +12,7 @@ public class YoukaiTest03 {
     // 文字コード変換テーブル
     static CodeToCharacterConverter converter = new CodeToCharacterConverter();
 
-    static char[] a31DC = new char[256];
+    static char[] a31DC;
 
     static int stackApos = 0;
     static int[] stackA = new int[256];
