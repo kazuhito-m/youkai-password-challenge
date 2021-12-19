@@ -20,8 +20,10 @@ public class YoukaiTest03 {
     static A31F atk;
     static A31F a31f;
 
-    static int A = 0, X = 0;
-    static int C = 0, Z = 0;
+    static int A = 0;
+    static int X = 0;
+    static int C = 0;
+    static int Z = 0;
 
 
     static int continue_count = 0;
@@ -67,11 +69,8 @@ public class YoukaiTest03 {
                 signal -> dumpContinueCommand());
 
         try {
-
-            while (true) {
-                if (!LOOP()) return;
+            while (LOOP()) {
             }
-
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
@@ -109,10 +108,6 @@ public class YoukaiTest03 {
         }
 
         // 以下メインルーチン
-        return D86B();
-    }
-
-    private static boolean D86B() {
         A = a31DC[X];
 
         //D8BD:
@@ -122,6 +117,12 @@ public class YoukaiTest03 {
     }
 
     private static boolean D8C0() {
+        A = a31DC[X];
+
+        //D8BD:
+        stackA[stackApos++] = A;
+
+
         for (int i = 0; i < 8; i++) {
             A = A << 1;
 
@@ -250,7 +251,12 @@ public class YoukaiTest03 {
         X++;
 
         if (atk.atk_count != X) {
-            return D86B();
+            A = a31DC[X];
+
+            //D8BD:
+            stackA[stackApos++] = A;
+
+            return D8C0();
         }
 
         // 検算終了後にチェック
