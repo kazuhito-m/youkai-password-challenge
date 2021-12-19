@@ -59,39 +59,57 @@ public class YoukaiTest03 {
                 signal -> dumpContinueCommand());
 
         try {
-            while (LOOP()) {
+            while (true) {
+                // a31DCにターゲット桁数の数値を入れて回転させて、値が一致するまでアタック
+                ++checkedCount;
+                // スタート
+                a31f = new A31F();
+                a31f.a31FA = 1;
+
+                // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
+                // 高速化できないか実験
+                // 1桁目に出現した場合は最速スキップ
+                // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
+                if (a31DC.isInvalid()) {
+                    a31DC.passInvalidChar();
+                    continue;
+                }
+
+                // 以下メインルーチン
+                A = a31DC.getOf(0);
+
+                //D8BD:
+                stackA.push(A);
+
+                subroutineD8C0();
+                D880();
+
+
+                // 検算終了後にチェック
+                if (a31f.equals(atk)) {
+                    printTime();
+                    printf("Hit! : %s = %s (%,.0f 回目)\n", a31DC.dumpHexText(), a31DC.toString(), checkedCount);
+//            printf("見つかったので、処理を終了します。\n");
+//            new Exception().printStackTrace(System.out); // debug
+//            return false;
+                }
+
+                // 0x00-0x35の範囲でループさせる
+                a31DC.increment();
+                if (a31DC.isFinalDestination()) {
+                    printCount();
+                    printf("End.\n");
+                    break;
+                }
+
+                // ESCキー判定。65535回に1度しかチェックしない
+                if (checkedCount % 4294836225D == 0) {
+                    dumpContinueCommand();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-    }
-
-    /**
-     * a31DCにターゲット桁数の数値を入れて回転させて、値が一致するまでアタック
-     */
-    private static boolean LOOP() {
-        ++checkedCount;
-        // スタート
-        a31f = new A31F();
-        a31f.a31FA = 1;
-
-        // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
-        // 高速化できないか実験
-        // 1桁目に出現した場合は最速スキップ
-        // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
-        if (a31DC.isInvalid()) {
-            a31DC.passInvalidChar();
-            return true;
-        }
-
-        // 以下メインルーチン
-        A = a31DC.getOf(0);
-
-        //D8BD:
-        stackA.push(A);
-
-        subroutineD8C0();
-        return D880();
     }
 
     private static void subroutineD8C0() {
@@ -198,7 +216,7 @@ public class YoukaiTest03 {
         stackA.push(A);
     }
 
-    private static boolean D880() {
+    private static void D880() {
         int C1 = 0;
         for (int X = 0; X < atk.atk_count; X++) {
             // 文字数分だけ演算をカウント
@@ -239,30 +257,6 @@ public class YoukaiTest03 {
 
             A = stackA.pop();
         }
-
-        // 検算終了後にチェック
-        if (a31f.equals(atk)) {
-            printTime();
-            printf("Hit! : %s = %s (%,.0f 回目)\n", a31DC.dumpHexText(), a31DC.toString(), checkedCount);
-//            printf("見つかったので、処理を終了します。\n");
-//            new Exception().printStackTrace(System.out); // debug
-//            return false;
-        }
-
-        // 0x00-0x35の範囲でループさせる
-        a31DC.increment();
-        if (a31DC.isFinalDestination()) {
-            printCount();
-            printf("End.\n");
-            return false;
-        }
-
-        // ESCキー判定。65535回に1度しかチェックしない
-        if (checkedCount % 4294836225D == 0) {
-            dumpContinueCommand();
-        }
-
-        return true;
     }
 
     private static PrintStream printf(String format, Object... args) {
