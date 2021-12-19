@@ -61,7 +61,7 @@ public class YoukaiTest03 {
                 // 1桁目に出現した場合は最速スキップ
                 // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
                 if (password.isInvalid()) {
-                    password.passInvalidChar();
+                    password = password.passInvalidChar();
                     continue;
                 }
 
@@ -86,7 +86,7 @@ public class YoukaiTest03 {
                 }
 
                 // 0x00-0x35の範囲でループさせる
-                password.increment();
+                password = password.increment();
                 if (password.isFinalDestination()) {
                     printCount(checkedCount);
                     printf("End.\n");

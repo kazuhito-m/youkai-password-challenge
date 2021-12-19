@@ -13,36 +13,40 @@ public class AttackCharacters {
         return charCodes[index];
     }
 
-    public void increment() {
+    public AttackCharacters increment() {
         // 0x00-0x35の範囲でループさせる
-        charCodes[0]++; // 1個目をインクリメント
-        for (int i = 0; i < charCodes.length; i++) {
+        int[] newCodes = Arrays.copyOf(charCodes, charCodes.length);
+        newCodes[0]++; // 1個目をインクリメント
+        for (int i = 0; i < newCodes.length; i++) {
             // 35を超えたら次の桁へ
-            if (charCodes[i] > 0x35) {
-                charCodes[i] = 0;
-                charCodes[i + 1]++;
+            if (newCodes[i] > 0x35) {
+                newCodes[i] = 0;
+                newCodes[i + 1]++;
             }
         }
+        return new AttackCharacters(newCodes);
     }
 
     public boolean isFinalDestination() {
         return charCodes[charCodes.length - 1] == 0x36;
     }
 
-    public void passInvalidChar() {
-        for (int i = 0; i < charCodes.length; i++) {
-            if (converter.isInvalidCharCode(charCodes[i])) {
-                if (i == 0) {
-                    charCodes[0]++;
-                    return;
-                }
-                // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
-                for (int j = 0; j < i; j++) {
-                    charCodes[j] = 0;
-                }
-                charCodes[i]++;
+    public AttackCharacters passInvalidChar() {
+        int[] newCodes = Arrays.copyOf(charCodes, charCodes.length);
+        for (int i = 0; i < newCodes.length; i++) {
+            if (!converter.isInvalidCharCode(newCodes[i])) continue;
+
+            if (i == 0) {
+                newCodes[0]++;
+                break;
             }
+            // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
+            for (int j = 0; j < i; j++) {
+                newCodes[j] = 0;
+            }
+            newCodes[i]++;
         }
+        return new AttackCharacters(newCodes);
     }
 
     public boolean isInvalid() {

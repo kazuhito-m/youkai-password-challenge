@@ -5,7 +5,6 @@ public class IntStack {
     private int stackSize = 0;
 
     public void push(int value) {
-        System.out.printf("stackSize:%d\n", stackSize);
         values[stackSize++] = value;
     }
 
