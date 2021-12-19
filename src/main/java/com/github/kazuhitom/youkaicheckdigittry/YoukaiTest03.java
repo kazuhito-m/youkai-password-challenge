@@ -231,7 +231,8 @@ public class YoukaiTest03 {
                 }
                 Z = A == 0; // 演算結果がゼロの時Z=true;
 
-                stackA.push(A); // スタックに値を保存
+//                stackA.push(A); // スタックに値を保存
+                final int a1Work = A;
                 A = a31f.a31FB;
                 A = A + C1;
 
@@ -242,7 +243,7 @@ public class YoukaiTest03 {
                 }
                 a31f.a31FB = A;
 
-                A = stackA.pop();
+                A = a1Work;
             } while (!Z);   // ローテ終わるまでループ
             //printf("a31FB=%x ",a31FB);
 
