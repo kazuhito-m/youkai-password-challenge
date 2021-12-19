@@ -2,7 +2,6 @@ package com.github.kazuhitom.youkaicheckdigittry;
 
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
-import com.github.kazuhitom.youkaicheckdigittry.state.CodeToCharacterConverter;
 import sun.misc.Signal;
 
 import java.io.PrintStream;
@@ -11,8 +10,6 @@ import java.time.format.DateTimeFormatter;
 
 public class YoukaiTest03 {
     // 文字コード変換テーブル
-    static CodeToCharacterConverter converter = new CodeToCharacterConverter();
-
     static AttackCharacters a31DC;
 
     static int stackApos = 0;
@@ -240,16 +237,11 @@ public class YoukaiTest03 {
 
         // 検算終了後にチェック
         if (a31f.equals(atk)) {
-            printCount();
-
             printTime();
-            printf("Hit! : %s = %s\n", a31DC.dumpHexText(), a31DC.toString());
-            printf("見つかったので、処理を終了します。\n");
-
-            // debug
-            new Exception().printStackTrace(System.out);
-
-            return false;
+            printf("Hit! : %s = %s (%,.0f 回目)\n", a31DC.dumpHexText(), a31DC.toString(), checkedCount);
+//            printf("見つかったので、処理を終了します。\n");
+//            new Exception().printStackTrace(System.out); // debug
+//            return false;
         }
 
         // 0x00-0x35の範囲でループさせる
@@ -284,9 +276,6 @@ public class YoukaiTest03 {
     private static void dumpContinueCommand() {
         printCount();
         printf("continue command : yokai03.exe %s %s %s %s %s %s %s %s ", argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
-        for (int i = 0; i < atk.atk_count; i++) {
-            printf("%s", a31DC.dumpHexText());
-        }
-        printf("\n");
+        printf("%s\n", a31DC.dumpHexText());
     }
 }
