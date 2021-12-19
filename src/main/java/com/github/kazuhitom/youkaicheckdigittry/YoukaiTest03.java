@@ -8,6 +8,7 @@ import sun.misc.Signal;
 import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 public class YoukaiTest03 {
     static AttackCharacters a31DC;
@@ -47,14 +48,11 @@ public class YoukaiTest03 {
 
         // コンテニュー
         if (args.length > 8) {
-            int continueCount = args.length - 8;
-            printf("前回の続きからコンテニューします : ");
-            int[] continueCodes = new int[continueCount];
-            for (int i = 0; i < continueCount; i++) {
-                continueCodes[i] = Integer.parseInt(args[8 + i], 16);
-            }
+            int[] continueCodes = Arrays.stream(Arrays.copyOfRange(args, 8, args.length))
+                    .mapToInt(codeText -> Integer.parseInt(codeText, 16))
+                    .toArray();
             a31DC = new AttackCharacters(continueCodes);
-            printf("%s\n", a31DC.dumpHexText());
+            printf("前回の続きからコンテニューします : %s\n", a31DC.dumpHexText());
         }
 
         Signal.handle(new Signal("INT"),  // SIGINT
