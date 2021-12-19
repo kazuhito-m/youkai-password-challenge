@@ -2,7 +2,6 @@ package com.github.kazuhitom.youkaicheckdigittry;
 
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
-import com.github.kazuhitom.youkaicheckdigittry.state.IntStack;
 
 import java.io.PrintStream;
 import java.time.LocalDateTime;
@@ -10,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class YoukaiTest03 {
-    static IntStack stackA;
     static int A = 0;
 
     static String[] argv;   // Last console args
@@ -33,7 +31,6 @@ public class YoukaiTest03 {
 
         // スタック配列クリア
         AttackCharacters password = AttackCharacters.Initialize(attackTargetCheckDigit.atk_count);
-        stackA = new IntStack();
 
         printTime();
         printf("解析開始(Cntl + C でコンテニュー値を表示して終了)\n");
@@ -69,8 +66,8 @@ public class YoukaiTest03 {
                 A = password.getOf(0);
 
                 A31F currentCheckDigit = attackTargetCheckDigit.prototype();
-                subroutineD8C0(currentCheckDigit, A);
-                D880(currentCheckDigit, password);
+                final int D87F = subroutineD8C0(currentCheckDigit, A);
+                D880(currentCheckDigit, password, D87F);
 
 
                 // 検算終了後にチェック
@@ -100,7 +97,7 @@ public class YoukaiTest03 {
         }
     }
 
-    private static void subroutineD8C0(A31F a31f, int targetCharCode) {
+    private static int subroutineD8C0(A31F a31f, int targetCharCode) {
         A = targetCharCode;
         for (int i = 0; i < 8; i++) {
             A = A << 1;
@@ -208,16 +205,16 @@ public class YoukaiTest03 {
 //        A = stackA.pop();
         A = a6Work;
         //D87F:
-        stackA.push(A);
+        return A;
     }
 
-    private static void D880(A31F a31f, AttackCharacters password) {
+    private static void D880(A31F a31f, AttackCharacters password, int D87F) {
         int C1 = 0;
         for (int X = 0; X < a31f.atk_count; X++) {
             // 文字数分だけ演算をカウント
             if (X > 0) {
                 A = password.getOf(X);
-                subroutineD8C0(a31f, A);
+                D87F = subroutineD8C0(a31f, A);
             }
 
             // 31FBを生成
@@ -247,7 +244,7 @@ public class YoukaiTest03 {
             } while (!Z);   // ローテ終わるまでループ
             //printf("a31FB=%x ",a31FB);
 
-            A = stackA.pop();
+            A = D87F;
         }
     }
 
