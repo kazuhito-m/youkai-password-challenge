@@ -61,12 +61,11 @@ export default class AttackCharacters {
     public toString(): string {
         return this.charCodes
             .map(code => this.converter.convert(code))
-            .map(text => text.toString())
-            .join(" ")
+            .join("")
             .trim();
     }
 
     public static Initialize(charCount: number): AttackCharacters {
-        return new AttackCharacters(Array(charCount));
+        return new AttackCharacters(Array(charCount).fill(0));
     }
 }

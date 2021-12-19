@@ -8,7 +8,6 @@ export default class YoukaiPasswordAttacker {
     private cancellation = false;
 
     private static readonly DUMP_INTERVAL = 67107840;
-    // private static readonly DUMP_INTERVAL = 100000;
 
     public execute(attackTargetCheckDigit: A31F, startPassword: AttackCharacters, hitPasswordEvent: any = () => { }): AttackCharacters[] {
         const results: AttackCharacters[] = [];
@@ -51,7 +50,7 @@ export default class YoukaiPasswordAttacker {
                     this.printTime();
                     this.printf(`Hit! : ${password.dumpHexText()} = ${password.toString()} (${checkedCount} 回目)\n`);
 
-                    hitPasswordEvent.accept(password);
+                    hitPasswordEvent(password);
 
                     if (this.oneHitExitMode) {
                         this.printf("見つかったので、処理を終了します。\n");
