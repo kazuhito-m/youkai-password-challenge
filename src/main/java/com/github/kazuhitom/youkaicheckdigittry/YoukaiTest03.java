@@ -15,12 +15,9 @@ public class YoukaiTest03 {
 
     static IntStack stackA;
 
-    static A31F a31f;
-
     static int A = 0;
 
     static String[] argv;   // Last console args
-    static double checkedCount = 0;
 
     public static void main(String[] args) {
         argv = args;
@@ -54,18 +51,15 @@ public class YoukaiTest03 {
             printf("前回の続きからコンテニューします : %s\n", a31DC.dumpHexText());
         }
 
+        double checkedCount = 0;
         Signal.handle(new Signal("INT"),  // SIGINT
                 signal -> dumpContinueCommand());
 
         try {
+            // a31DCにターゲット桁数の数値を入れて回転させて、値が一致するまでアタック
             while (true) {
-                // a31DCにターゲット桁数の数値を入れて回転させて、値が一致するまでアタック
                 ++checkedCount;
                 // スタート
-                a31f = new A31F();
-                a31f.a31FA = 1;
-                a31f.atk_count = attackTargetCheckDigit.atk_count;
-
                 // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
                 // 高速化できないか実験
                 // 1桁目に出現した場合は最速スキップ
@@ -75,14 +69,16 @@ public class YoukaiTest03 {
                     continue;
                 }
 
+                A31F a31f = attackTargetCheckDigit.prototype();
+
                 // 以下メインルーチン
                 A = a31DC.getOf(0);
 
                 //D8BD:
                 stackA.push(A);
 
-                subroutineD8C0();
-                D880();
+                subroutineD8C0(a31f);
+                D880(a31f);
 
 
                 // 検算終了後にチェック
@@ -97,7 +93,7 @@ public class YoukaiTest03 {
                 // 0x00-0x35の範囲でループさせる
                 a31DC.increment();
                 if (a31DC.isFinalDestination()) {
-                    printCount();
+                    printCount(checkedCount);
                     printf("End.\n");
                     break;
                 }
@@ -112,7 +108,7 @@ public class YoukaiTest03 {
         }
     }
 
-    private static void subroutineD8C0() {
+    private static void subroutineD8C0(A31F a31f) {
         for (int i = 0; i < 8; i++) {
             A = A << 1;
 
@@ -216,7 +212,7 @@ public class YoukaiTest03 {
         stackA.push(A);
     }
 
-    private static void D880() {
+    private static void D880(A31F a31f) {
         int C1 = 0;
         for (int X = 0; X < a31f.atk_count; X++) {
             // 文字数分だけ演算をカウント
@@ -226,7 +222,7 @@ public class YoukaiTest03 {
                 //D8BD:
                 stackA.push(A);
 
-                subroutineD8C0();
+                subroutineD8C0(a31f);
             }
 
             // 31FBを生成
@@ -263,7 +259,7 @@ public class YoukaiTest03 {
         return System.out.printf(format, args);
     }
 
-    private static void printCount() {
+    private static void printCount(double checkedCount) {
         printf("%,.0f 回目\n", checkedCount);
     }
 
@@ -273,7 +269,6 @@ public class YoukaiTest03 {
     }
 
     private static void dumpContinueCommand() {
-        printCount();
         printf("continue command : yokai03.exe %s %s %s %s %s %s %s %s ", argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
         printf("%s\n", a31DC.dumpHexText());
     }

@@ -30,6 +30,13 @@ public class A31F {
         return Integer.parseInt(hex, 16);
     }
 
+    public A31F prototype() {
+        A31F p = new A31F();
+        p.a31FA = 1;
+        p.atk_count = atk_count;
+        return p;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
