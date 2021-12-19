@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class YoukaiPasswordAttacker {
     private final boolean oneHitExitMode;
@@ -15,7 +16,7 @@ public class YoukaiPasswordAttacker {
     private int A = 0;
     private boolean cancellation = false;
 
-    public List<AttackCharacters> execute(A31F attackTargetCheckDigit, AttackCharacters startPassword) {
+    public List<AttackCharacters> execute(A31F attackTargetCheckDigit, AttackCharacters startPassword, Consumer<AttackCharacters> hitPasswordEvent) {
         List<AttackCharacters> results = new ArrayList<>();
         AttackCharacters password = startPassword;
         cancellation = false;
@@ -37,18 +38,17 @@ public class YoukaiPasswordAttacker {
                 // 以下メインルーチン
                 A = password.getOf(0);
 
-                A31F currentCheckDigit = attackTargetCheckDigit.prototype();
+                final A31F currentCheckDigit = attackTargetCheckDigit.prototype();
                 final int D87F = subroutineD8C0(currentCheckDigit, A);
                 D880(currentCheckDigit, password, D87F);
 
                 // ESCキー判定。65535回に1度しかチェックしない
-                if (checkedCount % 67107840 == 0) {
+                if (checkedCount % 67107840 == 0 || cancellation) {
                     dumpContinueCommand(password, startPassword, checkedCount);
-                }
-                if (cancellation) {
-                    dumpContinueCommand(password, startPassword, checkedCount);
-                    printf("キャンセルされました。");
-                    break;
+                    if (cancellation) {
+                        printf("キャンセルされました。");
+                        break;
+                    }
                 }
 
                 // 検算終了後にチェック
@@ -57,6 +57,8 @@ public class YoukaiPasswordAttacker {
 
                     printTime();
                     printf("Hit! : %s = %s (%,.0f 回目)\n", password.dumpHexText(), password.toString(), checkedCount);
+
+                    hitPasswordEvent.accept(password);
 
                     if (oneHitExitMode) {
                         printf("見つかったので、処理を終了します。\n");
@@ -76,6 +78,11 @@ public class YoukaiPasswordAttacker {
             e.printStackTrace(System.out);
         }
         return results;
+    }
+
+    public List<AttackCharacters> execute(A31F attackTargetCheckDigit, AttackCharacters startPassword) {
+        return execute(attackTargetCheckDigit, startPassword, (hit) -> {
+        });
     }
 
     private int subroutineD8C0(A31F a31f, int targetCharCode) {

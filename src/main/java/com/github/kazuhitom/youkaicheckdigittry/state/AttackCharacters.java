@@ -72,7 +72,7 @@ public class AttackCharacters {
         return new AttackCharacters(new int[charCount]);
     }
 
-    public AttackCharacters(int[] charCodes) {
+    public AttackCharacters(int... charCodes) {
         this.charCodes = charCodes;
     }
 }

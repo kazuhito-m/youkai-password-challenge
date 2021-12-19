@@ -13,7 +13,7 @@ public class A31F {
 
     public int atk_count = 1;   // 文字列長さ
 
-    public static A31F createFromHexStrings8(String[] hexStrings8) {
+    public static A31F createFromHexStrings8(String... hexStrings8) {
         A31F o = new A31F();
         o.a31F4 = hexToInt(hexStrings8[0]);
         o.a31F5 = hexToInt(hexStrings8[1]);
