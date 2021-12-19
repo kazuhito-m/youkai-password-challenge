@@ -1,5 +1,6 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
+import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
 import sun.misc.Signal;
 
 import java.io.PrintStream;
@@ -17,18 +18,19 @@ public class YoukaiTest03 {
     static int[] stackA = new int[256];
 
     static int atk_count = 1;
-    static int atk31F4 = 0, atk31F5 = 0, atk31F7 = 0, atk31F8 = 0, atk31F9 = 0, atk31FA = 0, atk31FB = 0;
+//    static int atk31F4 = 0, atk31F5 = 0, atk31F7 = 0, atk31F8 = 0, atk31F9 = 0, atk31FA = 0, atk31FB = 0;
+
+    static A31F atk;
+
 
     static int A = 0, X = 0;
     static int C = 0, Z = 0;
 
-    static int a31F6 = 0; // 文字列長さ
-    static int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
-    //    static int ror = 0;
-    static int continue_count = 0;
+    //    static int a31F6 = 0; // 文字列長さ
+//    static int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
+    static A31F a31f;
 
-    static LocalDateTime local_time;
-    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    static int continue_count = 0;
 
     static String[] argv;   // Last console args
     static double checkedCount = 0;
@@ -46,15 +48,16 @@ public class YoukaiTest03 {
         }
 
         // 引数を各ターゲットに割り当て
-        atk31F4 = Integer.parseInt(args[0], 16);
-        atk31F5 = Integer.parseInt(args[1], 16);
+        atk = new A31F();
+        atk.a31F4 = Integer.parseInt(args[0], 16);
+        atk.a31F5 = Integer.parseInt(args[1], 16);
         atk_count = Integer.parseInt(args[2], 16);
-        a31F6 = atk_count;
-        atk31F7 = Integer.parseInt(args[3], 16);
-        atk31F8 = Integer.parseInt(args[4], 16);
-        atk31F9 = Integer.parseInt(args[5], 16);
-        atk31FA = Integer.parseInt(args[6], 16);
-        atk31FB = Integer.parseInt(args[7], 16);
+        atk.a31F6 = atk_count;
+        atk.a31F7 = Integer.parseInt(args[3], 16);
+        atk.a31F8 = Integer.parseInt(args[4], 16);
+        atk.a31F9 = Integer.parseInt(args[5], 16);
+        atk.a31FA = Integer.parseInt(args[6], 16);
+        atk.a31FB = Integer.parseInt(args[7], 16);
 
         printf("解析パスワード文字数 : %d 文字\n", atk_count);
 
@@ -62,8 +65,7 @@ public class YoukaiTest03 {
         a31DC = new char[256];
         stackA = new int[256];
 
-        local_time = LocalDateTime.now();
-        printf(local_time.format(formatter) + " - ");
+        printTime();
         printf("解析開始(Cntl + C でコンテニュー値を表示して終了)\n");
 
         // コンテニュー
@@ -97,15 +99,10 @@ public class YoukaiTest03 {
     private static boolean LOOP() {
         ++checkedCount;
         // スタート
+        a31f = new A31F();
         X = 0;
-        a31F4 = 0;
-        a31F5 = 0;
-        a31F7 = 0;
-        a31F8 = 0;
-        a31F9 = 0;
-        a31FB = 0;
         A = 1;
-        a31FA = A;
+        a31f.a31FA = A;
         stackApos = 0;
         C = 0;
 
@@ -152,14 +149,14 @@ public class YoukaiTest03 {
             }
             stackA[stackApos++] = A;
             // 31F4と31F5を右1ビットローテート
-            int work1 = a31F4 & 0x01;
-            a31F4 = a31F4 >> 1;
-            a31F4 = a31F4 | (C << 7); // C0000000
+            int work1 = a31f.a31F4 & 0x01;
+            a31f.a31F4 = a31f.a31F4 >> 1;
+            a31f.a31F4 = a31f.a31F4 | (C << 7); // C0000000
             C = work1;
 
-            int work2 = a31F5 & 0x01;
-            a31F5 = a31F5 >> 1;
-            a31F5 = a31F5 | (C << 7); // C0000000
+            int work2 = a31f.a31F5 & 0x01;
+            a31f.a31F5 = a31f.a31F5 >> 1;
+            a31f.a31F5 = a31f.a31F5 | (C << 7); // C0000000
             C = work2;
 
             //printf("ror %02X %02X\n",a31F4,a31F5);
@@ -173,12 +170,12 @@ public class YoukaiTest03 {
             A = A ^ 0xFF;
             stackA[stackApos++] = A;
             A = A & 0x84;
-            A = A ^ a31F4;
-            a31F4 = A;
+            A = A ^ a31f.a31F4;
+            a31f.a31F4 = A;
             A = stackA[--stackApos];
             A = A & 0x08;
-            A = A ^ a31F5;
-            a31F5 = A;
+            A = A ^ a31f.a31F5;
+            a31f.a31F5 = A;
             A = stackA[--stackApos];
         }
 
@@ -187,30 +184,30 @@ public class YoukaiTest03 {
 //D8A4: // 31F7と31F8を生成(Complete)
         stackA[stackApos++] = A;
         stackA[stackApos++] = A;
-        A = a31F4;
+        A = a31f.a31F4;
         if (A >= 0xE5) {
             C = 1;
         } else C = 0; //C5の値でキャリーを生成
         A = stackA[--stackApos];
-        A = A + a31F7 + C;
+        A = A + a31f.a31F7 + C;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
             C = 1;
         } else C = 0;
-        a31F7 = A;
-        A = a31F8;
-        A = A + a31F5 + C;
+        a31f.a31F7 = A;
+        A = a31f.a31F8;
+        A = A + a31f.a31F5 + C;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
             C = 1;
         } else C = 0;
-        a31F8 = A;
+        a31f.a31F8 = A;
         A = stackA[--stackApos];
 
         //D89B: // 31F9を生成(Complete)
         stackA[stackApos++] = A;
-        A = A ^ a31F9;
-        a31F9 = A;
+        A = A ^ a31f.a31F9;
+        a31f.a31F9 = A;
         A = stackA[--stackApos];
 
         // ここから下にまだバグがある
@@ -218,16 +215,16 @@ public class YoukaiTest03 {
         //D88F: // 31FAを生成
         stackA[stackApos++] = A;
         // 31FAをローテート
-        int work3 = a31FA & 0x01;
-        a31FA = a31FA >> 1;
-        a31FA = a31FA | (C << 7); // $31F8のCがここで入る
+        int work3 = a31f.a31FA & 0x01;
+        a31f.a31FA = a31f.a31FA >> 1;
+        a31f.a31FA = a31f.a31FA | (C << 7); // $31F8のCがここで入る
         C = work3;
-        A = A + a31FA + C;
+        A = A + a31f.a31FA + C;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
             C = 1;
         } else C = 0;
-        a31FA = A;
+        a31f.a31FA = A;
 
         A = stackA[--stackApos];
 
@@ -249,13 +246,13 @@ public class YoukaiTest03 {
         else Z = 0; // 演算結果がゼロの時Z=1;
 
         stackA[stackApos++] = A; // スタックに値を保存
-        A = a31FB;
+        A = a31f.a31FB;
         A = A + C;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
             C = 1;
         } else C = 0;
-        a31FB = A;
+        a31f.a31FB = A;
 
         A = stackA[--stackApos];
         if (Z == 0) {
@@ -268,37 +265,30 @@ public class YoukaiTest03 {
         // 文字数分だけ演算をカウント
         X++;
 
-        if (a31F6 != X) {
+        if (atk_count != X) {
             return D86B();
         }
 
         // 検算終了後にチェック
-        if (a31F4 == atk31F4 && a31F5 == atk31F5) {
-            if (a31F7 == atk31F7
-                    && a31F8 == atk31F8
-                    && a31F9 == atk31F9
-                    && a31FA == atk31FA
-                    && a31FB == atk31FB) {
-                printCount();
+        if (a31f.equals(atk)) {
+            printCount();
 
-                local_time = LocalDateTime.now();
-                printf(local_time.format(formatter) + " - ");
-                printf("Hit! : ");
-                for (int i = 0; i < atk_count; i++) {
-                    printf("%02X ", (int) a31DC[i]);
-                }
-                printf("= ");
-                for (int i = 0; i < atk_count; i++) {
-                    printf("%c", atoy[a31DC[i]]);
-                }
-                printf("\n");
-                printf("見つかったので、処理を終了します。\n");
-
-                // debug
-                new Exception().printStackTrace(System.out);
-
-                return false;
+            printTime();
+            printf("Hit! : ");
+            for (int i = 0; i < atk_count; i++) {
+                printf("%02X ", (int) a31DC[i]);
             }
+            printf("= ");
+            for (int i = 0; i < atk_count; i++) {
+                printf("%c", atoy[a31DC[i]]);
+            }
+            printf("\n");
+            printf("見つかったので、処理を終了します。\n");
+
+            // debug
+            new Exception().printStackTrace(System.out);
+
+            return false;
         }
 
         // 0x00-0x35の範囲でループさせる
@@ -333,6 +323,11 @@ public class YoukaiTest03 {
 
     private static void printCount() {
         printf("%,.0f 回目\n", checkedCount);
+    }
+
+    private static void printTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        printf(LocalDateTime.now().format(formatter) + " - ");
     }
 
     private static void dumpContinueCommand() {
