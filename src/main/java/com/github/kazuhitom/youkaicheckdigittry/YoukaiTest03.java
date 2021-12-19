@@ -15,7 +15,6 @@ public class YoukaiTest03 {
 
     static IntStack stackA;
 
-    static A31F atk;
     static A31F a31f;
 
     static int A = 0;
@@ -36,11 +35,11 @@ public class YoukaiTest03 {
         }
 
         // 引数を各ターゲットに割り当て
-        atk = A31F.createFromHexStrings8(args);
-        printf("解析パスワード文字数 : %d 文字\n", atk.atk_count);
+        A31F attackTargetCheckDigit = A31F.createFromHexStrings8(args);
+        printf("解析パスワード文字数 : %d 文字\n", attackTargetCheckDigit.atk_count);
 
         // スタック配列クリア
-        a31DC = AttackCharacters.Initialize(atk.atk_count);
+        a31DC = AttackCharacters.Initialize(attackTargetCheckDigit.atk_count);
         stackA = new IntStack();
 
         printTime();
@@ -65,6 +64,7 @@ public class YoukaiTest03 {
                 // スタート
                 a31f = new A31F();
                 a31f.a31FA = 1;
+                a31f.atk_count = attackTargetCheckDigit.atk_count;
 
                 // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
                 // 高速化できないか実験
@@ -86,7 +86,7 @@ public class YoukaiTest03 {
 
 
                 // 検算終了後にチェック
-                if (a31f.equals(atk)) {
+                if (a31f.equals(attackTargetCheckDigit)) {
                     printTime();
                     printf("Hit! : %s = %s (%,.0f 回目)\n", a31DC.dumpHexText(), a31DC.toString(), checkedCount);
 //            printf("見つかったので、処理を終了します。\n");
@@ -218,7 +218,7 @@ public class YoukaiTest03 {
 
     private static void D880() {
         int C1 = 0;
-        for (int X = 0; X < atk.atk_count; X++) {
+        for (int X = 0; X < a31f.atk_count; X++) {
             // 文字数分だけ演算をカウント
             if (X > 0) {
                 A = a31DC.getOf(X);
