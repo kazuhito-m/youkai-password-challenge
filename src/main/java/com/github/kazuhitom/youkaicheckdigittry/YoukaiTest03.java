@@ -2,19 +2,19 @@ package com.github.kazuhitom.youkaicheckdigittry;
 
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
+import com.github.kazuhitom.youkaicheckdigittry.state.IntStack;
 import sun.misc.Signal;
 
 import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Stack;
 
 public class YoukaiTest03 {
     // 文字コード変換テーブル
     static AttackCharacters a31DC;
 
     static int stackApos = 0;
-    static Stack<Integer> stackA;
+    static IntStack stackA;
 
     static A31F atk;
     static A31F a31f;
@@ -43,7 +43,7 @@ public class YoukaiTest03 {
 
         // スタック配列クリア
         a31DC = AttackCharacters.Initialize(atk.atk_count);
-        stackA = new Stack<>();
+        stackA = new IntStack();
 
         printTime();
         printf("解析開始(Cntl + C でコンテニュー値を表示して終了)\n");
