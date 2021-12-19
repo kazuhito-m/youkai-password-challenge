@@ -44,7 +44,7 @@ public class YoukaiTest03 {
         printf("解析パスワード文字数 : %d 文字\n", atk.atk_count);
 
         // スタック配列クリア
-        a31DC = new char[256];
+        a31DC = new char[atk.atk_count];
         stackA = new int[256];
 
         printTime();
