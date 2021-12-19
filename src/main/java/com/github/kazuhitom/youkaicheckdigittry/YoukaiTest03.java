@@ -12,7 +12,7 @@ public class YoukaiTest03 {
     // 文字コード変換テーブル
     static CodeToCharacterConverter converter = new CodeToCharacterConverter();
 
-    static char[] a31DC;
+    static int[] a31DC;
 
     static int stackApos = 0;
     static int[] stackA = new int[256];
@@ -43,7 +43,7 @@ public class YoukaiTest03 {
         printf("解析パスワード文字数 : %d 文字\n", atk.atk_count);
 
         // スタック配列クリア
-        a31DC = new char[atk.atk_count];
+        a31DC = new int[atk.atk_count];
         stackA = new int[256];
 
         printTime();
@@ -54,8 +54,8 @@ public class YoukaiTest03 {
             int continue_count = args.length - 8;
             printf("前回の続きからコンテニューします : ");
             for (int i = 0; i < continue_count; i++) {
-                a31DC[i] = (char) Integer.parseInt(args[8 + i], 16);
-                printf("%02X ", (int) a31DC[i]);
+                a31DC[i] = Integer.parseInt(args[8 + i], 16);
+                printf("%02X ", a31DC[i]);
             }
             printf("\n");
         }
@@ -252,7 +252,7 @@ public class YoukaiTest03 {
             printTime();
             printf("Hit! : ");
             for (int i = 0; i < atk.atk_count; i++) {
-                printf("%02X ", (int) a31DC[i]);
+                printf("%02X ", a31DC[i]);
             }
             printf("= ");
             for (int i = 0; i < atk.atk_count; i++) {
@@ -310,7 +310,7 @@ public class YoukaiTest03 {
         printCount();
         printf("continue command : yokai03.exe %s %s %s %s %s %s %s %s ", argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
         for (int i = 0; i < atk.atk_count; i++) {
-            printf("%02X ", (int) a31DC[i]);
+            printf("%02X ", a31DC[i]);
         }
         printf("\n");
     }
