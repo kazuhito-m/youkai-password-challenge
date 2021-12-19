@@ -109,10 +109,11 @@ public class YoukaiTest03 {
         //D8BD:
         stackA[stackApos++] = A;
 
-        return D8C0(0);
+        subroutineD8C0();
+        return D880(0);
     }
 
-    private static boolean D8C0(int X) {
+    private static void subroutineD8C0() {
         for (int i = 0; i < 8; i++) {
             A = A << 1;
 
@@ -205,8 +206,6 @@ public class YoukaiTest03 {
 
         //D87F:
         stackA[stackApos++] = A;
-
-        return D880(X);
     }
 
     private static boolean D880(int X) {
@@ -244,7 +243,8 @@ public class YoukaiTest03 {
             //D8BD:
             stackA[stackApos++] = A;
 
-            return D8C0(X);
+            subroutineD8C0();
+            return D880(X);
         }
 
         // 検算終了後にチェック
