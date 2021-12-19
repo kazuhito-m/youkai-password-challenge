@@ -65,20 +65,19 @@ public class YoukaiTest03 {
                     continue;
                 }
 
-                A31F a31f = attackTargetCheckDigit.prototype();
-
                 // 以下メインルーチン
                 A = password.getOf(0);
 
                 //D8BD:
                 stackA.push(A);
 
-                subroutineD8C0(a31f);
-                D880(a31f, password);
+                A31F currentCheckDigit = attackTargetCheckDigit.prototype();
+                subroutineD8C0(currentCheckDigit);
+                D880(currentCheckDigit, password);
 
 
                 // 検算終了後にチェック
-                if (a31f.equals(attackTargetCheckDigit)) {
+                if (attackTargetCheckDigit.equals(currentCheckDigit)) {
                     printTime();
                     printf("Hit! : %s = %s (%,.0f 回目)\n", password.dumpHexText(), password.toString(), checkedCount);
 //            printf("見つかったので、処理を終了します。\n");
