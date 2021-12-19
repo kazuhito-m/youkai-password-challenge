@@ -44,9 +44,9 @@ public class YoukaiPasswordAttacker {
 
                 // ESCキー判定。65535回に1度しかチェックしない
                 if (checkedCount % 67107840 == 0 || cancellation) {
-                    dumpContinueCommand(password, startPassword, checkedCount);
+                    dumpContinueCommand(password, attackTargetCheckDigit, checkedCount);
                     if (cancellation) {
-                        printf("キャンセルされました。");
+                        printf("キャンセルされました。\n");
                         break;
                     }
                 }
@@ -249,9 +249,12 @@ public class YoukaiPasswordAttacker {
         printf(LocalDateTime.now().format(formatter) + " - ");
     }
 
-    private void dumpContinueCommand(AttackCharacters password, AttackCharacters startPassword, double checkedCount) {
-        printf("continue command : yokai03.exe %s", startPassword.dumpHexText());
-        printf("%s (%,.0f 回目)\n", password.dumpHexText(), checkedCount);
+    private void dumpContinueCommand(AttackCharacters password, A31F attackTargetCheckDigit, double checkedCount) {
+        printf("continue command : java -jar youkai-console-java-1.0.0.jar %s %s (%,.0f 回目)\n", attackTargetCheckDigit, password.dumpHexText(), checkedCount);
+    }
+
+    public void cancel() {
+        cancellation = true;
     }
 
     public YoukaiPasswordAttacker(boolean oneHitExitMode) {

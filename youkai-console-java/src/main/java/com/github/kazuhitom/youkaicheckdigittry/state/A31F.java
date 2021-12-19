@@ -1,6 +1,9 @@
 package com.github.kazuhitom.youkaicheckdigittry.state;
 
 import java.util.Objects;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.joining;
 
 public class A31F {
     public int a31F4 = 0;
@@ -44,6 +47,7 @@ public class A31F {
         A31F t = (A31F) o;
         return a31F4 == t.a31F4
                 && a31F5 == t.a31F5
+                && atk_count == t.atk_count
                 && a31F7 == t.a31F7
                 && a31F8 == t.a31F8
                 && a31F9 == t.a31F9
@@ -54,5 +58,13 @@ public class A31F {
     @Override
     public int hashCode() {
         return Objects.hash(a31F4, a31F5, a31F7, a31F8, a31F9, a31FA, a31FB);
+    }
+
+    @Override
+    public String toString() {
+        return Stream.of(a31F4, a31F5, atk_count, a31F7, a31F8, a31F9, a31FA, a31FB)
+                .map(code -> String.format("%02x ", code))
+                .collect(joining())
+                .trim();
     }
 }

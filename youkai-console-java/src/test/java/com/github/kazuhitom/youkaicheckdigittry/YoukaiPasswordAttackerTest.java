@@ -2,10 +2,12 @@ package com.github.kazuhitom.youkaicheckdigittry;
 
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Disabled
 public class YoukaiPasswordAttackerTest {
     private final YoukaiPasswordAttacker sut = new YoukaiPasswordAttacker(true);
 

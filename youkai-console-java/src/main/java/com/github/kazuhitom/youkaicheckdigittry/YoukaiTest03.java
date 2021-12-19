@@ -2,6 +2,7 @@ package com.github.kazuhitom.youkaicheckdigittry;
 
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
+import sun.misc.Signal;
 
 import java.io.PrintStream;
 import java.time.LocalDateTime;
@@ -9,15 +10,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class YoukaiTest03 {
-    static int A = 0;
-
-    static String[] argv;   // Last console args
-
     public static void main(String[] args) {
         // アタック目標値を設定
         if (args.length < 8) {
             printf("usage:yokai03.exe $31F4 $31F5 $31F6 $31F7 $31F8 $31F9 $31FA $31FB {continue param}\n");
-            printf("(例) yokai03.exe 00 08 03 22 88 20 .. パスワード<HAL>を検出\n");
+            printf("(例) java -jar youkai-console-java-1.0.0.jar 00 08 03 22 88 20 .. パスワード<HAL>を検出\n");
             printf("continue paramを指定すると続きから再開できます。\n");
             printf("yokai03.exe \n");
             return;
@@ -43,6 +40,10 @@ public class YoukaiTest03 {
         }
 
         YoukaiPasswordAttacker attacker = new YoukaiPasswordAttacker(false);
+
+        Signal.handle(new Signal("INT"),  // SIGINT
+                signal -> attacker.cancel());
+
         attacker.execute(attackTargetCheckDigit, password);
     }
 
