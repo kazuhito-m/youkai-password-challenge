@@ -17,18 +17,12 @@ public class YoukaiTest03 {
     static int stackApos = 0;
     static int[] stackA = new int[256];
 
-    static int atk_count = 1;
-//    static int atk31F4 = 0, atk31F5 = 0, atk31F7 = 0, atk31F8 = 0, atk31F9 = 0, atk31FA = 0, atk31FB = 0;
-
     static A31F atk;
-
+    static A31F a31f;
 
     static int A = 0, X = 0;
     static int C = 0, Z = 0;
 
-    //    static int a31F6 = 0; // 文字列長さ
-//    static int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
-    static A31F a31f;
 
     static int continue_count = 0;
 
@@ -48,18 +42,8 @@ public class YoukaiTest03 {
         }
 
         // 引数を各ターゲットに割り当て
-        atk = new A31F();
-        atk.a31F4 = Integer.parseInt(args[0], 16);
-        atk.a31F5 = Integer.parseInt(args[1], 16);
-        atk_count = Integer.parseInt(args[2], 16);
-        atk.a31F6 = atk_count;
-        atk.a31F7 = Integer.parseInt(args[3], 16);
-        atk.a31F8 = Integer.parseInt(args[4], 16);
-        atk.a31F9 = Integer.parseInt(args[5], 16);
-        atk.a31FA = Integer.parseInt(args[6], 16);
-        atk.a31FB = Integer.parseInt(args[7], 16);
-
-        printf("解析パスワード文字数 : %d 文字\n", atk_count);
+        atk = A31F.createFromHexStrings8(args);
+        printf("解析パスワード文字数 : %d 文字\n", atk.atk_count);
 
         // スタック配列クリア
         a31DC = new char[256];
@@ -114,7 +98,7 @@ public class YoukaiTest03 {
             return true;
         }
         // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
-        for (int i = 1; i < atk_count; i++) {
+        for (int i = 1; i < atk.atk_count; i++) {
             if (atoy[a31DC[i]] == '*') {
                 for (int j = 0; j < i; j++) {
                     a31DC[j] = 0;
@@ -265,7 +249,7 @@ public class YoukaiTest03 {
         // 文字数分だけ演算をカウント
         X++;
 
-        if (atk_count != X) {
+        if (atk.atk_count != X) {
             return D86B();
         }
 
@@ -275,11 +259,11 @@ public class YoukaiTest03 {
 
             printTime();
             printf("Hit! : ");
-            for (int i = 0; i < atk_count; i++) {
+            for (int i = 0; i < atk.atk_count; i++) {
                 printf("%02X ", (int) a31DC[i]);
             }
             printf("= ");
-            for (int i = 0; i < atk_count; i++) {
+            for (int i = 0; i < atk.atk_count; i++) {
                 printf("%c", atoy[a31DC[i]]);
             }
             printf("\n");
@@ -294,14 +278,14 @@ public class YoukaiTest03 {
         // 0x00-0x35の範囲でループさせる
         a31DC[0]++; // 1個目をインクリメント
 
-        for (int i = 0; i < atk_count; i++) {
+        for (int i = 0; i < atk.atk_count; i++) {
             // 35を超えたら次の桁へ
             if (a31DC[i] > 0x35) {
                 a31DC[i] = 0;
                 a31DC[i + 1]++;
             }
             // 最終桁が36になった瞬間に脱出
-            if (a31DC[atk_count - 1] == 0x36) {
+            if (a31DC[atk.atk_count - 1] == 0x36) {
                 printCount();
                 printf("End.\n");
                 return false;
@@ -333,7 +317,7 @@ public class YoukaiTest03 {
     private static void dumpContinueCommand() {
         printCount();
         printf("continue command : yokai03.exe %s %s %s %s %s %s %s %s ", argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
-        for (int i = 0; i < atk_count; i++) {
+        for (int i = 0; i < atk.atk_count; i++) {
             printf("%02X ", (int) a31DC[i]);
         }
         printf("\n");
