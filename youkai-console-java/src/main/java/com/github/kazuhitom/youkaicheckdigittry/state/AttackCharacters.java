@@ -14,6 +14,16 @@ public class AttackCharacters {
     }
 
     public AttackCharacters increment() {
+        int[] newCodes = Arrays.copyOf(charCodes, charCodes.length);
+        for (int i = 0; i < newCodes.length; i++) {
+            int before = newCodes[i];
+            newCodes[i] = converter.incrementCode(before);
+            if (newCodes[i] > before) break; // 繰り上がりなし。
+        }
+        return new AttackCharacters(converter, newCodes);
+    }
+
+    public AttackCharacters increment_old() {
         // 0x00-0x35の範囲でループさせる
         int[] newCodes = Arrays.copyOf(charCodes, charCodes.length);
         newCodes[0]++; // 1個目をインクリメント
@@ -56,7 +66,7 @@ public class AttackCharacters {
 
     public String dumpHexText() {
         return Arrays.stream(charCodes)
-                .mapToObj(code -> String.format("%02x", code))
+                .mapToObj(code -> String.format("%02X", code))
                 .collect(joining(" "));
     }
 
