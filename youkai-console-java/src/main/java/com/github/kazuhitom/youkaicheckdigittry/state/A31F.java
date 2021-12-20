@@ -14,13 +14,13 @@ public class A31F {
     public int a31FA = 0;
     public int a31FB = 0;
 
-    public int atk_count = 1;   // 文字列長さ
+    public int charLength = 1;   // 文字列長さ
 
     public static A31F createFromHexStrings8(String... hexStrings8) {
         A31F o = new A31F();
         o.a31F4 = hexToInt(hexStrings8[0]);
         o.a31F5 = hexToInt(hexStrings8[1]);
-        o.atk_count = hexToInt(hexStrings8[2]);
+        o.charLength = hexToInt(hexStrings8[2]);
         o.a31F7 = hexToInt(hexStrings8[3]);
         o.a31F8 = hexToInt(hexStrings8[4]);
         o.a31F9 = hexToInt(hexStrings8[5]);
@@ -36,7 +36,7 @@ public class A31F {
     public A31F prototype() {
         A31F p = new A31F();
         p.a31FA = 1;
-        p.atk_count = atk_count;
+        p.charLength = charLength;
         return p;
     }
 
@@ -47,7 +47,7 @@ public class A31F {
         A31F t = (A31F) o;
         return a31F4 == t.a31F4
                 && a31F5 == t.a31F5
-                && atk_count == t.atk_count
+                && charLength == t.charLength
                 && a31F7 == t.a31F7
                 && a31F8 == t.a31F8
                 && a31F9 == t.a31F9
@@ -62,7 +62,7 @@ public class A31F {
 
     @Override
     public String toString() {
-        return Stream.of(a31F4, a31F5, atk_count, a31F7, a31F8, a31F9, a31FA, a31FB)
+        return Stream.of(a31F4, a31F5, charLength, a31F7, a31F8, a31F9, a31FA, a31FB)
                 .map(code -> String.format("%02x ", code))
                 .collect(joining())
                 .trim();
