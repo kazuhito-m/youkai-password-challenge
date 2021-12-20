@@ -23,20 +23,6 @@ public class AttackCharacters {
         return new AttackCharacters(converter, newCodes);
     }
 
-    public AttackCharacters increment_old() {
-        // 0x00-0x35の範囲でループさせる
-        int[] newCodes = Arrays.copyOf(charCodes, charCodes.length);
-        newCodes[0]++; // 1個目をインクリメント
-        for (int i = 0; i < newCodes.length; i++) {
-            // 35を超えたら次の桁へ
-            if (newCodes[i] > 0x35) {
-                newCodes[i] = 0;
-                newCodes[i + 1]++;
-            }
-        }
-        return new AttackCharacters(converter, newCodes);
-    }
-
     public AttackCharacters fixInvalid() {
         if (!isInvalid()) return this;
 
