@@ -6,8 +6,7 @@ import static java.util.stream.Collectors.joining;
 
 public class AttackCharacters {
     private final int[] charCodes;
-
-    private final CodeToCharacterConverter converter = new CodeToCharacterConverter();
+    private final CodeToCharacterConverter converter;
 
     public int getOf(int index) {
         return charCodes[index];
@@ -24,7 +23,7 @@ public class AttackCharacters {
                 newCodes[i + 1]++;
             }
         }
-        return new AttackCharacters(newCodes);
+        return new AttackCharacters(converter, newCodes);
     }
 
     public boolean isFinalDestination() {
@@ -46,7 +45,7 @@ public class AttackCharacters {
             }
             newCodes[i]++;
         }
-        return new AttackCharacters(newCodes);
+        return new AttackCharacters(converter, newCodes);
     }
 
     public boolean isInvalid() {
@@ -72,7 +71,16 @@ public class AttackCharacters {
         return new AttackCharacters(new int[charCount]);
     }
 
+    public static AttackCharacters Initialize(int charCount, CodeToCharacterConverter converter) {
+        return new AttackCharacters(converter, new int[charCount]);
+    }
+
     public AttackCharacters(int... charCodes) {
+        this(new CodeToCharacterConverter(), charCodes);
+    }
+
+    public AttackCharacters(CodeToCharacterConverter converter, int... charCodes) {
+        this.converter = converter;
         this.charCodes = charCodes;
     }
 }
