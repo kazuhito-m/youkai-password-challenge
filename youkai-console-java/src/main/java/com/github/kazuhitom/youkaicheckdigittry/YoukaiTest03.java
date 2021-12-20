@@ -37,6 +37,10 @@ public class YoukaiTest03 {
                     .toArray();
             password = new AttackCharacters(continueCodes);
             printf("前回の続きからコンテニューします : %s\n", password.dumpHexText());
+            if (password.isInvalid()) {
+                password = password.fixInvalid();
+                printf("無効な値が含まれるため修正します : %s\n", password.dumpHexText());
+            }
         }
 
         YoukaiPasswordAttacker attacker = new YoukaiPasswordAttacker(false);
