@@ -18,8 +18,8 @@ public class CodeToCharacterConverter {
     }
 
     public int incrementCode(int code) {
-        int index = incrementNextCodeTable.length;
-        if (code < index) index = code;
+        int index = incrementNextCodeTable.length - 1;
+        if (code <= index) index = code;
         return incrementNextCodeTable[index];
     }
 
@@ -27,7 +27,7 @@ public class CodeToCharacterConverter {
         return INVALID_CHAR == convert(code);
     }
 
-    protected int[] createIncrementNextCodeTable(char[] codeToChar) {
+    private int[] createIncrementNextCodeTable(char[] codeToChar) {
         int firstValidCharCode = IntStream.range(0, codeToChar.length)
                 .filter(i -> codeToChar[i] != INVALID_CHAR)
                 .findFirst()
