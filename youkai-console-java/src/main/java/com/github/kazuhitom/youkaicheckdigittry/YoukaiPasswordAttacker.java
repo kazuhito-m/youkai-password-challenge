@@ -233,16 +233,18 @@ public class YoukaiPasswordAttacker {
     }
 
     private void printCount(double checkedCount) {
+        printTime();
         printf("%,.0f 回目\n", checkedCount);
     }
 
     private void printTime() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         printf(LocalDateTime.now().format(formatter) + " - ");
     }
 
     private void dumpContinueCommand(AttackCharacters password, A31F attackTargetCheckDigit, double checkedCount) {
-        printf("continue command : java -jar youkai-console-java-1.0.0.jar %s %s (%,.0f 回目)\n", attackTargetCheckDigit, password.dumpHexText(), checkedCount);
+        printTime();
+        printf("continue param : %s %s (%,.0f 回目,文字列: %s)\n", attackTargetCheckDigit, password.dumpHexText(), checkedCount, password);
     }
 
     public void cancel() {

@@ -58,7 +58,7 @@ public class YoukaiTest03 {
     }
 
     private static void printTime() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         printf(LocalDateTime.now().format(formatter) + " - ");
     }
 }
