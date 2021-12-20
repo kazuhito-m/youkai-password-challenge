@@ -14,4 +14,22 @@ class AttackCharactersTest {
 
         assertEquals("04 04 04 04", actual.dumpHexText());
     }
+
+    @Test
+    public void インクリメントすると無効文字列を飛ばして次のコードに上がる() {
+        var charTable = "****16******27******38******49******50*****-*******.**";
+        var converter = new CodeToCharacterConverter(charTable);
+
+        var firstCode = new AttackCharacters(converter, 4, 4);
+
+        assertEquals("04 04", firstCode.dumpHexText());
+
+        var actual = firstCode.increment();
+
+        assertEquals("05 04", actual.dumpHexText());
+
+        var actual2 = actual.increment();
+
+        assertEquals("0C 04", actual2.dumpHexText());
+    }
 }
