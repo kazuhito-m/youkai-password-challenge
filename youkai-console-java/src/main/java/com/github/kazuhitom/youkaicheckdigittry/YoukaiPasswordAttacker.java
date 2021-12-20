@@ -19,21 +19,13 @@ public class YoukaiPasswordAttacker {
     public List<AttackCharacters> execute(A31F attackTargetCheckDigit, AttackCharacters startPassword, Consumer<AttackCharacters> hitPasswordEvent) {
         List<AttackCharacters> results = new ArrayList<>();
         AttackCharacters password = startPassword;
+        AttackCharacters minimum = startPassword.minimum();
         cancellation = false;
         double checkedCount = 0;
         try {
             // a31DCにターゲット桁数の数値を入れて回転させて、値が一致するまでアタック
             while (true) {
                 ++checkedCount;
-                // スタート
-                // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
-                // 高速化できないか実験
-                // 1桁目に出現した場合は最速スキップ
-                // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
-                if (password.isInvalid()) {
-                    password = password.passInvalidChar();
-                    continue;
-                }
 
                 // 以下メインルーチン
                 A = password.getOf(0);
@@ -68,7 +60,7 @@ public class YoukaiPasswordAttacker {
 
                 // 0x00-0x35の範囲でループさせる
                 password = password.increment();
-                if (password.isFinalDestination()) {
+                if (password.equals(minimum)) {
                     printCount(checkedCount);
                     printf("End.\n");
                     break;

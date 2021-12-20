@@ -34,28 +34,6 @@ public class AttackCharacters {
         return new AttackCharacters(converter, newCodes);
     }
 
-    public boolean isFinalDestination() {
-        return charCodes[charCodes.length - 1] == 0x36;
-    }
-
-    public AttackCharacters passInvalidChar() {
-        int[] newCodes = Arrays.copyOf(charCodes, charCodes.length);
-        for (int i = 0; i < newCodes.length; i++) {
-            if (!converter.isInvalidCharCode(newCodes[i])) continue;
-
-            if (i == 0) {
-                newCodes[0]++;
-                break;
-            }
-            // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
-            for (int j = 0; j < i; j++) {
-                newCodes[j] = 0;
-            }
-            newCodes[i]++;
-        }
-        return new AttackCharacters(converter, newCodes);
-    }
-
     public boolean isInvalid() {
         return Arrays.stream(charCodes)
                 .anyMatch(converter::isInvalidCharCode);
@@ -88,11 +66,16 @@ public class AttackCharacters {
         return Arrays.hashCode(charCodes);
     }
 
-    public static AttackCharacters Initialize(int charCount) {
+    public static AttackCharacters initialize(int charCount) {
         return new AttackCharacters(new int[charCount]);
     }
 
-    public static AttackCharacters Initialize(int charCount, CodeToCharacterConverter converter) {
+    public AttackCharacters minimum() {
+        return initialize(charCodes.length, converter);
+    }
+
+
+    public static AttackCharacters initialize(int charCount, CodeToCharacterConverter converter) {
         int initialCode = converter.minCode();
         int[] values = IntStream.range(0, charCount)
                 .map(i -> initialCode)

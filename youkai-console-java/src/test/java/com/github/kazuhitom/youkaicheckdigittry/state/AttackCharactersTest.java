@@ -10,7 +10,7 @@ class AttackCharactersTest {
         var charTable = "****16******27******38******49******50*****-*******.**";
         var converter = new CodeToCharacterConverter(charTable);
 
-        var actual = AttackCharacters.Initialize(4, converter);
+        var actual = AttackCharacters.initialize(4, converter);
 
         assertEquals("04 04 04 04", actual.dumpHexText());
     }
@@ -50,7 +50,7 @@ class AttackCharactersTest {
         var charTable = "****16******27******38******49******50*****-*******.**";
         var converter = new CodeToCharacterConverter(charTable);
 
-        var minimum = AttackCharacters.Initialize(6, converter);
+        var minimum = AttackCharacters.initialize(6, converter);
 
         var firstCode = new AttackCharacters(converter, 51, 51, 51, 51, 51, 51);
         assertEquals("33 33 33 33 33 33", firstCode.dumpHexText());

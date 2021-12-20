@@ -14,7 +14,7 @@ class YoukaiPasswordAttackerTest {
     @Test
     public void パスワード_KID_を突き止める事が出来る() {
         var targetCheckDigit = A31F.createFromHexStrings8("00", "51", "03", "3A", "E9", "08", "23", "07");
-        var startPassword = AttackCharacters.Initialize(3);
+        var startPassword = AttackCharacters.initialize(3);
 
         var results = sut.execute(targetCheckDigit, startPassword);
 
@@ -26,7 +26,7 @@ class YoukaiPasswordAttackerTest {
     @Test
     public void パスワード_NAMCO_を突き止める事が出来る() {
         var targetCheckDigit = A31F.createFromHexStrings8("3B", "EA", "05", "6C", "D2", "0A", "D8", "08");
-        var startPassword = AttackCharacters.Initialize(5);
+        var startPassword = AttackCharacters.initialize(5);
 
         var results = sut.execute(targetCheckDigit, startPassword);
 
@@ -38,7 +38,7 @@ class YoukaiPasswordAttackerTest {
     @Test
     public void パスワード_KAWADA_を突き止める事が出来る() {
         var targetCheckDigit = A31F.createFromHexStrings8("54", "34", "06", "3C", "10", "0A", "9F", "08");
-        var startPassword = AttackCharacters.Initialize(6);
+        var startPassword = AttackCharacters.initialize(6);
 
         var results = sut.execute(targetCheckDigit, startPassword);
 

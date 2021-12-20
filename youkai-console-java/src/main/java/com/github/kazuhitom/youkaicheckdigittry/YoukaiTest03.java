@@ -2,6 +2,7 @@ package com.github.kazuhitom.youkaicheckdigittry;
 
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
+import com.github.kazuhitom.youkaicheckdigittry.state.CodeToCharacterConverter;
 import sun.misc.Signal;
 
 import java.io.PrintStream;
@@ -16,7 +17,7 @@ public class YoukaiTest03 {
             printf("usage:yokai03.exe $31F4 $31F5 $31F6 $31F7 $31F8 $31F9 $31FA $31FB {continue param}\n");
             printf("(例) java -jar youkai-console-java-1.0.0.jar 00 08 03 22 88 20 .. パスワード<HAL>を検出\n");
             printf("continue paramを指定すると続きから再開できます。\n");
-            printf("yokai03.exe \n");
+            printf("yokai03.しexe \n");
             return;
         }
 
@@ -25,7 +26,8 @@ public class YoukaiTest03 {
         printf("解析パスワード文字数 : %d 文字\n", attackTargetCheckDigit.charLength);
 
         // スタック配列クリア
-        AttackCharacters password = AttackCharacters.Initialize(attackTargetCheckDigit.charLength);
+        CodeToCharacterConverter converter = new CodeToCharacterConverter();
+        AttackCharacters password = AttackCharacters.initialize(attackTargetCheckDigit.charLength, converter);
 
         printTime();
         printf("解析開始(Cntl + C でコンテニュー値を表示して終了)\n");
@@ -35,7 +37,7 @@ public class YoukaiTest03 {
             int[] continueCodes = Arrays.stream(Arrays.copyOfRange(args, 8, args.length))
                     .mapToInt(codeText -> Integer.parseInt(codeText, 16))
                     .toArray();
-            password = new AttackCharacters(continueCodes);
+            password = new AttackCharacters(converter, continueCodes);
             printf("前回の続きからコンテニューします : %s\n", password.dumpHexText());
             if (password.isInvalid()) {
                 password = password.fixInvalid();
