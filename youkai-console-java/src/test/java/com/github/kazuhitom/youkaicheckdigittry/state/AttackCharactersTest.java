@@ -21,7 +21,6 @@ class AttackCharactersTest {
         var converter = new CodeToCharacterConverter(charTable);
 
         var firstCode = new AttackCharacters(converter, 4, 4);
-
         assertEquals("04 04", firstCode.dumpHexText());
 
         var actual = firstCode.increment();
@@ -39,7 +38,6 @@ class AttackCharactersTest {
         var converter = new CodeToCharacterConverter(charTable);
 
         var firstCode = new AttackCharacters(converter, 51, 51, 4);
-
         assertEquals("33 33 04", firstCode.dumpHexText());
 
         var actual = firstCode.increment();
@@ -55,12 +53,24 @@ class AttackCharactersTest {
         var minimum = AttackCharacters.Initialize(6, converter);
 
         var firstCode = new AttackCharacters(converter, 51, 51, 51, 51, 51, 51);
-
         assertEquals("33 33 33 33 33 33", firstCode.dumpHexText());
 
         var actual = firstCode.increment();
 
         assertEquals("04 04 04 04 04 04", actual.dumpHexText());
         assertEquals(minimum, actual);
+    }
+
+    @Test
+    public void 無効値のコードを含む値の場合インクリメントで直近の有効値まで引き上げる() {
+        var charTable = "****16******27******38******49******50*****-*******.**";
+        var converter = new CodeToCharacterConverter(charTable);
+
+        var firstCode = new AttackCharacters(converter, 0, 1, 2, 3);
+        assertEquals("00 01 02 03", firstCode.dumpHexText());
+
+        var actual = firstCode.fixInvalid();
+
+        assertEquals("04 04 04 04", actual.dumpHexText());
     }
 }

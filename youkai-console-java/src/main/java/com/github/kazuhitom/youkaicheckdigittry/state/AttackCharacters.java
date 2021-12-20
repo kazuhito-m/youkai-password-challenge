@@ -37,6 +37,17 @@ public class AttackCharacters {
         return new AttackCharacters(converter, newCodes);
     }
 
+    public AttackCharacters fixInvalid() {
+        if (!isInvalid()) return this;
+
+        int[] newCodes = Arrays.copyOf(charCodes, charCodes.length);
+        for (int i = 0; i < newCodes.length; i++) {
+            if (!converter.isInvalidCharCode(newCodes[i])) continue;
+            newCodes[i] = converter.incrementCode(newCodes[i]);
+        }
+        return new AttackCharacters(converter, newCodes);
+    }
+
     public boolean isFinalDestination() {
         return charCodes[charCodes.length - 1] == 0x36;
     }
