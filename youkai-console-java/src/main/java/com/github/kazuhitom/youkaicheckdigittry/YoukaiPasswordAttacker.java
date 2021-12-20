@@ -237,7 +237,7 @@ public class YoukaiPasswordAttacker {
     }
 
     private void printTime() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         printf(LocalDateTime.now().format(formatter) + " - ");
     }
 
