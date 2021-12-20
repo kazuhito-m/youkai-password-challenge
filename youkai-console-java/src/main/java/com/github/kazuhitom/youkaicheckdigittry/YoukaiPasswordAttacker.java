@@ -48,7 +48,7 @@ public class YoukaiPasswordAttacker {
                     results.add(password);
 
                     printTime();
-                    printf("Hit! : %s = %s (%,.0f 回目)\n", password.dumpHexText(), password.toString(), checkedCount);
+                    printf("Hit! : %s = %s (%,.0f 回目)\n", password.dumpHexText(), password, checkedCount);
 
                     hitPasswordEvent.accept(password);
 
