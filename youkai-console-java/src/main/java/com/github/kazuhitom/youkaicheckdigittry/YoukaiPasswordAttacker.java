@@ -16,6 +16,8 @@ public class YoukaiPasswordAttacker {
     private int A = 0;
     private boolean cancellation = false;
 
+    private static final double PROGRESS_OUTPUT_INTERVAL_MS = 268431360D;
+
     public List<AttackCharacters> execute(A31F attackTargetCheckDigit, AttackCharacters startPassword, Consumer<AttackCharacters> hitPasswordEvent) {
         List<AttackCharacters> results = new ArrayList<>();
         AttackCharacters password = startPassword;
@@ -35,7 +37,7 @@ public class YoukaiPasswordAttacker {
                 D880(currentCheckDigit, password, D87F);
 
                 // ESCキー判定。65535回に1度しかチェックしない
-                if (checkedCount % 67107840 == 0 || cancellation) {
+                if (checkedCount % PROGRESS_OUTPUT_INTERVAL_MS == 0 || cancellation) {
                     dumpContinueCommand(password, attackTargetCheckDigit, checkedCount);
                     if (cancellation) {
                         printf("キャンセルされました。\n");
