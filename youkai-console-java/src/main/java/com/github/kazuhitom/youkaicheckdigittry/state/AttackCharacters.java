@@ -1,6 +1,7 @@
 package com.github.kazuhitom.youkaicheckdigittry.state;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.joining;
 
@@ -55,8 +56,8 @@ public class AttackCharacters {
 
     public String dumpHexText() {
         return Arrays.stream(charCodes)
-                .mapToObj(code -> String.format("%02x ", code))
-                .collect(joining());
+                .mapToObj(code -> String.format("%02x", code))
+                .collect(joining(" "));
     }
 
     @Override
@@ -72,7 +73,11 @@ public class AttackCharacters {
     }
 
     public static AttackCharacters Initialize(int charCount, CodeToCharacterConverter converter) {
-        return new AttackCharacters(converter, new int[charCount]);
+        int initialCode = converter.minCode();
+        int[] values = IntStream.range(0, charCount)
+                .map(i -> initialCode)
+                .toArray();
+        return new AttackCharacters(converter, values);
     }
 
     public AttackCharacters(int... charCodes) {

@@ -23,6 +23,10 @@ public class CodeToCharacterConverter {
         return incrementNextCodeTable[index];
     }
 
+    public int minCode() {
+        return incrementNextCodeTable[incrementNextCodeTable.length - 1];
+    }
+
     public boolean isInvalidCharCode(int code) {
         return INVALID_CHAR == convert(code);
     }
