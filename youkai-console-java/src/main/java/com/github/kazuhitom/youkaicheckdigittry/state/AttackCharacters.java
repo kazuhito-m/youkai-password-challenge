@@ -18,7 +18,7 @@ public class AttackCharacters {
         for (int i = 0; i < newCodes.length; i++) {
             int before = newCodes[i];
             newCodes[i] = converter.incrementCode(before);
-            if (newCodes[i] > before) break; // 繰り上がりなし。
+            if (newCodes[i] > before) break; // 繰り上がりなし
         }
         return new AttackCharacters(converter, newCodes);
     }
@@ -76,6 +76,19 @@ public class AttackCharacters {
                 .mapToObj(converter::convert)
                 .map(c -> c.toString())
                 .collect(joining());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AttackCharacters that = (AttackCharacters) o;
+        return Arrays.equals(charCodes, that.charCodes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(charCodes);
     }
 
     public static AttackCharacters Initialize(int charCount) {
