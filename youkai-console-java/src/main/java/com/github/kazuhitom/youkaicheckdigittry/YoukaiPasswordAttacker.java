@@ -16,7 +16,7 @@ public class YoukaiPasswordAttacker {
     private int A = 0;
     private boolean cancellation = false;
 
-    private static final double PROGRESS_OUTPUT_INTERVAL_MS = 268431360D;
+    private static final double PROGRESS_OUTPUT_INTERVAL_MS = 4750104241D;
 
     public List<AttackCharacters> execute(A31F attackTargetCheckDigit, AttackCharacters startPassword, Consumer<AttackCharacters> hitPasswordEvent) {
         List<AttackCharacters> results = new ArrayList<>();

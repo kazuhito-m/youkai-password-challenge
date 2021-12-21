@@ -1,4 +1,4 @@
-package com.github.kazuhitom.youkaicheckdigittry.state;
+package com.github.kazuhitom.youkaicheckdigittry.converter;
 
 import java.util.stream.IntStream;
 

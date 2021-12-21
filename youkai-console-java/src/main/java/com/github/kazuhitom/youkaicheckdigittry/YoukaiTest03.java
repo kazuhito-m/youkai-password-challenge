@@ -2,7 +2,7 @@ package com.github.kazuhitom.youkaicheckdigittry;
 
 import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
-import com.github.kazuhitom.youkaicheckdigittry.state.CodeToCharacterConverter;
+import com.github.kazuhitom.youkaicheckdigittry.converter.CodeToCharacterConverter;
 import sun.misc.Signal;
 
 import java.io.PrintStream;
