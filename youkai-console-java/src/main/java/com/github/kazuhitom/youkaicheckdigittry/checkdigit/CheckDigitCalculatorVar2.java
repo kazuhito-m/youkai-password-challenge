@@ -30,7 +30,8 @@ public class CheckDigitCalculatorVar2 {
             } else {
                 C1 = 0;
             }
-            stackA[stackApos++] = A;
+
+            final int stackA01 = A;
 
             // 31F4と31F5を右1ビットローテート
             final int work1 = a31f.a31F4 & 0x01;
@@ -51,29 +52,31 @@ public class CheckDigitCalculatorVar2 {
             }
 
             A = A ^ 0xFF;
-            stackA[stackApos++] = A;
+            final int stackA02 = A;
             A = A & 0x84;
             A = A ^ a31f.a31F4;
             a31f.a31F4 = A;
-            A = stackA[--stackApos];
+
+            A = stackA02;
+
             A = A & 0x08;
             A = A ^ a31f.a31F5;
             a31f.a31F5 = A;
-            A = stackA[--stackApos];
 
+            A = stackA01;
         }
 
         A = stackA[--stackApos]; // ここまでで31F4と31F5算出完了
 
         // 31F7と31F8を生成(Complete)
-        stackA[stackApos++] = A;
-        stackA[stackApos++] = A;
+        final int stackA03 = A;
+        final int stackA04 = A;
         A = a31f.a31F4;
         final int C5;
         if (A >= 0xE5) {
             C5 = 1;
         } else C5 = 0; //C5の値でキャリーを生成
-        A = stackA[--stackApos];
+        A = stackA04;
         A = A + a31f.a31F7 + C5;
 
         final int C6;
@@ -91,7 +94,7 @@ public class CheckDigitCalculatorVar2 {
             C7 = 1;
         } else C7 = 0;
         a31f.a31F8 = A;
-        A = stackA[--stackApos];
+        A = stackA03;
 
         // 31F9を生成(Complete)
         stackA[stackApos++] = A;
