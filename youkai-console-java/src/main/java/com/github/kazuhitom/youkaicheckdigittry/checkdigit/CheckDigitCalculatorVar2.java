@@ -10,7 +10,6 @@ public class CheckDigitCalculatorVar2 {
     private int[] stackA = new int[256];
 
     private int X = 0;
-    private int Z = 0;
 
     public A31F calculate(AttackCharacters password) {
         X = 0;
@@ -21,53 +20,53 @@ public class CheckDigitCalculatorVar2 {
 
         stackA[stackApos++] = password.getOf(0);
 
-        return D8C0(password, a31f, 8);
+        return D8C0(password, a31f);
     }
 
-    private A31F D8C0(AttackCharacters password, A31F a31f, int y) {
-        A = A << 1;
+    private A31F D8C0(AttackCharacters password, A31F a31f) {
+        for (int y = 0; y < 8; y++) {
+            A = A << 1;
 
-        final int C1;
-        if (A > 0xFF) {
-            C1 = 1;
-            A = A & 0xFF;
-        } else {
-            C1 = 0;
-        }
-        stackA[stackApos++] = A;
+            final int C1;
+            if (A > 0xFF) {
+                C1 = 1;
+                A = A & 0xFF;
+            } else {
+                C1 = 0;
+            }
+            stackA[stackApos++] = A;
 
-        // 31F4と31F5を右1ビットローテート
-        final int work1 = a31f.a31F4 & 0x01;
-        a31f.a31F4 = a31f.a31F4 >> 1;
-        a31f.a31F4 = a31f.a31F4 | (C1 << 7); // C0000000
-        final int C2 = work1;
+            // 31F4と31F5を右1ビットローテート
+            final int work1 = a31f.a31F4 & 0x01;
+            a31f.a31F4 = a31f.a31F4 >> 1;
+            a31f.a31F4 = a31f.a31F4 | (C1 << 7); // C0000000
+            final int C2 = work1;
 
-        final int work2 = a31f.a31F5 & 0x01;
-        a31f.a31F5 = a31f.a31F5 >> 1;
-        a31f.a31F5 = a31f.a31F5 | (C2 << 7); // C0000000
-        final int C3 = work2;
+            final int work2 = a31f.a31F5 & 0x01;
+            a31f.a31F5 = a31f.a31F5 >> 1;
+            a31f.a31F5 = a31f.a31F5 | (C2 << 7); // C0000000
+            final int C3 = work2;
 
-        A = 0;
-        A = 0xFF + C3;
-
-        if (A > 0xFF) {
             A = 0;
+            A = 0xFF + C3;
+
+            if (A > 0xFF) {
+                A = 0;
+            }
+
+            A = A ^ 0xFF;
+            stackA[stackApos++] = A;
+            A = A & 0x84;
+            A = A ^ a31f.a31F4;
+            a31f.a31F4 = A;
+            A = stackA[--stackApos];
+            A = A & 0x08;
+            A = A ^ a31f.a31F5;
+            a31f.a31F5 = A;
+            A = stackA[--stackApos];
+
         }
 
-        A = A ^ 0xFF;
-        stackA[stackApos++] = A;
-        A = A & 0x84;
-        A = A ^ a31f.a31F4;
-        a31f.a31F4 = A;
-        A = stackA[--stackApos];
-        A = A & 0x08;
-        A = A ^ a31f.a31F5;
-        a31f.a31F5 = A;
-        A = stackA[--stackApos];
-        y--;
-        if (y > 0) {
-            return D8C0(password, a31f, y);
-        }
         A = stackA[--stackApos]; // ここまでで31F4と31F5算出完了
 
         // 31F7と31F8を生成(Complete)
@@ -138,6 +137,7 @@ public class CheckDigitCalculatorVar2 {
             A = A & 0xFF;
             C9 = 1;
         }
+        final int Z;
         if (A == 0) Z = 1;
         else Z = 0; // 演算結果がゼロの時Z=1;
 
@@ -165,7 +165,7 @@ public class CheckDigitCalculatorVar2 {
 
             stackA[stackApos++] = A;
 
-            return D8C0(password, a31f, 8);
+            return D8C0(password, a31f);
         }
 
         return a31f;
