@@ -11,7 +11,10 @@ public class CheckDigitCalculatorVar2 {
 
     public A31F calculate(AttackCharacters password) {
         A31F a31f = A31F.prototypeOf(password.charLength());
-        return D8C0(password, a31f, 0);
+        for (int charPosition = 0; charPosition < password.charLength(); charPosition++) {
+            a31f = D8C0(password, a31f, charPosition);  // 文字数分だけ演算をカウント
+        }
+        return a31f;
     }
 
     private A31F D8C0(final AttackCharacters password, final A31F a31f, final int targetCharPosition) {
@@ -143,13 +146,6 @@ public class CheckDigitCalculatorVar2 {
         }
         A = stackA[--stackApos];
 
-// 文字数分だけ演算をカウント
-        final int nextCharPosition = targetCharPosition + 1;
-        if (nextCharPosition < password.charLength()) {
-            return D8C0(password, a31f, nextCharPosition);
-        }
-
         return a31f;
     }
-
 }
