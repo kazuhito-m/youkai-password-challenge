@@ -10,12 +10,8 @@ public class CheckDigitCalculatorVar2 {
     private int[] stackA = new int[256];
 
     private int X = 0, Y = 0, C = 0, Z = 0;
-    private int a31F6 = 0; // 文字列長さ
 
     public A31F calculate(AttackCharacters password) {
-        a31F6 = password.charLength();
-
-        // スタート
         X = 0;
         C = 0;
 
@@ -153,7 +149,7 @@ public class CheckDigitCalculatorVar2 {
 
 // 文字数分だけ演算をカウント
         X++;
-        if (a31F6 != X) {
+        if (password.charLength() != X) {
             A = password.getOf(X);
 
             stackA[stackApos++] = A;
