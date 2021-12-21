@@ -16,10 +16,11 @@ public class CheckDigitCalculatorVar2 {
 
         stackA[stackApos++] = password.getOf(0);
 
-        return D8C0(password, a31f, 0);
+        return D8C0(password, a31f, 0, password.getOf(0));
     }
 
-    private A31F D8C0(final AttackCharacters password, final A31F a31f, final int x) {
+    private A31F D8C0(final AttackCharacters password, final A31F a31f, final int x, int targetCharCode) {
+        A = targetCharCode;
         for (int y = 0; y < 8; y++) {
             A = A << 1;
 
@@ -66,7 +67,7 @@ public class CheckDigitCalculatorVar2 {
             A = stackA01;
         }
 
-        A = stackA[--stackApos]; // ここまでで31F4と31F5算出完了
+        A = targetCharCode; // ここまでで31F4と31F5算出完了
 
         // 31F7と31F8を生成(Complete)
         final int stackA03 = A;
@@ -160,11 +161,7 @@ public class CheckDigitCalculatorVar2 {
 // 文字数分だけ演算をカウント
         final int nextX = x + 1;
         if (password.charLength() != nextX) {
-            A = password.getOf(nextX);
-
-            stackA[stackApos++] = A;
-
-            return D8C0(password, a31f, nextX);
+            return D8C0(password, a31f, nextX, password.getOf(nextX));
         }
 
         return a31f;
