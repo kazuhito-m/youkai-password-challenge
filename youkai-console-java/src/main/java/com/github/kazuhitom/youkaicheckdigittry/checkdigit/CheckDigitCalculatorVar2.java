@@ -125,11 +125,8 @@ public class CheckDigitCalculatorVar2 {
             A = A & 0xFF;
             C9 = 1;
         }
-        final int Z;
-        if (A == 0) Z = 1;
-        else Z = 0; // 演算結果がゼロの時Z=1;
-
         final int stackA06 = A; // スタックに値を保存
+
         A = a31f.a31FB;
         A = A + C9;
 
@@ -140,7 +137,8 @@ public class CheckDigitCalculatorVar2 {
         } else C10 = 0;
         a31f.a31FB = A;
 
-        if (Z == 0) {
+        // 演算結果がゼロではない時;
+        if (stackA06 != 0) {
             return D880(password, a31f, C10, targetCharPosition, stackA06); // ローテ終わるまでループ
         }
         A = stackA[--stackApos];
