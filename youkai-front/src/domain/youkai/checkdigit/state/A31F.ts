@@ -53,6 +53,8 @@ export default class A31F {
     }
 
     public static intToHex(num: number): string {
-        return ('00' + num.toString(16)).substr(-2);
+        return ('00' + num.toString(16))
+            .substr(-2)
+            .toUpperCase();
     }
 }

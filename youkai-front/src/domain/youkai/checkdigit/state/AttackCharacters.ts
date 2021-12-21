@@ -1,49 +1,37 @@
 import A31F from "./A31F";
-import CodeToCharacterConverter from "./CodeToCharacterConverter";
+import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
 
 export default class AttackCharacters {
-    constructor(private readonly charCodes: number[]) { }
-
-    private readonly converter = new CodeToCharacterConverter();
+    constructor(
+        private readonly converter: CodeToCharacterConverter,
+        private readonly charCodes: number[]
+    ) { }
 
     public getOf(index: number): number {
         return this.charCodes[index];
     }
 
     public increment(): AttackCharacters {
-        // 0x00-0x35の範囲でループさせる
-        const newCodes = this.charCodes.concat();
-        newCodes[0]++; // 1個目をインクリメント
+        const converter = this.converter;
+        const newCodes = this.charCodes.slice();
         for (let i = 0; i < newCodes.length; i++) {
-            // 35を超えたら次の桁へ
-            if (newCodes[i] > 0x35) {
-                newCodes[i] = 0;
-                newCodes[i + 1]++;
-            }
+            const before = newCodes[i];
+            newCodes[i] = converter.incrementCode(before);
+            if (newCodes[i] > before) break; // 繰り上がりなし
         }
-        return new AttackCharacters(newCodes);
+        return new AttackCharacters(converter, newCodes);
     }
 
-    public isFinalDestination(): boolean {
-        return this.charCodes[this.charCodes.length - 1] === 0x36;
-    }
+    public fixInvalid(): AttackCharacters {
+        if (!this.isInvalid()) return this;
 
-    public passInvalidChar(): AttackCharacters {
-        const newCodes = this.charCodes.concat();
+        const converter = this.converter;
+        const newCodes = this.charCodes.slice();
         for (let i = 0; i < newCodes.length; i++) {
-            if (!this.converter.isInvalidCharCode(newCodes[i])) continue;
-
-            if (i === 0) {
-                newCodes[0]++;
-                break;
-            }
-            // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
-            for (let j = 0; j < i; j++) {
-                newCodes[j] = 0;
-            }
-            newCodes[i]++;
+            if (!converter.isInvalidCharCode(newCodes[i])) continue;
+            newCodes[i] = converter.incrementCode(newCodes[i]);
         }
-        return new AttackCharacters(newCodes);
+        return new AttackCharacters(converter, newCodes);
     }
 
     public isInvalid(): boolean {
@@ -65,7 +53,15 @@ export default class AttackCharacters {
             .trim();
     }
 
-    public static Initialize(charCount: number): AttackCharacters {
-        return new AttackCharacters(Array(charCount).fill(0));
+    public equals(o: AttackCharacters): boolean {
+        if (this === o) return true;
+        if (!(null)) return false;
+        return this.charCodes.toString() === o.charCodes.toString();
+    }
+
+    public static initialize(charCount: number, converter = new CodeToCharacterConverter()): AttackCharacters {
+        const initialCode = converter.minCode();
+        const values = Array(charCount).fill(initialCode);
+        return new AttackCharacters(converter, values);
     }
 }

@@ -1,4 +1,4 @@
-import CodeToCharacterConverter from "@/domain/youkai/checkdigit/state/CodeToCharacterConverter";
+import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
 
 describe('CodeToCharacterConverter', () => {
     test('インクリメント用の_次の値_テーブルを作り_次のコードが取得できる', () => {
