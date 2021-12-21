@@ -111,10 +111,10 @@ public class CheckDigitCalculatorVar2 {
         } else C9 = 0;
         a31f.a31FA = A01;
 
-        D880(password, a31f, C9, targetCharPosition, targetCharCode);
+        D880(a31f, C9, targetCharCode);
     }
 
-    private void D880(final AttackCharacters password, final A31F a31f, final int C_X, final int targetCharPosition, int targetCharCode) {
+    private void D880(final A31F a31f, final int C_X, int targetCharCode) {
         // 31FBを生成
         // Aを左ローテート
         int A02 = targetCharCode << 1;
@@ -137,6 +137,6 @@ public class CheckDigitCalculatorVar2 {
         // 演算結果がゼロの時;
         if (stackA06 == 0) return;
 
-        D880(password, a31f, C10, targetCharPosition, stackA06); // ローテ終わるまでループ
+        D880(a31f, C10, stackA06); // ローテ終わるまでループ
     }
 }
