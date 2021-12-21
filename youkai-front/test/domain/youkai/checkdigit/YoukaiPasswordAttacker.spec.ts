@@ -17,7 +17,7 @@ describe('YoukaiPasswordAttacker', () => {
         expect(actual).toEqual("KID");
     });
 
-    test('パスワード_NAMCO_を突き止める事が出来る', () => {
+    test.skip('パスワード_NAMCO_を突き止める事が出来る', () => {
         const targetCheckDigit = A31F.createFromHexStrings8("3B", "EA", "05", "6C", "D2", "0A", "D8", "08");
         const startPassword = AttackCharacters.initialize(5);
 
@@ -28,7 +28,7 @@ describe('YoukaiPasswordAttacker', () => {
         expect(actual).toEqual("NAMCO");
     });
 
-    test('パスワード_KAWADA_を突き止める事が出来る', () => {
+    test.skip('パスワード_KAWADA_を突き止める事が出来る', () => {
         const targetCheckDigit = A31F.createFromHexStrings8("54", "34", "06", "3C", "10", "0A", "9F", "08");
         const startPassword = AttackCharacters.initialize(6);
 
@@ -39,7 +39,7 @@ describe('YoukaiPasswordAttacker', () => {
         expect(actual).toEqual("KAWADA");
     });
 
-    test('パスワード_NAUSICAA_をコンティニュー機能を使って突き止める事が出来る', () => {
+    test.skip('パスワード_NAUSICAA_をコンティニュー機能を使って突き止める事が出来る', () => {
         const targetCheckDigit = A31F.createFromHexStrings8("45", "D7", "08", "9F", "AD", "38", "92", "0B");
         const startPassword = new AttackCharacters(new CodeToCharacterConverter(), [0, 0, 0, 0, 0, 16, 0, 0]);
 
