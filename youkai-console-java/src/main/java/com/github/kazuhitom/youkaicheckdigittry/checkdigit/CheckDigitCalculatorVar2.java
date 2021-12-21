@@ -58,13 +58,11 @@ public class CheckDigitCalculatorVar2 {
         // ここまでで31F4と31F5算出完了
 
         // 31F7と31F8を生成(Complete)
-        A = a31f.a31F4;
         final int C5;
-        if (A >= 0xE5) {
+        if (a31f.a31F4 >= 0xE5) {
             C5 = 1;
         } else C5 = 0; //C5の値でキャリーを生成
-        A = targetCharCode;
-        A = A + a31f.a31F7 + C5;
+        A = targetCharCode + a31f.a31F7 + C5;
 
         final int C6;
         if (A > 0xFF) { // ADCのキャリー処理
