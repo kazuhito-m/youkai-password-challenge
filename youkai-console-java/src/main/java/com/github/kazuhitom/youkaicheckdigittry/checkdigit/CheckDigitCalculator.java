@@ -126,7 +126,7 @@ public class CheckDigitCalculator {
 
     private void D880(A31F a31f, AttackCharacters password, int D87F) {
         int C1 = 0;
-        for (int X = 0; X < a31f.charLength; X++) {
+        for (int X = 0; X < a31f.charLength(); X++) {
             // 文字数分だけ演算をカウント
             if (X > 0) {
                 A = password.getOf(X);

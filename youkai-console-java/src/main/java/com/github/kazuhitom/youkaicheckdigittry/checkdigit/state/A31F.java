@@ -11,16 +11,19 @@ public class A31F {
     public int a31F7 = 0;
     public int a31F8 = 0;
     public int a31F9 = 0;
-    public int a31FA = 0;
+    public int a31FA = 1;
     public int a31FB = 0;
 
-    public int charLength = 1;   // 文字列長さ
+    private final int charLength;   // 文字列長さ
+
+    public int charLength() {
+        return charLength;
+    }
 
     public static A31F createFromHexStrings8(String... hexStrings8) {
-        A31F o = new A31F();
+        A31F o = new A31F(hexToInt(hexStrings8[2]));
         o.a31F4 = hexToInt(hexStrings8[0]);
         o.a31F5 = hexToInt(hexStrings8[1]);
-        o.charLength = hexToInt(hexStrings8[2]);
         o.a31F7 = hexToInt(hexStrings8[3]);
         o.a31F8 = hexToInt(hexStrings8[4]);
         o.a31F9 = hexToInt(hexStrings8[5]);
@@ -39,10 +42,7 @@ public class A31F {
     }
 
     public static A31F prototypeOf(int charLength) {
-        A31F p = new A31F();
-        p.a31FA = 1;
-        p.charLength = charLength;
-        return p;
+        return new A31F(charLength);
     }
 
     @Override
@@ -72,5 +72,9 @@ public class A31F {
                 .collect(joining())
                 .toUpperCase()
                 .trim();
+    }
+
+    private A31F(int charLength) {
+        this.charLength = charLength;
     }
 }

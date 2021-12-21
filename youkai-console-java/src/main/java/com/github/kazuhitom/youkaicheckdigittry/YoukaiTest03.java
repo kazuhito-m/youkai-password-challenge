@@ -25,11 +25,11 @@ public class YoukaiTest03 {
 
         // 引数を各ターゲットに割り当て
         A31F attackTargetCheckDigit = A31F.createFromHexStrings8(args);
-        printf("解析パスワード文字数 : %d 文字\n", attackTargetCheckDigit.charLength);
+        printf("解析パスワード文字数 : %d 文字\n", attackTargetCheckDigit.charLength());
 
         // スタック配列クリア
         CodeToCharacterConverter converter = new CodeToCharacterConverter();
-        AttackCharacters password = AttackCharacters.initialize(attackTargetCheckDigit.charLength, converter);
+        AttackCharacters password = AttackCharacters.initialize(attackTargetCheckDigit.charLength(), converter);
 
         printTime();
         printf("解析開始(Cntl + C でコンテニュー値を表示して終了)\n");
