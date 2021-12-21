@@ -4,8 +4,6 @@ import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.TextToCodeC
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 
-import java.util.Scanner;
-
 public class CheckDigitCalculatorVar2 {
     private int A = 0;
 
@@ -26,24 +24,15 @@ public class CheckDigitCalculatorVar2 {
     private int a31F6 = 0; // 文字列長さ
     private int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
     private int ror = 0;
-    private int loopmode = 0;
 
     private String execute(String password) {
-        loopmode = 0;
         a31DC = password.trim().toCharArray();
         return LOOP();
     }
 
     private String LOOP() {
         String input = "";
-        if (loopmode == 1) {
-            System.out.print("INPUT PASSWORD:");
-            Scanner scanner = new Scanner(System.in);
-            input = scanner.nextLine();
-            if (input.isBlank()) return "";
-        } else {
-            input = String.valueOf(a31DC);
-        }
+        input = String.valueOf(a31DC);
         a31F6 = input.length();
         // ここで文字コードをコンバートしておく
         a31DC = converter.convert(input);
@@ -209,16 +198,10 @@ public class CheckDigitCalculatorVar2 {
             return D86B();
         }
 
-        System.out.printf("31F4 31F5 31F6 31F7 31F8 31F9 31FA 31FB\n");
-        System.out.printf("  %02X   %02X   %02X   %02X   %02X   %02X   %02X   %02X\n"
-                , a31F4, a31F5, a31F6, a31F7, a31F8, a31F9, a31FA, a31FB);
-
         String result = String.format("%02X %02X %02X %02X %02X %02X %02X %02X"
                 , a31F4, a31F5, a31F6, a31F7, a31F8, a31F9, a31FA, a31FB);
 
         System.out.println("CheckDigit:" + result);
-
-        if (loopmode == 1) return LOOP();
 
         return result;
     }
