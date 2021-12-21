@@ -1,7 +1,8 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
-import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
-import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.YoukaiPasswordAttacker;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.A31F;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

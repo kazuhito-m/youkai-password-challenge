@@ -1,7 +1,7 @@
-package com.github.kazuhitom.youkaicheckdigittry;
+package com.github.kazuhitom.youkaicheckdigittry.checkdigit;
 
-import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
-import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.A31F;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 
 import java.io.PrintStream;
 import java.time.LocalDateTime;

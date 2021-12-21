@@ -1,4 +1,4 @@
-package com.github.kazuhitom.youkaicheckdigittry.converter;
+package com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter;
 
 import java.util.HashMap;
 import java.util.Map;

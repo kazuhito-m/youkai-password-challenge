@@ -1,4 +1,4 @@
-package com.github.kazuhitom.youkaicheckdigittry.state;
+package com.github.kazuhitom.youkaicheckdigittry.checkdigit.state;
 
 import java.util.Objects;
 import java.util.stream.Stream;

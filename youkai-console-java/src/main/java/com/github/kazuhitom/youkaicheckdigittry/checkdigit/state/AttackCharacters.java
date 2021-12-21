@@ -1,6 +1,6 @@
-package com.github.kazuhitom.youkaicheckdigittry.state;
+package com.github.kazuhitom.youkaicheckdigittry.checkdigit.state;
 
-import com.github.kazuhitom.youkaicheckdigittry.converter.CodeToCharacterConverter;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.CodeToCharacterConverter;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
