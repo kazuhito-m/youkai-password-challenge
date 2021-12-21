@@ -7,35 +7,35 @@ import java.util.Scanner;
 public class YoukaiTest02_01 {
     private final static TextToCodeConverter converter = new TextToCodeConverter();
 
-    static char[] a31DC = new char[256];
-    static int i = 0;
-    static int stackApos = 0, stackXpos = 0, stackYpos = 0;
-    static int[] stackA = new int[256];
+    private char[] a31DC = new char[256];
+    private int i = 0;
+    private int stackApos = 0, stackXpos = 0, stackYpos = 0;
+    private int[] stackA = new int[256];
 
-    static int A = 0, X = 0, Y = 0, C = 0, Z = 0;
-    static int a31F6 = 0; // 文字列長さ
-    static int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
-    static int ror = 0;
-    static int loopmode = 0;
+    private int A = 0, X = 0, Y = 0, C = 0, Z = 0;
+    private int a31F6 = 0; // 文字列長さ
+    private int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
+    private int ror = 0;
+    private int loopmode = 0;
 
-    public static void main(String[] args) {
-        if (args.length == 0) {
-            System.out.println("yokai-test02 check digit $31F4 $31F5 simulator");
-            loopmode = 1;
-        } else {
-            a31DC = args[0].trim().toCharArray();
-        }
+//    public static void main(String[] args) {
+//        if (args.length == 0) {
+//            System.out.println("yokai-test02 check digit $31F4 $31F5 simulator");
+//            loopmode = 1;
+//        } else {
+//            a31DC = args[0].trim().toCharArray();
+//        }
+//
+//        LOOP();
+//    }
 
-        LOOP();
-    }
-
-    public static String execute(String password) {
+    public String execute(String password) {
         loopmode = 0;
         a31DC = password.trim().toCharArray();
         return LOOP();
     }
 
-    private static String LOOP() {
+    private String LOOP() {
         String input = "";
         if (loopmode == 1) {
             System.out.print("INPUT PASSWORD:");
@@ -64,7 +64,7 @@ public class YoukaiTest02_01 {
         return D86B();
     }
 
-    private static String D86B() {
+    private String D86B() {
         A = a31DC[X];
 
         D8BD:
@@ -74,7 +74,7 @@ public class YoukaiTest02_01 {
         return D8C0();
     }
 
-    private static String D8C0() {
+    private String D8C0() {
         A = A << 1;
 
         if (A > 0xFF) {
@@ -176,7 +176,7 @@ public class YoukaiTest02_01 {
         return D880();
     }
 
-    private static String D880() {
+    private String D880() {
         // 31FBを生成
         // Aを左ローテート
         A = A << 1;
