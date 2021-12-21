@@ -15,6 +15,10 @@ public class AttackCharacters {
         return charCodes[index];
     }
 
+    public int charLength() {
+        return charCodes.length;
+    }
+
     public AttackCharacters increment() {
         int[] newCodes = Arrays.copyOf(charCodes, charCodes.length);
         for (int i = 0; i < newCodes.length; i++) {
@@ -82,6 +86,18 @@ public class AttackCharacters {
                 .map(i -> initialCode)
                 .toArray();
         return new AttackCharacters(converter, values);
+    }
+
+
+    public static AttackCharacters withText(String passwordText) {
+        return withText(passwordText, new CodeToCharacterConverter());
+    }
+
+    public static AttackCharacters withText(String passwordText, CodeToCharacterConverter converter) {
+        int[] codes = passwordText.chars()
+                .map(oneCher -> converter.reverceConvert((char) oneCher))
+                .toArray();
+        return new AttackCharacters(converter, codes);
     }
 
     public AttackCharacters(int... charCodes) {

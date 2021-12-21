@@ -17,6 +17,13 @@ public class CodeToCharacterConverter {
         return codeToChar[code];
     }
 
+    public int reverceConvert(char oneChar) {
+        for (int i = 0; i < this.codeToChar.length; i++) {
+            if (codeToChar[i] == oneChar) return i;
+        }
+        return -1;
+    }
+
     public int incrementCode(int code) {
         int index = incrementNextCodeTable.length - 1;
         if (code <= index) index = code;

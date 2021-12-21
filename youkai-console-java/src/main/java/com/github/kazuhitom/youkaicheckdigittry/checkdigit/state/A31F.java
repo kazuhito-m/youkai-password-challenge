@@ -33,7 +33,7 @@ public class A31F {
         return Integer.parseInt(hex, 16);
     }
 
-    public A31F prototype() {
+    public static A31F prototypeOf(int charLength) {
         A31F p = new A31F();
         p.a31FA = 1;
         p.charLength = charLength;
