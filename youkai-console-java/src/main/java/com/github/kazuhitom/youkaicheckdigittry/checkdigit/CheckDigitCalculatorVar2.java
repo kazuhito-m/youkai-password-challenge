@@ -12,12 +12,12 @@ public class CheckDigitCalculatorVar2 {
     public A31F calculate(AttackCharacters password) {
         A31F a31f = A31F.prototypeOf(password.charLength());
         for (int charPosition = 0; charPosition < password.charLength(); charPosition++) {
-            a31f = D8C0(password, a31f, charPosition);  // 文字数分だけ演算をカウント
+            D8C0(password, a31f, charPosition);  // 文字数分だけ演算をカウント
         }
         return a31f;
     }
 
-    private A31F D8C0(final AttackCharacters password, final A31F a31f, final int targetCharPosition) {
+    private void D8C0(final AttackCharacters password, final A31F a31f, final int targetCharPosition) {
         final int targetCharCode = password.getOf(targetCharPosition);
         A = targetCharCode;
         for (int y = 0; y < 8; y++) {
@@ -114,15 +114,13 @@ public class CheckDigitCalculatorVar2 {
         } else C9 = 0;
         a31f.a31FA = A;
 
-        stackA[stackApos++] = targetCharCode;
-
-        return D880(password, a31f, C9, targetCharPosition, targetCharCode);
+        D880(password, a31f, C9, targetCharPosition, targetCharCode);
     }
 
-    private A31F D880(final AttackCharacters password, final A31F a31f, final int C_X, final int targetCharPosition, int a) {
+    private void D880(final AttackCharacters password, final A31F a31f, final int C_X, final int targetCharPosition, int targetCharCode) {
         // 31FBを生成
         // Aを左ローテート
-        A = a << 1;
+        A = targetCharCode << 1;
         int C9 = C_X;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
@@ -130,8 +128,7 @@ public class CheckDigitCalculatorVar2 {
         }
         final int stackA06 = A; // スタックに値を保存
 
-        A = a31f.a31FB;
-        A = A + C9;
+        A = a31f.a31FB + C9;
 
         final int C10;
         if (A > 0xFF) { // ADCのキャリー処理
@@ -140,12 +137,9 @@ public class CheckDigitCalculatorVar2 {
         } else C10 = 0;
         a31f.a31FB = A;
 
-        // 演算結果がゼロではない時;
-        if (stackA06 != 0) {
-            return D880(password, a31f, C10, targetCharPosition, stackA06); // ローテ終わるまでループ
-        }
-        A = stackA[--stackApos];
+        // 演算結果がゼロの時;
+        if (stackA06 == 0) return;
 
-        return a31f;
+        D880(password, a31f, C10, targetCharPosition, stackA06); // ローテ終わるまでループ
     }
 }
