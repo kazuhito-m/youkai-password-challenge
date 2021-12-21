@@ -105,14 +105,14 @@ public class CheckDigitCalculatorVar2 {
         a31f.a31FA = a31f.a31FA >> 1;
         a31f.a31FA = a31f.a31FA | (C7 << 7); // $31F8のCがここで入る
 
-        A = targetCharCode + a31f.a31FA + work3;
+        int A01 = targetCharCode + a31f.a31FA + work3;
 
         final int C9;
-        if (A > 0xFF) { // ADCのキャリー処理
-            A = A & 0xFF;
+        if (A01 > 0xFF) { // ADCのキャリー処理
+            A01 = A01 & 0xFF;
             C9 = 1;
         } else C9 = 0;
-        a31f.a31FA = A;
+        a31f.a31FA = A01;
 
         D880(password, a31f, C9, targetCharPosition, targetCharCode);
     }
@@ -120,22 +120,22 @@ public class CheckDigitCalculatorVar2 {
     private void D880(final AttackCharacters password, final A31F a31f, final int C_X, final int targetCharPosition, int targetCharCode) {
         // 31FBを生成
         // Aを左ローテート
-        A = targetCharCode << 1;
+        int A02 = targetCharCode << 1;
         int C9 = C_X;
-        if (A > 0xFF) { // ADCのキャリー処理
-            A = A & 0xFF;
+        if (A02 > 0xFF) { // ADCのキャリー処理
+            A02 = A02 & 0xFF;
             C9 = 1;
         }
-        final int stackA06 = A; // スタックに値を保存
+        final int stackA06 = A02; // スタックに値を保存
 
-        A = a31f.a31FB + C9;
+        int A03 = a31f.a31FB + C9;
 
         final int C10;
-        if (A > 0xFF) { // ADCのキャリー処理
-            A = A & 0xFF;
+        if (A03 > 0xFF) { // ADCのキャリー処理
+            A03 = A03 & 0xFF;
             C10 = 1;
         } else C10 = 0;
-        a31f.a31FB = A;
+        a31f.a31FB = A03;
 
         // 演算結果がゼロの時;
         if (stackA06 == 0) return;
