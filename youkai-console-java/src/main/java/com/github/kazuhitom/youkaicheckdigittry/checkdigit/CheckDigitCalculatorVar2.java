@@ -26,10 +26,6 @@ public class CheckDigitCalculatorVar2 {
 
     private String execute(String password) {
         a31DC = password.trim().toCharArray();
-        return LOOP();
-    }
-
-    private String LOOP() {
         String input = "";
         input = String.valueOf(a31DC);
         a31F6 = input.length();
@@ -48,10 +44,6 @@ public class CheckDigitCalculatorVar2 {
         A = 1;
         a31FA = A;
 
-        return D86B();
-    }
-
-    private String D86B() {
         A = a31DC[X];
 
         stackA[stackApos++] = A;
@@ -185,7 +177,12 @@ public class CheckDigitCalculatorVar2 {
 // 文字数分だけ演算をカウント
         X++;
         if (a31F6 != X) {
-            return D86B();
+            A = a31DC[X];
+
+            stackA[stackApos++] = A;
+            Y = 8;
+
+            return D8C0();
         }
 
         return String.format("%02X %02X %02X %02X %02X %02X %02X %02X"
