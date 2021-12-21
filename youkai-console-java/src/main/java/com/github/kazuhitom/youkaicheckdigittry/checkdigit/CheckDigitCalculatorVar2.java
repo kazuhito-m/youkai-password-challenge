@@ -145,7 +145,7 @@ public class CheckDigitCalculatorVar2 {
 
 // 文字数分だけ演算をカウント
         final int nextCharPosition = targetCharPosition + 1;
-        if (password.charLength() != nextCharPosition) {
+        if (nextCharPosition < password.charLength()) {
             return D8C0(password, a31f, nextCharPosition);
         }
 
