@@ -29,6 +29,11 @@ public class A31F {
         return o;
     }
 
+    public static A31F createFromHexText(String hexText) {
+        String[] hexString8 = hexText.split(" ");
+        return createFromHexStrings8(hexString8);
+    }
+
     private static int hexToInt(String hex) {
         return Integer.parseInt(hex, 16);
     }

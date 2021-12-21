@@ -1,22 +1,20 @@
-package com.github.kazuhitom.youkaicheckdigittry;
+package com.github.kazuhitom.youkaicheckdigittry.checkdigit;
 
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class YoukaiTest02_01Test {
-//    @Test
-//    public void とりあえず動かせる() {
-//        YoukaiTest02_01.main(new String[]{"KID"});
-//    }
-
-    private String calc(String password) {
-        var sut = new YoukaiTest02_01();
-        return sut.execute(password);
+class CheckDigitCalculatorVar2Test {
+    private String calc(String passwordText) {
+        var sut = new CheckDigitCalculatorVar2();
+        var password = AttackCharacters.withText(passwordText);
+        var calculated = sut.calculate(password);
+        return calculated.toString();
     }
 
     @Test
-    public void 単体でチェックディジットをチェックできる() {
+    public void 主要なパスワードからチェックディジット変換で出来る() {
         assertEquals("ED 26 08 EE 3D 23 1D 12", calc("SPEED-UP"));
         assertEquals("5F 65 0C 8F 8B 22 76 13", calc("OHAYOUKAWADA"));
         assertEquals("9A 7D 09 9E B5 09 55 0C", calc("UDADAGAWA"));
