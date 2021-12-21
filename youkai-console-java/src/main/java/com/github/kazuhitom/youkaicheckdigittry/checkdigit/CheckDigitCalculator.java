@@ -8,7 +8,7 @@ public class CheckDigitCalculator {
 
     public A31F calculate(AttackCharacters password) {
         final A31F currentCheckDigit = A31F.prototypeOf(password.charLength());
-        final int D87F = subroutineD8C0(currentCheckDigit, A);
+        final int D87F = subroutineD8C0(currentCheckDigit, password.getOf(0));
         D880(currentCheckDigit, password, D87F);
         return currentCheckDigit;
     }

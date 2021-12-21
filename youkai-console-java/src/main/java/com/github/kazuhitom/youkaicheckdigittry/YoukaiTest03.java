@@ -1,9 +1,10 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.CheckDigitCalculator;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.YoukaiPasswordAttacker;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.CodeToCharacterConverter;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
-import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.CodeToCharacterConverter;
 import sun.misc.Signal;
 
 import java.io.PrintStream;
@@ -46,7 +47,7 @@ public class YoukaiTest03 {
             }
         }
 
-        YoukaiPasswordAttacker attacker = new YoukaiPasswordAttacker(false);
+        YoukaiPasswordAttacker attacker = new YoukaiPasswordAttacker(new CheckDigitCalculator(), false);
 
         Signal.handle(new Signal("INT"),  // SIGINT
                 signal -> attacker.cancel());
