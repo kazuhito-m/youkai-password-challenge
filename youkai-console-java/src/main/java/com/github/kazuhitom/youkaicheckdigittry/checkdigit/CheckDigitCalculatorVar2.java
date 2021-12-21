@@ -123,7 +123,7 @@ public class CheckDigitCalculatorVar2 {
         return D880(password, a31f, C9, targetCharPosition);
     }
 
-    private A31F D880(final AttackCharacters password, final A31F a31f, final int C_X, final int x) {
+    private A31F D880(final AttackCharacters password, final A31F a31f, final int C_X, final int targetCharPosition) {
         // 31FBを生成
         // Aを左ローテート
         A = A << 1;
@@ -149,14 +149,14 @@ public class CheckDigitCalculatorVar2 {
 
         A = stackA06;
         if (Z == 0) {
-            return D880(password, a31f, C10, x); // ローテ終わるまでループ
+            return D880(password, a31f, C10, targetCharPosition); // ローテ終わるまでループ
         }
         A = stackA[--stackApos];
 
 // 文字数分だけ演算をカウント
-        final int nextX = x + 1;
-        if (password.charLength() != nextX) {
-            return D8C0(password, a31f, nextX);
+        final int nextCharPosition = targetCharPosition + 1;
+        if (password.charLength() != nextCharPosition) {
+            return D8C0(password, a31f, nextCharPosition);
         }
 
         return a31f;
