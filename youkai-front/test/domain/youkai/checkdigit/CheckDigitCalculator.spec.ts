@@ -45,5 +45,6 @@ describe('CheckDigitCalculator', () => {
         // expect("64 98 0B 15 91 18 B1 15").toEqual(sut.calculate(toCode("HENTAIOSUGI")).toString());
         // expect("DC D9 08 A3 E3 17 28 15").toEqual(sut.calculate(toCode("818-6104")).toString());
         expect("65 94 0E AC E9 07 33 25").toEqual(sut.calculate(toCode("534-030.565.81")).toString());
+        expect("65 94 0E AC E9 07 33 25").toEqual(sut.calculate(toCode("009n251.mn3202")).toString());
     });
 });
