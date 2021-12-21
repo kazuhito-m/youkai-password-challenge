@@ -68,14 +68,13 @@ public class AttackCharacters {
         return Arrays.hashCode(charCodes);
     }
 
-    public static AttackCharacters initialize(int charCount) {
-        return new AttackCharacters(new int[charCount]);
-    }
-
     public AttackCharacters minimum() {
         return initialize(charCodes.length, converter);
     }
 
+    public static AttackCharacters initialize(int charCount) {
+        return new AttackCharacters(new int[charCount]);
+    }
 
     public static AttackCharacters initialize(int charCount, CodeToCharacterConverter converter) {
         int initialCode = converter.minCode();
