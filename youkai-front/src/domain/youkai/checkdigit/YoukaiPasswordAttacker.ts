@@ -177,7 +177,7 @@ export default class YoukaiPasswordAttacker {
 
     private D880(a31f: A31F, password: AttackCharacters, D87F: number): void {
         let C1 = 0;
-        for (let X = 0; X < a31f.atk_count; X++) {
+        for (let X = 0; X < a31f.charLength; X++) {
             // 文字数分だけ演算をカウント
             if (X > 0) {
                 this.A = password.getOf(X);
