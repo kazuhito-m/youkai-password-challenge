@@ -62,16 +62,15 @@ public class CheckDigitCalculatorVar2 {
         if (a31f.a31F4 >= 0xE5) {
             C5 = 1;
         } else C5 = 0; //C5の値でキャリーを生成
-        A = targetCharCode + a31f.a31F7 + C5;
+        int A06 = targetCharCode + a31f.a31F7 + C5;
 
         final int C6;
-        if (A > 0xFF) { // ADCのキャリー処理
-            A = A & 0xFF;
+        if (A06 > 0xFF) { // ADCのキャリー処理
+            A06 = A06 & 0xFF;
             C6 = 1;
         } else C6 = 0;
-        a31f.a31F7 = A;
-        A = a31f.a31F8;
-        A = A + a31f.a31F5 + C6;
+        a31f.a31F7 = A06;
+        A = a31f.a31F8 + a31f.a31F5 + C6;
 
         final int C7;
         if (A > 0xFF) { // ADCのキャリー処理
