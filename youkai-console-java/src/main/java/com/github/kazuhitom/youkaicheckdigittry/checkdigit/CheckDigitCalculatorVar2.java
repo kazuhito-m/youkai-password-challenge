@@ -10,7 +10,6 @@ public class CheckDigitCalculatorVar2 {
     private int[] stackA = new int[256];
 
     private int X = 0;
-    private int Y = 0;
     private int Z = 0;
 
     public A31F calculate(AttackCharacters password) {
@@ -21,12 +20,11 @@ public class CheckDigitCalculatorVar2 {
         A = password.getOf(0);
 
         stackA[stackApos++] = password.getOf(0);
-        Y = 8;
 
-        return D8C0(password, a31f);
+        return D8C0(password, a31f, 8);
     }
 
-    private A31F D8C0(AttackCharacters password, A31F a31f) {
+    private A31F D8C0(AttackCharacters password, A31F a31f, int y) {
         A = A << 1;
 
         final int C1;
@@ -66,9 +64,9 @@ public class CheckDigitCalculatorVar2 {
         A = A ^ a31f.a31F5;
         a31f.a31F5 = A;
         A = stackA[--stackApos];
-        Y--;
-        if (Y > 0) {
-            return D8C0(password, a31f);
+        y--;
+        if (y > 0) {
+            return D8C0(password, a31f, y);
         }
         A = stackA[--stackApos]; // ここまでで31F4と31F5算出完了
 
@@ -166,9 +164,8 @@ public class CheckDigitCalculatorVar2 {
             A = password.getOf(X);
 
             stackA[stackApos++] = A;
-            Y = 8;
 
-            return D8C0(password, a31f);
+            return D8C0(password, a31f, 8);
         }
 
         return a31f;
