@@ -65,6 +65,7 @@ public class A31F {
         return Stream.of(a31F4, a31F5, charLength, a31F7, a31F8, a31F9, a31FA, a31FB)
                 .map(code -> String.format("%02x ", code))
                 .collect(joining())
+                .toUpperCase()
                 .trim();
     }
 }
