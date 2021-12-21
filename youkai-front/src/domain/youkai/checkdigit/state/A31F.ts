@@ -22,10 +22,10 @@ export default class A31F {
         return o;
     }
 
-    public prototype(): A31F {
+    public static prototypeOf(charLength: number): A31F {
         const p = new A31F();
         p.a31FA = 1;
-        p.charLength = this.charLength;
+        p.charLength = charLength;
         return p;
     }
 

@@ -11,6 +11,10 @@ export default class AttackCharacters {
         return this.charCodes[index];
     }
 
+    public charLength() : number {
+        return this.charCodes.length;
+    }
+
     public increment(): AttackCharacters {
         const converter = this.converter;
         const newCodes = this.charCodes.slice();
