@@ -4,8 +4,6 @@ import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 
 public class CheckDigitCalculatorVar2 {
-    private int A = 0;
-
     public A31F calculate(AttackCharacters password) {
         A31F a31f = A31F.prototypeOf(password.charLength());
         for (int charPosition = 0; charPosition < password.charLength(); charPosition++) {
