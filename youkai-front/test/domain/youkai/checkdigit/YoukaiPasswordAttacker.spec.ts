@@ -1,10 +1,11 @@
 import YoukaiPasswordAttacker from "@/domain/youkai/checkdigit/YoukaiPasswordAttacker";
+import CheckDigitCalculator from "~/domain/youkai/checkdigit/CheckDigitCalculator";
 import A31F from "@/domain/youkai/checkdigit/state/A31F";
 import AttackCharacters from "@/domain/youkai/checkdigit/state/AttackCharacters";
 import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
 
 describe('YoukaiPasswordAttacker', () => {
-    const sut = new YoukaiPasswordAttacker(true);
+    const sut = new YoukaiPasswordAttacker(new CheckDigitCalculator(), true);
 
     test('パスワード_KID_を突き止める事が出来る', () => {
         const targetCheckDigit = A31F.createFromHexStrings8("00", "51", "03", "3A", "E9", "08", "23", "07");
