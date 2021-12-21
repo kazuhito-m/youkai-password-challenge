@@ -5,12 +5,9 @@ export default class CheckDigitCalculator {
     private A = 0;
 
     public calculate(password: AttackCharacters): A31F {
-        this.A = password.getOf(0);
-
         const currentCheckDigit = A31F.prototypeOf(password.charLength());
-        const D87F = this.subroutineD8C0(currentCheckDigit, this.A);
+        const D87F = this.subroutineD8C0(currentCheckDigit, password.getOf(0));
         this.D880(currentCheckDigit, password, D87F);
-
         return currentCheckDigit;
     }
 
