@@ -18,17 +18,15 @@ public class CheckDigitCalculatorVar2 {
         final int targetCharCode = password.getOf(targetCharPosition);
         int shiftedCode = targetCharCode;
         for (int y = 0; y < 8; y++) {
-            A = shiftedCode << 1;
+            int A01 = shiftedCode << 1;
 
             final int C1;
-            if (A > 0xFF) {
+            if (A01 > 0xFF) {
                 C1 = 1;
-                A = A & 0xFF;
+                A01 = A01 & 0xFF;
             } else {
                 C1 = 0;
             }
-
-            final int stackA01 = A;
 
             // 31F4と31F5を右1ビットローテート
             final int work1 = a31f.a31F4 & 0x01;
@@ -60,7 +58,7 @@ public class CheckDigitCalculatorVar2 {
             A = A ^ a31f.a31F5;
             a31f.a31F5 = A;
 
-            shiftedCode = stackA01;
+            shiftedCode = A01;
         }
 
         // ここまでで31F4と31F5算出完了
