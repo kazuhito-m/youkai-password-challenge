@@ -9,7 +9,6 @@ public class CheckDigitCalculatorVar2 {
 
     private final static TextToCodeConverter converter = new TextToCodeConverter();
 
-    private char[] a31DC = new char[256];
     private int stackApos = 0;
     private int[] stackA = new int[256];
 
@@ -19,7 +18,6 @@ public class CheckDigitCalculatorVar2 {
 
     public A31F calculate(AttackCharacters password) {
         a31F6 = password.charLength();
-        a31DC = converter.convert(password.toString()); // ここで文字コードをコンバートしておく
 
         // スタート
         X = 0;
@@ -33,16 +31,16 @@ public class CheckDigitCalculatorVar2 {
         a31FB = 0;
         a31FA = 1;
 
-        A = a31DC[X];
+        A = password.getOf(0);
 
-        stackA[stackApos++] = A;
+        stackA[stackApos++] = password.getOf(0);
         Y = 8;
 
-        String hexText = D8C0();
+        String hexText = D8C0(password);
         return A31F.createFromHexText(hexText);
     }
 
-    private String D8C0() {
+    private String D8C0(AttackCharacters password) {
         A = A << 1;
 
         if (A > 0xFF) {
@@ -82,7 +80,7 @@ public class CheckDigitCalculatorVar2 {
         A = stackA[--stackApos];
         Y--;
         if (Y > 0) {
-            return D8C0();
+            return D8C0(password);
         }
         A = stackA[--stackApos]; // ここまでで31F4と31F5算出完了
 
@@ -135,10 +133,10 @@ public class CheckDigitCalculatorVar2 {
 
         stackA[stackApos++] = A;
 
-        return D880();
+        return D880(password);
     }
 
-    private String D880() {
+    private String D880(AttackCharacters password) {
         // 31FBを生成
         // Aを左ローテート
         A = A << 1;
@@ -160,19 +158,19 @@ public class CheckDigitCalculatorVar2 {
 
         A = stackA[--stackApos];
         if (Z == 0) {
-            return D880(); // ローテ終わるまでループ
+            return D880(password); // ローテ終わるまでループ
         }
         A = stackA[--stackApos];
 
 // 文字数分だけ演算をカウント
         X++;
         if (a31F6 != X) {
-            A = a31DC[X];
+            A = password.getOf(X);
 
             stackA[stackApos++] = A;
             Y = 8;
 
-            return D8C0();
+            return D8C0(password);
         }
 
         return String.format("%02X %02X %02X %02X %02X %02X %02X %02X"
