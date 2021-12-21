@@ -59,6 +59,10 @@ export default class AttackCharacters {
         return this.charCodes.toString() === o.charCodes.toString();
     }
 
+    public minimum(): AttackCharacters {
+        return AttackCharacters.initialize(this.charCodes.length, this.converter);
+    }
+
     public static initialize(charCount: number, converter = new CodeToCharacterConverter()): AttackCharacters {
         const initialCode = converter.minCode();
         const values = Array(charCount).fill(initialCode);

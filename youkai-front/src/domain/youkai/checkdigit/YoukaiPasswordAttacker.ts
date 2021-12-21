@@ -12,21 +12,13 @@ export default class YoukaiPasswordAttacker {
     public execute(attackTargetCheckDigit: A31F, startPassword: AttackCharacters, hitPasswordEvent: any = () => { }): AttackCharacters[] {
         const results: AttackCharacters[] = [];
         let password = startPassword;
+        const minimum = startPassword.minimum();
         this.cancellation = false;
         let checkedCount = 0;
         try {
             // a31DCにターゲット桁数の数値を入れて回転させて、値が一致するまでアタック
             while (true) {
                 ++checkedCount;
-                // スタート
-                // 試しにこのタイミングで配列を全走査して atoy[]に'*'を検出したら強制スキップさせて
-                // 高速化できないか実験
-                // 1桁目に出現した場合は最速スキップ
-                // 2桁目以降に出現した場合は上位インクリメントして下位をゼロクリア
-                if (password.isInvalid()) {
-                    password = password.passInvalidChar();
-                    continue;
-                }
 
                 // 以下メインルーチン
                 this.A = password.getOf(0);
@@ -60,7 +52,7 @@ export default class YoukaiPasswordAttacker {
 
                 // 0x00-0x35の範囲でループさせる
                 password = password.increment();
-                if (password.isFinalDestination()) {
+                if (password.equals(minimum)) {
                     this.printCount(checkedCount);
                     this.printf("End.\n");
                     break;
@@ -71,7 +63,6 @@ export default class YoukaiPasswordAttacker {
         }
         return results;
     }
-
 
     private subroutineD8C0(a31f: A31F, targetCharCode: number): number {
         this.A = targetCharCode;

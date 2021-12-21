@@ -1,7 +1,7 @@
 import YoukaiPasswordAttacker from "@/domain/youkai/checkdigit/YoukaiPasswordAttacker";
 import A31F from "@/domain/youkai/checkdigit/state/A31F";
 import AttackCharacters from "@/domain/youkai/checkdigit/state/AttackCharacters";
-import CodeToCharacterConverter from "~/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
+import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
 
 describe('YoukaiPasswordAttacker', () => {
     const sut = new YoukaiPasswordAttacker(true);
