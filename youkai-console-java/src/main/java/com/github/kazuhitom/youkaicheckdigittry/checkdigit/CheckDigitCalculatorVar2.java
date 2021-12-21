@@ -16,9 +16,9 @@ public class CheckDigitCalculatorVar2 {
 
     private void D8C0(final AttackCharacters password, final A31F a31f, final int targetCharPosition) {
         final int targetCharCode = password.getOf(targetCharPosition);
-        A = targetCharCode;
+        int shiftedCode = targetCharCode;
         for (int y = 0; y < 8; y++) {
-            A = A << 1;
+            A = shiftedCode << 1;
 
             final int C1;
             if (A > 0xFF) {
@@ -60,7 +60,7 @@ public class CheckDigitCalculatorVar2 {
             A = A ^ a31f.a31F5;
             a31f.a31F5 = A;
 
-            A = stackA01;
+            shiftedCode = stackA01;
         }
 
         // ここまでで31F4と31F5算出完了
