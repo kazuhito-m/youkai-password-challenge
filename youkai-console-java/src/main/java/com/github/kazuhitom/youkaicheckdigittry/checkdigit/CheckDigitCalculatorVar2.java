@@ -111,17 +111,15 @@ public class CheckDigitCalculatorVar2 {
         } else C9 = 0;
         a31f.a31FA = A;
 
-        A = targetCharCode;
+        stackA[stackApos++] = targetCharCode;
 
-        stackA[stackApos++] = A;
-
-        return D880(password, a31f, C9, targetCharPosition);
+        return D880(password, a31f, C9, targetCharPosition, targetCharCode);
     }
 
-    private A31F D880(final AttackCharacters password, final A31F a31f, final int C_X, final int targetCharPosition) {
+    private A31F D880(final AttackCharacters password, final A31F a31f, final int C_X, final int targetCharPosition, int a) {
         // 31FBを生成
         // Aを左ローテート
-        A = A << 1;
+        A = a << 1;
         int C9 = C_X;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
@@ -142,9 +140,8 @@ public class CheckDigitCalculatorVar2 {
         } else C10 = 0;
         a31f.a31FB = A;
 
-        A = stackA06;
         if (Z == 0) {
-            return D880(password, a31f, C10, targetCharPosition); // ローテ終わるまでループ
+            return D880(password, a31f, C10, targetCharPosition, stackA06); // ローテ終わるまでループ
         }
         A = stackA[--stackApos];
 
