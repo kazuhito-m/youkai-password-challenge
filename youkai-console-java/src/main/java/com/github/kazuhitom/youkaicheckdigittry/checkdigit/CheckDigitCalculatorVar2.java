@@ -66,14 +66,12 @@ public class CheckDigitCalculatorVar2 {
         // ここまでで31F4と31F5算出完了
 
         // 31F7と31F8を生成(Complete)
-        final int stackA03 = targetCharCode;
-        final int stackA04 = targetCharCode;
         A = a31f.a31F4;
         final int C5;
         if (A >= 0xE5) {
             C5 = 1;
         } else C5 = 0; //C5の値でキャリーを生成
-        A = stackA04;
+        A = targetCharCode;
         A = A + a31f.a31F7 + C5;
 
         final int C6;
@@ -91,13 +89,11 @@ public class CheckDigitCalculatorVar2 {
             C7 = 1;
         } else C7 = 0;
         a31f.a31F8 = A;
-        A = stackA03;
 
         // 31F9を生成(Complete)
-        final int stackA05 = A;
-        A = A ^ a31f.a31F9;
+        A = targetCharCode ^ a31f.a31F9;
         a31f.a31F9 = A;
-        A = stackA05;
+        A = targetCharCode;
 
 // ここから下にまだバグがある
 
