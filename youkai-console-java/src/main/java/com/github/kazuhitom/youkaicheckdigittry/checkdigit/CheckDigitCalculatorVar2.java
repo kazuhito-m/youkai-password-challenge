@@ -70,18 +70,17 @@ public class CheckDigitCalculatorVar2 {
             C6 = 1;
         } else C6 = 0;
         a31f.a31F7 = A06;
-        A = a31f.a31F8 + a31f.a31F5 + C6;
+        int A07 = a31f.a31F8 + a31f.a31F5 + C6;
 
         final int C7;
-        if (A > 0xFF) { // ADCのキャリー処理
-            A = A & 0xFF;
+        if (A07 > 0xFF) { // ADCのキャリー処理
+            A07 = A07 & 0xFF;
             C7 = 1;
         } else C7 = 0;
-        a31f.a31F8 = A;
+        a31f.a31F8 = A07;
 
         // 31F9を生成(Complete)
-        A = targetCharCode ^ a31f.a31F9;
-        a31f.a31F9 = A;
+        a31f.a31F9 = targetCharCode ^ a31f.a31F9;
 
 // ここから下にまだバグがある
 
