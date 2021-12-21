@@ -1,13 +1,10 @@
 package com.github.kazuhitom.youkaicheckdigittry.checkdigit;
 
-import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.TextToCodeConverter;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.A31F;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 
 public class CheckDigitCalculatorVar2 {
     private int A = 0;
-
-    private final static TextToCodeConverter converter = new TextToCodeConverter();
 
     private int stackApos = 0;
     private int[] stackA = new int[256];
