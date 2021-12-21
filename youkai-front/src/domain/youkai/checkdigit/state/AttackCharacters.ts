@@ -11,7 +11,7 @@ export default class AttackCharacters {
         return this.charCodes[index];
     }
 
-    public charLength() : number {
+    public charLength(): number {
         return this.charCodes.length;
     }
 
@@ -71,5 +71,11 @@ export default class AttackCharacters {
         const initialCode = converter.minCode();
         const values = Array(charCount).fill(initialCode);
         return new AttackCharacters(converter, values);
+    }
+
+    public static withText(passwordText: string, converter = new CodeToCharacterConverter()): AttackCharacters {
+        const codes = passwordText.split("")
+            .map(oneCher => converter.reverceConvert(oneCher));
+        return new AttackCharacters(converter, codes);
     }
 }

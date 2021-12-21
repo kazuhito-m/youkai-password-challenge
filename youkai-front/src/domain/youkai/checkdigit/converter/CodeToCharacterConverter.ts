@@ -19,6 +19,14 @@ export default class CodeToCharacterConverter {
         return this.codeToChar[code];
     }
 
+    public reverceConvert(passwordChar: string): number {
+        const oneChar = passwordChar.charAt(0); // 念の為
+        for (let i = 0; i < this.codeToChar.length; i++) {
+            if (this.codeToChar[i] === oneChar) return i;
+        }
+        return -1;
+    }
+
     public incrementCode(code: number): number {
         let index = this.incrementNextCodeTable.length - 1;
         if (code <= index) index = code;
