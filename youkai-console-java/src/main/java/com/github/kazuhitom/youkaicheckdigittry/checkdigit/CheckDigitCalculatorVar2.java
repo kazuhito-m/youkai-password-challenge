@@ -93,15 +93,15 @@ public class CheckDigitCalculatorVar2 {
         A = stackA03;
 
         // 31F9を生成(Complete)
-        stackA[stackApos++] = A;
+        final int stackA05 = A;
         A = A ^ a31f.a31F9;
         a31f.a31F9 = A;
-        A = stackA[--stackApos];
+        A = stackA05;
 
 // ここから下にまだバグがある
 
         // 31FAを生成
-        stackA[stackApos++] = A;
+        final int stackA06 = A;
         // 31FAをローテート
         final int work3 = a31f.a31FA & 0x01;
         a31f.a31FA = a31f.a31FA >> 1;
@@ -116,7 +116,7 @@ public class CheckDigitCalculatorVar2 {
         } else C9 = 0;
         a31f.a31FA = A;
 
-        A = stackA[--stackApos];
+        A = stackA06;
 
         stackA[stackApos++] = A;
 
@@ -136,7 +136,7 @@ public class CheckDigitCalculatorVar2 {
         if (A == 0) Z = 1;
         else Z = 0; // 演算結果がゼロの時Z=1;
 
-        stackA[stackApos++] = A; // スタックに値を保存
+        final int stackA06 = A; // スタックに値を保存
         A = a31f.a31FB;
         A = A + C9;
 
@@ -147,7 +147,7 @@ public class CheckDigitCalculatorVar2 {
         } else C10 = 0;
         a31f.a31FB = A;
 
-        A = stackA[--stackApos];
+        A = stackA06;
         if (Z == 0) {
             return D880(password, a31f, C10, x); // ローテ終わるまでループ
         }
