@@ -93,18 +93,16 @@ public class CheckDigitCalculatorVar2 {
         // 31F9を生成(Complete)
         A = targetCharCode ^ a31f.a31F9;
         a31f.a31F9 = A;
-        A = targetCharCode;
 
 // ここから下にまだバグがある
 
         // 31FAを生成
-        final int stackA06 = A;
         // 31FAをローテート
         final int work3 = a31f.a31FA & 0x01;
         a31f.a31FA = a31f.a31FA >> 1;
         a31f.a31FA = a31f.a31FA | (C7 << 7); // $31F8のCがここで入る
 
-        A = A + a31f.a31FA + work3;
+        A = targetCharCode + a31f.a31FA + work3;
 
         final int C9;
         if (A > 0xFF) { // ADCのキャリー処理
@@ -113,7 +111,7 @@ public class CheckDigitCalculatorVar2 {
         } else C9 = 0;
         a31f.a31FA = A;
 
-        A = stackA06;
+        A = targetCharCode;
 
         stackA[stackApos++] = A;
 
