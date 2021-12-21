@@ -32,7 +32,7 @@ public class YoukaiPasswordAttacker {
                 // 以下メインルーチン
                 A = password.getOf(0);
 
-                final A31F currentCheckDigit = attackTargetCheckDigit.prototype();
+                final A31F currentCheckDigit = A31F.prototypeOf(password.charLength());
                 final int D87F = subroutineD8C0(currentCheckDigit, A);
                 D880(currentCheckDigit, password, D87F);
 
