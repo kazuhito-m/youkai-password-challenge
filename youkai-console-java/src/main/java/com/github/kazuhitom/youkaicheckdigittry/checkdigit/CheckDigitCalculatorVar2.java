@@ -111,10 +111,10 @@ public class CheckDigitCalculatorVar2 {
         } else C9 = 0;
         a31f.a31FA = A01;
 
-        D880(a31f, C9, targetCharCode);
+        a31f.a31FB = calc31FB_D880(a31f.a31FB, C9, targetCharCode);
     }
 
-    private void D880(final A31F a31f, final int C_X, int targetCharCode) {
+    private int calc31FB_D880(final int a31FB, final int C_X, int targetCharCode) {
         // 31FBを生成
         // Aを左ローテート
         int A02 = targetCharCode << 1;
@@ -125,18 +125,18 @@ public class CheckDigitCalculatorVar2 {
         }
         final int stackA06 = A02; // スタックに値を保存
 
-        int A03 = a31f.a31FB + C9;
+        int A03 = a31FB + C9;
 
         final int C10;
         if (A03 > 0xFF) { // ADCのキャリー処理
             A03 = A03 & 0xFF;
             C10 = 1;
         } else C10 = 0;
-        a31f.a31FB = A03;
+        final int new31FB = A03;
 
         // 演算結果がゼロの時;
-        if (stackA06 == 0) return;
+        if (stackA06 == 0) return new31FB;
 
-        D880(a31f, C10, stackA06); // ローテ終わるまでループ
+        return calc31FB_D880(new31FB, C10, stackA06); // ローテ終わるまでループ
     }
 }
