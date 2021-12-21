@@ -9,21 +9,17 @@ public class CheckDigitCalculatorVar2 {
     private int stackApos = 0;
     private int[] stackA = new int[256];
 
-    private int X = 0;
-
     public A31F calculate(AttackCharacters password) {
-        X = 0;
-
         A31F a31f = A31F.prototypeOf(password.charLength());
 
         A = password.getOf(0);
 
         stackA[stackApos++] = password.getOf(0);
 
-        return D8C0(password, a31f);
+        return D8C0(password, a31f, 0);
     }
 
-    private A31F D8C0(AttackCharacters password, A31F a31f) {
+    private A31F D8C0(final AttackCharacters password, final A31F a31f, final int x) {
         for (int y = 0; y < 8; y++) {
             A = A << 1;
 
@@ -125,10 +121,10 @@ public class CheckDigitCalculatorVar2 {
 
         stackA[stackApos++] = A;
 
-        return D880(password, a31f, C9);
+        return D880(password, a31f, C9, x);
     }
 
-    private A31F D880(AttackCharacters password, A31F a31f, int C_X) {
+    private A31F D880(final AttackCharacters password, final A31F a31f, final int C_X, final int x) {
         // 31FBを生成
         // Aを左ローテート
         A = A << 1;
@@ -154,18 +150,18 @@ public class CheckDigitCalculatorVar2 {
 
         A = stackA[--stackApos];
         if (Z == 0) {
-            return D880(password, a31f, C10); // ローテ終わるまでループ
+            return D880(password, a31f, C10, x); // ローテ終わるまでループ
         }
         A = stackA[--stackApos];
 
 // 文字数分だけ演算をカウント
-        X++;
-        if (password.charLength() != X) {
-            A = password.getOf(X);
+        final int nextX = x + 1;
+        if (password.charLength() != nextX) {
+            A = password.getOf(nextX);
 
             stackA[stackApos++] = A;
 
-            return D8C0(password, a31f);
+            return D8C0(password, a31f, nextX);
         }
 
         return a31f;
