@@ -7,12 +7,6 @@ import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacter
 public class CheckDigitCalculatorVar2 {
     private int A = 0;
 
-    public A31F calculate(AttackCharacters password) {
-        String param = password.toString();
-        String result = execute(param);
-        return A31F.createFromHexText(result);
-    }
-
     private final static TextToCodeConverter converter = new TextToCodeConverter();
 
     private char[] a31DC = new char[256];
@@ -24,13 +18,9 @@ public class CheckDigitCalculatorVar2 {
     private int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
     private int ror = 0;
 
-    private String execute(String password) {
-        a31DC = password.trim().toCharArray();
-        String input = "";
-        input = String.valueOf(a31DC);
-        a31F6 = input.length();
-        // ここで文字コードをコンバートしておく
-        a31DC = converter.convert(input);
+    public A31F calculate(AttackCharacters password) {
+        a31F6 = password.charLength();
+        a31DC = converter.convert(password.toString()); // ここで文字コードをコンバートしておく
 
         // スタート
         X = 0;
@@ -49,7 +39,8 @@ public class CheckDigitCalculatorVar2 {
         stackA[stackApos++] = A;
         Y = 8;
 
-        return D8C0();
+        String hexText = D8C0();
+        return A31F.createFromHexText(hexText);
     }
 
     private String D8C0() {
