@@ -6,10 +6,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CheckDigitCalculatorVar2Test {
-
+    private final CheckDigitCalculatorVar2 sut = new CheckDigitCalculatorVar2();
 
     private String calc(String passwordText) {
-        var sut = new CheckDigitCalculatorVar2();
         var password = AttackCharacters.withText(passwordText);
         var calculated = sut.calculate(password);
         return calculated.toString();

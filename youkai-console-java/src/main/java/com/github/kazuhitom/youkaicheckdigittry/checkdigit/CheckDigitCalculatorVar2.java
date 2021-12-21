@@ -16,7 +16,6 @@ public class CheckDigitCalculatorVar2 {
     private int X = 0, Y = 0, C = 0, Z = 0;
     private int a31F6 = 0; // 文字列長さ
     private int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
-    private int ror = 0;
 
     public A31F calculate(AttackCharacters password) {
         a31F6 = password.charLength();
@@ -25,14 +24,14 @@ public class CheckDigitCalculatorVar2 {
         // スタート
         X = 0;
         C = 0;
+
         a31F4 = 0;
         a31F5 = 0;
         a31F7 = 0;
         a31F8 = 0;
         a31F9 = 0;
         a31FB = 0;
-        A = 1;
-        a31FA = A;
+        a31FA = 1;
 
         A = a31DC[X];
 
@@ -55,12 +54,12 @@ public class CheckDigitCalculatorVar2 {
         stackA[stackApos++] = A;
 
         // 31F4と31F5を右1ビットローテート
-        ror = a31F4 & 0x01;
+        final int work1 = a31F4 & 0x01;
         a31F4 = a31F4 >> 1;
         a31F4 = a31F4 | (C << 7); // C0000000
-        C = ror;
+        C = work1;
 
-        ror = a31F5 & 0x01;
+        final int ror = a31F5 & 0x01;
         a31F5 = a31F5 >> 1;
         a31F5 = a31F5 | (C << 7); // C0000000
         C = ror;
@@ -121,10 +120,10 @@ public class CheckDigitCalculatorVar2 {
         // 31FAを生成
         stackA[stackApos++] = A;
         // 31FAをローテート
-        ror = a31FA & 0x01;
+        final int work3 = a31FA & 0x01;
         a31FA = a31FA >> 1;
         a31FA = a31FA | (C << 7); // $31F8のCがここで入る
-        C = ror;
+        C = work3;
         A = A + a31FA + C;
         if (A > 0xFF) { // ADCのキャリー処理
             A = A & 0xFF;
