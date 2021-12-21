@@ -11,7 +11,6 @@ public class CheckDigitCalculatorVar2 {
 
     public A31F calculate(AttackCharacters password) {
         A31F a31f = A31F.prototypeOf(password.charLength());
-
         return D8C0(password, a31f, 0);
     }
 
