@@ -52,8 +52,8 @@ describe('CheckDigitCalculator', () => {
     });
 
     test('元のYoukaiTest02exeのロジックから生み出したテストファイルでチェックディジット算出値が同一か', () => {
-        const data = TestData.load();
-
-
+        for (const data of TestData.load()) {
+            expect(data.expect).toEqual(calc(data.param));
+        }
     });
 });
