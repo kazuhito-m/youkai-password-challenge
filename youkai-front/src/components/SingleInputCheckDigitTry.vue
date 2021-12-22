@@ -82,6 +82,7 @@ export default class SingleInputCheckDigitTry extends Vue {
   private readonly correctCheckDigits?: CorrectCheckDigits;
 
   private mounted(): void {
+    if (!this.youkaiPassword) this.youkaiPassword = "";
     if (this.youkaiPassword.trim().length > 0) return;
     const rondumCheckDigit = this.correctCheckDigits?.randomPickUpCorrectCheckDigit();
     if (!rondumCheckDigit) return;
@@ -125,13 +126,15 @@ export default class SingleInputCheckDigitTry extends Vue {
   }
 
   private fixPasswordWhenInvalid():void  {
-    const password = this.youkaiPassword;
+    let password = this.youkaiPassword;
+    if (!password) password = ""; // ×ボタンで、なぜかNullになるため。
     if (!this.converter?.isInvalidPassword(password)) return;
     this.youkaiPassword = this.converter?.fixValidPassword(password);
   }
 
   private validateYoukaiPassword(): boolean | string {
-    const password = this.youkaiPassword;
+    let password = this.youkaiPassword;
+    if (!password) password = ""; // ×ボタンで、なぜかNullになるため。
     const min = AttackCharacters.MIN_CHARS_LENGTH;
     const max = AttackCharacters.MAX_CHARS_LENGTH;
     if (password.length < min || password.length > max) 
