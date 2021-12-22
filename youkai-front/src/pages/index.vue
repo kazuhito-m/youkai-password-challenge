@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Inject, Vue } from 'vue-property-decorator'
-import SingleInputCheckDigitTry from '~/components/SingleInputCheckDigitTry.vue'
+import { Component, Vue } from 'vue-property-decorator'
+import SingleInputCheckDigitTry from '@/components/SingleInputCheckDigitTry.vue'
 
 @Component({
   components: {

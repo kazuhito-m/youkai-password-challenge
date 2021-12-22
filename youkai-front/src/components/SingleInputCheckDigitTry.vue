@@ -50,7 +50,7 @@
     </v-form>
     <v-card-text class="amber--text">
       「実機での動作を保証」するものではありません。<br>
-      あくまで「チェッカー」なので、どちらかに報告される際には、各自実機での動作確認をお願いします。
+      あくまで「チェッカー」です。どちらかに報告される際には、各自実機での動作確認をお願いします。
     </v-card-text>
   </v-card>
 </template>
@@ -58,6 +58,9 @@
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
+import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
+import AttackCharacters from '@/domain/youkai/checkdigit/state/AttackCharacters'
+import A31F from '@/domain/youkai/checkdigit/state/A31F'
 
 @Component
 export default class SingleInputCheckDigitTry extends Vue {
@@ -68,33 +71,65 @@ export default class SingleInputCheckDigitTry extends Vue {
   private resultInfomation = ' '
 
   @Inject()
-  private readonly converter?: CodeToCharacterConverter
+  private readonly converter?: CodeToCharacterConverter;
+
+  @Inject()
+  private readonly calculator?: CheckDigitCalculator;
 
   @Watch('youkaiPassword')
   private onChangeYoukaiPassword(): void {
-      const password = this.youkaiPassword;
-      if (!this.converter?.isInvalidPassword(password)) return;
-      this.youkaiPassword = this.converter?.fixValidPassword(password);
+    this.fixPasswordWhenInvalid();
+    this.calculateAndHitCheckDigit();
+  }
+
+  private calculateAndHitCheckDigit(): void {
+    this.calculateCheckDigit();
+  }
+
+  private calculateCheckDigit(): void {
+    const validated = this.validateYoukaiPassword();
+    console.log("validated: " + validated);
+    if (this.validateYoukaiPassword() !== true) {
+      this.calculatedCheckDigit = " ";
+      return;  
+    }
+    const calculator = this.calculator as CheckDigitCalculator;
+    const attackChars = AttackCharacters.withText(this.youkaiPassword);
+    const checkDigit = calculator.calculate(attackChars);
+    this.calculatedCheckDigit = checkDigit.toString();
+  }
+
+  private fixPasswordWhenInvalid():void  {
+    const password = this.youkaiPassword;
+    if (!this.converter?.isInvalidPassword(password)) return;
+    this.youkaiPassword = this.converter?.fixValidPassword(password);
   }
 
   private validateYoukaiPassword(): boolean | string {
-    return '最初は全部ムリです。'
+    const password = this.youkaiPassword;
+    const min = 3;
+    const max = 14;
+    if (password.length < min || password.length > max) 
+      return `${min}文字から${max}文字の範囲で入力して下さい。`;
+    if (this.converter?.isInvalidPassword(password)) 
+      return `XXX の文字の範囲で入力して下さい。`;
+    return true;
   }
 
   private onKeyUp(event: KeyboardEvent): boolean {
-    const keyName = event.code
-    if (keyName === 'Backspace' || keyName === 'Delete') return true
+    const keyName = event.code;
+    if (keyName === 'Backspace' || keyName === 'Delete') return true;
 
-    const valid = !this.converter?.isInvalidChar(event.key)
-    if (valid) return true
-    const upperKey = event.key.toUpperCase()
-    const nextValid = !this.converter?.isInvalidChar(upperKey)
-    console.log(this.youkaiPassword)
-    if (nextValid) return true
+    const valid = !this.converter?.isInvalidChar(event.key);
+    if (valid) return true;
+    const upperKey = event.key.toUpperCase();
+    const nextValid = !this.converter?.isInvalidChar(upperKey);
+    console.log(this.youkaiPassword);
+    if (nextValid) return true;
 
-    event.stopImmediatePropagation()
-    event.preventDefault()
-    return false
+    event.stopImmediatePropagation();
+    event.preventDefault();
+    return false;
   }
 }
 </script>

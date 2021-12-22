@@ -51,6 +51,7 @@
 <script lang="ts">
 import { Component, Vue, Provide } from 'nuxt-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
+import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 
 @Component({})
 export default class extends Vue {
@@ -73,7 +74,10 @@ export default class extends Vue {
   // DI difinitions.
 
   @Provide()
-  private readonly converter= new CodeToCharacterConverter();
+  private readonly converter = new CodeToCharacterConverter();
+
+  @Provide()
+  private readonly calculator = new CheckDigitCalculator();
 
   // this classs property & functions.
 
