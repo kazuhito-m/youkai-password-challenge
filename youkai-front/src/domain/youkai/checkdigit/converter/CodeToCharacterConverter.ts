@@ -65,6 +65,14 @@ export default class CodeToCharacterConverter {
         return "";
     }
 
+    public validCharacters(): string {
+        return this.charTable
+            .split("")
+            .filter(c => c !== CodeToCharacterConverter.INVALID_CHAR)
+            .sort()
+            .join("");
+    }
+
     private createIncrementNextCodeTable(codeToChar: string[]): number[] {
         const firstValidCharCode = [...Array(codeToChar.length).keys()]
             .filter(i => codeToChar[i] != CodeToCharacterConverter.INVALID_CHAR)[0];
