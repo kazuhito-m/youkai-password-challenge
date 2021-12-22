@@ -36,12 +36,8 @@ public class CheckDigitCalculatorVar2 {
             }
 
             final int stackA02 = A02 ^ 0xFF;
-            int A03 = stackA02 & 0x84;
-            int A04 = A03 ^ a31f.a31F4;
-            a31f.a31F4 = A04;
-
-            int A05 = stackA02 & 0x08;
-            a31f.a31F5 = A05 ^ a31f.a31F5;
+            a31f.a31F4 = (stackA02 & 0x84) ^ a31f.a31F4;
+            a31f.a31F5 = (stackA02 & 0x08) ^ a31f.a31F5;
 
             shiftedCode = A01;
         }
