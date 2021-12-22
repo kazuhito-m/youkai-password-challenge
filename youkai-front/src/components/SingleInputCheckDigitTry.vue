@@ -64,11 +64,11 @@ import A31F from '@/domain/youkai/checkdigit/state/A31F'
 
 @Component
 export default class SingleInputCheckDigitTry extends Vue {
-  protected loading: boolean = false
+  protected loading: boolean = false;
 
-  private youkaiPassword = 'KID'
-  private calculatedCheckDigit = ' '
-  private resultInfomation = ' '
+  private youkaiPassword = '';
+  private calculatedCheckDigit = ' ';
+  private resultInfomation = ' ';
 
   @Inject()
   private readonly converter?: CodeToCharacterConverter;
@@ -84,6 +84,7 @@ export default class SingleInputCheckDigitTry extends Vue {
 
   private calculateAndHitCheckDigit(): void {
     this.calculateCheckDigit();
+    this.hitCorrectCheckDigit();
   }
 
   private calculateCheckDigit(): void {
@@ -97,6 +98,10 @@ export default class SingleInputCheckDigitTry extends Vue {
     const attackChars = AttackCharacters.withText(this.youkaiPassword);
     const checkDigit = calculator.calculate(attackChars);
     this.calculatedCheckDigit = checkDigit.toString();
+  }
+
+  private  hitCorrectCheckDigit() {
+    const checkDigit = A31F.createFromHexText(this.calculatedCheckDigit);
   }
 
   private fixPasswordWhenInvalid():void  {
