@@ -1,6 +1,6 @@
-import CheckDigitCalculator from "../CheckDigitCalculator";
-import A31F from "../state/A31F";
-import AttackCharacters from "../state/AttackCharacters";
+import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
+import A31F from "@/domain/youkai/checkdigit/state/A31F";
+import AttackCharacters from "@/domain/youkai/checkdigit/state/AttackCharacters";
 import CorrectCheckDigit from "./CorrectCheckDigit";
 
 export default class CorrectCheckDigits {
@@ -55,9 +55,6 @@ export default class CorrectCheckDigits {
     public pickUpCorrectDigitOf(checkDigit: A31F): CorrectCheckDigit {
         for (const correct of CorrectCheckDigits.CORRECTS) {
             const correctDigit = this.calculator.calculate(correct.typicalPassowrd);
-
-            console.log(`正解側:${correctDigit.toString()}, チャレンジ側:${checkDigit.toString()}`);
-
             if (correctDigit.equals(checkDigit)) return correct;
         }
         return CorrectCheckDigit.empty();
