@@ -35,9 +35,7 @@ public class CheckDigitCalculatorVar2 {
                 A02 = 0;
             }
 
-            final int stackA02 = A02 ^ 0xFF;
-            a31f.a31F4 = (stackA02 & 0x84) ^ a31f.a31F4;
-            a31f.a31F5 = (stackA02 & 0x08) ^ a31f.a31F5;
+            a31f.calc31F4And31F5(A02);
 
             shiftedCode = A01;
         }
@@ -45,73 +43,16 @@ public class CheckDigitCalculatorVar2 {
         // ここまでで31F4と31F5算出完了
 
         // 31F7と31F8を生成(Complete)
-        final int C5;
-        if (a31f.a31F4 >= 0xE5) {
-            C5 = 1;
-        } else C5 = 0; //C5の値でキャリーを生成
-        int A06 = targetCharCode + a31f.a31F7 + C5;
-
-        final int C6;
-        if (A06 > 0xFF) { // ADCのキャリー処理
-            A06 = A06 & 0xFF;
-            C6 = 1;
-        } else C6 = 0;
-        a31f.a31F7 = A06;
-        int A07 = a31f.a31F8 + a31f.a31F5 + C6;
-
-        final int C7;
-        if (A07 > 0xFF) { // ADCのキャリー処理
-            A07 = A07 & 0xFF;
-            C7 = 1;
-        } else C7 = 0;
-        a31f.a31F8 = A07;
-
         // 31F9を生成(Complete)
-        a31f.a31F9 = targetCharCode ^ a31f.a31F9;
+        final int C7 = a31f.calc31F4And31F5And31F9(targetCharCode);
 
 // ここから下にまだバグがある
 
         // 31FAを生成
         // 31FAをローテート
-        final int work3 = a31f.a31FA & 0x01;
-        a31f.a31FA = a31f.a31FA >> 1;
-        a31f.a31FA = a31f.a31FA | (C7 << 7); // $31F8のCがここで入る
+        final int work3 = a31f.rotateRightOneBit31FA(C7); // $31F8のCがここで入る
+        final int C9 = a31f.calc31FA(targetCharCode, work3);
 
-        int A01 = targetCharCode + a31f.a31FA + work3;
-
-        final int C9;
-        if (A01 > 0xFF) { // ADCのキャリー処理
-            A01 = A01 & 0xFF;
-            C9 = 1;
-        } else C9 = 0;
-        a31f.a31FA = A01;
-
-        a31f.a31FB = calc31FB_D880(a31f.a31FB, C9, targetCharCode);
-    }
-
-    private int calc31FB_D880(final int a31FB, final int C_X, int targetCharCode) {
-        // 31FBを生成
-        // Aを左ローテート
-        int A02 = targetCharCode << 1;
-        int C9 = C_X;
-        if (A02 > 0xFF) { // ADCのキャリー処理
-            A02 = A02 & 0xFF;
-            C9 = 1;
-        }
-        final int stackA06 = A02; // スタックに値を保存
-
-        int A03 = a31FB + C9;
-
-        final int C10;
-        if (A03 > 0xFF) { // ADCのキャリー処理
-            A03 = A03 & 0xFF;
-            C10 = 1;
-        } else C10 = 0;
-        final int new31FB = A03;
-
-        // 演算結果がゼロの時;
-        if (stackA06 == 0) return new31FB;
-
-        return calc31FB_D880(new31FB, C10, stackA06); // ローテ終わるまでループ
+        a31f.calc31FB(C9, targetCharCode);
     }
 }
