@@ -2,7 +2,6 @@
   <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
-      :clipped="clipped"
       right
       fixed
       app
@@ -51,6 +50,7 @@
 
 <script lang="ts">
 import { Component, Vue, Provide } from 'nuxt-property-decorator'
+import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 
 @Component({})
 export default class extends Vue {
@@ -71,6 +71,9 @@ export default class extends Vue {
   ];
 
   // DI difinitions.
+
+  @Provide()
+  private readonly converter= new CodeToCharacterConverter();
 
   // this classs property & functions.
 

@@ -42,6 +42,29 @@ export default class CodeToCharacterConverter {
         return CodeToCharacterConverter.INVALID_CHAR === this.convert(code);
     }
 
+    public isInvalidChar(oneChar: string): boolean {
+        if (oneChar === CodeToCharacterConverter.INVALID_CHAR) return true;
+        return this.charTable.indexOf(oneChar) < 0;
+    }
+
+    public isInvalidPassword(text: string): boolean {
+        return text.split("")
+            .some(oneChar => this.isInvalidChar(oneChar));
+    }
+
+    public fixValidPassword(text: string): string {
+        return text.split("")
+            .map(oneChar => this.fixValidOneChar(oneChar))
+            .join("");
+    }
+
+    private fixValidOneChar(oneChar: string) {
+        if (!this.isInvalidChar(oneChar)) return oneChar;
+        const upperChar = oneChar.toUpperCase();
+        if (!this.isInvalidChar(upperChar)) return upperChar;
+        return "";
+    }
+
     private createIncrementNextCodeTable(codeToChar: string[]): number[] {
         const firstValidCharCode = [...Array(codeToChar.length).keys()]
             .filter(i => codeToChar[i] != CodeToCharacterConverter.INVALID_CHAR)[0];

@@ -1,14 +1,43 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template (ここが変更されてたら、デプロイできてます)
-        </v-card-title>
-        <v-card-text>
-          ここに色々本体を書きます。
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+  <v-layout>
+    <v-container>
+      <v-row justify="center" align="center">
+        <v-col cols="12" sm="8" md="6">
+          <SingleInputCheckDigitTry />
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-layout>
 </template>
+
+<script lang="ts">
+import { Component, Inject, Vue } from 'vue-property-decorator'
+import SingleInputCheckDigitTry from '~/components/SingleInputCheckDigitTry.vue'
+
+@Component({
+  components: {
+    SingleInputCheckDigitTry,
+  },
+})
+export default class SingleInputCheckDigitTest extends Vue {
+  protected loading: boolean = false
+
+  private startTime: number = 0
+
+  public start() {
+    this.startTime = performance.now()
+    console.log(`Loading表示開始。${new Date()}`)
+
+    this.loading = true
+  }
+
+  public finish() {
+    this.loading = false
+
+    const time = performance.now() - this.startTime
+    console.log(`Loading表示終了。${new Date()} 表示時間:${time.toFixed(3)} ms`)
+
+    this.startTime = 0
+  }
+}
+</script>
