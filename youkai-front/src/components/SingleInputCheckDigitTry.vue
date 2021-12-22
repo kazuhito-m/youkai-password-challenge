@@ -94,7 +94,6 @@ export default class SingleInputCheckDigitTry extends Vue {
 
   private calculateCheckDigit(): void {
     const validated = this.validateYoukaiPassword();
-    console.log("validated: " + validated);
     if (this.validateYoukaiPassword() !== true) {
       this.calculatedCheckDigit = " ";
       return;  
@@ -126,12 +125,12 @@ export default class SingleInputCheckDigitTry extends Vue {
 
   private validateYoukaiPassword(): boolean | string {
     const password = this.youkaiPassword;
-    const min = 3;
-    const max = 14;
+    const min = AttackCharacters.MIN_CHARS_LENGTH;
+    const max = AttackCharacters.MAX_CHARS_LENGTH;
     if (password.length < min || password.length > max) 
       return `${min}文字から${max}文字の範囲で入力して下さい。`;
-    if (this.converter?.isInvalidPassword(password)) 
-      return `XXX の文字の範囲で入力して下さい。`;
+    if (this.converter?.isInvalidPassword(password))
+      return `"${this.converter?.validCharacters()}" の文字の範囲で入力して下さい。`;
     return true;
   }
 
@@ -143,7 +142,6 @@ export default class SingleInputCheckDigitTry extends Vue {
     if (valid) return true;
     const upperKey = event.key.toUpperCase();
     const nextValid = !this.converter?.isInvalidChar(upperKey);
-    console.log(this.youkaiPassword);
     if (nextValid) return true;
 
     event.stopImmediatePropagation();
