@@ -1,6 +1,12 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -54,5 +60,28 @@ class YoukaiTest02_01Test {
         assertEquals("DC D9 08 A3 E3 17 28 15", calc("818-6104"));
         assertEquals("65 94 0E AC E9 07 33 25", calc("534-030.565.81"));
         assertEquals("65 94 0E AC E9 07 33 25", calc("009n251.mn3202"));
+    }
+
+    @Disabled("非テストなので")
+    @Test
+    public void 旧ロジックでテストデータファイルを大量に作る() throws IOException {
+        final var RECORD_COUNT = 100000;
+        // 3〜14文字で、規定件数のパスワードと計算後のチェック・ディジットのTSVデータを作成。
+        var tsvStream = IntStream.range(0, RECORD_COUNT)
+                .flatMap(i -> IntStream.rangeClosed(3, 14))
+                .mapToObj(YoukaiTest02_01::generateRandom54CharPassword)
+                .map(password -> String.format("%s\t%s", calc(password), password));
+
+        try (var os = new FileWriter("./passAndCheckDigits.tsv");
+             var bos = new BufferedWriter(os)) {
+            tsvStream.forEach(i -> {
+                try {
+                    bos.write(i);
+                    bos.newLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 }

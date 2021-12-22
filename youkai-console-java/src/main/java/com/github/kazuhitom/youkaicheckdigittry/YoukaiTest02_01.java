@@ -1,8 +1,11 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.CodeToCharacterConverter;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.TextToCodeConverter;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class YoukaiTest02_01 {
     private final static TextToCodeConverter converter = new TextToCodeConverter();
@@ -228,5 +231,26 @@ public class YoukaiTest02_01 {
         if (loopmode == 1) return LOOP();
 
         return result;
+    }
+
+    // Test data generate.
+
+    private static final CodeToCharacterConverter converterForTest = new CodeToCharacterConverter();
+
+    private static int generateRandom54CharCode() {
+        return (int) Math.floor(Math.random() * 54);
+    }
+
+    private static int generateRandomValidCharCode() {
+        int code;
+        while (converterForTest.isInvalidCharCode(code = generateRandom54CharCode())) ;
+        return code;
+    }
+
+    public static String generateRandom54CharPassword(int length) {
+        int[] charCodes = IntStream.range(0, length)
+                .map(one -> generateRandomValidCharCode())
+                .toArray();
+        return new AttackCharacters(charCodes).toString();
     }
 }

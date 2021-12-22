@@ -1,11 +1,8 @@
 package com.github.kazuhitom.youkaicheckdigittry.checkdigit;
 
 import com.github.kazuhitom.youkaicheckdigittry.YoukaiTest02_01;
-import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.CodeToCharacterConverter;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 import org.junit.jupiter.api.Test;
-
-import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -65,30 +62,11 @@ class CheckDigitCalculatorTest {
         for (int j = 0; j < 1000; j++) {
             // 3文字から14文字
             for (int i = 3; i <= 14; i++) {
-                var password = generateRandom54CharPassword(i);
+                var password = YoukaiTest02_01.generateRandom54CharPassword(i);
 //                System.out.println(password); // DEBUG
                 assertEquals(calcOriginalLogic(password), calc(password));
             }
         }
-    }
-
-    private int generateRandom54CharCode() {
-        return (int) Math.floor(Math.random() * 54);
-    }
-
-    private final CodeToCharacterConverter converter = new CodeToCharacterConverter();
-
-    private int generateRandomValidCharCode() {
-        int code;
-        while (converter.isInvalidCharCode(code = generateRandom54CharCode())) ;
-        return code;
-    }
-
-    private String generateRandom54CharPassword(int length) {
-        int[] charCodes = IntStream.range(0, length)
-                .map(one -> generateRandomValidCharCode())
-                .toArray();
-        return new AttackCharacters(charCodes).toString();
     }
 
     private String calcOriginalLogic(String password) {
