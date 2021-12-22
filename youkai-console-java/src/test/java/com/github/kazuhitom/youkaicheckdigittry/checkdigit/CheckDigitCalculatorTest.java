@@ -4,6 +4,13 @@ import com.github.kazuhitom.youkaicheckdigittry.YoukaiTest02_01;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CheckDigitCalculatorTest {
@@ -72,5 +79,37 @@ class CheckDigitCalculatorTest {
     private String calcOriginalLogic(String password) {
         var sut = new YoukaiTest02_01();
         return sut.execute(password);
+    }
+
+    @Test
+    public void 元のYoukaiTest02exeのロジックから生み出したテストファイルでチェックディジット算出値が同一か() throws IOException {
+        for (var testData : loadTestFile()) {
+            assertEquals(testData.expect, calc(testData.param));
+        }
+    }
+
+    private List<TestData> loadTestFile() throws IOException {
+        var dataList = new ArrayList<TestData>();
+        try (InputStream is = getClass().getResourceAsStream("passAndCheckDigits.tsv");
+             var isr = new InputStreamReader(is);
+             var br = new BufferedReader(isr)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                var values = line.split("\t");
+                var data = new TestData(values[0], values[1]);
+                dataList.add(data);
+            }
+        }
+        return dataList;
+    }
+
+    private static class TestData {
+        public final String expect;
+        public final String param;
+
+        private TestData(String expect, String actual) {
+            this.expect = expect;
+            this.param = actual;
+        }
     }
 }

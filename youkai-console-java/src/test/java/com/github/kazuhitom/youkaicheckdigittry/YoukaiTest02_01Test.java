@@ -1,6 +1,5 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedWriter;
@@ -62,7 +61,7 @@ class YoukaiTest02_01Test {
         assertEquals("65 94 0E AC E9 07 33 25", calc("009n251.mn3202"));
     }
 
-    @Disabled("非テストなので")
+    //    @Disabled("非テストなので")
     @Test
     public void 旧ロジックでテストデータファイルを大量に作る() throws IOException {
         final var RECORD_COUNT = 100000;
