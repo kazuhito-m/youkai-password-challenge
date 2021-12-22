@@ -6,13 +6,13 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.joining;
 
 public class A31F {
-    public int a31F4 = 0;
-    public int a31F5 = 0;
-    public int a31F7 = 0;
-    public int a31F8 = 0;
-    public int a31F9 = 0;
-    public int a31FA = 1;
-    public int a31FB = 0;
+    private int a31F4 = 0;
+    private int a31F5 = 0;
+    private int a31F7 = 0;
+    private int a31F8 = 0;
+    private int a31F9 = 0;
+    private int a31FA = 1;
+    private int a31FB = 0;
 
     private final int charLength;   // 文字列長さ
 
