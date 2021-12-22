@@ -1,5 +1,6 @@
 import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
-import AttackCharacters from "~/domain/youkai/checkdigit/state/AttackCharacters";
+import AttackCharacters from "@/domain/youkai/checkdigit/state/AttackCharacters";
+import TestData from "./TestData";
 
 describe('CheckDigitCalculator', () => {
     const sut = new CheckDigitCalculator();
@@ -46,5 +47,9 @@ describe('CheckDigitCalculator', () => {
         // expect("DC D9 08 A3 E3 17 28 15").toEqual(sut.calculate(toCode("818-6104")).toString());
         expect("65 94 0E AC E9 07 33 25").toEqual(sut.calculate(toCode("534-030.565.81")).toString());
         expect("65 94 0E AC E9 07 33 25").toEqual(sut.calculate(toCode("009n251.mn3202")).toString());
+    });
+
+    test('元のYoukaiTest02exeのロジックから生み出したテストファイルでチェックディジット算出値が同一か', () => {
+        const data = TestData.load();
     });
 });
