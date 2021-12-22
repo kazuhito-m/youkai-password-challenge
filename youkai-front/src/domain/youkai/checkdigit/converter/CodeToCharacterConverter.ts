@@ -48,11 +48,13 @@ export default class CodeToCharacterConverter {
     }
 
     public isInvalidPassword(text: string): boolean {
+        if (text.trim().length === 0) return false;
         return text.split("")
             .some(oneChar => this.isInvalidChar(oneChar));
     }
 
     public fixValidPassword(text: string): string {
+        if (text.trim().length === 0) return "";
         return text.split("")
             .map(oneChar => this.fixValidOneChar(oneChar))
             .join("");
