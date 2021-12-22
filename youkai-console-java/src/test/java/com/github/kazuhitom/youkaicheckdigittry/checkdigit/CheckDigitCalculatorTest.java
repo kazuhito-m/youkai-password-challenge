@@ -5,9 +5,7 @@ import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacter
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.stream.IntStream;
 
-import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CheckDigitCalculatorTest {
@@ -63,12 +61,7 @@ class CheckDigitCalculatorTest {
     @Test
     public void 元のYoukaiTest02exeのロジックとリファクタリング後のチェックディジット算出処理が同一か() {
         final var RECORD_COUNT = 1000; // とりあえず、これくらい？(テストの遅さの調整)
-        var randomPasswords = IntStream.range(0, RECORD_COUNT)
-                .flatMap(i -> IntStream.rangeClosed(3, 14)) // データの文字数のバリエーション
-                .mapToObj(YoukaiTest02_01::generateRandom54CharPassword)
-                .map(password -> (String) password)
-                .collect(toList());
-        for (String password : randomPasswords) {
+        for (String password : YoukaiTest02_01.generateRandomPasswords(3, 14, RECORD_COUNT)) {
             assertEquals(calcOriginalLogic(password), calc(password));
         }
     }

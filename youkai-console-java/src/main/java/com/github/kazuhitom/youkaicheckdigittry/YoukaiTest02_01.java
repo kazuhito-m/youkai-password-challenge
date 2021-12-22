@@ -4,8 +4,11 @@ import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.CodeToChara
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.TextToCodeConverter;
 import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.toList;
 
 public class YoukaiTest02_01 {
     private final static TextToCodeConverter converter = new TextToCodeConverter();
@@ -252,5 +255,14 @@ public class YoukaiTest02_01 {
                 .map(one -> generateRandomValidCharCode())
                 .toArray();
         return new AttackCharacters(charCodes).toString();
+    }
+
+    public static List<String> generateRandomPasswords(int minCharCount, int maxCharCount, int repetitions) {
+        var randomPasswords = IntStream.range(0, repetitions)
+                .flatMap(i -> IntStream.rangeClosed(minCharCount, maxCharCount)) // データの文字数のバリエーション
+                .mapToObj(YoukaiTest02_01::generateRandom54CharPassword)
+                .map(password -> (String) password)
+                .collect(toList());
+        return randomPasswords;
     }
 }
