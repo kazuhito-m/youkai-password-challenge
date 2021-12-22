@@ -29,6 +29,7 @@
               v-model="calculatedCheckDigit"
               value="a"
               label="算出されたチェック・ディジット"
+              :disabled="calculatedCheckDigit.trim().length === 0"
               readonly
               outlined
             ></v-text-field>
@@ -37,9 +38,9 @@
         <v-row>
           <v-col>
             <v-textarea
-              ref="progressLogsTextarea"
               v-model="resultInfomation"
               label="確認結果"
+              :disabled="resultInfomation.trim().length === 0"
               readonly
               outlined
               no-resize
