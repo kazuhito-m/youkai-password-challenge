@@ -20,6 +20,18 @@ public class A31F {
         return charLength;
     }
 
+    public int rotateRightOneBit31F4(int flag) {
+        final int beforFirstBit = a31F4 & 0x01;
+        a31F4 = (a31F4 >> 1) | (flag << 7); // C0000000
+        return beforFirstBit;
+    }
+
+    public int rotateRightOneBit31F5(int flag) {
+        final int beforFirstBit = a31F5 & 0x01;
+        a31F5 = (a31F5 >> 1) | (flag << 7); // C0000000
+        return beforFirstBit;
+    }
+
     public static A31F createFromHexStrings8(String... hexStrings8) {
         A31F o = new A31F(hexToInt(hexStrings8[2]));
         o.a31F4 = hexToInt(hexStrings8[0]);

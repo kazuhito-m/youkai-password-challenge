@@ -27,15 +27,8 @@ public class CheckDigitCalculatorVar2 {
             }
 
             // 31F4と31F5を右1ビットローテート
-            final int work1 = a31f.a31F4 & 0x01;
-            a31f.a31F4 = a31f.a31F4 >> 1;
-            a31f.a31F4 = a31f.a31F4 | (C1 << 7); // C0000000
-            final int C2 = work1;
-
-            final int work2 = a31f.a31F5 & 0x01;
-            a31f.a31F5 = a31f.a31F5 >> 1;
-            a31f.a31F5 = a31f.a31F5 | (C2 << 7); // C0000000
-            final int C3 = work2;
+            final int C2 = a31f.rotateRightOneBit31F4(C1);
+            final int C3 = a31f.rotateRightOneBit31F5(C2);
 
             int A02 = 0xFF + C3;
             if (A02 > 0xFF) {
