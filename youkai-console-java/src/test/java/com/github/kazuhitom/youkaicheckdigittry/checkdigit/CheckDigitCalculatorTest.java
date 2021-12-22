@@ -60,12 +60,11 @@ class CheckDigitCalculatorTest {
 
     @Test
     public void 元のYoukaiTest02exeのロジックとリファクタリング後のチェックディジット算出処理が同一か() {
-        // とりあえず、1000回くらい？
-        for (int j = 0; j < 1000; j++) {
+        final var RECORD_COUNT = 1000; // とりあえず、これくらい？(テストの遅さの調整)
+        for (int j = 0; j < RECORD_COUNT; j++) {
             // 3文字から14文字
             for (int i = 3; i <= 14; i++) {
                 var password = YoukaiTest02_01.generateRandom54CharPassword(i);
-//                System.out.println(password); // DEBUG
                 assertEquals(calcOriginalLogic(password), calc(password));
             }
         }
