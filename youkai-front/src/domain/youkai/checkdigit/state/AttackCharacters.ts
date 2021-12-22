@@ -7,6 +7,9 @@ export default class AttackCharacters {
         private readonly charCodes: number[]
     ) { }
 
+    public static readonly MIN_CHARS_LENGTH = 3;
+    public static readonly MAX_CHARS_LENGTH = 14;
+
     public getOf(index: number): number {
         return this.charCodes[index];
     }
