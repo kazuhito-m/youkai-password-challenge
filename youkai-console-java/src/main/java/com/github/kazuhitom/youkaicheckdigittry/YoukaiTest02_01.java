@@ -210,14 +210,15 @@ public class YoukaiTest02_01 {
             return D86B();
         }
 
-        System.out.printf("31F4 31F5 31F6 31F7 31F8 31F9 31FA 31FB\n");
-        System.out.printf("  %02X   %02X   %02X   %02X   %02X   %02X   %02X   %02X\n"
-                , a31F4, a31F5, a31F6, a31F7, a31F8, a31F9, a31FA, a31FB);
+//        System.out.printf("31F4 31F5 31F6 31F7 31F8 31F9 31FA 31FB\n");
+//        System.out.printf("  %02X   %02X   %02X   %02X   %02X   %02X   %02X   %02X\n"
+//                , a31F4, a31F5, a31F6, a31F7, a31F8, a31F9, a31FA, a31FB);
 
         String result = String.format("%02X %02X %02X %02X %02X %02X %02X %02X"
                 , a31F4, a31F5, a31F6, a31F7, a31F8, a31F9, a31FA, a31FB);
 
-        System.out.println("CheckDigit:" + result);
+        // DEBUG
+//        System.out.println("CheckDigit:" + result);
 
 /*
 	printf("31F4 31F5 31F6 31F7 31F8 31F9\n");
