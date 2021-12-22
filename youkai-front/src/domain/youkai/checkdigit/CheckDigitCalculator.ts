@@ -2,163 +2,55 @@ import AttackCharacters from "./state/AttackCharacters";
 import A31F from "./state/A31F";
 
 export default class CheckDigitCalculator {
-    private A = 0;
-
     public calculate(password: AttackCharacters): A31F {
-        const currentCheckDigit = A31F.prototypeOf(password.charLength());
-        const D87F = this.subroutineD8C0(currentCheckDigit, password.getOf(0));
-        this.D880(currentCheckDigit, password, D87F);
-        return currentCheckDigit;
+        const a31f = A31F.prototypeOf(password.charLength());
+        for (let charPosition = 0; charPosition < password.charLength(); charPosition++) {
+            this.D8C0(password, a31f, charPosition);  // 文字数分だけ演算をカウント
+        }
+        return a31f;
     }
 
-    private subroutineD8C0(a31f: A31F, targetCharCode: number): number {
-        this.A = targetCharCode;
-        for (let i = 0; i < 8; i++) {
-            this.A = this.A << 1;
+    private D8C0(password: AttackCharacters, a31f: A31F, targetCharPosition: number): void {
+        const targetCharCode = password.getOf(targetCharPosition);
+        let shiftedCode = targetCharCode;
+        for (let y = 0; y < 8; y++) {
+            let A01 = shiftedCode << 1;
 
-            let C1 = 0;
-            if (this.A > 0xFF) {
+            let C1;
+            if (A01 > 0xFF) {
                 C1 = 1;
-                this.A = this.A & 0xFF;
+                A01 = A01 & 0xFF;
+            } else {
+                C1 = 0;
             }
-            const a1Work = this.A;
+
             // 31F4と31F5を右1ビットローテート
-            const work1 = a31f.a31F4 & 0x01;
-            a31f.a31F4 = a31f.a31F4 >> 1;
-            a31f.a31F4 = a31f.a31F4 | (C1 << 7); // C0000000
-            C1 = work1;
+            const C2 = a31f.rotateRightOneBit31F4(C1);
+            const C3 = a31f.rotateRightOneBit31F5(C2);
 
-            const work2 = a31f.a31F5 & 0x01;
-            a31f.a31F5 = a31f.a31F5 >> 1;
-            a31f.a31F5 = a31f.a31F5 | (C1 << 7); // C0000000
-            C1 = work2;
-
-            //printf("ror %02X %02X\n",a31F4,a31F5);
-
-            this.A = 0xFF + C1;
-
-            if (this.A > 0xFF) {
-                this.A = 0;
+            let A02 = 0xFF + C3;
+            if (A02 > 0xFF) {
+                A02 = 0;
             }
 
-            this.A = this.A ^ 0xFF;
-            const a2Work = this.A;
-            this.A = this.A & 0x84;
-            this.A = this.A ^ a31f.a31F4;
-            a31f.a31F4 = this.A;
-            this.A = a2Work;
-            this.A = this.A & 0x08;
-            this.A = this.A ^ a31f.a31F5;
-            a31f.a31F5 = this.A;
-            this.A = a1Work;
+            a31f.calc31F4And31F5(A02);
+
+            shiftedCode = A01;
         }
 
-        this.A = targetCharCode; // ここまでで31F4と31F5算出完了
+        // ここまでで31F4と31F5算出完了
 
-        //D8A4: // 31F7と31F8を生成(Complete)
-        //        stackA.push(A);
-        //        stackA.push(A);
-        const a3Work = this.A;
-        const a4Work = this.A;
-        this.A = a31f.a31F4;
-
-        let C3 = 0;
-        if (this.A >= 0xE5) {
-            C3 = 1;
-        } //C5の値でキャリーを生成
-        //        A = stackA.pop();
-        this.A = a4Work;
-        this.A = this.A + a31f.a31F7 + C3;
-
-        let C4 = 0;
-        if (this.A > 0xFF) { // ADCのキャリー処理
-            this.A = this.A & 0xFF;
-            C4 = 1;
-        }
-        a31f.a31F7 = this.A;
-        this.A = a31f.a31F8;
-        this.A = this.A + a31f.a31F5 + C4;
-
-        let C5 = 0;
-        if (this.A > 0xFF) { // ADCのキャリー処理
-            this.A = this.A & 0xFF;
-            C5 = 1;
-        }
-        a31f.a31F8 = this.A;
-        //        A = stackA.pop();
-        this.A = a3Work;
-
-        //D89B: // 31F9を生成(Complete)
-        //        stackA.push(A);
-        const a5Work = this.A;
-        this.A = this.A ^ a31f.a31F9;
-        a31f.a31F9 = this.A;
-        //        A = stackA.pop();
-        this.A = a5Work;
+        // 31F7と31F8を生成(Complete)
+        // 31F9を生成(Complete)
+        const C7 = a31f.calc31F4And31F5And31F9(targetCharCode);
 
         // ここから下にまだバグがある
 
-        //D88F: // 31FAを生成
-        //        stackA.push(A);
-        const a6Work = this.A;
+        // 31FAを生成
         // 31FAをローテート
-        const work3 = a31f.a31FA & 0x01;
-        a31f.a31FA = a31f.a31FA >> 1;
-        a31f.a31FA = a31f.a31FA | (C5 << 7); // $31F8のCがここで入る
+        const work3 = a31f.rotateRightOneBit31FA(C7); // $31F8のCがここで入る
+        const C9 = a31f.calc31FA(targetCharCode, work3);
 
-        const C6 = work3;
-        this.A = this.A + a31f.a31FA + C6;
-
-        let C7 = 0;
-        if (this.A > 0xFF) { // ADCのキャリー処理
-            this.A = this.A & 0xFF;
-            C7 = 1;
-        }
-        a31f.a31FA = this.A;
-
-        //        A = stackA.pop();
-        this.A = a6Work;
-        //D87F:
-        return this.A;
-    }
-
-    private D880(a31f: A31F, password: AttackCharacters, D87F: number): void {
-        let C1 = 0;
-        for (let X = 0; X < a31f.charLength; X++) {
-            // 文字数分だけ演算をカウント
-            if (X > 0) {
-                this.A = password.getOf(X);
-                D87F = this.subroutineD8C0(a31f, this.A);
-            }
-
-            // 31FBを生成
-            let Z: boolean;
-            do {
-                // Aを左ローテート
-                this.A = this.A << 1;
-                if (this.A > 0xFF) { // ADCのキャリー処理
-                    this.A = this.A & 0xFF;
-                    C1 = 1;
-                }
-                Z = this.A === 0; // 演算結果がゼロの時Z=true;
-
-                //                stackA.push(A); // スタックに値を保存
-                const a1Work = this.A;
-                this.A = a31f.a31FB;
-                this.A = this.A + C1;
-
-                C1 = 0;
-                if (this.A > 0xFF) { // ADCのキャリー処理
-                    this.A = this.A & 0xFF;
-                    C1 = 1;
-                }
-                a31f.a31FB = this.A;
-
-                this.A = a1Work;
-            } while (!Z);   // ローテ終わるまでループ
-            //printf("a31FB=%x ",a31FB);
-
-            this.A = D87F;
-        }
+        a31f.calc31FB(C9, targetCharCode);
     }
 }
