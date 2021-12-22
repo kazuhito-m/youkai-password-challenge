@@ -59,6 +59,7 @@
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
+import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
 import AttackCharacters from '@/domain/youkai/checkdigit/state/AttackCharacters'
 import A31F from '@/domain/youkai/checkdigit/state/A31F'
 
@@ -75,6 +76,9 @@ export default class SingleInputCheckDigitTry extends Vue {
 
   @Inject()
   private readonly calculator?: CheckDigitCalculator;
+
+  @Inject()
+  private readonly correctCheckDigits?: CorrectCheckDigits;
 
   @Watch('youkaiPassword')
   private onChangeYoukaiPassword(): void {
@@ -100,8 +104,17 @@ export default class SingleInputCheckDigitTry extends Vue {
     this.calculatedCheckDigit = checkDigit.toString();
   }
 
-  private  hitCorrectCheckDigit() {
+  private hitCorrectCheckDigit() {
     const checkDigit = A31F.createFromHexText(this.calculatedCheckDigit);
+    if (!this.correctCheckDigits?.hitTest(checkDigit)) {
+      this.resultInfomation = " ";
+      return;
+    }
+    const hitCorrect = this.correctCheckDigits?.pickUpCorrectDigitOf(checkDigit);
+    const message = `"${hitCorrect.originalMessage}"\n\n`
+      + `${hitCorrect.description}\n`
+      + `代表的なパスワード:${hitCorrect.typicalPassowrd.toString()}`;
+    this.resultInfomation = message;
   }
 
   private fixPasswordWhenInvalid():void  {
