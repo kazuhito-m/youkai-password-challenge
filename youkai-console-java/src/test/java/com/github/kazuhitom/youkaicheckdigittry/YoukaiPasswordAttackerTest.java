@@ -1,7 +1,9 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
-import com.github.kazuhitom.youkaicheckdigittry.state.A31F;
-import com.github.kazuhitom.youkaicheckdigittry.state.AttackCharacters;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.CheckDigitCalculator;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.YoukaiPasswordAttacker;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.A31F;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacters;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Disabled
 class YoukaiPasswordAttackerTest {
-    private final YoukaiPasswordAttacker sut = new YoukaiPasswordAttacker(true);
+    private final YoukaiPasswordAttacker sut = new YoukaiPasswordAttacker(new CheckDigitCalculator(), true);
 
     @Test
     public void パスワード_KID_を突き止める事が出来る() {

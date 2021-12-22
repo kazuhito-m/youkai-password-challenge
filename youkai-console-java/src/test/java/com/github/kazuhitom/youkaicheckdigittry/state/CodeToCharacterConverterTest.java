@@ -1,6 +1,6 @@
 package com.github.kazuhitom.youkaicheckdigittry.state;
 
-import com.github.kazuhitom.youkaicheckdigittry.converter.CodeToCharacterConverter;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.CodeToCharacterConverter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

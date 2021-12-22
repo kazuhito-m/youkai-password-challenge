@@ -1,6 +1,6 @@
 package com.github.kazuhitom.youkaicheckdigittry;
 
-import com.github.kazuhitom.youkaicheckdigittry.converter.TextToCodeConverter;
+import com.github.kazuhitom.youkaicheckdigittry.checkdigit.converter.TextToCodeConverter;
 
 import java.util.Scanner;
 
