@@ -81,6 +81,13 @@ export default class SingleInputCheckDigitTry extends Vue {
   @Inject()
   private readonly correctCheckDigits?: CorrectCheckDigits;
 
+  private mounted(): void {
+    if (this.youkaiPassword.trim().length > 0) return;
+    const rondumCheckDigit = this.correctCheckDigits?.randomPickUpCorrectCheckDigit();
+    if (!rondumCheckDigit) return;
+    this.youkaiPassword = rondumCheckDigit.typicalPassowrd.toString();
+  }
+
   @Watch('youkaiPassword')
   private onChangeYoukaiPassword(): void {
     this.fixPasswordWhenInvalid();

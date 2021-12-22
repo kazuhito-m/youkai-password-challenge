@@ -60,6 +60,12 @@ export default class CorrectCheckDigits {
         return CorrectCheckDigit.empty();
     }
 
+    public randomPickUpCorrectCheckDigit(): CorrectCheckDigit {
+        const corrects = CorrectCheckDigits.CORRECTS;
+        const randomIndex = Math.round(Math.random() * corrects.length);
+        return corrects[randomIndex];
+    }
+
     private static of(
         typicalPassowrdText: string,
         originalMessage: string,
