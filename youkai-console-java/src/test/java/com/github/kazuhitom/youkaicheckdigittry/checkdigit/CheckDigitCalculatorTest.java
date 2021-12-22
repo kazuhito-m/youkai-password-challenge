@@ -5,7 +5,9 @@ import com.github.kazuhitom.youkaicheckdigittry.checkdigit.state.AttackCharacter
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CheckDigitCalculatorTest {
@@ -61,12 +63,13 @@ class CheckDigitCalculatorTest {
     @Test
     public void 元のYoukaiTest02exeのロジックとリファクタリング後のチェックディジット算出処理が同一か() {
         final var RECORD_COUNT = 1000; // とりあえず、これくらい？(テストの遅さの調整)
-        for (int j = 0; j < RECORD_COUNT; j++) {
-            // 3文字から14文字
-            for (int i = 3; i <= 14; i++) {
-                var password = YoukaiTest02_01.generateRandom54CharPassword(i);
-                assertEquals(calcOriginalLogic(password), calc(password));
-            }
+        var randomPasswords = IntStream.range(0, RECORD_COUNT)
+                .flatMap(i -> IntStream.rangeClosed(3, 14)) // データの文字数のバリエーション
+                .mapToObj(YoukaiTest02_01::generateRandom54CharPassword)
+                .map(password -> (String) password)
+                .collect(toList());
+        for (String password : randomPasswords) {
+            assertEquals(calcOriginalLogic(password), calc(password));
         }
     }
 
@@ -77,8 +80,8 @@ class CheckDigitCalculatorTest {
 
     @Test
     public void 元のYoukaiTest02exeのロジックから生み出したテストファイルでチェックディジット算出値が同一か() throws IOException {
-        for (var testData : TestData.load()) {
-            assertEquals(testData.expect, calc(testData.param));
+        for (var data : TestData.load()) {
+            assertEquals(data.expect, calc(data.param));
         }
     }
 }
