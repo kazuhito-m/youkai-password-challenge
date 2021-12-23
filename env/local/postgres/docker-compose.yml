@@ -1,0 +1,8 @@
+postgres-youkai:
+  build: "."
+  ports:
+    - "5432:5432"
+  container_name: "postgres-youkai"
+  environment:
+    - POSTGRES_PASSWORD=postgres # 指定しないとコケる(ように最近なった)
+  restart: "unless-stopped"

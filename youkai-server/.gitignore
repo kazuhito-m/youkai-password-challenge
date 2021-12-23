@@ -1,9 +1,9 @@
+HELP.md
 .gradle
-/build/
-/bin/
+build/
 !gradle/wrapper/gradle-wrapper.jar
-/*.log
-*.swp
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 ### STS ###
 .apt_generated
@@ -13,14 +13,18 @@
 .settings
 .springBeans
 .sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
-/out/
-/src/main/generated/
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
 ### NetBeans ###
 /nbproject/private/
@@ -29,11 +33,5 @@
 /nbdist/
 /.nb-gradle/
 
-### Node/NPM ###
-npm-debug.log*
-node_modules/
-.npm
-dist
-
-### this appliation custom settings. ###
-/youkai-server/src/main/resources/public
+### VS Code ###
+.vscode/

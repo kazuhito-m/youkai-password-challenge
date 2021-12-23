@@ -1,0 +1,39 @@
+plugins {
+  id "com.github.node-gradle.node" version "2.2.4"
+}
+
+group 'com.github.kazuhitom.youkai'
+
+repositories {
+  mavenCentral()
+}
+
+// node & npm settings for Nuxt.js build.
+node {
+  version = '16.13.1'
+  npmVersion = '8.1.0'
+  download = true
+}
+
+npm_run_build.dependsOn npm_install
+
+task build(type: Copy) {
+  var srcDir = "${projectDir}/dist"
+  var destDir = "${project.rootDir}/youkai-server/src/main/resources/public"
+
+  delete destDir
+
+  from srcDir
+  into destDir
+
+  doLast {
+    println "Nuxt.jsビルド後の結果フォルダ ${srcDir} を、\nserverの静的コンテンツフォルダ ${destDir} に移動します。";
+  }
+}
+build.dependsOn npm_run_generate
+
+task clean {}
+clean.dependsOn npm_run_clean
+
+task test {}
+test.dependsOn npm_test
