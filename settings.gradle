@@ -1,4 +1,5 @@
 rootProject.name = 'youkai-checkdigit-try'
 
+include 'youkai-server'
 include 'youkai-console-java'
 
