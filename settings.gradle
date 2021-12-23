@@ -1,5 +1,5 @@
-rootProject.name = 'youkai-checkdigit-try'
+rootProject.name = 'youkai-server'
 
-include 'youkai-server'
+include 'youkai-front', 'youkai-server'
 include 'youkai-console-java'
 

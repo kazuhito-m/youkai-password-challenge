@@ -36,5 +36,4 @@ node_modules/
 dist
 
 ### this appliation custom settings. ###
-/env/local/container/work/
-/src/main/resources/static/doc/specification/v1/*
+/youkai-server/src/main/resources/public
