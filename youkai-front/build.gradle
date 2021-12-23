@@ -17,7 +17,19 @@ node {
 
 npm_run_build.dependsOn npm_install
 
-task build {}
+task build(type: Copy) {
+  var srcDir = "${projectDir}/dist"
+  var destDir = "${project.rootDir}/youkai-server/src/main/resources/public"
+
+  delete destDir
+
+  from srcDir
+  into destDir
+
+  doLast {
+    println "Nuxt.jsビルド後の結果フォルダ ${srcDir} を、\nserverの静的コンテンツフォルダ ${destDir} に移動します。";
+  }
+}
 build.dependsOn npm_run_generate
 
 task clean {}
