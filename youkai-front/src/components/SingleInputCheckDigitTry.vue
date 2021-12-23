@@ -1,7 +1,7 @@
 <template lang="html">
   <v-card>
     <v-card-title class="headline">
-      単一チェック・ディジット確認
+      パスワード -> チェック・ディジット確認
     </v-card-title>
     <v-card-text>
       パスワード文字列が「ゲーム中で有効なものか」を確認できます。
@@ -66,8 +66,6 @@ import A31F from '@/domain/youkai/checkdigit/state/A31F'
 
 @Component
 export default class SingleInputCheckDigitTry extends Vue {
-  protected loading: boolean = false;
-
   private youkaiPassword = '';
   private calculatedCheckDigit = ' ';
   private resultInfomation = ' ';
