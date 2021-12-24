@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ci:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        jdk: [ 17 ]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup JDK ${{ matrix.jdk }}
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: ${{ matrix.jdk }}
+
+      - name: Cache gradle
+        uses: actions/cache@v2.1.4
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Cache node_modules
+        uses: actions/cache@v2.1.4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Run tests on front
+        run: ./gradlew clean :youkai-front:test
+
+      - name: Run tests on server
+        run: ./gradlew clean :youkai-server:test
+
+      - name: Run tests on front
+        run: ./gradlew clean :youkai-console:test
