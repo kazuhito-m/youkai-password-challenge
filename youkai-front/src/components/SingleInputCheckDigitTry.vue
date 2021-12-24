@@ -99,7 +99,6 @@ export default class SingleInputCheckDigitTry extends Vue {
   }
 
   private calculateCheckDigit(): void {
-    const validated = this.validateYoukaiPassword();
     if (this.validateYoukaiPassword() !== true) {
       this.calculatedCheckDigit = " ";
       return;  

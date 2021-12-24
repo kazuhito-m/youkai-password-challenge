@@ -43,8 +43,12 @@ export default class CodeToCharacterConverter {
     }
 
     public isInvalidChar(oneChar: string): boolean {
-        if (oneChar === CodeToCharacterConverter.INVALID_CHAR) return true;
+        if (CodeToCharacterConverter.equalInvalidChar(oneChar)) return true;
         return !this.charTable.includes(oneChar);
+    }
+
+    public static equalInvalidChar(oneChar: string): boolean {
+        return oneChar === CodeToCharacterConverter.INVALID_CHAR;
     }
 
     public isInvalidPassword(text: string): boolean {
@@ -77,13 +81,13 @@ export default class CodeToCharacterConverter {
 
     private createIncrementNextCodeTable(codeToChar: string[]): number[] {
         const firstValidCharCode = [...Array(codeToChar.length).keys()]
-            .filter(i => codeToChar[i] != CodeToCharacterConverter.INVALID_CHAR)[0];
+            .filter(i => !CodeToCharacterConverter.equalInvalidChar(codeToChar[i]))[0];
 
         const result = Array(codeToChar.length);
         let currentIncrementCode = firstValidCharCode;
         for (let i = codeToChar.length - 1; i >= 0; i--) {
             result[i] = currentIncrementCode;
-            if (codeToChar[i] != CodeToCharacterConverter.INVALID_CHAR) currentIncrementCode = i;
+            if (!CodeToCharacterConverter.equalInvalidChar(codeToChar[i])) currentIncrementCode = i;
         }
 
         return result;

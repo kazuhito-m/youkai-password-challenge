@@ -100,7 +100,7 @@ export default class A31F {
         this.a31FB = A03;
 
         // 演算結果がゼロの時;
-        if (stackA06 == 0) return;
+        if (stackA06 === 0) return;
 
         this.calc31FB(C10, stackA06); // ローテ終わるまでループ
     }

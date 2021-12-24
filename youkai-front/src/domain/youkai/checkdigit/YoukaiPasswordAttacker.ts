@@ -67,17 +67,15 @@ export default class YoukaiPasswordAttacker {
     }
 
     private printf(format: string, ...args: number[]): void {
-        // TOOD console.log()
-        // System.out.printf(format, args);
+        console.log(format, args);
     }
 
     private printCount(checkedCount: number): void {
-        // printf("%,.0f 回目\n", checkedCount);
+        this.printf("%,.0f 回目\n", checkedCount);
     }
 
     private printTime(): void {
-        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        // printf(LocalDateTime.now().format(formatter) + " - ");
+        this.printf(new Date() + " - ");
     }
 
     private dumpContinueCommand(password: AttackCharacters, attackTargetCheckDigit: A31F, checkedCount: number): void {
