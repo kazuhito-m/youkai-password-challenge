@@ -13,7 +13,7 @@
 version=${1}
 
 general_setting_path='./build.gradle'
-sed -e "s/version .*/version '${version}'" ${general_setting_path} > ${general_setting_path}.tmp
+sed "s/version .*/version '${version}'" ${general_setting_path} > ${general_setting_path}.tmp
 mv ${general_setting_path}.tmp ${general_setting_path}
 
 front_setting_path='./youkai-front/package.json'
