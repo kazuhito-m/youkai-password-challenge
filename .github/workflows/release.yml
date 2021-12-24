@@ -41,8 +41,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Rewrite version - ${{ env.GITHUB_REF_NAME }}
-        run: .github/workflows/scripts/release/rewrite_version.sh ${{ env.GITHUB_REF_NAME }}
+      - name: Get github tag name
+        id: get_tag_name
+        run: ::set-output name=TAG_NAME::${${{ env.GITHUB_REF }}#refs/tags/}
+
+      - name: Rewrite version - ${TAG_NAME}
+        run: .github/workflows/scripts/release/rewrite_version.sh ${TAG_NAME}
+        env:
+          TAG_NAME: ${{ steps.get_tag_name.outputs.TAG_NAME }}
 
       - name: Build binary
         run: ./gradlew clean build
