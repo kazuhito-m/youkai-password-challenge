@@ -44,7 +44,7 @@ export default class CodeToCharacterConverter {
 
     public isInvalidChar(oneChar: string): boolean {
         if (oneChar === CodeToCharacterConverter.INVALID_CHAR) return true;
-        return this.charTable.indexOf(oneChar) < 0;
+        return !this.charTable.includes(oneChar);
     }
 
     public isInvalidPassword(text: string): boolean {

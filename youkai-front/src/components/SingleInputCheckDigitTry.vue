@@ -14,12 +14,12 @@
               v-model="youkaiPassword"
               :counter="14"
               :rules="[validateYoukaiPassword]"
-              @keypress="onKeyUp"
               label="妖怪的なパスワード"
               required
               maxlength="14"
               clearable
               class="input-yokai-password"
+              @keypress="onKeyUp"
             ></v-text-field>
           </v-col>
         </v-row>

@@ -1,7 +1,7 @@
+import CorrectCheckDigit from "./CorrectCheckDigit";
 import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
 import A31F from "@/domain/youkai/checkdigit/state/A31F";
 import AttackCharacters from "@/domain/youkai/checkdigit/state/AttackCharacters";
-import CorrectCheckDigit from "./CorrectCheckDigit";
 
 export default class CorrectCheckDigits {
     constructor(
