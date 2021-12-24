@@ -43,7 +43,7 @@ jobs:
 
       - name: Get github tag name
         id: get_tag_name
-        run: ::set-output name=TAG_NAME::${${{ env.GITHUB_REF }}#refs/tags/}
+        run: ::set-output name=TAG_NAME::${GITHUB_REF#refs/tags/}
 
       - name: Rewrite version - ${TAG_NAME}
         run: .github/workflows/scripts/release/rewrite_version.sh ${TAG_NAME}
