@@ -3,13 +3,7 @@ plugins {
     id 'java'
 }
 
-group 'com.github.kazuhitom.youkai'
-version '1.0.0'
-sourceCompatibility = '17'
-
-repositories {
-    mavenCentral()
-}
+sourceCompatibility = versions.sourceCompatibility
 
 mainClassName = "com.github.kazuhitom.youkaicheckdigittry.YoukaiTest03"
 

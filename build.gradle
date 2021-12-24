@@ -1,0 +1,14 @@
+allprojects {
+    group 'com.github.kazuhitom.youkai'
+    version '0.0.1-SNAPSHOT'
+
+    buildscript {
+        ext.versions = [
+                'sourceCompatibility': JavaVersion.VERSION_17
+        ]
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
