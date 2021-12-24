@@ -1,7 +1,7 @@
 <template lang="html">
   <v-card>
     <v-card-title class="headline">
-      パスワード -> チェック・ディジット確認
+      パスワード「当たり」確認
     </v-card-title>
     <v-card-text>
       パスワード文字列が「ゲーム中で有効なものか」を確認できます。

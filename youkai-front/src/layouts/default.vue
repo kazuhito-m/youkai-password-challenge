@@ -72,7 +72,7 @@ export default class extends Vue {
   private readonly items = [
     {
       icon: 'mdi-apps',
-      title: 'Welcome',
+      title: 'パスワード確認',
       to: '/',
     }
   ];
