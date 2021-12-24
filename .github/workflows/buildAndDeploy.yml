@@ -1,8 +1,9 @@
-name: build
+name: release
 
 on:
   push:
     tags:
+      - '*.*.*'
 
 jobs:
   ci:
