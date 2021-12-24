@@ -41,7 +41,7 @@ export default class A31F {
         let C5;
         if (this.a31F4 >= 0xE5) {
             C5 = 1;
-        } else C5 = 0; //C5の値でキャリーを生成
+        } else C5 = 0; // C5の値でキャリーを生成
         let A06 = targetCharCode + this.a31F7 + C5;
 
         let C6;
@@ -100,7 +100,7 @@ export default class A31F {
         this.a31FB = A03;
 
         // 演算結果がゼロの時;
-        if (stackA06 == 0) return;
+        if (stackA06 === 0) return;
 
         this.calc31FB(C10, stackA06); // ローテ終わるまでループ
     }

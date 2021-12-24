@@ -24,7 +24,9 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-right="true" fixed app>
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title>
+        Youkai Password Challenge
+      </v-toolbar-title>
       <v-spacer />
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>
@@ -34,8 +36,7 @@
       </v-container>
     </v-main>
    
-    <v-footer  app>
-
+    <v-footer app>
       <span>
         &copy; {{ new Date().getFullYear() }}
       </span>
@@ -43,6 +44,11 @@
         <v-icon>mdi-twitter</v-icon>kazuhito_m
       </a>
       <v-spacer></v-spacer>
+      <a
+        class="no-efect-link"
+        target="_new"
+        href="https://github.com/kazuhito-m/youkai-password-challenge/releases"
+      >ver. {{ selfVersion }}</a>
     </v-footer>
 
   </v-app>
@@ -61,13 +67,12 @@ export default class extends Vue {
   right = true
   rightDrawer = true
 
-  title = 'Youkai CheckDigit Try'
   selfVersion = "";
 
   private readonly items = [
     {
       icon: 'mdi-apps',
-      title: 'Welcome',
+      title: 'パスワード確認',
       to: '/',
     }
   ];
@@ -86,7 +91,8 @@ export default class extends Vue {
   // this classs property & functions.
 
   public created() {
-
+    const head = this.$store?.app?.head as any;
+    this.selfVersion = head.selfVersion;
   }
 }
 </script>

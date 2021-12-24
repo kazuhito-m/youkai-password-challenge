@@ -36,4 +36,4 @@ task clean {}
 clean.dependsOn npm_run_clean
 
 task test {}
-test.dependsOn npm_test
+test.dependsOn npm_run_test

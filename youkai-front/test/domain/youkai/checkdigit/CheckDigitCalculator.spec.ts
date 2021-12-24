@@ -1,6 +1,6 @@
+import TestData from "./TestData";
 import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
 import AttackCharacters from "@/domain/youkai/checkdigit/state/AttackCharacters";
-import TestData from "./TestData";
 
 describe('CheckDigitCalculator', () => {
     const sut = new CheckDigitCalculator();

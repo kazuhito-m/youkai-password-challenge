@@ -62,7 +62,7 @@ export default class AttackCharacters {
 
     public equals(o: AttackCharacters): boolean {
         if (this === o) return true;
-        if (!(null)) return false;
+        if (o === null) return false;
         return this.charCodes.toString() === o.charCodes.toString();
     }
 

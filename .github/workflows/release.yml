@@ -1,0 +1,108 @@
+name: release
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-[a-zA-Z]+'
+
+jobs:
+  ci:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        jdk: [ 17 ]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup JDK ${{ matrix.jdk }}
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: ${{ matrix.jdk }}
+
+      - name: Cache gradle
+        uses: actions/cache@v2.1.4
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Cache node_modules
+        uses: actions/cache@v2.1.4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Get github tag name
+        id: get_tag_name
+        run: echo ::set-output name=TAG_NAME::${GITHUB_REF#refs/tags/}
+
+      - name: Rewrite version
+        run: .github/workflows/scripts/release/rewrite_version.sh ${TAG_NAME}
+        env:
+          TAG_NAME: ${{ steps.get_tag_name.outputs.TAG_NAME }}
+
+      - name: Build binary
+        run: ./gradlew clean build
+
+      - name: Get binary names
+        id: get_binary_names
+        run: |
+          echo ::set-output name=WEB_APP_JAR_PATH::$(ls ./youkai-server/build/libs/*.jar | grep -v 'plain')
+          echo ::set-output name=WEB_APP_JAR_NAME::$(basename $(ls ./youkai-server/build/libs/*.jar | grep -v 'plain'))
+          echo ::set-output name=CONSOLE_JAR_PATH::$(ls ./youkai-console/build/libs/*.jar)
+          echo ::set-output name=CONSOLE_JAR_NAME::$(basename $(ls ./youkai-console/build/libs/*.jar))
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.get_tag_name.outputs.TAG_NAME }}
+          release_name: Release ${{ steps.get_tag_name.outputs.TAG_NAME }}
+          body: ${{ github.event.pull_request.body }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset Web Application
+        id: upload-release-asset-web
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ steps.get_binary_names.outputs.WEB_APP_JAR_PATH }}
+          asset_name: ${{ steps.get_binary_names.outputs.WEB_APP_JAR_NAME }}
+          asset_content_type: application/zip
+
+      - name: Upload Release Asset Console Application
+        id: upload-release-asset-console
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ steps.get_binary_names.outputs.CONSOLE_JAR_PATH }}
+          asset_name: ${{ steps.get_binary_names.outputs.CONSOLE_JAR_NAME }}
+          asset_content_type: application/zip
+
+      - name: Notify Slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: CI結果 - Youkai Password Challenge
+          fields: repo,message,commit,author,action,eventName,workflow,pullRequest
+          mention: 'U0HKET970'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()

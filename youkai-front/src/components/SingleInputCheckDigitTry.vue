@@ -1,7 +1,7 @@
 <template lang="html">
   <v-card>
     <v-card-title class="headline">
-      パスワード -> チェック・ディジット確認
+      パスワード「当たり」確認
     </v-card-title>
     <v-card-text>
       パスワード文字列が「ゲーム中で有効なものか」を確認できます。
@@ -14,12 +14,12 @@
               v-model="youkaiPassword"
               :counter="14"
               :rules="[validateYoukaiPassword]"
-              @keypress="onKeyUp"
               label="妖怪的なパスワード"
               required
               maxlength="14"
               clearable
               class="input-yokai-password"
+              @keypress="onKeyUp"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -99,7 +99,6 @@ export default class SingleInputCheckDigitTry extends Vue {
   }
 
   private calculateCheckDigit(): void {
-    const validated = this.validateYoukaiPassword();
     if (this.validateYoukaiPassword() !== true) {
       this.calculatedCheckDigit = " ";
       return;  

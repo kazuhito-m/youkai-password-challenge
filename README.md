@@ -1,4 +1,4 @@
-Youkai Check Digit Try
+Youkai Password Challenge
 ==========================
 
 ## What's this ?
