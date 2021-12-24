@@ -40,11 +40,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Rewrite Version - ${{ env.GITHUB_REF_NAME }}
+      - name: Rewrite version - ${{ env.GITHUB_REF_NAME }}
         run: .github/workflows/scripts/release/rewrite_version.sh ${{ env.GITHUB_REF_NAME }}
 
       - name: Build binary
-        run ./grdlew clean build
+        run: ./gradlew clean build
 
       - name: Notify Slack
         uses: 8398a7/action-slack@v3
