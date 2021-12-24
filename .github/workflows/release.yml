@@ -41,7 +41,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: 日本語いけるか
-        run: echo ここに色々書きます。
+        run: pwd
 
       - name: Notify Slack
         uses: 8398a7/action-slack@v3
