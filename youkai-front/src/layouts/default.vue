@@ -43,6 +43,11 @@
         <v-icon>mdi-twitter</v-icon>kazuhito_m
       </a>
       <v-spacer></v-spacer>
+      <a
+        class="no-efect-link"
+        target="_new"
+        href="https://github.com/kazuhito-m/youkai-password-challenge/releases"
+      >ver. {{ selfVersion }}</a>
     </v-footer>
 
   </v-app>
@@ -86,7 +91,9 @@ export default class extends Vue {
   // this classs property & functions.
 
   public created() {
-
+    const head = this.$store?.app?.head as any;
+    this.title = head.title;
+    this.selfVersion = head.selfVersion;
   }
 }
 </script>
