@@ -12,7 +12,7 @@
 
 version=${1}
 
-trimmed=$(echo ${version} | | sed 's/^ *\| *$//')
+trimmed=$(echo ${version} | sed 's/^ *\| *$//')
 if [ -z "${trimmed}"]; then
   echo "引数のバージョンが空文字です。指定してください。"
   exit 1
