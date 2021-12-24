@@ -8,10 +8,11 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "clean": "rimraf ./dist ./coverage ./reports",
-    "lint:js": "eslint --ext \".ts,.js,.vue\" --ignore-path .gitignore .",
-    "lint": "npm run lint:js",
-    "test": "jest",
-    "ci": "jest && eslint --fix --ext \".ts,.js,.vue\" --ignore-path .gitignore .",
+    "lintjs": "eslint --ext \".ts,.js,.vue\" --ignore-path .gitignore .",
+    "lint": "npm run lintjs",
+    "lintfix": "eslint --fix --ext \".ts,.js,.vue\" --ignore-path .gitignore .",
+    "test": "npm run lintfix && jest",
+    "ci": "npm run test && npm run lint_fix",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
