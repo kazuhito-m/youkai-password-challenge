@@ -3,6 +3,8 @@ name: ci
 on:
   push:
   pull_request:
+  tags-ignore:
+    - *
 
 jobs:
   ci:
