@@ -1,5 +1,5 @@
 rootProject.name = 'youkai-password-challenge'
 
 include 'youkai-front', 'youkai-server'
-include 'youkai-console-java'
+include 'youkai-console'
 
