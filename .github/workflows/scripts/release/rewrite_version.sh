@@ -12,6 +12,13 @@
 
 version=${1}
 
+trimmed=$(echo ${version} | | sed 's/^ *\| *$//')
+if [ -z "${trimmed}"]; then
+  echo "引数のバージョンが空文字です。指定してください。"
+  exit 1
+fi
+version=${trimmed}
+
 general_setting_path='./build.gradle'
 sed "s/version .*/version '${version}'/g" ${general_setting_path} > ${general_setting_path}.tmp
 mv ${general_setting_path}.tmp ${general_setting_path}
