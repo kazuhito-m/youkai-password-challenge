@@ -17,5 +17,5 @@ sed -e "s/version .*/version '${version}'" ${general_setting_path} > ${general_s
 mv ${general_setting_path}.tmp ${general_setting_path}
 
 front_setting_path='./youkai-front/package.json'
-sed -e "s/version.*/version\": \"${version}\",/g" ${front_setting_path} > ${front_setting_path}.tmp
+sed "s/version.*/version\": \"${version}\",/g" ${front_setting_path} > ${front_setting_path}.tmp
 mv ${front_setting_path}.tmp ${front_setting_path}
