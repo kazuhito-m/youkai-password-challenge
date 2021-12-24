@@ -24,7 +24,9 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-right="true" fixed app>
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title>
+        Youkai Password Challenge
+      </v-toolbar-title>
       <v-spacer />
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>
@@ -34,8 +36,7 @@
       </v-container>
     </v-main>
    
-    <v-footer  app>
-
+    <v-footer app>
       <span>
         &copy; {{ new Date().getFullYear() }}
       </span>
@@ -66,7 +67,6 @@ export default class extends Vue {
   right = true
   rightDrawer = true
 
-  title = 'Youkai CheckDigit Try'
   selfVersion = "";
 
   private readonly items = [
@@ -92,7 +92,6 @@ export default class extends Vue {
 
   public created() {
     const head = this.$store?.app?.head as any;
-    this.title = head.title;
     this.selfVersion = head.selfVersion;
   }
 }
