@@ -12,7 +12,6 @@
     "lint": "npm run lintjs",
     "lintfix": "eslint --fix --ext \".ts,.js,.vue\" --ignore-path .gitignore .",
     "test": "npm run lintfix && jest",
-    "ci": "npm run test && npm run lint_fix",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
