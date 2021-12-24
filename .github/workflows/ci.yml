@@ -55,6 +55,7 @@ jobs:
           author_name: CI結果 - Youkai Password Challenge
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest
           if_mention: failure
+          mention: 'U0HKET970'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
