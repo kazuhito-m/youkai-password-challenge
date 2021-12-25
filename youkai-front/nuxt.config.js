@@ -50,6 +50,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/google-gtag',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -101,5 +102,9 @@ export default {
 
   router: {
     base: '/'
+  },
+
+  'google-gtag': {
+    id: 'G-1ZPK5FPXME',
   },
 }
