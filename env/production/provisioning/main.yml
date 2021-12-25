@@ -31,7 +31,7 @@
 
     - name: Let's Encrypt の更新スクリプトをcronのファイルをコピー
       copy:
-        src: scripts/renew_letsencrypt
+        src: nginx/scripts/renew_letsencrypt
         dest: /etc/cron.monthly/
         mode: 0755
 
