@@ -18,3 +18,19 @@
           - openjdk-17-jre-headless
           - nginx
           - postgresql-12
+          - cron
+          - certbot
+
+    - name: nginx の設定ファイルを生成
+      template:
+        src: ./nginx/resouces/proxy.conf
+        dest: /etc/nginx/conf.d/
+
+
+    - name: Let's Encrypt の更新スクリプトをcronのファイルをコピー
+      copy:
+        src: ./scripts/renew_letsencrypt
+        dest: /etc/cron.monthly/
+        mode: 0755
+
+
