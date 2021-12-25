@@ -39,6 +39,11 @@
         dest: /etc/cron.monthly/
         mode: 0755
 
+    - name: youkai-server のuserのgroupを作成
+      group:
+        name: youkai
+        state: present
+
     - name: youkai-server のuserを作成
       user:
         name: youkai
