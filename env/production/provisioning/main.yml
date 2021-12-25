@@ -27,9 +27,8 @@
 
     - name: nginx の設定ファイルを生成
       template:
-        src: nginx/resources/proxy.conf
-        dest: /etc/nginx/conf.d/
-
+        src: nginx/resources/domain_name.conf
+        dest: /etc/nginx/sites-available/{{ inventory_hostname }}.conf
 
     - name: Let's Encrypt の更新スクリプトをcronのファイルをコピー
       copy:
