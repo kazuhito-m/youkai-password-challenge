@@ -39,4 +39,31 @@
         dest: /etc/cron.monthly/
         mode: 0755
 
+    - name: youkai-server のuserを作成
+      user:
+        name: youkai
+        group: youkai
+        state: present
+        createhome: yes
+
+    - name: youkai-server のディレクトリ作成
+      file:
+        path: /var/opt/youkai-server
+        state: directory
+        owner: youkai
+        group: youkai
+        mode: 0755
+
+    - name: youkai-server の「初期Jar」をセット
+      get_url:
+        url: https://github.com/kazuhito-m/youkai-password-challenge/releases/download/0.0.1/youkai-server-0.0.1.jar
+        dest: /var/opt/youkai-server/youkai-server.jar
+
+    - name: youkai-server のsystemdの設定ファイルをコピー
+      copy:
+        src: app/resources/youkai-server.service
+        dest: /usr/lib/systemd/system/
+        owner: root
+        group: root
+        mode: 0644
 

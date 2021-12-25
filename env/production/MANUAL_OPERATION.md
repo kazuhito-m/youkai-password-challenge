@@ -38,17 +38,10 @@ sudo systemctl restart sshd
 
 sshしたい場合「SSH->ブラウザウィンドウでカスタムポートを開く」でポートを指定し接続するように。
 
-### ライブラリ更新
-
-```bash
-sudo apt-get update
-sudo apt-get dist-upgrade
-sudo apt-get autoremove
-```
-
 ## ansible導入
 
 ```bash
+sudo apt-get update
 sudo apt-get install ansible git
 ```
 
