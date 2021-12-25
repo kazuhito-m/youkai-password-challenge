@@ -88,7 +88,7 @@
 
     - name: youkai-server の「初期Jar」をDL&セット
       shell: /var/opt/youkai-server/deploy.sh '0.0.1'
-      when: deployedjar.exists == False
+      when: deployedjar.stat.exists == False
 
     - name: youkai-server のsystemdのスタート
       service:
