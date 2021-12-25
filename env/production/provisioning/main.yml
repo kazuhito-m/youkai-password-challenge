@@ -4,7 +4,10 @@
   become: yes
 
   tasks:
-    - name: apt最新化
+    - name: apt情報最新化
       apt:
         update_cache: yes
-        upgrade: yes
+
+    - name: aptパッケージ最新化
+      apt:
+        upgrade: dist
