@@ -20,6 +20,8 @@
           - postgresql-12
           - cron
           - certbot
+          - python3-certbot-nginx
+
     - name: cron を有効に
       shell: update-rc.d cron enable
 
