@@ -11,3 +11,10 @@
     - name: aptパッケージ最新化
       apt:
         upgrade: dist
+
+    - name: 必要なパッケージを予め入れる
+      apt:
+        name:
+          - openjdk-17-jre-headless
+          - nginx
+          - postgresql-12
