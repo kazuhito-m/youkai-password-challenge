@@ -65,11 +65,6 @@
         group: youkai
         mode: 0755
 
-    - name: youkai-server の「初期Jar」をセット
-      get_url:
-        url: https://github.com/kazuhito-m/youkai-password-challenge/releases/download/0.0.1/youkai-server-0.0.1.jar
-        dest: /var/opt/youkai-server/youkai-server.jar
-
     - name: youkai-server のsystemdの設定ファイルをコピー
       copy:
         src: app/resources/youkai-server.service
