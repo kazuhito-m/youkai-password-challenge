@@ -23,7 +23,7 @@
 
     - name: nginx の設定ファイルを生成
       template:
-        src: ./nginx/resouces/proxy.conf
+        src: nginx/resources/proxy.conf
         dest: /etc/nginx/conf.d/
 
 
