@@ -72,3 +72,7 @@
         group: root
         mode: 0644
 
+    - name: youkai-server のsystemdのスタート
+      service:
+        name: youkai-server
+        state: started
