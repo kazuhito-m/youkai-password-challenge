@@ -1,0 +1,96 @@
+# coding:utf-8
+
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: apt情報最新化
+      apt:
+        update_cache: yes
+
+    - name: aptパッケージ最新化
+      apt:
+        upgrade: dist
+
+    - name: 必要なパッケージを予め入れる
+      apt:
+        name:
+          - openjdk-17-jre-headless
+          - nginx
+          - postgresql-12
+          - cron
+          - certbot
+          - python3-certbot-nginx
+
+    - name: cron を有効に
+      shell: update-rc.d cron enable
+
+    - name: nginx の設定ファイルを生成
+      template:
+        src: nginx/resources/domain_name.conf
+        dest: /etc/nginx/sites-available/{{ inventory_hostname }}.conf
+
+    - name: nginx の設定ファイルのシンボリックリンクを作成
+      file:
+        src: /etc/nginx/sites-available/{{ inventory_hostname }}.conf
+        dest: /etc/nginx/sites-enabled/{{ inventory_hostname }}.conf
+        state: link
+
+    #    - name: Let's Encrypt で「nginxの設定更新」と「証明書取得」
+    #      shell: grep 'ssl_certificate' /etc/nginx/sites-enabled/{{ inventory_hostname }}.conf || certbot --nginx -d {{ inventory_hostname }}
+
+    - name: Let's Encrypt の更新スクリプトをcronのファイルをコピー
+      copy:
+        src: nginx/scripts/renew_letsencrypt
+        dest: /etc/cron.monthly/
+        mode: 0755
+
+    - name: youkai-server のuserのgroupを作成
+      group:
+        name: youkai
+        state: present
+
+    - name: youkai-server のuserを作成
+      user:
+        name: youkai
+        group: youkai
+        state: present
+        createhome: yes
+
+    - name: youkai-server のディレクトリ作成
+      file:
+        path: /var/opt/youkai-server
+        state: directory
+        owner: youkai
+        group: youkai
+        mode: 0755
+
+    - name: youkai-server のsystemdの設定ファイルをコピー
+      copy:
+        src: app/resources/youkai-server.service
+        dest: /usr/lib/systemd/system/
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: youkai-server のデプロイスクリプトを配置
+      copy:
+        src: app/scripts/deploy.sh
+        dest: /var/opt/youkai-server/deploy.sh
+        owner: youkai
+        group: youkai
+        mode: 0755
+
+    - name: デプロイ用のJarが在るか否かを観測
+      stat:
+        path: /var/opt/youkai-server/youkai-server.jar
+      register: deployedjar
+
+    - name: youkai-server の「初期Jar」をDL&セット
+      shell: /var/opt/youkai-server/deploy.sh '0.0.1'
+      when: deployedjar.stat.exists == False
+
+    - name: youkai-server のsystemdのスタート
+      service:
+        name: youkai-server
+        state: started

@@ -1,0 +1,14 @@
+[Unit]
+Description = youkai password challenge server
+
+[Service]
+ExecStart = java -jar /var/opt/youkai-server/youkai-server.jar
+Restart = always
+Type = simple
+User=youkai
+Group=youkai
+LimitNOFILE=1006500
+LimitCore=infinity
+
+[Install]
+WantedBy = multi-user.target

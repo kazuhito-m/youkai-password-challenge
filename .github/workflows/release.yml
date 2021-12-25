@@ -95,6 +95,19 @@ jobs:
           asset_name: ${{ steps.get_binary_names.outputs.CONSOLE_JAR_NAME }}
           asset_content_type: application/zip
 
+      - name: Deploy
+        id: deploy
+        run: |
+          echo "${SSH_KEY}" > ./keyfile
+          chmod 400 ./keyfile
+          ssh -oStrictHostKeyChecking=no -p ${SSH_PORT} -i ./keyfile ${SSH_USER_AND_HOST} /var/opt/youkai-server/deploy.sh ${TAG_NAME}
+          rm ./keyfile
+        env:
+          TAG_NAME: ${{ steps.get_tag_name.outputs.TAG_NAME }}
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SSH_PORT: ${{ secrets.DEPLOY_SSH_PORT }}
+          SSH_USER_AND_HOST: ${{ secrets.DEPLOY_SSH_USER_AND_HOST }}
+
       - name: Notify Slack
         uses: 8398a7/action-slack@v3
         with:
