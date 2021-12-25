@@ -24,7 +24,7 @@ jobs:
         run: echo "${{ secrets.DEPLOY_SSH_KEY }}" > ./keyfile
 
       - name: ssh test
-        run: ssh -p ${{ secrets.DEPLOY_SSH_PORT }} -i ./keyfile ${{ secrets.DEPLOY_SSH_USER_AND_HOST }} /var/opt/youkai-server/deploy.sh
+        run: ssh -oStrictHostKeyChecking=no -p ${{ secrets.DEPLOY_SSH_PORT }} -i ./keyfile ${{ secrets.DEPLOY_SSH_USER_AND_HOST }} /var/opt/youkai-server/deploy.sh
 
       - name: delete file
         run: rm ./keyfile
