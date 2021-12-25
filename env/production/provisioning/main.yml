@@ -20,6 +20,8 @@
           - postgresql-12
           - cron
           - certbot
+    - name: cron を有効に
+      shell: update-rc.d cron enable
 
     - name: nginx の設定ファイルを生成
       template:
@@ -29,7 +31,7 @@
 
     - name: Let's Encrypt の更新スクリプトをcronのファイルをコピー
       copy:
-        src: ./scripts/renew_letsencrypt
+        src: scripts/renew_letsencrypt
         dest: /etc/cron.monthly/
         mode: 0755
 
