@@ -86,7 +86,7 @@
         path: /var/opt/youkai-server/youkai-server.jar
       register: deployedjar
 
-    - name: youkai-server の「初期Jar」をセット
+    - name: youkai-server の「初期Jar」をDL&セット
       shell: /var/opt/youkai-server/deploy.sh '0.0.1'
       when: stat.deployedjar.exists == False
 
