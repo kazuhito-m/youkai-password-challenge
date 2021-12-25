@@ -87,7 +87,7 @@
         mode: 0755
 
     - name: デプロイ用のJarが在るか否かを観測
-    - stat:
+      stat:
         path: /var/opt/youkai-server/youkai-server.jar
       register: deployedjar
 
