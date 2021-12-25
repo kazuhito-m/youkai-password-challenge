@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: make kdy file
-        run: echo "${{ secrets.DEPLOY_SSH_KEY }}" > ./keyfile
+        run: echo "${{ secrets.DEPLOY_SSH_KEY }}" > ./keyfile && chmod 400 ./keyfile
 
       - name: ssh test
         run: ssh -oStrictHostKeyChecking=no -p ${{ secrets.DEPLOY_SSH_PORT }} -i ./keyfile ${{ secrets.DEPLOY_SSH_USER_AND_HOST }} /var/opt/youkai-server/deploy.sh
