@@ -36,8 +36,8 @@
         dest: /etc/nginx/sites-enabled/{{ inventory_hostname }}.conf
         state: link
 
-    - name: Let's Encrypt で「nginxの設定更新」と「証明書取得」
-      shell: grep 'ssl_certificate' /etc/nginx/sites-enabled/{{ inventory_hostname }}.conf || certbot --nginx -d {{ inventory_hostname }}
+    #    - name: Let's Encrypt で「nginxの設定更新」と「証明書取得」
+    #      shell: grep 'ssl_certificate' /etc/nginx/sites-enabled/{{ inventory_hostname }}.conf || certbot --nginx -d {{ inventory_hostname }}
 
     - name: Let's Encrypt の更新スクリプトをcronのファイルをコピー
       copy:

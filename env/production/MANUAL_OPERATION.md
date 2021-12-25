@@ -53,6 +53,15 @@ cd ./youkai*/env/production/provisioning
 ansible-playbook -v -i hosts -c local main.yml
 ```
 
+## 証明書発行
+
+一度目だけは、手動で行う。
+
+```bash
+sudo certbot --nginx -d ${host_name}
+sudo systemctl restart nginx
+```
+
 ## 作業メモ
 
 ```bash
