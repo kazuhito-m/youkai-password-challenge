@@ -22,6 +22,6 @@ jobs:
 
       - name: ssh test
         run: |
-          echo ${{ secrets.DEPLOY_SSH_KEY }} > ./keyfile
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ./keyfile
           ssh -p ${{ secrets.DEPLOY_SSH_PORT }} -i ./keyfile ${{ secrets.DEPLOY_SSH_USER_AND_HOST }} /var/opt/youkai-server/deploy.sh
           rm ./keyfile
