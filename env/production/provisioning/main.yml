@@ -4,5 +4,7 @@
   become: yes
 
   tasks:
-    - name: できるかテスト
-      shell: 'cat /etc/shadow'
+    - name: apt最新化
+      apt:
+        update_cache: yes
+        upgrade: yes

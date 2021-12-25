@@ -57,7 +57,7 @@ sudo apt-get install ansible git
 ```bash
 git clone https://github.com/kazuhito-m/youkai-password-challenge.git
 cd ./youkai*/env/production/provisioning
-ansible-playbook -i hosts -c local main.yml
+ansible-playbook -v -i hosts -c local main.yml
 ```
 
 ## 作業メモ
