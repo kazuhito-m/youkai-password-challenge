@@ -31,7 +31,7 @@
         dest: /etc/nginx/sites-available/{{ inventory_hostname }}.conf
 
     - name: nginx の設定ファイルのシンボリックリンクを作成
-      template:
+      copy:
         src: /etc/nginx/sites-available/{{ inventory_hostname }}.conf
         dest: /etc/nginx/sites-enabled/{{ inventory_hostname }}.conf
         state: link
