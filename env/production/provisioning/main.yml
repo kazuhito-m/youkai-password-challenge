@@ -30,8 +30,14 @@
         src: nginx/resources/domain_name.conf
         dest: /etc/nginx/sites-available/{{ inventory_hostname }}.conf
 
-    #    - name: Let's Encrypt で「nginxの設定更新」と「証明書取得」
-    #      shell: certbot --nginx -d {{ inventory_hostname }}
+    - name: nginx の設定ファイルのシンボリックリンクを作成
+      template:
+        src: /etc/nginx/sites-available/{{ inventory_hostname }}.conf
+        dest: /etc/nginx/sites-enabled/{{ inventory_hostname }}.conf
+        state: link
+
+    - name: Let's Encrypt で「nginxの設定更新」と「証明書取得」
+      shell: grep 'ssl_certificate' /etc/nginx/sites-enabled/{{ inventory_hostname }}.conf || certbot --nginx -d {{ inventory_hostname }}
 
     - name: Let's Encrypt の更新スクリプトをcronのファイルをコピー
       copy:
@@ -71,6 +77,23 @@
         owner: root
         group: root
         mode: 0644
+
+    - name: youkai-server のデプロイスクリプトを配置
+      copy:
+        src: app/scripts/deploy.sh
+        dest: /var/opt/youkai-server/deploy.sh
+        owner: youkai
+        group: youkai
+        mode: 0755
+
+    - name: デプロイ用のJarが在るか否かを観測
+    - stat:
+        path: /var/opt/youkai-server/youkai-server.jar
+      register: deployedjar
+
+    - name: youkai-server の「初期Jar」をセット
+      shell: /var/opt/youkai-server/deploy.sh '0.0.1'
+      when: stat.deployedjar.exists == False
 
     - name: youkai-server のsystemdのスタート
       service:
