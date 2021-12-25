@@ -30,6 +30,9 @@
         src: nginx/resources/domain_name.conf
         dest: /etc/nginx/sites-available/{{ inventory_hostname }}.conf
 
+    #    - name: Let's Encrypt で「nginxの設定更新」と「証明書取得」
+    #      shell: certbot --nginx -d {{ inventory_hostname }}
+
     - name: Let's Encrypt の更新スクリプトをcronのファイルをコピー
       copy:
         src: nginx/scripts/renew_letsencrypt
