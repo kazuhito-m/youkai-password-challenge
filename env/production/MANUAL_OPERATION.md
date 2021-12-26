@@ -8,6 +8,8 @@ GCPインスタンスでこのアプリケーションを起こす時の、プ�
 
 - https://sava.cloud/gce-always-free/
 - https://qiita.com/riku-shiru/items/a870edd9dc0b132e092c
+- https://www.shotoro.com/entry/2019/12/05/085642#Spring%E3%82%92Google-Compute-Engine%E3%81%A7%E5%8B%95%E3%81%8B%E3%81%99
+-
 
 ## GCPでファイアウォールルールを定義し
 
