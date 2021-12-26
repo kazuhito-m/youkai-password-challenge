@@ -49,12 +49,20 @@
         <v-row >
           <v-col cols="12" sm="12" md="12">
             <v-card-actions>
-              ↓
               <v-btn
                 text
                 color="success"
                 class="mr-4"
-                block
+              >
+                  開始にランダム値をセット
+              </v-btn>
+              <v-spacer></v-spacer>
+              ↓
+              <v-spacer></v-spacer>
+              <v-btn
+                text
+                color="success"
+                class="mr-4"
               >
                   総当りチャレンジを開始
               </v-btn>
