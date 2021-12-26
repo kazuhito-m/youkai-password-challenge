@@ -31,6 +31,7 @@
         Youkai Password Challenge
       </v-toolbar-title>
       <v-spacer />
+      <TweetButton />
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>
     <v-main>
@@ -59,11 +60,17 @@
 
 <script lang="ts">
 import { Component, Vue, Provide } from 'nuxt-property-decorator'
+import TweetButton from '@/components/sosial/TweetButton.vue';
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
 
-@Component({})
+@Component({
+  components: {
+    TweetButton,
+  },
+})
+
 export default class extends Vue {
   drawer = false
 
