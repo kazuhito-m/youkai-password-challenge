@@ -22,6 +22,6 @@ import PasswordChallengeProgress from '@/components/passwordchallenge/PasswordCh
     PasswordChallengeProgress,
   },
 })
-export default class Index extends Vue {
+export default class PasswordChallenge extends Vue {
 }
 </script>
