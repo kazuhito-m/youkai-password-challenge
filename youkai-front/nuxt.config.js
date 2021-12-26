@@ -11,8 +11,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: 'Youkai Password Challenge',
+    title: 'Youkai Password Challenge' || '',
     selfVersion: process.env.npm_package_version,
     meta: [
       { charset: 'utf-8' },
@@ -50,6 +50,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/google-gtag',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -101,5 +102,9 @@ export default {
 
   router: {
     base: '/'
+  },
+
+  'google-gtag': {
+    id: 'G-1ZPK5FPXME',
   },
 }
