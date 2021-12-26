@@ -4,22 +4,22 @@
       関連情報・リンク
     </v-card-title>
     <v-card-text>
-      <Markdown />
+      <MarkdownText />
     </v-card-text>
   </v-card>
 </template>
 
 <script>
 import { Component, Vue } from 'vue-property-decorator'
-import Markdown from './Markdown.vue'
+import MarkdownText from './MarkdownText.vue'
 
 @Component({
   components: {
-    Markdown,
+    MarkdownText,
   },
 })
 export default class Infomation extends Vue {
-  markdown() {
+  MarkdownText() {
     return infomation
   }
 }
