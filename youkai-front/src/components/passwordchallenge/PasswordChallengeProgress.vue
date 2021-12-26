@@ -12,14 +12,9 @@
           <v-col cols="12" sm="5" md="5">
             <v-text-field
               v-model="fromPassword"
-              :counter="14"
-              :rules="[validateFromPassword]"
-              label="開始パスワード"
-              required
-              maxlength="14"
-              clearable
-              class="input-yokai-password"
-              @keypress="onKeyUp"
+              label="開始位置"
+              readonly
+              outlined
             >
             </v-text-field>
           </v-col>
@@ -28,15 +23,10 @@
           </v-col>
           <v-col cols="12" sm="5" md="5">
             <v-text-field
-              v-model="fromPassword"
-              :counter="14"
-              :rules="[validateFromPassword]"
-              label="終了パスワード"
-              required
-              maxlength="14"
-              clearable
-              class="input-yokai-password"
-              @keypress="onKeyUp"
+              v-model="toPassword"
+              label="終了位置"
+              readonly
+              outlined
             >
             </v-text-field>
           </v-col>

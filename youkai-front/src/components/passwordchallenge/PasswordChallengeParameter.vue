@@ -28,7 +28,6 @@
               label="開始パスワード"
               required
               maxlength="14"
-              clearable
               class="input-yokai-password"
               @keypress="onKeyUp"
             ></v-text-field>
@@ -78,7 +77,6 @@
               label="終了パスワード"
               required
               maxlength="14"
-              clearable
               class="input-yokai-password"
               @keypress="onKeyUp"
             ></v-text-field>
