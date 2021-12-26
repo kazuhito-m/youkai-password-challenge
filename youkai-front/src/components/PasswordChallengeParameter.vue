@@ -11,11 +11,10 @@
       「F5押す」など「ページの再読み込み」を行うと停止します。
     </v-card-text>
     <v-card-text class="amber--text">
-      下のボタンをクリックすると、あなたが現在お使いのマシンの
+      下のボタンをクリックすると、あなたのコンピュータの以下の資源を利用します。
       <ul>
         <li>CPUの計算能力</li>
       </ul>
-      を利用します。<br>
       <a href="https://ja.wikipedia.org/wiki/Coinhive%E4%BA%8B%E4%BB%B6" target="_blank">神奈川県警に捕まりたくない</a> ので「CPU使うな！」という方はご遠慮下さい。<br/>自己責任でのボタンクリックをお願いします。
     </v-card-text>
     <v-form ref="form">
@@ -92,18 +91,6 @@
               outlined
               maxlength="41"
             ></v-text-field>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
-            <v-textarea
-              v-model="resultInfomation"
-              label="進行状況"
-              :disabled="resultInfomation.trim().length === 0"
-              readonly
-              outlined
-              no-resize
-            ></v-textarea>        
           </v-col>
         </v-row>
       </v-container>

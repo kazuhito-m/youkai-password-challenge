@@ -2,8 +2,11 @@
   <v-layout>
     <v-container>
       <v-row justify="center" align="center">
-        <v-col cols="12" sm="8" md="6">
-          <RangePasswordChallenge />
+        <v-col cols="12" sm="8" md="7">
+          <PasswordChallengeParameter />
+        </v-col>
+        <v-col cols="12" sm="8" md="5"> 
+          <PasswordChallengeProgress />
         </v-col>
       </v-row>
     </v-container>
@@ -12,11 +15,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import RangePasswordChallenge from '@/components/RangePasswordChallenge.vue'
+import PasswordChallengeParameter from '~/components/PasswordChallengeParameter.vue'
+import PasswordChallengeProgress from '~/components/PasswordChallengeProgress.vue'
 
 @Component({
   components: {
-    RangePasswordChallenge,
+    PasswordChallengeParameter,
+    PasswordChallengeProgress,
   },
 })
 export default class Index extends Vue {
