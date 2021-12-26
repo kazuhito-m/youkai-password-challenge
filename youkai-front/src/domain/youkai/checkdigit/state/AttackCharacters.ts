@@ -71,14 +71,27 @@ export default class AttackCharacters {
     }
 
     public static initialize(charCount: number, converter = new CodeToCharacterConverter()): AttackCharacters {
-        const initialCode = converter.minCode();
-        const values = Array(charCount).fill(initialCode);
-        return new AttackCharacters(converter, values);
+        return AttackCharacters.minimumOf(charCount, converter);
     }
 
     public static withText(passwordText: string, converter = new CodeToCharacterConverter()): AttackCharacters {
         const codes = passwordText.split("")
             .map(oneCher => converter.reverceConvert(oneCher));
         return new AttackCharacters(converter, codes);
+    }
+
+    private static createOnlyOneCharOf(charCode: number, charCount: number, converter = new CodeToCharacterConverter()) {
+        const values = Array(charCount).fill(charCode);
+        return new AttackCharacters(converter, values);
+    }
+
+    public static minimumOf(charCount: number, converter = new CodeToCharacterConverter()): AttackCharacters {
+        const minCode = converter.minCode();
+        return AttackCharacters.createOnlyOneCharOf(minCode, charCount, converter);
+    }
+
+    public static muximumOf(charCount: number, converter = new CodeToCharacterConverter()): AttackCharacters {
+        const minCode = converter.maxCode();
+        return AttackCharacters.createOnlyOneCharOf(minCode, charCount, converter);
     }
 }

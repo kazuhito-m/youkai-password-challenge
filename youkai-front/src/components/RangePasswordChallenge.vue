@@ -1,20 +1,32 @@
 <template lang="html">
-  <v-card>
+  <v-card
+    class="mx-auto"
+    width="1200"
+  >
     <v-card-title class="headline">
       パスワード総当りチャレンジ
     </v-card-title>
     <v-card-text>
-      パスワード文字列が「ゲーム中で有効なものか」を確認できます。
+      指定した範囲を文字を変えながら総当りを行います。<br/>
+      「F5押す」など「ページの再読み込み」を行うと停止します。
+    </v-card-text>
+    <v-card-text class="amber--text">
+      下のボタンをクリックすると、あなたが現在お使いのマシンの
+      <ul>
+        <li>CPUの計算能力</li>
+      </ul>
+      を利用します。<br>
+      <a href="https://ja.wikipedia.org/wiki/Coinhive%E4%BA%8B%E4%BB%B6" target="_blank">神奈川県警に捕まりたくない</a> ので「CPU使うな！」という方はご遠慮下さい。<br/>自己責任でのボタンクリックをお願いします。
     </v-card-text>
     <v-form ref="form">
       <v-container>
         <v-row>
-          <v-col cols="12" sm="8" md="12">
+          <v-col cols="12" sm="5" md="5">
             <v-text-field
-              v-model="youkaiPassword"
+              v-model="fromPassword"
               :counter="14"
-              :rules="[validateYoukaiPassword]"
-              label="妖怪的なパスワード"
+              :rules="[validateFromPassword]"
+              label="開始パスワード"
               required
               maxlength="14"
               clearable
@@ -22,16 +34,55 @@
               @keypress="onKeyUp"
             ></v-text-field>
           </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12" sm="8" md="12">
+          <v-col cols="12" sm="7" md="7">
             <v-text-field
-              v-model="calculatedCheckDigit"
+              v-model="fromPassowrdHex"
               value="a"
-              label="算出されたチェック・ディジット"
-              :disabled="calculatedCheckDigit.trim().length === 0"
+              label="コード(16進数)表現"
+              :disabled="fromPassowrdHex.trim().length === 0"
               readonly
               outlined
+              maxlength="41"
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row >
+          <v-col cols="12" sm="12" md="12">
+            <v-card-actions>
+              ↓
+              <v-btn
+                text
+                color="success"
+                class="mr-4"
+                block
+              >
+                  総当りチャレンジを開始
+              </v-btn>
+            </v-card-actions>
+          </v-col>
+        </v-row>        <v-row>
+          <v-col cols="12" sm="5" md="5">
+            <v-text-field
+              v-model="toPassword"
+              :counter="14"
+              :rules="[validateFromPassword]"
+              label="終了パスワード"
+              required
+              maxlength="14"
+              clearable
+              class="input-yokai-password"
+              @keypress="onKeyUp"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="7" md="7">
+            <v-text-field
+              v-model="toPassowrdHex"
+              value="a"
+              label="コード(16進数)表現"
+              :disabled="fromPassowrdHex.trim().length === 0"
+              readonly
+              outlined
+              maxlength="41"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -39,7 +90,7 @@
           <v-col>
             <v-textarea
               v-model="resultInfomation"
-              label="確認結果"
+              label="進行状況"
               :disabled="resultInfomation.trim().length === 0"
               readonly
               outlined
@@ -49,10 +100,6 @@
         </v-row>
       </v-container>
     </v-form>
-    <v-card-text class="amber--text">
-      「実機での動作を保証」するものではありません。<br>
-      あくまで「チェッカー」です。どちらかに報告される際には、各自実機での動作確認をお願いします。
-    </v-card-text>
   </v-card>
 </template>
 
@@ -66,8 +113,10 @@ import A31F from '@/domain/youkai/checkdigit/state/A31F'
 
 @Component
 export default class RangePasswordChallenge extends Vue {
-  private youkaiPassword = '';
-  private calculatedCheckDigit = ' ';
+  private fromPassword = '';
+  private fromPassowrdHex = ' ';
+  private toPassword = '';
+  private toPassowrdHex = ' ';
   private resultInfomation = ' ';
 
   @Inject()
@@ -80,37 +129,43 @@ export default class RangePasswordChallenge extends Vue {
   private readonly correctCheckDigits?: CorrectCheckDigits;
 
   private mounted(): void {
-    if (!this.youkaiPassword) this.youkaiPassword = "";
-    if (this.youkaiPassword.trim().length > 0) return;
-    const rondumCheckDigit = this.correctCheckDigits?.randomPickUpCorrectCheckDigit();
-    if (!rondumCheckDigit) return;
-    this.youkaiPassword = rondumCheckDigit.typicalPassowrd.toString();
-  }
+    if (!this.fromPassword) this.fromPassword = "";
+    if (this.fromPassword.trim().length > 0
+      || this.toPassword.trim().length > 0) return;
 
-  @Watch('youkaiPassword')
-  private onChangeYoukaiPassword(): void {
+    const minPass = AttackCharacters.minimumOf(AttackCharacters.MAX_CHARS_LENGTH);
+    this.fromPassword = minPass.toString();
+    this.fromPassowrdHex = minPass.dumpHexText();
+
+    const maxPass = AttackCharacters.muximumOf(AttackCharacters.MAX_CHARS_LENGTH);
+    this.toPassword = maxPass.toString();
+    this.toPassowrdHex = maxPass.dumpHexText();
+}
+
+  @Watch('fromPassword')
+  private onChangefromPassword(): void {
     this.fixPasswordWhenInvalid();
-    this.calculateAndHitCheckDigit();
+    // this.calculateAndHitCheckDigit();
   }
 
-  private calculateAndHitCheckDigit(): void {
-    this.calculateCheckDigit();
-    this.hitCorrectCheckDigit();
-  }
+  // private calculateAndHitCheckDigit(): void {
+  //   this.calculateCheckDigit();
+  //   this.hitCorrectCheckDigit();
+  // }
 
   private calculateCheckDigit(): void {
-    if (this.validateYoukaiPassword() !== true) {
-      this.calculatedCheckDigit = " ";
+    if (this.validateFromPassword() !== true) {
+      this.fromPassowrdHex = " ";
       return;  
     }
     const calculator = this.calculator as CheckDigitCalculator;
-    const attackChars = AttackCharacters.withText(this.youkaiPassword);
+    const attackChars = AttackCharacters.withText(this.fromPassword);
     const checkDigit = calculator.calculate(attackChars);
-    this.calculatedCheckDigit = checkDigit.toString();
+    this.fromPassowrdHex = checkDigit.toString();
   }
 
   private hitCorrectCheckDigit() {
-    const checkDigit = A31F.createFromHexText(this.calculatedCheckDigit);
+    const checkDigit = A31F.createFromHexText(this.fromPassowrdHex);
     if (!this.correctCheckDigits?.hitTest(checkDigit)) {
       this.resultInfomation = " ";
       return;
@@ -123,19 +178,18 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   private fixPasswordWhenInvalid():void  {
-    let password = this.youkaiPassword;
+    let password = this.fromPassword;
     if (!password) password = ""; // ×ボタンで、なぜかNullになるため。
     if (!this.converter?.isInvalidPassword(password)) return;
-    this.youkaiPassword = this.converter?.fixValidPassword(password);
+    this.fromPassword = this.converter?.fixValidPassword(password);
   }
 
-  private validateYoukaiPassword(): boolean | string {
-    let password = this.youkaiPassword;
+  private validateFromPassword(): boolean | string {
+    let password = this.fromPassword;
     if (!password) password = ""; // ×ボタンで、なぜかNullになるため。
-    const min = AttackCharacters.MIN_CHARS_LENGTH;
     const max = AttackCharacters.MAX_CHARS_LENGTH;
-    if (password.length < min || password.length > max) 
-      return `${min}文字から${max}文字の範囲で入力して下さい。`;
+    if (password.length !== max)
+      return `${max}文字で入力して下さい。`;
     if (this.converter?.isInvalidPassword(password))
       return `"${this.converter?.validCharacters()}" の文字の範囲で入力して下さい。`;
     return true;

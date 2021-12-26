@@ -92,6 +92,7 @@ export default class extends Vue {
       to: '/checker',
     },
     {
+      icon: 'mdi-apps',
       title: '関連情報・リンク',
       to: '/infomation',
     }
