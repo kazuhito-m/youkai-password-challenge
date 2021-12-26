@@ -42,6 +42,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/markdownit',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -80,6 +81,10 @@ export default {
         }
       }
     }
+  },
+
+  markdownit: {
+    injected: true // $md.render()がグローバルで使えるようになる
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
