@@ -12,7 +12,7 @@
           <v-col>
             <v-textarea
               v-model="resultInfomation"
-              label="見つかったパスワード"
+              label="進行状況"
               :disabled="resultInfomation.trim().length === 0"
               readonly
               outlined
@@ -24,7 +24,7 @@
           <v-col>
             <v-textarea
               v-model="resultInfomation"
-              label="進行状況"
+              label="見つかったパスワード"
               :disabled="resultInfomation.trim().length === 0"
               readonly
               outlined
