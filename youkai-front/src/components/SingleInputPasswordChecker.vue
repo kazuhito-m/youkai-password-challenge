@@ -65,7 +65,7 @@ import AttackCharacters from '@/domain/youkai/checkdigit/state/AttackCharacters'
 import A31F from '@/domain/youkai/checkdigit/state/A31F'
 
 @Component
-export default class SingleInputCheckDigitTry extends Vue {
+export default class SingleInputPasswordChecker extends Vue {
   private youkaiPassword = '';
   private calculatedCheckDigit = ' ';
   private resultInfomation = ' ';

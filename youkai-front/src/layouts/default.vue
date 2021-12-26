@@ -72,8 +72,13 @@ export default class extends Vue {
   private readonly items = [
     {
       icon: 'mdi-apps',
-      title: 'パスワード確認',
+      title: '総当りチャレンジ',
       to: '/',
+    },
+    {
+      icon: 'mdi-apps',
+      title: 'パスワード確認',
+      to: '/checker',
     }
   ];
 

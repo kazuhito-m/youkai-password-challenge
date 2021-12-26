@@ -3,7 +3,7 @@
     <v-container>
       <v-row justify="center" align="center">
         <v-col cols="12" sm="8" md="6">
-          <RangePasswordChallenge />
+          <SingleInputPasswordChecker />
         </v-col>
       </v-row>
     </v-container>
@@ -12,13 +12,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import RangePasswordChallenge from '@/components/RangePasswordChallenge.vue'
+import SingleInputPasswordChecker from '@/components/SingleInputPasswordChecker.vue'
 
 @Component({
   components: {
-    RangePasswordChallenge,
+    SingleInputPasswordChecker,
   },
 })
-export default class Index extends Vue {
+export default class Checker extends Vue {
 }
 </script>
