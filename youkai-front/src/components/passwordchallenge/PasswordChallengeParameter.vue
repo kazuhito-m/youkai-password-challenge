@@ -38,7 +38,6 @@
               value="a"
               label="コード(16進数)表現"
               :disabled="fromPassowrdHex.trim().length === 0"
-              readonly
               outlined
               maxlength="41"
             ></v-text-field>
@@ -87,7 +86,6 @@
               value="a"
               label="コード(16進数)表現"
               :disabled="fromPassowrdHex.trim().length === 0"
-              readonly
               outlined
               maxlength="41"
             ></v-text-field>
