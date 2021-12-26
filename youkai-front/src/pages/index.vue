@@ -15,8 +15,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import PasswordChallengeParameter from '~/components/PasswordChallengeParameter.vue'
-import PasswordChallengeProgress from '~/components/PasswordChallengeProgress.vue'
+import PasswordChallengeParameter from '~/components/passwordchallenge/PasswordChallengeParameter.vue'
+import PasswordChallengeProgress from '~/components/passwordchallenge/PasswordChallengeProgress.vue'
 
 @Component({
   components: {
