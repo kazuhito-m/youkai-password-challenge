@@ -26,8 +26,8 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-right="true" fixed app>
       <v-toolbar-title
-        @click="$router.push('/')"
         style="cursor:pointer"
+        @click="$router.push('/')"
       >
         Youkai Password Challenge
       </v-toolbar-title>
