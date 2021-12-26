@@ -50,7 +50,8 @@
             <v-card-actions>
               <v-btn
                 text
-                color="success"
+                color="secondary"
+                outlined
                 class="mr-4"
               >
                   開始にランダム値をセット
@@ -60,7 +61,8 @@
               <v-spacer></v-spacer>
               <v-btn
                 text
-                color="success"
+                color="primary"
+                outlined
                 class="mr-4"
               >
                   総当りチャレンジを開始
