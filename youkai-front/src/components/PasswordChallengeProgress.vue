@@ -9,6 +9,40 @@
     <v-form ref="form">
       <v-container>
         <v-row>
+          <v-col cols="12" sm="5" md="5">
+            <v-text-field
+              v-model="fromPassword"
+              :counter="14"
+              :rules="[validateFromPassword]"
+              label="開始パスワード"
+              required
+              maxlength="14"
+              clearable
+              class="input-yokai-password"
+              @keypress="onKeyUp"
+            >
+            </v-text-field>
+          </v-col>
+          <v-col cols="12" sm="1" md="1">
+            〜
+          </v-col>
+          <v-col cols="12" sm="5" md="5">
+            <v-text-field
+              v-model="fromPassword"
+              :counter="14"
+              :rules="[validateFromPassword]"
+              label="終了パスワード"
+              required
+              maxlength="14"
+              clearable
+              class="input-yokai-password"
+              @keypress="onKeyUp"
+            >
+            </v-text-field>
+          </v-col>
+
+        </v-row>
+        <v-row>
           <v-col>
             <v-textarea
               v-model="resultInfomation"
