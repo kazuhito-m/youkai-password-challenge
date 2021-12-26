@@ -74,6 +74,11 @@ export default class extends Vue {
       icon: 'mdi-apps',
       title: 'パスワード確認',
       to: '/',
+    },
+    {
+      icon: 'mdi-apps',
+      title: '関連情報・リンク',
+      to: '/infomation',
     }
   ];
 
