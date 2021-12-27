@@ -30,6 +30,7 @@
               maxlength="14"
               class="input-yokai-password"
               @keypress="onKeyUp"
+              :disabled="nowExecuting"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="7" md="7">
@@ -37,7 +38,7 @@
               v-model="fromPassowrdHex"
               value="a"
               label="コード(16進数)表現"
-              :disabled="fromPassowrdHex.trim().length === 0"
+              :disabled="fromPassowrdHex.trim().length === 0 || nowExecuting"
               outlined
               maxlength="41"
             ></v-text-field>
@@ -51,11 +52,16 @@
                 color="secondary"
                 outlined
                 class="mr-4"
+                :disabled="nowExecuting"
               >
                   開始にランダム値をセット
               </v-btn>
               <v-spacer></v-spacer>
               ↓
+              <v-progress-circular
+                v-if="nowExecuting"
+                indeterminate
+                color="green" />
               <v-spacer></v-spacer>
               <v-btn
                 v-if="!nowExecuting"
@@ -79,7 +85,8 @@
               </v-btn>
             </v-card-actions>
           </v-col>
-        </v-row>        <v-row>
+        </v-row>
+        <v-row>
           <v-col cols="12" sm="5" md="5">
             <v-text-field
               v-model="toPassword"
@@ -90,6 +97,7 @@
               maxlength="14"
               class="input-yokai-password"
               @keypress="onKeyUp"
+              :disabled="nowExecuting"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="7" md="7">
@@ -97,7 +105,7 @@
               v-model="toPassowrdHex"
               value="a"
               label="コード(16進数)表現"
-              :disabled="fromPassowrdHex.trim().length === 0"
+              :disabled="fromPassowrdHex.trim().length === 0 || nowExecuting"
               outlined
               maxlength="41"
             ></v-text-field>
