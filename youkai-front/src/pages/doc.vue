@@ -34,10 +34,9 @@
  
 <script lang="ts">
 import { Context } from '@nuxt/types'
-import moment from 'moment';
 
 export default {
-  async asyncData({ $content, params }: Context) {
+  async asyncData({ $content }: Context) {
     // 記事を全て取得（作成日で降順にソート）
     const blog = await $content('tech')
       .sortBy('createdAt', 'desc')
