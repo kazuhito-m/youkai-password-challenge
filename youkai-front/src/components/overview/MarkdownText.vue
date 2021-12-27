@@ -36,7 +36,7 @@ __現在、「”真の14桁パスワード”と思しきもの」はまだ見�
   - [@Imaha486](https://twitter.com/Imaha486) さんにより [妖怪道中記 隠しパスワード解析選手権Discordサーバ](https://twitter.com/Imaha486/status/1474943554430865410) が建てられる
     - 初日で60人くらいが登録される
   - 上記Discord内において [@tanakazu_sub](https://twitter.com/tanzaku_sub)さんが「__420万件の当たりパスワードのテキストファイル__」を公開する
-  - 上記のテキストファイルをもとに [@kei9298p](https://twitter.com/kei9298p)さん、水咲さん、[@Imaha486](https://twitter.com/Imaha486)さんら有志による「”有意パスワード”解析ツール」が作られる
+  - 上記のテキストファイルをもとに [@kei9298p](https://twitter.com/kei9298p)さん、水咲さん、[@Imaha486](https://twitter.com/Imaha486)さんら有志による [”有意パスワード”解析ツール](http://youkaiosugi.com/infomation) が作られる
   - 上記Discord内において「CUDAのプログラム情報」など「自作プログラムで分析している人々」の情報交換がなされる
 </template>
 
