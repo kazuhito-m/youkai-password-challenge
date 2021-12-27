@@ -88,13 +88,13 @@ export default class extends Vue {
     },
     {
       icon: 'mdi-apps',
-      title: '関連情報・リンク',
-      to: '/infomation',
+      title: 'これまでのあらすじ',
+      to: '/overview',
     },
     {
       icon: 'mdi-apps',
-      title: 'これまでのあらすじ',
-      to: '/overview',
+      title: '関連情報・リンク',
+      to: '/infomation',
     }
   ];
 
