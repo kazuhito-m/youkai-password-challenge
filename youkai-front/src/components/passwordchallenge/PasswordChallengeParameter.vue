@@ -58,12 +58,24 @@
               ↓
               <v-spacer></v-spacer>
               <v-btn
+                v-if="!nowExecuting"
                 text
                 color="primary"
                 outlined
                 class="mr-4"
+                @click="onClickStart"
               >
-                  総当りチャレンジを開始
+                  総当りチャレンジ開始
+              </v-btn>
+              <v-btn
+                v-if="nowExecuting"
+                text
+                color="deep-orange"
+                outlined
+                class="mr-4"
+                @click="onClickStop"
+              >
+                  総当りチャレンジ停止
               </v-btn>
             </v-card-actions>
           </v-col>
@@ -104,6 +116,8 @@ import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckD
 import AttackCharacters from '@/domain/youkai/checkdigit/state/AttackCharacters'
 import A31F from '@/domain/youkai/checkdigit/state/A31F'
 
+import { PasswordAttackerStore } from "@/store";
+
 @Component
 export default class RangePasswordChallenge extends Vue {
   private fromPassword = '';
@@ -138,36 +152,6 @@ export default class RangePasswordChallenge extends Vue {
   @Watch('fromPassword')
   private onChangefromPassword(): void {
     this.fixPasswordWhenInvalid();
-    // this.calculateAndHitCheckDigit();
-  }
-
-  // private calculateAndHitCheckDigit(): void {
-  //   this.calculateCheckDigit();
-  //   this.hitCorrectCheckDigit();
-  // }
-
-  private calculateCheckDigit(): void {
-    if (this.validateFromPassword() !== true) {
-      this.fromPassowrdHex = " ";
-      return;  
-    }
-    const calculator = this.calculator as CheckDigitCalculator;
-    const attackChars = AttackCharacters.withText(this.fromPassword);
-    const checkDigit = calculator.calculate(attackChars);
-    this.fromPassowrdHex = checkDigit.toString();
-  }
-
-  private hitCorrectCheckDigit() {
-    const checkDigit = A31F.createFromHexText(this.fromPassowrdHex);
-    if (!this.correctCheckDigits?.hitTest(checkDigit)) {
-      this.resultInfomation = " ";
-      return;
-    }
-    const hitCorrect = this.correctCheckDigits?.pickUpCorrectDigitOf(checkDigit);
-    const message = `"${hitCorrect.originalMessage}"\n\n`
-      + `${hitCorrect.description}\n`
-      + `代表的なパスワード:${hitCorrect.typicalPassowrd.toString()}`;
-    this.resultInfomation = message;
   }
 
   private fixPasswordWhenInvalid():void  {
@@ -201,6 +185,19 @@ export default class RangePasswordChallenge extends Vue {
     event.stopImmediatePropagation();
     event.preventDefault();
     return false;
+  }
+
+  private async onClickStart(): Promise<void> {
+    await PasswordAttackerStore.execute();
+  }
+
+  private async onClickStop(): Promise<void> {
+    await PasswordAttackerStore.cancel();
+  }
+
+
+  private get nowExecuting(): boolean {
+    return PasswordAttackerStore.nowExecuting;
   }
 }
 </script>
