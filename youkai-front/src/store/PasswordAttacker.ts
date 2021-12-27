@@ -18,12 +18,12 @@ export default class PasswordAttacker extends VuexModule {
     }
 
     @Action({ rawError: true })
-    public async execute(): Promise<void> {
+    public execute(): void {
         this.changeExecuteState(true);
     }
 
     @Action({ rawError: true })
-    public async cancel(): Promise<void> {
+    public cancel(): void {
         this.changeExecuteState(false);
     }
 }

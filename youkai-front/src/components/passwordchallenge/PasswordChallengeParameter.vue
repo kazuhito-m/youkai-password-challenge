@@ -114,7 +114,6 @@ import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeT
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
 import AttackCharacters from '@/domain/youkai/checkdigit/state/AttackCharacters'
-import A31F from '@/domain/youkai/checkdigit/state/A31F'
 
 import { PasswordAttackerStore } from "@/store";
 
@@ -187,14 +186,13 @@ export default class RangePasswordChallenge extends Vue {
     return false;
   }
 
-  private async onClickStart(): Promise<void> {
-    await PasswordAttackerStore.execute();
+  private onClickStart(): void {
+     PasswordAttackerStore.execute();
   }
 
-  private async onClickStop(): Promise<void> {
-    await PasswordAttackerStore.cancel();
+  private onClickStop(): void  {
+     PasswordAttackerStore.cancel();
   }
-
 
   private get nowExecuting(): boolean {
     return PasswordAttackerStore.nowExecuting;
