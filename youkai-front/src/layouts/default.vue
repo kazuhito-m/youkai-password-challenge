@@ -36,7 +36,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>
     <v-main>
-      <v-container>
+      <v-container xs12 style="overflow:auto">
         <Nuxt />
       </v-container>
     </v-main>
