@@ -14,7 +14,6 @@ __現在、「”真の14桁パスワード”と思しきもの」はまだ見�
   - [4ST(@4STUDIO4)](https://twitter.com/4STUDIO4) さんのYouTube動画[ナムコの知られざる天才スーパーハッカーが仕込んだ隠しメッセージの謎とそれを廻る都市伝説](https://www.youtube.com/watch?v=ZGqmudIySQ8) のおいて「当時のスタッフとプログラマー本人によるパスワード情報」の話題に触れられる
 - 2021/12/19
   - [4ST(@4STUDIO4)](https://twitter.com/4STUDIO4) による [妖怪道中記 隠しパスワード解析選手権](https://twitter.com/4STUDIO4/status/1472415489595174912) の開催が告知される
-- 2021/12/19
   - [@botesan](https://twitter.com/botesan)が[11文字のパスワード”HENTAIOSUGI”が発見](https://twitter.com/botesan/status/1472566615397244928)される
 - 2021/12/20
   - [@tanakazu_sub](https://twitter.com/tanzaku_sub)さんが [14文字のパスワード](https://twitter.com/tanzaku_sub/status/1472937379761917960) を発見する
