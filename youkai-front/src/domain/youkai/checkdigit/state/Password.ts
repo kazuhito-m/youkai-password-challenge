@@ -1,7 +1,7 @@
 import A31F from "./A31F";
 import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
 
-export default class AttackCharacters {
+export default class Password {
     constructor(
         private readonly converter: CodeToCharacterConverter,
         private readonly charCodes: number[]
@@ -18,7 +18,7 @@ export default class AttackCharacters {
         return this.charCodes.length;
     }
 
-    public increment(): AttackCharacters {
+    public increment(): Password {
         const converter = this.converter;
         const newCodes = this.charCodes.slice();
         for (let i = 0; i < newCodes.length; i++) {
@@ -26,10 +26,10 @@ export default class AttackCharacters {
             newCodes[i] = converter.incrementCode(before);
             if (newCodes[i] > before) break; // 繰り上がりなし
         }
-        return new AttackCharacters(converter, newCodes);
+        return new Password(converter, newCodes);
     }
 
-    public fixInvalid(): AttackCharacters {
+    public fixInvalid(): Password {
         if (!this.isInvalid()) return this;
 
         const converter = this.converter;
@@ -38,7 +38,7 @@ export default class AttackCharacters {
             if (!converter.isInvalidCharCode(newCodes[i])) continue;
             newCodes[i] = converter.incrementCode(newCodes[i]);
         }
-        return new AttackCharacters(converter, newCodes);
+        return new Password(converter, newCodes);
     }
 
     public isInvalid(): boolean {
@@ -60,38 +60,38 @@ export default class AttackCharacters {
             .trim();
     }
 
-    public equals(o: AttackCharacters): boolean {
+    public equals(o: Password): boolean {
         if (this === o) return true;
         if (o === null) return false;
         return this.charCodes.toString() === o.charCodes.toString();
     }
 
-    public minimum(): AttackCharacters {
-        return AttackCharacters.initialize(this.charCodes.length, this.converter);
+    public minimum(): Password {
+        return Password.initialize(this.charCodes.length, this.converter);
     }
 
-    public static initialize(charCount: number, converter = new CodeToCharacterConverter()): AttackCharacters {
-        return AttackCharacters.minimumOf(charCount, converter);
+    public static initialize(charCount: number, converter = new CodeToCharacterConverter()): Password {
+        return Password.minimumOf(charCount, converter);
     }
 
-    public static withText(passwordText: string, converter = new CodeToCharacterConverter()): AttackCharacters {
+    public static withText(passwordText: string, converter = new CodeToCharacterConverter()): Password {
         const codes = passwordText.split("")
             .map(oneCher => converter.reverceConvert(oneCher));
-        return new AttackCharacters(converter, codes);
+        return new Password(converter, codes);
     }
 
     private static createOnlyOneCharOf(charCode: number, charCount: number, converter = new CodeToCharacterConverter()) {
         const values = Array(charCount).fill(charCode);
-        return new AttackCharacters(converter, values);
+        return new Password(converter, values);
     }
 
-    public static minimumOf(charCount: number, converter = new CodeToCharacterConverter()): AttackCharacters {
+    public static minimumOf(charCount: number, converter = new CodeToCharacterConverter()): Password {
         const minCode = converter.minCode();
-        return AttackCharacters.createOnlyOneCharOf(minCode, charCount, converter);
+        return Password.createOnlyOneCharOf(minCode, charCount, converter);
     }
 
-    public static muximumOf(charCount: number, converter = new CodeToCharacterConverter()): AttackCharacters {
+    public static muximumOf(charCount: number, converter = new CodeToCharacterConverter()): Password {
         const minCode = converter.maxCode();
-        return AttackCharacters.createOnlyOneCharOf(minCode, charCount, converter);
+        return Password.createOnlyOneCharOf(minCode, charCount, converter);
     }
 }

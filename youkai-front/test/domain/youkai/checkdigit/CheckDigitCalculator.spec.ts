@@ -1,12 +1,12 @@
 import TestData from "./TestData";
 import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
-import AttackCharacters from "@/domain/youkai/checkdigit/state/AttackCharacters";
+import Password from "~/domain/youkai/checkdigit/state/Password";
 
 describe('CheckDigitCalculator', () => {
     const sut = new CheckDigitCalculator();
 
     function calc(passwordText: string): string {
-        const password = AttackCharacters.withText(passwordText);
+        const password = Password.withText(passwordText);
         const calculated = sut.calculate(password);
         return calculated.toString();
     }

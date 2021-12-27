@@ -1,8 +1,8 @@
-import AttackCharacters from "./state/AttackCharacters";
+import Password from "./state/Password";
 import A31F from "./state/A31F";
 
 export default class CheckDigitCalculator {
-    public calculate(password: AttackCharacters): A31F {
+    public calculate(password: Password): A31F {
         const a31f = A31F.prototypeOf(password.charLength());
         for (let charPosition = 0; charPosition < password.charLength(); charPosition++) {
             this.D8C0(password, a31f, charPosition);  // 文字数分だけ演算をカウント
@@ -10,7 +10,7 @@ export default class CheckDigitCalculator {
         return a31f;
     }
 
-    private D8C0(password: AttackCharacters, a31f: A31F, targetCharPosition: number): void {
+    private D8C0(password: Password, a31f: A31F, targetCharPosition: number): void {
         const targetCharCode = password.getOf(targetCharPosition);
         let shiftedCode = targetCharCode;
         for (let y = 0; y < 8; y++) {

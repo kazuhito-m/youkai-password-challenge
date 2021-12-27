@@ -121,7 +121,7 @@ import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
-import AttackCharacters from '@/domain/youkai/checkdigit/state/AttackCharacters'
+import AttackCharacters from '~/domain/youkai/checkdigit/state/Password'
 
 import { PasswordAttackerStore } from "@/store";
 

@@ -1,6 +1,6 @@
 import CheckDigitCalculator from "./CheckDigitCalculator";
 import A31F from "./state/A31F";
-import AttackCharacters from "./state/AttackCharacters";
+import Password from "./state/Password";
 
 export default class YoukaiPasswordAttacker {
     constructor(
@@ -13,8 +13,8 @@ export default class YoukaiPasswordAttacker {
 
     private static readonly DUMP_INTERVAL = 67107840;
 
-    public execute(attackTargetCheckDigit: A31F, startPassword: AttackCharacters, hitPasswordEvent: any = () => { }): AttackCharacters[] {
-        const results: AttackCharacters[] = [];
+    public execute(attackTargetCheckDigit: A31F, startPassword: Password, hitPasswordEvent: any = () => { }): Password[] {
+        const results: Password[] = [];
         let password = startPassword;
         const minimum = startPassword.minimum();
         this.cancellation = false;
@@ -78,7 +78,7 @@ export default class YoukaiPasswordAttacker {
         this.printf(new Date() + " - ");
     }
 
-    private dumpContinueCommand(password: AttackCharacters, attackTargetCheckDigit: A31F, checkedCount: number): void {
+    private dumpContinueCommand(password: Password, attackTargetCheckDigit: A31F, checkedCount: number): void {
         const messge = `continue parameter : ${attackTargetCheckDigit.toString()} ${password.dumpHexText()} (${checkedCount} 回目)`;
         console.log(messge);
         // printf("continue parameter : %s %s (%,.0f 回目)\n", attackTargetCheckDigit, password.dumpHexText(), checkedCount);

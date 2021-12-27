@@ -1,15 +1,15 @@
-import AttackCharacters from "../state/AttackCharacters";
+import Password from "../state/Password";
 
 export default class CorrectCheckDigit {
     constructor(
-        public readonly typicalPassowrd: AttackCharacters,
+        public readonly typicalPassowrd: Password,
         public readonly originalMessage: string,
         public readonly description: string
     ) { }
 
     public static empty(): CorrectCheckDigit {
         return new CorrectCheckDigit(
-            AttackCharacters.withText(""),
+            Password.withText(""),
             "",
             ""
         );
