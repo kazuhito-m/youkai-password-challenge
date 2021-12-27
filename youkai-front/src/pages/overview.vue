@@ -5,7 +5,7 @@
         <v-col cols="12" sm="8" md="6">
           <v-card>
             <v-card-title class="headline">
-              関連情報・リンク
+              これまでのあらすじ
             </v-card-title>
             <v-card-text>
               <MarkdownText />
@@ -19,13 +19,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import MarkdownText from '@/components/infomation/MarkdownText.vue'
+import MarkdownText from '@/components/overview/MarkdownText.vue'
 
 @Component({
   components: {
     MarkdownText,
   },
 })
-export default class Infomation extends Vue {
+export default class OverView extends Vue {
 }
 </script>

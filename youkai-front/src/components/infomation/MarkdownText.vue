@@ -9,10 +9,22 @@
 
 ## ツール
 
+### パスワード解析系
+
 - [求む！PCエンジン「妖怪道中記」のパスワード3種](http://i486.mods.jp/ichild/yokaipw)
   - 初代解析ツールyokai02、yokai03、yokai05、他
 - [【tanzaku氏作】妖怪道中記パスワード辞書アタックツール実行方法まとめ](http://i486.mods.jp/ichild/yokai-tanzaku)
 - [PCエンジン妖怪道中記 パスワード解析Wiki（まとめサイト）](https://i486.mods.jp/yokaiwiki/)
+- [Aios／GPU向け探索プログラム](https://github.com/Aios-Ciao/yokaifinder-gpu)
+
+### Hit済パスワード分析・探索系
+
+[@tanzaku_sub](https://twitter.com/tanzaku_sub) さんが掘り当てた「424万件の当たりパスワード」に「意味在るものがあるか」「正解っぽいものがあるか」を検索・分析するためのツール群です。
+
+- [kei／tanzaku氏のパスワードを変換して目grepで調べていく系、他](https://github.com/kmikage/yokai-password)
+- [水咲／ YokaiSearcher(tanzaku氏発見の424万件パスワード探査ツール)](https://github.com/Misaki0331/YokaiSearcher)
+- [Imaha486／同424万件のパスワードと辞書を照合するフィルタツール](https://i486.mods.jp/files/yokaisplit.zip)
+
 
 ## 付帯情報・パスワード解析のヒント
 
