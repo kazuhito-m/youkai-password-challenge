@@ -1,4 +1,5 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
+import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
 @Module({
     name: 'PasswordAttacker',
@@ -18,7 +19,7 @@ export default class PasswordAttacker extends VuexModule {
     }
 
     @Action({ rawError: true })
-    public execute(): void {
+    public execute(passwordRange: AttackPasswordRange): void {
         this.changeExecuteState(true);
     }
 

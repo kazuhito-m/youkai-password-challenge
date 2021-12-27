@@ -123,6 +123,8 @@ import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculato
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
 import AttackCharacters from '~/domain/youkai/checkdigit/state/Password'
 
+import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
+
 import { PasswordAttackerStore } from "@/store";
 
 @Component
@@ -195,11 +197,12 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   private onClickStart(): void {
-     PasswordAttackerStore.execute();
+    const range = AttackPasswordRange.of(this.fromPassword, this.toPassword);
+    PasswordAttackerStore.execute(range);
   }
 
   private onClickStop(): void  {
-     PasswordAttackerStore.cancel();
+    PasswordAttackerStore.cancel();
   }
 
   private get nowExecuting(): boolean {
