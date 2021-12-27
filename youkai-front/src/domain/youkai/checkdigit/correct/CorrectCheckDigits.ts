@@ -48,7 +48,6 @@ export default class CorrectCheckDigits {
 
     public hitTest(checkDigit: A31F): boolean {
         const correct = this.pickUpCorrectDigitOf(checkDigit);
-        console.log("hitTestの結果は？: " + correct.originalMessage)
         return !correct.isEmpty();
     }
 
