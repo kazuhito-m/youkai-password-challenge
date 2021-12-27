@@ -17,7 +17,7 @@
 - [PCエンジン妖怪道中記 パスワード解析Wiki（まとめサイト）](https://i486.mods.jp/yokaiwiki/)
 - [Aios／GPU向け探索プログラム](https://github.com/Aios-Ciao/yokaifinder-gpu)
 
-### Hit済パスワード分析・検索系
+### Hit済パスワード分析・探索系
 
 [@tanzaku_sub](https://twitter.com/tanzaku_sub) さんが掘り当てた「424万件の当たりパスワード」に「意味在るものがあるか」「正解っぽいものがあるか」を検索・分析するためのツール群です。
 
