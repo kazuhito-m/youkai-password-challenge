@@ -36,7 +36,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>
     <v-main>
-      <v-container>
+      <v-container xs12 style="overflow:auto">
         <Nuxt />
       </v-container>
     </v-main>
@@ -90,6 +90,11 @@ export default class extends Vue {
       icon: 'mdi-apps',
       title: '関連情報・リンク',
       to: '/infomation',
+    },
+    {
+      icon: 'mdi-apps',
+      title: 'これまでのあらすじ',
+      to: '/overview',
     }
   ];
 
