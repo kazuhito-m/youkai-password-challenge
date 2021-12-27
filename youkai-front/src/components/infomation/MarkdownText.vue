@@ -19,12 +19,12 @@
 
 ### Hit済パスワード分析・探索系
 
-[@tanzaku_sub](https://twitter.com/tanzaku_sub) さんが掘り当てた「424万件の当たりパスワード」に「意味在るものがあるか」「正解っぽいものがあるか」を検索・分析するためのツール群です。
+[@tanzaku_sub](https://twitter.com/tanzaku_sub) さんが掘り当てた「1100万件の当たりパスワード」に「意味在るものがあるか」「正解っぽいものがあるか」を検索・分析するためのツール群です。
 
-- [kei／tanzaku氏のパスワードを変換して目grepで調べていく系、他](https://github.com/kmikage/yokai-password)
+- [kei／発見されたパスワードの管理・変換](https://github.com/kmikage/yokai-password)
 - [水咲／ YokaiSearcher(tanzaku氏発見の424万件パスワード探査ツール)](https://github.com/Misaki0331/YokaiSearcher)
 - [Imaha486／同424万件のパスワードと辞書を照合するフィルタツール](https://i486.mods.jp/files/yokaisplit.zip)
-
+- [Imaha486／同424万件のパスワードをAND検索するツール](https://i486.mods.jp/files/yokailoop.zip )
 
 ## 付帯情報・パスワード解析のヒント
 

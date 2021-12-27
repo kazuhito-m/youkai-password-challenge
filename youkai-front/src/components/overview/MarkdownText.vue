@@ -38,6 +38,13 @@ __現在、「”真の14桁パスワード”と思しきもの」はまだ見�
   - 上記Discord内において [@tanakazu_sub](https://twitter.com/tanzaku_sub)さんが「__420万件の当たりパスワードのテキストファイル__」を公開する
   - 上記のテキストファイルをもとに [@kei9298p](https://twitter.com/kei9298p)さん、[水咲](https://twitter.com/0x7FF)さん、[@Imaha486](https://twitter.com/Imaha486)さんら有志による [”有意パスワード”解析ツール](http://youkaiosugi.com/infomation) が作られる
   - 上記Discord内において「CUDAのプログラム情報」など「自作プログラムで分析している人々」の情報交換がなされる
+- 2021/12/27
+  - Discord住人が、ツールを使って前述「420万件のパスワード」から有意なものを探し、いくつかの候補が上がる
+- 2021/12/28
+  - [@tanakazu_sub](https://twitter.com/tanzaku_sub)さんが「追加 __追加で約700万件の当たりパスワード__ を公開」する
+  - 
+
+
 </template>
 
 <style>
