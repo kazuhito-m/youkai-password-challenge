@@ -13,15 +13,15 @@ export default class AttackPasswordRange {
         );
     }
 
-    public static createChanck(fromPassword: Password, incrimentPosition: number): AttackPasswordRange {
+    public static createChunk(fromPassword: Password, incrimentPosition: number): AttackPasswordRange {
         let toPassword: Password = fromPassword.incrementSpecifyPosition(incrimentPosition);
         if (toPassword.equals(Password.minimumOf(fromPassword.charLength())))
             toPassword = Password.muximumOf(fromPassword.charLength());
         return new AttackPasswordRange(fromPassword, toPassword);
     }
 
-    public createFirstChank(allRange: AttackPasswordRange, incrimentPosition: number): AttackPasswordRange {
-        const chank = AttackPasswordRange.createChanck(allRange.formPassword, incrimentPosition);
+    public createFirstChunk(allRange: AttackPasswordRange, incrimentPosition: number): AttackPasswordRange {
+        const chank = AttackPasswordRange.createChunk(allRange.formPassword, incrimentPosition);
         if (allRange.toPassword.moreThan(chank.toPassword)) return chank;
         return new AttackPasswordRange(chank.formPassword, allRange.toPassword);
     }

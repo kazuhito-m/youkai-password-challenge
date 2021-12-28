@@ -14,7 +14,7 @@ export default class PasswordAttacker extends VuexModule {
     private foundPassswords: string[] = [];
 
     private fromPassword = "";
-    private checkedCount = 0;
+    private attackedCount = 0;
 
     private nickName = "";
 
@@ -29,6 +29,26 @@ export default class PasswordAttacker extends VuexModule {
     @Mutation
     private changeExecuteState(executing: boolean) {
         this.executing = executing;
+    }
+
+    @Mutation
+    private changeFromPassword(fromPassword: string) {
+        this.fromPassword = fromPassword;
+    }
+
+    @Mutation
+    private changeProgressText(progressText: string) {
+        this.progressText = progressText;
+    }
+
+    @Mutation
+    private changeFoundPassswords(foundPassswords: string[]) {
+        this.foundPassswords = foundPassswords;
+    }
+
+    @Mutation
+    private changeAttackedCount(attackedCount: number): void {
+        this.attackedCount = attackedCount;
     }
 
     @Action({ rawError: true })
@@ -55,21 +75,31 @@ export default class PasswordAttacker extends VuexModule {
         this.changeExecuteState(false);
     }
 
-    private attack(passwordRange: AttackPasswordRange): boolean {
+    private static readonly CHANK_DIVIDE_POS = 6;
+
+    private attack(passwordRange: AttackPasswordRange): void {
         this.onStart(passwordRange);
 
-        // const chank = AttackPasswordRange.createChanck(passwordRange.formPassword, 6);
+        let chunk = AttackPasswordRange.createChunk(passwordRange.formPassword, PasswordAttacker.CHANK_DIVIDE_POS);
 
-        // while (this.executing) {
-        // }
+        while (this.executing) {
+            this.attackChunk(chunk);
 
-        return true;
+
+        }
+
+
+        this.executing = false;
+    }
+
+    private attackChunk(chunk: AttackPasswordRange): void {
+        console.log(chunk);
     }
 
     private onStart(passwordRange: AttackPasswordRange): void {
-        this.fromPassword = passwordRange.formPassword.toString();
-        this.progressText = "";
-        this.foundPassswords = [];
-        this.checkedCount = 0;
+        this.changeFromPassword(passwordRange.formPassword.toString());
+        this.changeProgressText("");
+        this.changeFoundPassswords([]);
+        this.changeAttackedCount(0);
     }
 }
