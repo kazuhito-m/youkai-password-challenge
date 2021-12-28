@@ -121,7 +121,8 @@ import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
-import AttackCharacters from '~/domain/youkai/checkdigit/state/Password'
+import AttackCharacters from '@/domain/youkai/checkdigit/state/Password'
+import PasswordAttackService from '@/application/service/PasswordAttackService'
 
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
@@ -143,6 +144,9 @@ export default class RangePasswordChallenge extends Vue {
 
   @Inject()
   private readonly correctCheckDigits?: CorrectCheckDigits;
+
+  @Inject()
+  private readonly passwordAttackService?: PasswordAttackService;
 
   private mounted(): void {
     if (!this.fromPassword) this.fromPassword = "";
@@ -198,7 +202,7 @@ export default class RangePasswordChallenge extends Vue {
 
   private onClickStart(): void {
     const range = AttackPasswordRange.of(this.fromPassword, this.toPassword);
-    PasswordAttackerStore.execute(range);
+    this.passwordAttackService?.execute(range, PasswordAttackerStore);
   }
 
   private onClickStop(): void  {

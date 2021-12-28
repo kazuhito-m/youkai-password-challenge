@@ -40,7 +40,7 @@ export default class PasswordAttacker extends VuexModule {
     }
 
     @Mutation
-    private changeExecuteState(executing: boolean) {
+    public changeExecuteState(executing: boolean) {
         console.log("call changeExecuteState(" + executing);
         this.executing = executing;
         if (this.executing) return;

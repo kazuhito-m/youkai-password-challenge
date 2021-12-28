@@ -65,6 +65,7 @@ import TweetButton from '@/components/sosial/TweetButton.vue';
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
+import PasswordAttackService from '@/application/service/PasswordAttackService'
 
 @Component({
   components: {
@@ -113,6 +114,9 @@ export default class extends Vue {
 
   @Provide()
   private readonly correctCheckDigits = new CorrectCheckDigits(this.calculator);
+
+  @Provide()
+  private readonly passwordAttackService = new PasswordAttackService();
 
   // this classs property & functions.
 
