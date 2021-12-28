@@ -139,6 +139,7 @@ export default class PasswordAttacker extends VuexModule {
 
     @Action({ rawError: true })
     private onFinishAttackChunk(chunk: AttackPasswordRange): void {
+        console.log("onFinishAttackChunk:" + chunk.toString());
     }
 
     @Action({ rawError: true })
@@ -149,7 +150,7 @@ export default class PasswordAttacker extends VuexModule {
 
     @Action({ rawError: true })
     private makeInfoTextOf(chunk: AttackPasswordRange): string {
-        console.log("makeInfoTextOf()" + chunk);
+        console.log("makeInfoTextOf()" + chunk.toString());
         return "";
     }
 }
