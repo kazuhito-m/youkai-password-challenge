@@ -8,8 +8,8 @@ import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 })
 export default class PasswordAttacker extends VuexModule {
     private executing = false;
-    private nowStartPosition = "";
-    private nowEndPosition = "";
+    private startPosition = "";
+    private endPosition = "";
     private progressText = "";
     private foundPassswords: string[] = [];
 
@@ -28,6 +28,7 @@ export default class PasswordAttacker extends VuexModule {
 
     @Mutation
     private changeExecuteState(executing: boolean) {
+        console.log("changeExecuteState()は呼べてる。" + executing)
         this.executing = executing;
     }
 
@@ -51,23 +52,40 @@ export default class PasswordAttacker extends VuexModule {
         this.attackedCount = attackedCount;
     }
 
+    @Mutation
+    private changeStartPosition(startPosition: string) {
+        this.startPosition = startPosition;
+    }
+
+    @Mutation
+    private changeEndPosition(endPosition: string) {
+        this.endPosition = endPosition;
+    }
+
     @Action({ rawError: true })
     public execute(passwordRange: AttackPasswordRange): void {
-        console.log(passwordRange);
-        this.changeExecuteState(true);
-        new Promise((resolve, reject) => {
-            try {
-                this.attack(passwordRange);
-                resolve(0);
-            } catch (e) {
-                reject(e)
-            }
-        }).then(() => {
-            this.changeExecuteState(false);
-        }).catch(e => {
-            console.log(e);
-            this.changeExecuteState(false);
-        });
+        // this.changeExecuteState(true);
+        // new Promise((resolve, reject) => {
+        //     try {
+        //         this.attack(passwordRange);
+        //         this.changeExecuteState(false);
+        //         resolve(0);
+        //     } catch (e) {
+        //         this.changeExecuteState(false);
+        //         reject(e)
+        //     }
+        // });
+        // p.then(() => {
+        //     this.changeExecuteState(false);
+        // }).catch(e => {
+        //     console.log(e);
+        //     this.changeExecuteState(false);
+        // });
+
+
+
+        console.log("即抜ける");
+        console.log(passwordRange.toString());
     }
 
     @Action({ rawError: true })
@@ -77,29 +95,61 @@ export default class PasswordAttacker extends VuexModule {
 
     private static readonly CHANK_DIVIDE_POS = 6;
 
+    @Action({ rawError: true })
     private attack(passwordRange: AttackPasswordRange): void {
         this.onStart(passwordRange);
 
         let chunk = AttackPasswordRange.createChunk(passwordRange.formPassword, PasswordAttacker.CHANK_DIVIDE_POS);
 
         while (this.executing) {
+            this.onBeginAttackChunk(chunk);
+
             this.attackChunk(chunk);
 
+            this.onFinishAttackChunk(chunk);
 
+            if (chunk.toPassword.equals(passwordRange.toPassword)) break;
+            chunk = chunk.nextChunk(PasswordAttacker.CHANK_DIVIDE_POS, passwordRange);
         }
 
-
-        this.executing = false;
+        this.changeExecuteState(false);
     }
 
+    @Action({ rawError: true })
     private attackChunk(chunk: AttackPasswordRange): void {
-        console.log(chunk);
+        console.log("attackChunk()に来ている。")
+        console.log(chunk.toString());
     }
 
+    @Action({ rawError: true })
     private onStart(passwordRange: AttackPasswordRange): void {
         this.changeFromPassword(passwordRange.formPassword.toString());
         this.changeProgressText("");
         this.changeFoundPassswords([]);
         this.changeAttackedCount(0);
+    }
+
+    @Action({ rawError: true })
+    private onBeginAttackChunk(chunk: AttackPasswordRange): void {
+        this.changeStartPosition(chunk.formPassword.toString());
+        this.changeEndPosition(chunk.formPassword.toString());
+        this.addInfomation(this.makeInfoTextOf(chunk));
+    }
+
+
+    @Action({ rawError: true })
+    private onFinishAttackChunk(chunk: AttackPasswordRange): void {
+    }
+
+    @Action({ rawError: true })
+    private addInfomation(text: string): void {
+        console.log(text);
+
+    }
+
+    @Action({ rawError: true })
+    private makeInfoTextOf(chunk: AttackPasswordRange): string {
+        console.log("makeInfoTextOf()" + chunk);
+        return "";
     }
 }
