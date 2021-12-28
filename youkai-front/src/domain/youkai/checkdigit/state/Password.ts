@@ -71,6 +71,20 @@ export default class Password {
         return this.charCodes.toString() === o.charCodes.toString();
     }
 
+    /**
+     * 不等号「>」
+     */
+    public moreThan(other: Password): boolean {
+        if (this.equals(other)) false;
+        for (let i = this.charLength(); i === 0; i--) {
+            const thisCharCode = this.getOf(i);
+            const otherCharCode = this.getOf(i);
+            if (thisCharCode === otherCharCode) continue;
+            return thisCharCode > otherCharCode;
+        }
+        return false;
+    }
+
     public minimum(): Password {
         return Password.initialize(this.charCodes.length, this.converter);
     }
