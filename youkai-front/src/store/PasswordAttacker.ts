@@ -82,7 +82,19 @@ export default class PasswordAttacker extends VuexModule {
         //     this.changeExecuteState(false);
         // });
 
+        this.changeExecuteState(true);
 
+        const applyFunc = () => {
+            try {
+                this.attack(passwordRange);
+                this.changeExecuteState(false);
+            } catch (e) {
+                this.changeExecuteState(false);
+            }
+        }
+
+        // setTimeout(applyFunc, 1);
+        requestIdleCallback(applyFunc);
 
         console.log("即抜ける");
         console.log(passwordRange.toString());
@@ -101,7 +113,7 @@ export default class PasswordAttacker extends VuexModule {
 
         let chunk = AttackPasswordRange.createChunk(passwordRange.formPassword, PasswordAttacker.CHANK_DIVIDE_POS);
 
-        while (this.executing) {
+        while (this.nowExecuting) {
             this.onBeginAttackChunk(chunk);
 
             this.attackChunk(chunk);
