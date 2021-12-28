@@ -1,8 +1,8 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
-import PasswordAttackWorker from '@/application/worker/PasswordAttackWorker';
-// const PasswordAttackWorker = require('@/application/worker/PasswordAttackWorker');
+import PasswordAttackWorker from '@/application/worker/PasswordAttack.worker';
+// const PasswordAttackWorker = require('@/application/worker/PasswordAttack.worker');
 
 @Module({
     name: 'PasswordAttacker',
@@ -21,8 +21,6 @@ export default class PasswordAttacker extends VuexModule {
 
     private nickName = "";
 
-    private worker: Worker | null = null;
-
     public get nowExecuting(): boolean {
         return this.executing;
     }
@@ -30,6 +28,8 @@ export default class PasswordAttacker extends VuexModule {
     public get nowFromPassword(): string {
         return this.fromPassword;
     }
+
+    private worker: Worker | null = null;
 
     @Mutation
     private setWorker(worker: Worker | null) {
@@ -135,7 +135,7 @@ export default class PasswordAttacker extends VuexModule {
         //     console.log('ここは、自前で登録した箇所。event:' + e);
         // })
 
-        this.setWorker(new Worker('worker.js'));
+        this.setWorker(PasswordAttackWorker);
         this.nowWorker?.addEventListener('message', e => {
             // console.log('ここは、自前で登録した箇所。event:' + e);
             // this.attack(passwordRange);
@@ -144,7 +144,6 @@ export default class PasswordAttacker extends VuexModule {
             this.setWorker(null);
         })
         this.nowWorker?.postMessage("exec");
-
 
         // setTimeout(applyFunc, 1);
         // requestIdleCallback(applyFunc);
