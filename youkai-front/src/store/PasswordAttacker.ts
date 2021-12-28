@@ -58,7 +58,7 @@ export default class PasswordAttacker extends VuexModule {
     private attack(passwordRange: AttackPasswordRange): boolean {
         this.onStart(passwordRange);
 
-        // const chank = AttackPasswordRange.createChanck(passwordRange.formPassword, )
+        const chank = AttackPasswordRange.createChanck(passwordRange.formPassword, 6);
 
         // while (this.executing) {
         // }

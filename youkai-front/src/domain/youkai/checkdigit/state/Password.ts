@@ -19,9 +19,14 @@ export default class Password {
     }
 
     public increment(): Password {
+        return this.incrementSpecifyPosition(0);
+    }
+
+    public incrementSpecifyPosition(position: number): Password {
+        const index = position;
         const converter = this.converter;
         const newCodes = this.charCodes.slice();
-        for (let i = 0; i < newCodes.length; i++) {
+        for (let i = index; i < newCodes.length; i++) {
             const before = newCodes[i];
             newCodes[i] = converter.incrementCode(before);
             if (newCodes[i] > before) break; // 繰り上がりなし
