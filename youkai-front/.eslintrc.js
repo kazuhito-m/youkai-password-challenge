@@ -27,6 +27,7 @@ module.exports = {
       {
         "ignores": [ "Index", "doc" ]
       },
-    ]
+    ],
+    "import/no-webpack-loader-syntax": "off"
   }
 }

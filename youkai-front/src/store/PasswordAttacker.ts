@@ -1,7 +1,7 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
+import PasswordAttackWorker from 'worker-loader!~/application/worker/PasswordAttack.worker';
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
-import PasswordAttackWorker from 'worker-loader!~/application/worker/PasswordAttack.worker';
 
 @Module({
     name: 'PasswordAttacker',
@@ -80,6 +80,7 @@ export default class PasswordAttacker extends VuexModule {
 
     @Action({ rawError: true })
     public execute(passwordRange: AttackPasswordRange): void {
+        console.log("execute() : " + passwordRange);
         this.changeExecuteState(true);
 
         const worker = new PasswordAttackWorker();

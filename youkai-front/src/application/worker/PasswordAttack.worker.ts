@@ -2,7 +2,7 @@ const worker: Worker = self as any;
 
 let on = false;
 
-worker.addEventListener('message', async event => {
+worker.addEventListener('message', event => {
     const operationType = event.data;
     console.log(`operationType(coller to worker):${operationType}`);
     if (operationType === "execute") execute();
