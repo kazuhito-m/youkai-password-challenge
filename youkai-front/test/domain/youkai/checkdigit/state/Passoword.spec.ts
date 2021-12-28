@@ -1,7 +1,7 @@
 import Password from "~/domain/youkai/checkdigit/state/Password";
 import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
 
-describe('AttackCharacters', () => {
+describe('Passoword', () => {
     test('文字列の初期化時に_有効な文字コード中で一番低い値_で初期化される', () => {
         const charTable = "****16******27******38******49******50*****-*******.**";
         const converter = new CodeToCharacterConverter(charTable);
@@ -64,6 +64,36 @@ describe('AttackCharacters', () => {
         const actual = firstCode.fixInvalid();
 
         expect(actual.dumpHexText()).toEqual("04 04 04 04");
+    });
+
+    test('パスワードの>(不等号:小なり)が判定出来る', () => {
+        let left = Password.withText("AAA");
+        let right = Password.withText("AAA");
+        expect(left.moreThan(right)).toBeFalsy();
+
+        left = Password.withText("AAH");
+        right = Password.withText("AAA");
+        expect(left.moreThan(right)).toBeTruthy();
+
+        left = Password.withText("HAA");
+        right = Password.withText("AAA");
+        expect(left.moreThan(right)).toBeTruthy();
+
+        left = Password.withText("AAA");
+        right = Password.withText("AAH");
+        expect(left.moreThan(right)).toBeFalsy();
+
+        left = Password.withText("AAA");
+        right = Password.withText("HAA");
+        expect(left.moreThan(right)).toBeFalsy();
+
+        left = Password.withText("AAH");
+        right = Password.withText("ccA");
+        expect(left.moreThan(right)).toBeTruthy();
+
+        left = Password.withText("AAH");
+        right = Password.withText("HAH");
+        expect(left.moreThan(right)).toBeFalsy();
     });
 
     test('パスワードテキストからバイナリコードに変換出来る', () => {

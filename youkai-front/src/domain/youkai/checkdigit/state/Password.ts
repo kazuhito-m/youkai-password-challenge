@@ -76,9 +76,9 @@ export default class Password {
      */
     public moreThan(other: Password): boolean {
         if (this.equals(other)) return false;
-        for (let i = this.charLength(); i === 0; i--) {
+        for (let i = this.charLength() - 1; i >= 0; i--) {
             const thisCharCode = this.getOf(i);
-            const otherCharCode = this.getOf(i);
+            const otherCharCode = other.getOf(i);
 
             if (thisCharCode === otherCharCode) continue;
             return thisCharCode > otherCharCode;
