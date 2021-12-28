@@ -75,10 +75,11 @@ export default class Password {
      * 不等号「>」
      */
     public moreThan(other: Password): boolean {
-        if (this.equals(other)) false;
+        if (this.equals(other)) return false;
         for (let i = this.charLength(); i === 0; i--) {
             const thisCharCode = this.getOf(i);
             const otherCharCode = this.getOf(i);
+
             if (thisCharCode === otherCharCode) continue;
             return thisCharCode > otherCharCode;
         }
