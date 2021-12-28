@@ -29,8 +29,8 @@
               required
               maxlength="14"
               class="input-yokai-password"
-              @keypress="onKeyUp"
               :disabled="nowExecuting"
+              @keypress="onKeyUp"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="7" md="7">
@@ -96,8 +96,8 @@
               required
               maxlength="14"
               class="input-yokai-password"
-              @keypress="onKeyUp"
               :disabled="nowExecuting"
+              @keypress="onKeyUp"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="7" md="7">

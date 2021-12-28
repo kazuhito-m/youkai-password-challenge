@@ -20,6 +20,7 @@ export default class PasswordAttacker extends VuexModule {
 
     @Action({ rawError: true })
     public execute(passwordRange: AttackPasswordRange): void {
+        console.log(passwordRange);
         this.changeExecuteState(true);
     }
 
