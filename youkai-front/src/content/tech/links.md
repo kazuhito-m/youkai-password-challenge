@@ -49,3 +49,9 @@ title: このアプリを作るに当たっての技術リンク集
 - Vue + Vuex + TypeScriptでWeb Workerを試してみる
   - https://qiita.com/ysugimo/items/5e92ace323951ccb6015
   - NuxtとVueの違いはあるものの…全く同じことを全く同じようにやろうとしている。
+  - この通り書いたが、非同期になるものの、スレッドが増えていなかった
+- Vue.js で WebWorker を使って、重い処理をバックグラウンドへ逃がす
+  - https://blog.35d.jp/2020-01-27-web-worker
+  - 「スレッドが増えているかどうか」の確認方法が乗ってる
+- VueCLI + javascript環境で、WebWorkerを使用する
+  - 
