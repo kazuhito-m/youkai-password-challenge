@@ -21,6 +21,8 @@ export default class PasswordAttacker extends VuexModule {
 
     private nickName = "";
 
+    private worker: Worker | null = null;
+
     public get nowExecuting(): boolean {
         return this.executing;
     }
@@ -30,7 +32,21 @@ export default class PasswordAttacker extends VuexModule {
     }
 
     @Mutation
+    private setWorker(worker: Worker | null) {
+        this.worker = worker;
+    }
+
+    private get nowWorker(): Worker | null {
+        return this.worker;
+    }
+
+    @Mutation
     private changeExecuteState(executing: boolean) {
+        if (!executing) {
+            if (this.worker !== null) {
+                this.worker.postMessage("cancel");
+            }
+        }
         this.executing = executing;
     }
 
@@ -95,7 +111,7 @@ export default class PasswordAttacker extends VuexModule {
         //     }
         // }
 
-        const worker: Worker = PasswordAttackWorker;
+        // const worker: Worker = PasswordAttackWorker;
 
         // const params = "クライアント側からPostMessageで送りつけたもの。";
         // worker.postMessage({ params });
@@ -108,18 +124,26 @@ export default class PasswordAttacker extends VuexModule {
         // };
 
 
-        worker.onmessage = (event) => {
-            console.log('ここは別の並行処理でやってる？');
-            console.log(event);
-            // this.attack(passwordRange);
-            this.changeExecuteState(false);
-        };
+        // worker.onmessage = (event) => {
+        //     console.log('ここは別の並行処理でやってる？');
+        //     console.log(event);
+        //     // this.attack(passwordRange);
+        //     this.changeExecuteState(false);
+        // };
 
         // worker.addEventListener('message', e => {
         //     console.log('ここは、自前で登録した箇所。event:' + e);
         // })
 
-        worker.postMessage("これが日本語というのは、どいういう動きするの？");
+        this.setWorker(new Worker('worker.js'));
+        this.nowWorker?.addEventListener('message', e => {
+            // console.log('ここは、自前で登録した箇所。event:' + e);
+            // this.attack(passwordRange);
+            this.changeExecuteState(false);
+            this.nowWorker?.terminate();
+            this.setWorker(null);
+        })
+        this.nowWorker?.postMessage("exec");
 
 
         // setTimeout(applyFunc, 1);
