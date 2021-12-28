@@ -80,38 +80,6 @@ export default class PasswordAttacker extends VuexModule {
 
     @Action({ rawError: true })
     public execute(passwordRange: AttackPasswordRange): void {
-        // this.changeExecuteState(true);
-        // new Promise((resolve, reject) => {
-        //     try {
-        //         this.attack(passwordRange);
-        //         this.changeExecuteState(false);
-        //         resolve(0);
-        //     } catch (e) {
-        //         this.changeExecuteState(false);
-        //         reject(e)
-        //     }
-        // });
-        // p.then(() => {
-        //     this.changeExecuteState(false);
-        // }).catch(e => {
-        //     console.log(e);
-        //     this.changeExecuteState(false);
-        // });
-
-        // this.changeExecuteState(true);
-
-        // const applyFunc = () => {
-        //     try {
-        //         this.attack(passwordRange);
-        //         this.changeExecuteState(false);
-        //     } catch (e) {
-        //         this.changeExecuteState(false);
-        //     }
-        // }
-
-        // setTimeout(applyFunc, 1);
-        // requestIdleCallback(applyFunc);
-
         this.changeExecuteState(true);
 
         const worker = new PasswordAttackWorker();
@@ -126,9 +94,6 @@ export default class PasswordAttacker extends VuexModule {
             }
         });
         worker.postMessage('execute');
-
-        console.log("即抜ける");
-        console.log(passwordRange.toString());
     }
 
     @Action({ rawError: true })
