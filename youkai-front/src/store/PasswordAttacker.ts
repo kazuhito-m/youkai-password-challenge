@@ -1,8 +1,7 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
-import Worker from 'worker-loader!~/assets/test.worker';
-
+import PasswordAttackWorker from 'worker-loader!~/application/worker/PasswordAttack.worker';
 
 @Module({
     name: 'PasswordAttacker',
@@ -101,7 +100,7 @@ export default class PasswordAttacker extends VuexModule {
 
         this.changeExecuteState(true);
 
-        const worker = new Worker();
+        const worker = new PasswordAttackWorker();
         worker.addEventListener('message', (event: MessageEvent) => {
             console.log('Workerから何かきたよ →', event.data)
             worker.terminate();
