@@ -20,6 +20,17 @@ export default class PasswordAttacker extends VuexModule {
 
     private nickName = "";
 
+    private worker: PasswordAttackWorker | null = null;
+
+    private get nowWorker(): PasswordAttackWorker | null {
+        return this.worker;
+    }
+
+    @Mutation
+    private setWorker(worker: PasswordAttackWorker | null): void {
+        this.worker = worker;
+    }
+
     public get nowExecuting(): boolean {
         return this.executing;
     }
@@ -30,8 +41,11 @@ export default class PasswordAttacker extends VuexModule {
 
     @Mutation
     private changeExecuteState(executing: boolean) {
-        console.log("changeExecuteState()は呼べてる。" + executing)
+        console.log("call changeExecuteState(" + executing);
         this.executing = executing;
+        if (this.executing) return;
+        if (this.worker === null) return;
+        this.worker.postMessage("cancel");
     }
 
     @Mutation
@@ -101,12 +115,17 @@ export default class PasswordAttacker extends VuexModule {
         this.changeExecuteState(true);
 
         const worker = new PasswordAttackWorker();
+        this.setWorker(worker);
         worker.addEventListener('message', (event: MessageEvent) => {
-            console.log('Workerから何かきたよ →', event.data)
-            worker.terminate();
-            this.changeExecuteState(false);
+            const operationType = event.data;
+            console.log(`operationType(worker to coller):${operationType}`);
+            if (operationType === "exit") {
+                worker.terminate();
+                this.setWorker(null);
+                this.changeExecuteState(false);
+            }
         });
-        worker.postMessage('Workerにメッセージ送信しました');
+        worker.postMessage('execute');
 
         console.log("即抜ける");
         console.log(passwordRange.toString());
