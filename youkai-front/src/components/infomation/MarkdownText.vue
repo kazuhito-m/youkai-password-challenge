@@ -26,6 +26,11 @@
 - [Imaha486／同424万件のパスワードと辞書を照合するフィルタツール](https://i486.mods.jp/files/yokaisplit.zip)
 - [Imaha486／同424万件のパスワードをAND検索するツール](https://i486.mods.jp/files/yokailoop.zip )
 
+## Hit済みパスワードの置き場
+
+- [kei氏によるリポジトリ](https://github.com/kmikage/yokai-password/tree/main/passwords)
+  - 暫定、おそらく近い将来置けなくなる
+
 ## 付帯情報・パスワード解析のヒント
 
 - [GameStaff @ Wiki ナムコ（メーカー関係者の名前一覧）](https://w.atwiki.jp/game_staff/sp/pages/215.html)
