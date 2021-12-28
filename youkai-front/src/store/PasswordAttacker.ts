@@ -37,14 +37,15 @@ export default class PasswordAttacker extends VuexModule {
         this.changeExecuteState(true);
         new Promise((resolve, reject) => {
             try {
-                if (this.attack(passwordRange)) resolve(0);
-                else reject;
+                this.attack(passwordRange);
+                resolve(0);
             } catch (e) {
-                reject()
+                reject(e)
             }
         }).then(() => {
             this.changeExecuteState(false);
         }).catch(e => {
+            console.log(e);
             this.changeExecuteState(false);
         });
     }
@@ -57,11 +58,10 @@ export default class PasswordAttacker extends VuexModule {
     private attack(passwordRange: AttackPasswordRange): boolean {
         this.onStart(passwordRange);
 
-        while (this.executing) {
-            
+        // const chank = AttackPasswordRange.createChanck(passwordRange.formPassword, )
 
-        }
-
+        // while (this.executing) {
+        // }
 
         return true;
     }
@@ -70,5 +70,6 @@ export default class PasswordAttacker extends VuexModule {
         this.fromPassword = passwordRange.formPassword.toString();
         this.progressText = "";
         this.foundPassswords = [];
+        this.checkedCount = 0;
     }
 }
