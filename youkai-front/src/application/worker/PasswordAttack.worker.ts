@@ -7,10 +7,10 @@ ctx.addEventListener("message", (event) => {
     // event.data.test = "日本語が入ったらどうなるのっと。"
 });
 
-// export default class WebpackWorker extends Worker {
-//     constructor() {
-//         super('')
-//     }
-// }
+export default class WebpackWorker extends Worker {
+    constructor() {
+        super('')
+    }
+}
 
-export default ctx;
+// export default ctx;

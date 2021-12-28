@@ -29,14 +29,14 @@ export default class PasswordAttacker extends VuexModule {
         return this.fromPassword;
     }
 
-    private worker: Worker | null = null;
+    private worker: any = null;
 
     @Mutation
-    private setWorker(worker: Worker | null) {
+    private setWorker(worker: any | null) {
         this.worker = worker;
     }
 
-    private get nowWorker(): Worker | null {
+    private get nowWorker(): any | null {
         return this.worker;
     }
 
@@ -135,8 +135,8 @@ export default class PasswordAttacker extends VuexModule {
         //     console.log('ここは、自前で登録した箇所。event:' + e);
         // })
 
-        this.setWorker(PasswordAttackWorker);
-        this.nowWorker?.addEventListener('message', e => {
+        this.setWorker(new PasswordAttackWorker());
+        this.nowWorker.addEventListener('message', (e: any) => {
             // console.log('ここは、自前で登録した箇所。event:' + e);
             // this.attack(passwordRange);
             this.changeExecuteState(false);
