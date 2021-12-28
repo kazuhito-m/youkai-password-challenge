@@ -38,3 +38,11 @@ title: このアプリを作るに当たっての技術リンク集
 
 - JavaScriptで手軽にgzip圧縮できるライブラリ使ってみた【zlib.js】
   - https://pisuke-code.com/javascript-usage-of-zlib-js/
+
+
+## web workers
+
+- Nuxt + Typescript で worker-loader を使う
+  - https://kitsune-gadget.hatenablog.com/entry/2020/05/16/211426
+- Nuxt.tsでWeb Workersを使う【Nuxt.js + TypeScript】
+  - https://xor.hateblo.jp/entry/20201010/1602309600

@@ -101,9 +101,16 @@ export default {
         'jQuery': 'jquery'
       })
     ],
-    extend (config) {
+    extend (config, xtx) {
       // config.devtool = 'source-map'
       config.optimization.minimize = false; // クラス名を利用しているところが動かなくなるので
+      config.module.rules.push({
+        test: /\.worker\.js$/,
+        use: {
+          loader: 'worker-loader',
+        },
+      });
+      config.output.globalObject = 'this';
     }
   },
   loading: '~/components/Loading.vue',
