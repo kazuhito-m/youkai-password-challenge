@@ -38,3 +38,23 @@ title: このアプリを作るに当たっての技術リンク集
 
 - JavaScriptで手軽にgzip圧縮できるライブラリ使ってみた【zlib.js】
   - https://pisuke-code.com/javascript-usage-of-zlib-js/
+
+
+## web workers
+
+- Nuxt + Typescript で worker-loader を使う
+  - https://kitsune-gadget.hatenablog.com/entry/2020/05/16/211426
+- Nuxt.tsでWeb Workersを使う【Nuxt.js + TypeScript】
+  - https://xor.hateblo.jp/entry/20201010/1602309600
+- Vue + Vuex + TypeScriptでWeb Workerを試してみる
+  - https://qiita.com/ysugimo/items/5e92ace323951ccb6015
+  - NuxtとVueの違いはあるものの…全く同じことを全く同じようにやろうとしている。
+  - この通り書いたが、非同期になるものの、スレッドが増えていなかった
+- Vue.js で WebWorker を使って、重い処理をバックグラウンドへ逃がす
+  - https://blog.35d.jp/2020-01-27-web-worker
+  - 「スレッドが増えているかどうか」の確認方法が乗ってる
+- VueCLI + javascript環境で、WebWorkerを使用する
+  - https://qiita.com/imachan567/items/61d2c30bd2a5efd6689d
+  - JSnなので、そもそもWorkerをこの書き方では掛けないし、試せなかった
+- 重い処理にはWebWorkerを使う
+  - https://developers.10antz.co.jp/archives/1147
