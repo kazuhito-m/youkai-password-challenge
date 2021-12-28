@@ -1,6 +1,9 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
+import PasswordAttackWorker from '@/application/worker/PasswordAttackWorker';
+// const PasswordAttackWorker = require('@/application/worker/PasswordAttackWorker');
+
 @Module({
     name: 'PasswordAttacker',
     stateFactory: true,
@@ -28,7 +31,6 @@ export default class PasswordAttacker extends VuexModule {
 
     @Mutation
     private changeExecuteState(executing: boolean) {
-        console.log("changeExecuteState()は呼べてる。" + executing)
         this.executing = executing;
     }
 
@@ -84,20 +86,46 @@ export default class PasswordAttacker extends VuexModule {
 
         this.changeExecuteState(true);
 
-        const applyFunc = () => {
-            try {
-                this.attack(passwordRange);
-                this.changeExecuteState(false);
-            } catch (e) {
-                this.changeExecuteState(false);
-            }
-        }
+        // const applyFunc = () => {
+        //     try {
+        //         this.attack(passwordRange);
+        //         this.changeExecuteState(false);
+        //     } catch (e) {
+        //         this.changeExecuteState(false);
+        //     }
+        // }
+
+        const worker: Worker = PasswordAttackWorker;
+
+        // const params = "クライアント側からPostMessageで送りつけたもの。";
+        // worker.postMessage({ params });
+
+        // worker.onmessage = (event) => {
+        //     console.log('ここが出るのはいつだろう？event:' + event);
+        //     console.log(passwordRange.toString());
+        //     console.log(event.data.test);
+        //     this.changeExecuteState(false);
+        // };
+
+
+        worker.onmessage = (event) => {
+            console.log('ここは別の並行処理でやってる？');
+            console.log(event);
+            // this.attack(passwordRange);
+            this.changeExecuteState(false);
+        };
+
+        // worker.addEventListener('message', e => {
+        //     console.log('ここは、自前で登録した箇所。event:' + e);
+        // })
+
+        worker.postMessage("これが日本語というのは、どいういう動きするの？");
+
 
         // setTimeout(applyFunc, 1);
-        requestIdleCallback(applyFunc);
+        // requestIdleCallback(applyFunc);
 
         console.log("即抜ける");
-        console.log(passwordRange.toString());
     }
 
     @Action({ rawError: true })
@@ -109,6 +137,7 @@ export default class PasswordAttacker extends VuexModule {
 
     @Action({ rawError: true })
     private attack(passwordRange: AttackPasswordRange): void {
+        console.log("Attackにきてるか？")
         this.onStart(passwordRange);
 
         let chunk = AttackPasswordRange.createChunk(passwordRange.formPassword, PasswordAttacker.CHANK_DIVIDE_POS);

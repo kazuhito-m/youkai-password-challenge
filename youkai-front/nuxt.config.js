@@ -108,7 +108,15 @@ export default {
         test: /\.worker\.js$/,
         use: {
           loader: 'worker-loader',
+          options: {
+            inline: true
+          }
         },
+      },
+      {
+        test: /\.worker\.ts$/,
+        use: ['ts-loader'],
+        exclude: /node_modules/,
       });
       config.output.globalObject = 'this';
     }
