@@ -11,10 +11,12 @@ export default class PasswordAttacker extends VuexModule {
     private nowStartPosition = "";
     private nowEndPosition = "";
     private progressText = "";
-    private foundPassswords = "";
+    private foundPassswords: string[] = [];
+
+    private fromPassword = "";
+    private checkedCount = 0;
 
     private nickName = "";
-    private fromPassword = "";
 
     public get nowExecuting(): boolean {
         return this.executing;
@@ -53,10 +55,20 @@ export default class PasswordAttacker extends VuexModule {
     }
 
     private attack(passwordRange: AttackPasswordRange): boolean {
+        this.onStart(passwordRange);
 
+        while (this.executing) {
+            
 
+        }
 
 
         return true;
+    }
+
+    private onStart(passwordRange: AttackPasswordRange): void {
+        this.fromPassword = passwordRange.formPassword.toString();
+        this.progressText = "";
+        this.foundPassswords = [];
     }
 }

@@ -2,8 +2,8 @@ import Password from "../checkdigit/state/Password";
 
 export default class AttackPasswordRange {
     constructor(
-        private readonly formPassword: Password,
-        private readonly toPassword: Password
+        public readonly formPassword: Password,
+        public readonly toPassword: Password
     ) {}
 
     public static of(fromPasswordText:string , toPasswordText: string): AttackPasswordRange {
