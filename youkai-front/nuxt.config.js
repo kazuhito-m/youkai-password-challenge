@@ -101,7 +101,13 @@ export default {
         'jQuery': 'jquery'
       })
     ],
-    extend (config) {
+    extend (config, ctx) {
+      if (ctx.isClient) {
+        config.module.rules.push({
+          test: /\.worker\.js$/,
+          loader: 'worker-loader',
+        })
+      }
       // config.devtool = 'source-map'
       config.optimization.minimize = false; // クラス名を利用しているところが動かなくなるので
     }

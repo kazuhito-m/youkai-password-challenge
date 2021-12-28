@@ -30,6 +30,11 @@
       "@types/node",
       "@types/jest",
       "vuetify"
+    ],
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types",
+      "./node_modules/@nuxt/vue-app/types"
     ]
   },
   "exclude": [

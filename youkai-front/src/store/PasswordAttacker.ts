@@ -1,6 +1,9 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
+import Worker from 'worker-loader!~/assets/test.worker';
+
+
 @Module({
     name: 'PasswordAttacker',
     stateFactory: true,
@@ -82,19 +85,29 @@ export default class PasswordAttacker extends VuexModule {
         //     this.changeExecuteState(false);
         // });
 
-        this.changeExecuteState(true);
+        // this.changeExecuteState(true);
 
-        const applyFunc = () => {
-            try {
-                this.attack(passwordRange);
-                this.changeExecuteState(false);
-            } catch (e) {
-                this.changeExecuteState(false);
-            }
-        }
+        // const applyFunc = () => {
+        //     try {
+        //         this.attack(passwordRange);
+        //         this.changeExecuteState(false);
+        //     } catch (e) {
+        //         this.changeExecuteState(false);
+        //     }
+        // }
 
         // setTimeout(applyFunc, 1);
-        requestIdleCallback(applyFunc);
+        // requestIdleCallback(applyFunc);
+
+        this.changeExecuteState(true);
+
+        const worker = new Worker();
+        worker.addEventListener('message', (event: MessageEvent) => {
+            console.log('Workerから何かきたよ →', event.data)
+            worker.terminate();
+            this.changeExecuteState(false);
+        });
+        worker.postMessage('Workerにメッセージ送信しました');
 
         console.log("即抜ける");
         console.log(passwordRange.toString());
