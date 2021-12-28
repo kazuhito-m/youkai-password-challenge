@@ -54,4 +54,7 @@ title: このアプリを作るに当たっての技術リンク集
   - https://blog.35d.jp/2020-01-27-web-worker
   - 「スレッドが増えているかどうか」の確認方法が乗ってる
 - VueCLI + javascript環境で、WebWorkerを使用する
-  - 
+  - https://qiita.com/imachan567/items/61d2c30bd2a5efd6689d
+  - JSnなので、そもそもWorkerをこの書き方では掛けないし、試せなかった
+- 重い処理にはWebWorkerを使う
+  - https://developers.10antz.co.jp/archives/1147
