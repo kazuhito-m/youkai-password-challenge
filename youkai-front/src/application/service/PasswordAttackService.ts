@@ -5,6 +5,7 @@ import ExecuteOrder from '@/application/worker/passwordattack/order/ExecuteOrder
 import CancelOrder from '@/application/worker/passwordattack/order/CancelOrder';
 import WorkerResult from '@/application/worker/passwordattack/result/WorkerResult';
 import { ResultType } from '@/application/worker/passwordattack/result/ResultType';
+import BeginAttackChunkResult from '../worker/passwordattack/result/BeginAttackChunkResult';
 
 export default class PasswordAttackService {
     private worker: PasswordAttackWorker | null = null;
@@ -25,6 +26,7 @@ export default class PasswordAttackService {
             const resType = result.result;
             if (resType === ResultType.START) this.onStart(status);
             if (resType === ResultType.EXIT) this.onExit(status);
+            if (resType === ResultType.BEGIN_ATTACK_CHUNK) this.onBeginAttackChunk(result as BeginAttackChunkResult, status);
         };
 
         const order = new ExecuteOrder(
@@ -38,7 +40,7 @@ export default class PasswordAttackService {
         this.onExit(status);
     }
 
-    public onExit(status: PasswordAttackStatus) {
+    private onExit(status: PasswordAttackStatus) {
         if (!this.worker) return;
         this.worker.postMessage(new CancelOrder());
         this.worker?.terminate();
@@ -48,5 +50,10 @@ export default class PasswordAttackService {
 
     private onStart(status: PasswordAttackStatus) {
         status.onStart();
+    }
+
+    private onBeginAttackChunk(result: BeginAttackChunkResult, status: PasswordAttackStatus) {
+        const range = AttackPasswordRange.of(result.startPosition, result.endPosition);
+        status.onBeginAttackChunk(range);
     }
 }

@@ -106,10 +106,9 @@ export default class PasswordAttackStatus extends VuexModule {
     @Action({ rawError: true })
     public onBeginAttackChunk(chunk: AttackPasswordRange): void {
         this.changeStartPosition(chunk.formPassword.toString());
-        this.changeEndPosition(chunk.formPassword.toString());
+        this.changeEndPosition(chunk.toPassword.toString());
         this.addInfomation(this.makeInfoTextOf(chunk));
     }
-
 
     @Action({ rawError: true })
     public onFinishAttackChunk(chunk: AttackPasswordRange): void {
