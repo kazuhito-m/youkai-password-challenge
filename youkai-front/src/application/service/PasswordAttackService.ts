@@ -1,11 +1,11 @@
 import PasswordAttackWorker from 'worker-loader!~/application/worker/passwordattack/PasswordAttack.worker';
+import BeginAttackChunkResult from '../worker/passwordattack/result/BeginAttackChunkResult';
 import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
 import PasswordAttackStatus from "~/store/PasswordAttackStatus";
 import ExecuteOrder from '@/application/worker/passwordattack/order/ExecuteOrder';
 import CancelOrder from '@/application/worker/passwordattack/order/CancelOrder';
 import WorkerResult from '@/application/worker/passwordattack/result/WorkerResult';
 import { ResultType } from '@/application/worker/passwordattack/result/ResultType';
-import BeginAttackChunkResult from '../worker/passwordattack/result/BeginAttackChunkResult';
 
 export default class PasswordAttackService {
     private worker: PasswordAttackWorker | null = null;
