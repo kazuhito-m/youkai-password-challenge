@@ -64,16 +64,37 @@
         </v-row>
       </v-container>
     </v-form>
+    <v-snackbar
+      v-model="notifyHitPassword"
+      outlined
+      multi-line="true"
+      color="white"
+      timeout="60000"
+    >
+      通るパスワードが見つかりました : {{ hitPassword }}
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="blue"
+          text
+          v-bind="attrs"
+          @click="notifyHitPassword = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-card>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { PasswordAttackStatusStore } from '@/store'
 
 @Component
 export default class PasswordChallengeProgress extends Vue {
-  private mounted(): void {}
+  private notifyHitPassword = false
+  private hitPassword = ''
+  private foundPasswordCount = 0
 
   private get nowExecuting(): boolean {
     return PasswordAttackStatusStore.nowExecuting
@@ -93,6 +114,17 @@ export default class PasswordChallengeProgress extends Vue {
 
   private get foundPasswords(): string {
     const values = PasswordAttackStatusStore.nowFoundPasswords
+
+    if (values.length === 0) {
+      this.hitPassword = ""
+      this.notifyHitPassword = false
+      this.foundPasswordCount = 0
+    } else {
+      this.hitPassword = values[values.length - 1]
+      this.notifyHitPassword = this.foundPasswordCount !== values.length
+      this.foundPasswordCount = values.length
+    }
+
     if (values.length === 0) return ' '
     return values.join(', ')
   }
