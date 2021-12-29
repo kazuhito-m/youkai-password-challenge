@@ -85,7 +85,6 @@ export default class PasswordAttacker extends VuexModule {
 
     @Action({ rawError: true })
     public onStart(): void {
-        console.log("おんすたーとへきました。")
         this.changeStartPosition("");
         this.changeEndPosition("");
         this.changeProgressText("");

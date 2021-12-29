@@ -24,7 +24,7 @@ export default class PasswordAttackService {
             console.log(`operationType(worker to coller):${result}`);
             const resType = result.result;
             if (resType === ResultType.START) this.onStart(status);
-            if (result.result === ResultType.EXIT) this.onExit(status);
+            if (resType === ResultType.EXIT) this.onExit(status);
         };
 
         const order = new ExecuteOrder(
