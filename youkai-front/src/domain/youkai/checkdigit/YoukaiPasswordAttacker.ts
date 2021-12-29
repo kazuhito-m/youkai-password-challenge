@@ -8,7 +8,6 @@ export default class YoukaiPasswordAttacker {
         private readonly oneHitExitMode: boolean
     ) { }
 
-    private A = 0;
     private cancellation = false;
 
     private static readonly DUMP_INTERVAL = 67107840;
@@ -25,8 +24,6 @@ export default class YoukaiPasswordAttacker {
                 ++checkedCount;
 
                 // 以下メインルーチン
-                this.A = password.getOf(0);
-
                 const currentCheckDigit = this.calculator.calculate(password);
 
                 if ((checkedCount % YoukaiPasswordAttacker.DUMP_INTERVAL) === 0 || this.cancellation) {
