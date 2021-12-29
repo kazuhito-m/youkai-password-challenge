@@ -34,6 +34,10 @@ export default class PasswordAttackService {
         this.worker.postMessage(order);
     }
 
+    public cancel(status: PasswordAttackStatus) {
+        this.onExit(status);
+    }
+
     public onExit(status: PasswordAttackStatus) {
         if (!this.worker) return;
         this.worker.postMessage(new CancelOrder());

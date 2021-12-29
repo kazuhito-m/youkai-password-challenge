@@ -126,7 +126,7 @@ import PasswordAttackService from '@/application/service/PasswordAttackService'
 
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
-import { PasswordAttackerStore } from "@/store";
+import { PasswordAttackStatusStore } from "@/store";
 
 @Component
 export default class RangePasswordChallenge extends Vue {
@@ -202,15 +202,15 @@ export default class RangePasswordChallenge extends Vue {
 
   private onClickStart(): void {
     const range = AttackPasswordRange.of(this.fromPassword, this.toPassword);
-    this.passwordAttackService?.execute(range, PasswordAttackerStore);
+    this.passwordAttackService?.execute(range, PasswordAttackStatusStore);
   }
 
   private onClickStop(): void  {
-    this.passwordAttackService?.cancel(PasswordAttackerStore);
+    this.passwordAttackService?.cancel(PasswordAttackStatusStore);
   }
 
   private get nowExecuting(): boolean {
-    return PasswordAttackerStore.nowExecuting;
+    return PasswordAttackStatusStore.nowExecuting;
   }
 }
 </script>
