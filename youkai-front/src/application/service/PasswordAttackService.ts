@@ -1,7 +1,9 @@
-import PasswordAttackWorker from 'worker-loader!~/application/worker/PasswordAttack.worker';
-import Operand from "../worker/Operand";
+import PasswordAttackWorker from 'worker-loader!~/application/worker/passwordattack/PasswordAttack.worker';
+import Operand from "@/application/worker/passwordattack/Operand";
 import AttackPasswordRange from "~/domain/youkai/attack/AttackPasswordRange";
 import PasswordAttacker from "@/store/PasswordAttacker";
+import ExecuteOrder from '../worker/passwordattack/order/ExecuteOrder';
+import CancelOrder from '../worker/passwordattack/order/CancelOrder';
 
 export default class PasswordAttackService {
     private worker: PasswordAttackWorker | null = null;
@@ -21,16 +23,17 @@ export default class PasswordAttackService {
             console.log(`operationType(worker to coller):${operationType}`);
             if (operationType === "exit") this.cancel(status);
         };
-        const operand  = new Operand('execute',
+        
+        const order  = new ExecuteOrder(
             passwordRange.formPassword.toString(),
             passwordRange.toPassword.toString(),
         );
-        this.worker.postMessage(operand);
+        this.worker.postMessage(order);
     }
 
     public cancel(status: PasswordAttacker) {
         if (!this.worker) return;
-        this.worker.postMessage('cancel');
+        this.worker.postMessage(new CancelOrder());
         this.worker?.terminate();
         this.worker = null;
         status.changeExecuteState(false);

@@ -1,31 +1,26 @@
 import Operand from "./Operand";
 import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
+import WorkerOrder from "./order/WorkerOrder";
+import { OrderType } from "./order/OrderType";
+import ExecuteOrder from "./order/ExecuteOrder";
 
 const _w: Worker = self as any;
 
 let on = false;
 
-// _w.addEventListener('message', event => {
-//     const finctionType = event.data;
-//     console.log(`operationType(coller to worker):${finctionType}`);
-//     if (finctionType === "execute") execute();
-//     if (finctionType === "cancel") cancel();
-// });
-
 _w.onmessage = (event) => {
-    const operand = event.data as Operand;
-    // const status = event.data[1] as AttackPasswordRange;
-    console.log(`operationType(coller to worker):${operand.finctionType}`);
-    if (operand.finctionType === "execute") execute(operand);
-    if (operand.finctionType === "cancel") cancel();
+    const order = event.data as WorkerOrder;
+    console.log(`operationType(coller to worker):${order.order}`);
+    if (order.order === OrderType.EXECUTE) execute(order as ExecuteOrder);
+    if (order.order === OrderType.CANCEL) cancel();
 };
 
 
-function execute(operand: Operand): void {
-    console.log(operand);
+function execute(order: ExecuteOrder): void {
+    console.log(order);
     on = true;
 
-    const passwordRange = AttackPasswordRange.of(operand.fromPasswordText, operand.toPasswordText);
+    const passwordRange = AttackPasswordRange.of(order.fromPasswordText, order.toPasswordText);
 
     attack(passwordRange);
 
