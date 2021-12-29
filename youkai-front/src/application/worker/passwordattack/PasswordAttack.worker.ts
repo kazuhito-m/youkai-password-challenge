@@ -34,11 +34,11 @@ function execute(order: ExecuteOrder): void {
     _w.postMessage(new ExitResult());
 }
 
-const CHANK_DIVIDE_POS = 6;
+const CHANK_DIVIDE_POS = 5;
 
 function attack(passwordRange: AttackPasswordRange): void {
     attackedCount = 0;
-    // status.onStart(passwordRange);
+    onStart(passwordRange);
 
     let chunk = new AttackPasswordRange(passwordRange.formPassword, passwordRange.formPassword);
     const attackTargetCheckDigit = calculator.calculate(CorrectCheckDigits.無敵.typicalPassowrd);
@@ -47,14 +47,14 @@ function attack(passwordRange: AttackPasswordRange): void {
         if (!on) break; // FIXME whileに含めたいが、Lintさんが文句を言うので。
 
         chunk = chunk.nextChunk(CHANK_DIVIDE_POS, passwordRange);
-        // status.onBeginAttackChunk(chunk);
+        onBeginAttackChunk(chunk);
 
         attackChunk(chunk, attackTargetCheckDigit);
 
-        // status.onFinishAttackChunk(chunk);
+        onFinishAttackChunk(chunk);
     }
 
-    // status.changeExecuteState(false);
+    changeExecuteState(false);
 }
 
 const INTARCEPT_INTARVAL = 10000000;
@@ -62,14 +62,12 @@ const INTARCEPT_INTARVAL = 10000000;
 function attackChunk(chunk: AttackPasswordRange, attackTargetCheckDigit: A31F): void {
     let password = chunk.formPassword;
     while (!password.equals(chunk.toPassword)) {
-        if (on) break
-        if (++attackedCount % INTARCEPT_INTARVAL) onAttackInterval(attackedCount);
+        if (!on) break
+        if (++attackedCount % INTARCEPT_INTARVAL === 0) onAttackInterval(attackedCount);
 
         const currentCheckDigit = calculator.calculate(password);
 
-        if (attackTargetCheckDigit.equals(currentCheckDigit)) {
-            onHitPassowrd(password);
-        }
+        if (attackTargetCheckDigit.equals(currentCheckDigit)) onHitPassowrd(password);
 
         password = password.increment();
     }
@@ -86,4 +84,19 @@ function onHitPassowrd(hitPassword: Password) {
 
 function onAttackInterval(attackedCount: number) {
     console.log(`現在のアタック数:${attackedCount}`);
+}
+function onStart(passwordRange: AttackPasswordRange) {
+    console.log("onStart(" + passwordRange + ")");
+}
+
+function onBeginAttackChunk(chunk: AttackPasswordRange) {
+    console.log("onBeginAttackChunk(" + chunk + ")");
+}
+
+function changeExecuteState(executeState: boolean) {
+    console.log("changeExecuteState(" + executeState + ")");
+}
+
+function onFinishAttackChunk(chunk: AttackPasswordRange) {
+    console.log("onFinishAttackChunk(" + chunk + ")");
 }
