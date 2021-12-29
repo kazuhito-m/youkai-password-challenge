@@ -1,9 +1,8 @@
-import Operand from "./Operand";
-import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
 import WorkerOrder from "./order/WorkerOrder";
 import { OrderType } from "./order/OrderType";
 import ExecuteOrder from "./order/ExecuteOrder";
 import ExitResult from "./result/ExitResult";
+import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
 
 const _w: Worker = self as any;
 
@@ -36,7 +35,7 @@ function attack(passwordRange: AttackPasswordRange): void {
     let chunk = new AttackPasswordRange(passwordRange.formPassword, passwordRange.formPassword);
 
     while (chunk.toPassword.equals(passwordRange.toPassword)) {
-        if (!on) break;　// FIXME whileに含めたいが、Lintさんが文句を言うので。
+        if (!on) break; // FIXME whileに含めたいが、Lintさんが文句を言うので。
 
         chunk = chunk.nextChunk(CHANK_DIVIDE_POS, passwordRange);
         // status.onBeginAttackChunk(chunk);
