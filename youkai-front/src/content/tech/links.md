@@ -59,3 +59,8 @@ title: このアプリを作るに当たっての技術リンク集
   - JSnなので、そもそもWorkerをこの書き方では掛けないし、試せなかった
 - 重い処理にはWebWorkerを使う
   - https://developers.10antz.co.jp/archives/1147
+
+### その他の「マルチスレッド」のやり方
+
+- JavaScriptによるマルチスレッドの実現‐Concurrent.Threadの裏側
+  - https://www.otwo.jp/blog/asynchronous-processing/
