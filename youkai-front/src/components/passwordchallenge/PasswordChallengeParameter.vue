@@ -206,7 +206,7 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   private onClickStop(): void  {
-    PasswordAttackerStore.cancel();
+    this.passwordAttackService?.cancel(PasswordAttackerStore);
   }
 
   private get nowExecuting(): boolean {
