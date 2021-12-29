@@ -7,6 +7,7 @@ import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculato
 import Password from "~/domain/youkai/checkdigit/state/Password";
 import A31F from "~/domain/youkai/checkdigit/state/A31F";
 import CorrectCheckDigits from "~/domain/youkai/checkdigit/correct/CorrectCheckDigits";
+import StartResult from "./result/StartResult";
 
 const _w: Worker = self as any;
 
@@ -38,7 +39,7 @@ const CHANK_DIVIDE_POS = 5;
 
 function attack(passwordRange: AttackPasswordRange): void {
     attackedCount = 0;
-    onStart(passwordRange);
+    onStart();
 
     let chunk = new AttackPasswordRange(passwordRange.formPassword, passwordRange.formPassword);
     const attackTargetCheckDigit = calculator.calculate(CorrectCheckDigits.無敵.typicalPassowrd);
@@ -82,11 +83,12 @@ function onHitPassowrd(hitPassword: Password) {
     console.log(`当たりパスワードが見つかりました:${hitPassword}`);
 }
 
+function onStart() {
+    _w.postMessage(new StartResult());
+}
+
 function onAttackInterval(attackedCount: number) {
     console.log(`現在のアタック数:${attackedCount}`);
-}
-function onStart(passwordRange: AttackPasswordRange) {
-    console.log("onStart(" + passwordRange + ")");
 }
 
 function onBeginAttackChunk(chunk: AttackPasswordRange) {

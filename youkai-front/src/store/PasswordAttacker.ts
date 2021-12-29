@@ -84,8 +84,10 @@ export default class PasswordAttacker extends VuexModule {
     }
 
     @Action({ rawError: true })
-    public onStart(passwordRange: AttackPasswordRange): void {
-        this.changeFromPassword(passwordRange.formPassword.toString());
+    public onStart(): void {
+        console.log("おんすたーとへきました。")
+        this.changeStartPosition("");
+        this.changeEndPosition("");
         this.changeProgressText("");
         this.changeFoundPassswords([]);
         this.changeAttackedCount(0);

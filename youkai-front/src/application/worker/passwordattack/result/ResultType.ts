@@ -1,4 +1,5 @@
 const enum ResultType {
+    START,
     EXIT
 }
 

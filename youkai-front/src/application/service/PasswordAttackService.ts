@@ -22,21 +22,27 @@ export default class PasswordAttackService {
         this.worker.onmessage = (event: MessageEvent) => {
             const result = event.data as WorkerResult;
             console.log(`operationType(worker to coller):${result}`);
-            if (result.result === ResultType.EXIT) this.cancel(status);
+            const resType = result.result;
+            if (resType === ResultType.START) this.onStart(status);
+            if (result.result === ResultType.EXIT) this.onExit(status);
         };
-        
-        const order  = new ExecuteOrder(
+
+        const order = new ExecuteOrder(
             passwordRange.formPassword.toString(),
             passwordRange.toPassword.toString(),
         );
         this.worker.postMessage(order);
     }
 
-    public cancel(status: PasswordAttacker) {
+    public onExit(status: PasswordAttacker) {
         if (!this.worker) return;
         this.worker.postMessage(new CancelOrder());
         this.worker?.terminate();
         this.worker = null;
         status.changeExecuteState(false);
+    }
+
+    private onStart(status: PasswordAttacker) {
+        status.onStart();
     }
 }
