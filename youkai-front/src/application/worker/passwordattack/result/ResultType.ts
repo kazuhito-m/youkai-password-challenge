@@ -1,6 +1,7 @@
 const enum ResultType {
     START,
-    EXIT
+    BEGIN_ATTACK_CHUNK,
+    EXIT,
 }
 
 export { ResultType };
