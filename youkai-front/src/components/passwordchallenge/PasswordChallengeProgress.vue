@@ -67,7 +67,7 @@
     <v-snackbar
       v-model="notifyHitPassword"
       outlined
-      multi-line="true"
+      multiline="true"
       color="white"
       timeout="60000"
     >
