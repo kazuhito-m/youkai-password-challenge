@@ -4,6 +4,7 @@ import ExecuteOrder from "./order/ExecuteOrder";
 import ExitResult from "./result/ExitResult";
 import StartResult from "./result/StartResult";
 import BeginAttackChunkResult from "./result/BeginAttackChunkResult";
+import HitPasswordResult from "./result/HitPasswordResult";
 import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
 import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
 import Password from "@/domain/youkai/checkdigit/state/Password";
@@ -55,8 +56,6 @@ function attack(passwordRange: AttackPasswordRange): void {
 
         onFinishAttackChunk(chunk);
     }
-
-    changeExecuteState(false);
 }
 
 const INTARCEPT_INTARVAL = 10000000;
@@ -81,7 +80,9 @@ function cancel() {
 }
 
 function onHitPassowrd(hitPassword: Password) {
-    console.log(`当たりパスワードが見つかりました:${hitPassword}`);
+    console.log("パスワード見つかった！:" + hitPassword.toString())
+    const result = new HitPasswordResult(hitPassword.toString());
+    _w.postMessage(result);
 }
 
 function onStart() {
@@ -95,10 +96,6 @@ function onAttackInterval(attackedCount: number) {
 function onBeginAttackChunk(chunk: AttackPasswordRange) {
     const result = new BeginAttackChunkResult(chunk.formPassword.toString(), chunk.toPassword.toString());
     _w.postMessage(result);
-}
-
-function changeExecuteState(executeState: boolean) {
-    console.log("changeExecuteState(" + executeState + ")");
 }
 
 function onFinishAttackChunk(chunk: AttackPasswordRange) {

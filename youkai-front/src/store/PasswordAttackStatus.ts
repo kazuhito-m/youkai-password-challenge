@@ -1,6 +1,7 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import moment from 'moment';
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
+import Password from '~/domain/youkai/checkdigit/state/Password';
 
 @Module({
     name: 'PasswordAttackStatus',
@@ -126,5 +127,13 @@ export default class PasswordAttackStatus extends VuexModule {
         console.log(text);
         const info = this.nowProgressInfomation;
         this.changeProgressInfomation(info + text + "\n");
+    }
+
+    @Action({ rawError: true })
+    public onHitPassword(password: Password): void {
+        console.log("strageのonHIt:" + password.toString());
+        const passs = this.nowFoundPasswords.slice();
+        passs.push(password.toString());
+        this.changeFoundPassswords(passs);
     }
 }
