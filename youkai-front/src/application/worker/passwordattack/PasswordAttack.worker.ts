@@ -3,6 +3,7 @@ import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
 import WorkerOrder from "./order/WorkerOrder";
 import { OrderType } from "./order/OrderType";
 import ExecuteOrder from "./order/ExecuteOrder";
+import ExitResult from "./result/ExitResult";
 
 const _w: Worker = self as any;
 
@@ -15,7 +16,6 @@ _w.onmessage = (event) => {
     if (order.order === OrderType.CANCEL) cancel();
 };
 
-
 function execute(order: ExecuteOrder): void {
     console.log(order);
     on = true;
@@ -25,7 +25,7 @@ function execute(order: ExecuteOrder): void {
     attack(passwordRange);
 
     on = false;
-    _w.postMessage("exit");
+    _w.postMessage(new ExitResult());
 }
 
 const CHANK_DIVIDE_POS = 6;
@@ -53,18 +53,6 @@ function attackChunk(chunk: AttackPasswordRange): void {
     console.log("attackChunk()に来ている。")
     console.log(chunk.toString());
 }
-
-
-// function execute(status: PasswordAttacker) {
-//     console.log('execute() called.');
-//     on = true;
-//     for (let i = 0; i < 10000000000; i++) {
-//         if (!on) break;
-//         if (i % 1000000000 === 0) console.log("途中経過:" + i);
-//     }
-//     on = false;
-//     _w.postMessage("exit");
-// }
 
 function cancel() {
     console.log('cancel() called.');

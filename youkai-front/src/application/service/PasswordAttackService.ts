@@ -1,9 +1,10 @@
 import PasswordAttackWorker from 'worker-loader!~/application/worker/passwordattack/PasswordAttack.worker';
-import Operand from "@/application/worker/passwordattack/Operand";
-import AttackPasswordRange from "~/domain/youkai/attack/AttackPasswordRange";
+import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
 import PasswordAttacker from "@/store/PasswordAttacker";
-import ExecuteOrder from '../worker/passwordattack/order/ExecuteOrder';
-import CancelOrder from '../worker/passwordattack/order/CancelOrder';
+import ExecuteOrder from '@/application/worker/passwordattack/order/ExecuteOrder';
+import CancelOrder from '@/application/worker/passwordattack/order/CancelOrder';
+import WorkerResult from '@/application/worker/passwordattack/result/WorkerResult';
+import { ResultType } from '@/application/worker/passwordattack/result/ResultType';
 
 export default class PasswordAttackService {
     private worker: PasswordAttackWorker | null = null;
@@ -19,9 +20,9 @@ export default class PasswordAttackService {
 
         this.worker = new PasswordAttackWorker();
         this.worker.onmessage = (event: MessageEvent) => {
-            const operationType = event.data;
-            console.log(`operationType(worker to coller):${operationType}`);
-            if (operationType === "exit") this.cancel(status);
+            const result = event.data as WorkerResult;
+            console.log(`operationType(worker to coller):${result}`);
+            if (result.result === ResultType.EXIT) this.cancel(status);
         };
         
         const order  = new ExecuteOrder(
