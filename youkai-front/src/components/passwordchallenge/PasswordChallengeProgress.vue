@@ -72,7 +72,7 @@
       timeout="60000"
     >
       通るパスワードが見つかりました : {{ hitPassword }}
-      <template v-slot:action="{ attrs }">
+      <template #action="{ attrs }">
         <v-btn
           color="blue"
           text
@@ -87,7 +87,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { PasswordAttackStatusStore } from '@/store'
 
 @Component
