@@ -2,12 +2,12 @@ import WorkerOrder from "./order/WorkerOrder";
 import { OrderType } from "./order/OrderType";
 import ExecuteOrder from "./order/ExecuteOrder";
 import ExitResult from "./result/ExitResult";
+import StartResult from "./result/StartResult";
 import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
 import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
 import Password from "~/domain/youkai/checkdigit/state/Password";
 import A31F from "~/domain/youkai/checkdigit/state/A31F";
 import CorrectCheckDigits from "~/domain/youkai/checkdigit/correct/CorrectCheckDigits";
-import StartResult from "./result/StartResult";
 
 const _w: Worker = self as any;
 

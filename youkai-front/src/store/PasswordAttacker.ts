@@ -1,7 +1,6 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
-
 @Module({
     name: 'PasswordAttacker',
     stateFactory: true,
