@@ -3,10 +3,17 @@ import { OrderType } from "./order/OrderType";
 import ExecuteOrder from "./order/ExecuteOrder";
 import ExitResult from "./result/ExitResult";
 import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
+import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
+import Password from "~/domain/youkai/checkdigit/state/Password";
+import A31F from "~/domain/youkai/checkdigit/state/A31F";
+import CorrectCheckDigits from "~/domain/youkai/checkdigit/correct/CorrectCheckDigits";
 
 const _w: Worker = self as any;
 
+const calculator = new CheckDigitCalculator();
+
 let on = false;
+let attackedCount = 0;
 
 _w.onmessage = (event) => {
     const order = event.data as WorkerOrder;
@@ -30,9 +37,11 @@ function execute(order: ExecuteOrder): void {
 const CHANK_DIVIDE_POS = 6;
 
 function attack(passwordRange: AttackPasswordRange): void {
+    attackedCount = 0;
     // status.onStart(passwordRange);
 
     let chunk = new AttackPasswordRange(passwordRange.formPassword, passwordRange.formPassword);
+    const attackTargetCheckDigit = calculator.calculate(CorrectCheckDigits.無敵.typicalPassowrd);
 
     while (!chunk.toPassword.equals(passwordRange.toPassword)) {
         if (!on) break; // FIXME whileに含めたいが、Lintさんが文句を言うので。
@@ -40,7 +49,7 @@ function attack(passwordRange: AttackPasswordRange): void {
         chunk = chunk.nextChunk(CHANK_DIVIDE_POS, passwordRange);
         // status.onBeginAttackChunk(chunk);
 
-        attackChunk(chunk);
+        attackChunk(chunk, attackTargetCheckDigit);
 
         // status.onFinishAttackChunk(chunk);
     }
@@ -48,12 +57,33 @@ function attack(passwordRange: AttackPasswordRange): void {
     // status.changeExecuteState(false);
 }
 
-function attackChunk(chunk: AttackPasswordRange): void {
-    console.log("attackChunk()に来ている。")
-    console.log(chunk.toString());
+const INTARCEPT_INTARVAL = 10000000;
+
+function attackChunk(chunk: AttackPasswordRange, attackTargetCheckDigit: A31F): void {
+    let password = chunk.formPassword;
+    while (!password.equals(chunk.toPassword)) {
+        if (on) break
+        if (++attackedCount % INTARCEPT_INTARVAL) onAttackInterval(attackedCount);
+
+        const currentCheckDigit = calculator.calculate(password);
+
+        if (attackTargetCheckDigit.equals(currentCheckDigit)) {
+            onHitPassowrd(password);
+        }
+
+        password = password.increment();
+    }
 }
 
 function cancel() {
     console.log('cancel() called.');
     on = false;
+}
+
+function onHitPassowrd(hitPassword: Password) {
+    console.log(`当たりパスワードが見つかりました:${hitPassword}`);
+}
+
+function onAttackInterval(attackedCount: number) {
+    console.log(`現在のアタック数:${attackedCount}`);
 }
