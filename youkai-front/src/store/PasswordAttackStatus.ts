@@ -1,5 +1,6 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
+import moment from 'moment';
 
 @Module({
     name: 'PasswordAttackStatus',
@@ -104,10 +105,10 @@ export default class PasswordAttackStatus extends VuexModule {
     }
 
     @Action({ rawError: true })
-    public onBeginAttackChunk(chunk: AttackPasswordRange): void {
+    public async onBeginAttackChunk(chunk: AttackPasswordRange): Promise<void> {
         this.changeStartPosition(chunk.formPassword.toString());
         this.changeEndPosition(chunk.toPassword.toString());
-        this.addInfomation(this.makeInfoTextOf(chunk));
+        this.addInfomation(await this.makeInfoTextOf(chunk));
     }
 
     @Action({ rawError: true })
@@ -118,12 +119,14 @@ export default class PasswordAttackStatus extends VuexModule {
     @Action({ rawError: true })
     private addInfomation(text: string): void {
         console.log(text);
-
+        const info = this.nowProgressInfomation;
+        this.changeProgressInfomation(info + text + "\n");
     }
 
-    @Action({ rawError: true })
-    private makeInfoTextOf(chunk: AttackPasswordRange): string {
-        console.log("makeInfoTextOf()" + chunk.toString());
-        return "";
+    @Action
+    private async makeInfoTextOf(chunk: AttackPasswordRange): Promise<string> {
+        const targetPassowrd = chunk.formPassword;
+        const now = moment().format('YYYY-MM-DD HH:mm:ss');
+        return `${now} 開始位置:${targetPassowrd.toString()} ( ${targetPassowrd.dumpHexText()} )`;
     }
 }
