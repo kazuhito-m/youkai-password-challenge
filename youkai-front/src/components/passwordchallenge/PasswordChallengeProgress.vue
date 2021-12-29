@@ -53,7 +53,7 @@
         <v-row>
           <v-col>
             <v-textarea
-              v-model="progressInfomation"
+              v-model="foundPasswords"
               label="見つかったパスワード"
               readonly
               outlined
@@ -69,21 +69,36 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-
-import { PasswordAttackStatusStore } from "@/store";
+import { PasswordAttackStatusStore } from '@/store'
 
 @Component
 export default class PasswordChallengeProgress extends Vue {
-  private startPosition = ' ';
-  private endPosition = ' ';
-  private progressInfomation = ' ';
-  private foundPasswords = ' ';
-
-  private mounted(): void {
-  }
+  private mounted(): void {}
 
   private get nowExecuting(): boolean {
-    return PasswordAttackStatusStore.nowExecuting;
+    return PasswordAttackStatusStore.nowExecuting
+  }
+
+  private get startPosition(): string {
+    return this.plusWhenBlank(PasswordAttackStatusStore.nowStartPosition)
+  }
+
+  private get endPosition(): string {
+    return this.plusWhenBlank(PasswordAttackStatusStore.nowEndPosition)
+  }
+
+  private get progressInfomation(): string {
+    return this.plusWhenBlank(PasswordAttackStatusStore.nowProgressInfomation)
+  }
+
+  private get foundPasswords(): string {
+    const values = PasswordAttackStatusStore.nowFoundPasswords
+    if (values.length === 0) return ' '
+    return values.join(', ')
+  }
+
+  private plusWhenBlank(value: string): string {
+    return value.trim().length === 0 ? ' ' : value
   }
 }
 </script>

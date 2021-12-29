@@ -10,7 +10,7 @@ export default class PasswordAttackStatus extends VuexModule {
     private executing = false;
     private startPosition = "";
     private endPosition = "";
-    private progressText = "";
+    private progressInfomation = "";
     private foundPassswords: string[] = [];
 
     private fromPassword = "";
@@ -27,12 +27,24 @@ export default class PasswordAttackStatus extends VuexModule {
         return this.fromPassword;
     }
 
-    public get nowFromPassoword(): string {
-        return this.fromPassword;
-    }
-
     public get nowToPassoword(): string {
         return this.toPassword;
+    }
+
+    public get nowStartPosition(): string {
+        return this.startPosition;
+    }
+
+    public get nowEndPosition(): string {
+        return this.endPosition;
+    }
+
+    public get nowProgressInfomation(): string {
+        return this.progressInfomation;
+    }
+
+    public get nowFoundPasswords(): string[] {
+        return this.foundPassswords;
     }
 
     @Mutation
@@ -53,8 +65,8 @@ export default class PasswordAttackStatus extends VuexModule {
     }
 
     @Mutation
-    private changeProgressText(progressText: string) {
-        this.progressText = progressText;
+    private changeProgressInfomation(progressInfomation: string) {
+        this.progressInfomation = progressInfomation;
     }
 
     @Mutation
@@ -86,7 +98,7 @@ export default class PasswordAttackStatus extends VuexModule {
     public onStart(): void {
         this.changeStartPosition("");
         this.changeEndPosition("");
-        this.changeProgressText("");
+        this.changeProgressInfomation("");
         this.changeFoundPassswords([]);
         this.changeAttackedCount(0);
     }
