@@ -70,7 +70,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
-import { PasswordAttackerStore } from "@/store";
+import { PasswordAttackStatusStore } from "@/store";
 
 @Component
 export default class PasswordChallengeProgress extends Vue {
@@ -83,7 +83,7 @@ export default class PasswordChallengeProgress extends Vue {
   }
 
   private get nowExecuting(): boolean {
-    return PasswordAttackerStore.nowExecuting;
+    return PasswordAttackStatusStore.nowExecuting;
   }
 }
 </script>

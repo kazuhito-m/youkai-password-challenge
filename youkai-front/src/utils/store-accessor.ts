@@ -1,11 +1,11 @@
 /* eslint-disable import/no-mutable-exports */
 import { Store } from 'vuex';
 import { getModule } from 'vuex-module-decorators';
-import PasswordAttacker from '@/store/PasswordAttacker';
+import PasswordAttackStatus from '~/store/PasswordAttackStatus';
 
-let PasswordAttackerStore: PasswordAttacker
+let PasswordAttackStatusStore: PasswordAttackStatus
 function initialiseStores(store: Store<any>): void {
-    PasswordAttackerStore = getModule(PasswordAttacker, store)
+    PasswordAttackStatusStore = getModule(PasswordAttackStatus, store)
 }
 
-export { initialiseStores, PasswordAttackerStore }
+export { initialiseStores, PasswordAttackStatusStore }

@@ -1,6 +1,6 @@
 import PasswordAttackWorker from 'worker-loader!~/application/worker/passwordattack/PasswordAttack.worker';
 import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
-import PasswordAttacker from "@/store/PasswordAttacker";
+import PasswordAttackStatus from "~/store/PasswordAttackStatus";
 import ExecuteOrder from '@/application/worker/passwordattack/order/ExecuteOrder';
 import CancelOrder from '@/application/worker/passwordattack/order/CancelOrder';
 import WorkerResult from '@/application/worker/passwordattack/result/WorkerResult';
@@ -9,7 +9,7 @@ import { ResultType } from '@/application/worker/passwordattack/result/ResultTyp
 export default class PasswordAttackService {
     private worker: PasswordAttackWorker | null = null;
 
-    public execute(passwordRange: AttackPasswordRange, status: PasswordAttacker): void {
+    public execute(passwordRange: AttackPasswordRange, status: PasswordAttackStatus): void {
         console.log("execute() : " + passwordRange);
         status.changeExecuteState(true);
 
@@ -34,7 +34,7 @@ export default class PasswordAttackService {
         this.worker.postMessage(order);
     }
 
-    public onExit(status: PasswordAttacker) {
+    public onExit(status: PasswordAttackStatus) {
         if (!this.worker) return;
         this.worker.postMessage(new CancelOrder());
         this.worker?.terminate();
@@ -42,7 +42,7 @@ export default class PasswordAttackService {
         status.changeExecuteState(false);
     }
 
-    private onStart(status: PasswordAttacker) {
+    private onStart(status: PasswordAttackStatus) {
         status.onStart();
     }
 }
