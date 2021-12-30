@@ -1,6 +1,7 @@
 import TestData from "./TestData";
 import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
 import Password from "~/domain/youkai/checkdigit/state/Password";
+import CorrectCheckDigits from "~/domain/youkai/checkdigit/correct/CorrectCheckDigits";
 
 describe('CheckDigitCalculator', () => {
     const sut = new CheckDigitCalculator();
@@ -52,8 +53,18 @@ describe('CheckDigitCalculator', () => {
     });
 
     test.skip('元のYoukaiTest02exeのロジックから生み出したテストファイルでチェックディジット算出値が同一か', () => {
-        for (const data of TestData.load()) {
+        for (const data of TestData.loadTsv("passAndCheckDigits.tsv")) {
             expect(data.expect).toEqual(calc(data.param));
+        }
+    });
+
+    test('パスワードが特定のチェックディジットになるかを確認出来る', () => {
+        const expectCD = sut.calculate(CorrectCheckDigits.無敵.typicalPassowrd);
+
+        for (const data of TestData.loadTxt("collectPasswords.txt")) {
+            const password = Password.withText(data.param);
+            const actual = sut.calculate(password);
+            expect(actual.toString()).toEqual(expectCD.toString());
         }
     });
 });

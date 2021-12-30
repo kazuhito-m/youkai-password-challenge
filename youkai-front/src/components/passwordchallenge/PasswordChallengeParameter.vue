@@ -140,7 +140,6 @@ import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import Password from '@/domain/youkai/checkdigit/state/Password'
 import PasswordAttackService from '@/application/service/PasswordAttackService'
-
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 
 import { PasswordAttackStatusStore } from "@/store";
