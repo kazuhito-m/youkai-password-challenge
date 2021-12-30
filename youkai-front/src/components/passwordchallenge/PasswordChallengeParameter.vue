@@ -212,13 +212,6 @@ export default class RangePasswordChallenge extends Vue {
     return true;
   }
 
-  private validateFromTo(): boolean {
-    const from = Password.withText(this.fromPassword);
-    const to = Password.withText(this.toPassword);
-    // to > from
-    return to.moreThan(from);
-  }
-
   private onKeyPlessOfPassword(event: KeyboardEvent): boolean {
     const keyName = event.code;
     if (keyName === 'Backspace' || keyName === 'Delete') return true;
@@ -267,6 +260,12 @@ export default class RangePasswordChallenge extends Vue {
 
     const range = AttackPasswordRange.of(this.fromPassword, this.toPassword);
     this.passwordAttackService?.execute(range, PasswordAttackStatusStore);
+  }
+
+  private validateFromTo(): boolean {
+    const from = Password.withText(this.fromPassword);
+    const to = Password.withText(this.toPassword);
+    return to.moreThan(from); // to > from
   }
 
   private showInvalidateMessage(message: string) {
