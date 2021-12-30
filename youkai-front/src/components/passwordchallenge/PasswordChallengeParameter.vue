@@ -35,7 +35,7 @@
           </v-col>
           <v-col cols="12" sm="7" md="7">
             <v-text-field
-              v-model="fromPassowrdHex"
+              v-model="fromPasswordHex"
               value="a"
               label="コード(16進数)表現"
               :disabled="nowExecuting"
@@ -105,7 +105,7 @@
           </v-col>
           <v-col cols="12" sm="7" md="7">
             <v-text-field
-              v-model="toPassowrdHex"
+              v-model="toPasswordHex"
               value="a"
               label="コード(16進数)表現"
               :disabled="nowExecuting"
@@ -150,9 +150,9 @@ import { PasswordAttackStatusStore } from "@/store";
 @Component
 export default class RangePasswordChallenge extends Vue {
   private fromPassword = '';
-  private fromPassowrdHex = ' ';
+  private fromPasswordHex = ' ';
   private toPassword = '';
-  private toPassowrdHex = ' ';
+  private toPasswordHex = ' ';
 
   private invalidate = false;
   private invalidateMessage = "";
@@ -182,13 +182,23 @@ export default class RangePasswordChallenge extends Vue {
   @Watch('fromPassword')
   private onChangeTromPassword(): void {
     this.fromPassword = this.fixPasswordWhenInvalid(this.fromPassword);
-    this.fromPassowrdHex = this.toHex(this.fromPassword);
+    this.fromPasswordHex = this.toHex(this.fromPassword);
   }
 
   @Watch('toPassword')
   private onChangeToPassword(): void {
     this.toPassword = this.fixPasswordWhenInvalid(this.toPassword);
-    this.toPassowrdHex = this.toHex(this.toPassword);
+    this.toPasswordHex = this.toHex(this.toPassword);
+  }
+
+  @Watch('fromPasswordHex')
+  private onChangeTromPasswordHex(): void {
+    this.fromPasswordHex = this.fixPasswordHexWhenInvalid(this.fromPasswordHex);
+  }
+
+  @Watch('toPasswordHex')
+  private onChangeToPasswordHex(): void {
+    this.toPasswordHex = this.fixPasswordHexWhenInvalid(this.toPasswordHex);
   }
 
   private fixPasswordWhenInvalid(password: string):string  {
@@ -199,6 +209,10 @@ export default class RangePasswordChallenge extends Vue {
 
   private toHex(password: string) : string {
     return Password.withText(password).dumpHexText()
+  }
+
+  private fixPasswordHexWhenInvalid(value: string) {
+    return value.toUpperCase();
   }
 
   private validatePassword(value: string): boolean | string {
@@ -233,7 +247,7 @@ export default class RangePasswordChallenge extends Vue {
 
     const inputChar = event.key.toUpperCase();
     const charOk = keyName === 'Space'
-      || " 0123456789ABCDEF".indexOf(inputChar) > 0
+      || RangePasswordChallenge.HEX_CHARS.indexOf(inputChar) > 0
 
     const input = event.currentTarget as HTMLInputElement;
     const nowValue = input.value;
