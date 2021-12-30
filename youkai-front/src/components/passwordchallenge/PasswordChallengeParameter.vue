@@ -121,7 +121,7 @@ import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
-import AttackCharacters from '@/domain/youkai/checkdigit/state/Password'
+import Password from '@/domain/youkai/checkdigit/state/Password'
 import PasswordAttackService from '@/application/service/PasswordAttackService'
 
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
@@ -153,11 +153,11 @@ export default class RangePasswordChallenge extends Vue {
     if (this.fromPassword.trim().length > 0
       || this.toPassword.trim().length > 0) return;
 
-    const minPass = AttackCharacters.minimumOf(AttackCharacters.MAX_CHARS_LENGTH);
+    const minPass = Password.minimumOf(Password.MAX_CHARS_LENGTH);
     this.fromPassword = minPass.toString();
     this.fromPassowrdHex = minPass.dumpHexText();
 
-    const maxPass = AttackCharacters.muximumOf(AttackCharacters.MAX_CHARS_LENGTH);
+    const maxPass = Password.muximumOf(Password.MAX_CHARS_LENGTH);
     this.toPassword = maxPass.toString();
     this.toPassowrdHex = maxPass.dumpHexText();
 }
@@ -165,7 +165,7 @@ export default class RangePasswordChallenge extends Vue {
   @Watch('fromPassword')
   private onChangefromPassword(): void {
     this.fixPasswordWhenInvalid();
-  }
+}
 
   private fixPasswordWhenInvalid():void  {
     let password = this.fromPassword;
@@ -177,7 +177,7 @@ export default class RangePasswordChallenge extends Vue {
   private validateFromPassword(): boolean | string {
     let password = this.fromPassword;
     if (!password) password = ""; // ×ボタンで、なぜかNullになるため。
-    const max = AttackCharacters.MAX_CHARS_LENGTH;
+    const max = Password.MAX_CHARS_LENGTH;
     if (password.length !== max)
       return `${max}文字で入力して下さい。`;
     if (this.converter?.isInvalidPassword(password))
