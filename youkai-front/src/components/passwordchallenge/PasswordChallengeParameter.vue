@@ -256,7 +256,7 @@ export default class RangePasswordChallenge extends Vue {
 
     const input = event.currentTarget as HTMLInputElement;
     const nowValue = input.value;
-    const hex = nowValue.replace(/\s+/,"");
+    const hex = nowValue.replace(/\s+/g, "");
     const lengthOk = hex.length < Password.MAX_CHARS_LENGTH * 2;
 
     if (charOk && lengthOk) return true;
@@ -267,7 +267,8 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   private onChangeOfFromPasswordHex(): boolean {
-    console.log(this.fromPasswordHex);
+    const parsedPassword = this.parseHex(this.fromPasswordHex);
+    this.fromPassword = parsedPassword.toString();
     return true;
   }
 
@@ -276,19 +277,18 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   public parseHex(hexText: string): Password {
-    let hex = "";
-    const hexChars: string[] = [];
-    const chars = hexText.split("");
-    for (let i = 0; i < chars.length; i++) {
-      hex += chars[i];
-      if (i % 2 === 0) continue;
-      hexChars.push(hex);
-      hex = "";
-    }
-    if (hex.length > 0) hexChars.push(hex);
+    const hexChars = hexText
+      .replace(/\s+/g, "")
+      .match(/.{2}/g);
 
-    // TODO 実実装
-    return Password.initialize(0);
+    if (!hexChars) return Password.empty()
+
+    const charCodes = hexChars.map(hex => parseInt(hex, 16));
+    const password = new Password(this.converter as CodeToCharacterConverter, charCodes);
+
+    return password.isInvalid()
+      ? Password.empty()
+      : password;
   }
 
   private onRundomPasswordSet(): void {

@@ -94,6 +94,10 @@ export default class Password {
         return Password.minimumOf(charCount, converter);
     }
 
+    public static empty() {
+        return Password.initialize(0);
+    }
+
     public static withText(passwordText: string, converter = new CodeToCharacterConverter()): Password {
         const codes = passwordText.split("")
             .map(oneCher => converter.reverceConvert(oneCher));
