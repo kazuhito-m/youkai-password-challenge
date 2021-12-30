@@ -50,12 +50,6 @@ export default class PasswordAttackStatus extends VuexModule {
     }
 
     @Mutation
-    public setPasswordRange(fromPassword: string, toPassword: string) {
-        this.fromPassword = fromPassword;
-        this.toPassword = toPassword;
-    }
-
-    @Mutation
     public changeExecuteState(executing: boolean) {
         this.executing = executing;
     }

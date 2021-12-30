@@ -16,11 +16,6 @@ export default class PasswordAttackService {
         console.log("execute() : " + passwordRange);
         status.changeExecuteState(true);
 
-        status.setPasswordRange(
-            passwordRange.formPassword.toString(),
-            passwordRange.toPassword.toString()
-        );
-
         this.worker = new PasswordAttackWorker();
         this.worker.onmessage = (event: MessageEvent) => {
             const result = event.data as WorkerResult;
