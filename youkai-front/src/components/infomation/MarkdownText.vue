@@ -28,6 +28,10 @@
 - [Imaha486／同424万件のパスワードと辞書を照合するフィルタツール](https://i486.mods.jp/files/yokaisplit.zip)
 - [Imaha486／同424万件のパスワードをAND検索するツール](https://i486.mods.jp/files/yokailoop.zip )
 
+### 探索・解析双方やるもの
+
+- [botesan/skk辞書を使用してパスワードを検索するJava（Kotlin）のプログラム](https://drive.google.com/file/d/1-tg5JbAxd8jtuKIRExxd63HyVYDLNFau/view)
+
 ## Hit済みパスワードの置き場
 
 - [kei氏によるリポジトリ](https://github.com/kmikage/yokai-password/tree/main/passwords)
@@ -40,6 +44,10 @@
 - [31F4 - 31FB の各要素の関係性と基本コードをまとめ](https://docs.google.com/spreadsheets/d/1Hp80gXzoL0JtVbnC6CloOi2x8q5kje0cZ4kcLL0XTIc/edit#gid=0)
   - [Imaha486](https://twitter.com/Imaha486)さんによる分析資料
   - 「枝刈りなどの最適化についても別シートに定義して追記いただけると助かります。」とのこと
+- [kounoikeさんによる「$31F4/$31F5枝狩り考察」資料](https://gist.github.com/kounoike/340c1dbf684bc2cc5dd0169b1f824317)
+  - [@ko_noike](https://twitter.com/ko_noike) さんによる分析資料
+- [Aiosさんによるチェックディジット算出フロー](https://cdn.discordapp.com/attachments/924502560314892360/925917918070448229/flo.png)
+  - [@aios_ciao](https://twitter.com/aios_ciao)さんによる「妖怪道中記ゲーム内のロジック」をフローチャートに起こした資料
 </template>
 
 <style>
