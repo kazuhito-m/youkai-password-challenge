@@ -4,7 +4,7 @@ import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeT
 export default class Password {
     constructor(
         private readonly charCodes: number[],
-        private readonly converter: CodeToCharacterConverter
+        private readonly converter: CodeToCharacterConverter = new CodeToCharacterConverter()
     ) { }
 
     public static readonly MIN_CHARS_LENGTH = 3;

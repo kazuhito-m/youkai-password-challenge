@@ -1,5 +1,4 @@
 import Password from "@/domain/youkai/checkdigit/state/Password";
-import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
 
 export default class HexText {
     private static readonly HEX_CHARS = " 0123456789ABCDEF";
@@ -14,7 +13,7 @@ export default class HexText {
         const charCodes = hexChars.map(hex => parseInt(hex, 16));
         if (charCodes.includes(NaN)) return Password.empty();
 
-        const password = new Password(new CodeToCharacterConverter(), charCodes);
+        const password = new Password(charCodes);
 
         return password.isInvalid()
             ? Password.empty()
