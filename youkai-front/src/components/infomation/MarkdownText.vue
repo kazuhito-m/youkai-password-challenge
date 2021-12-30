@@ -6,6 +6,8 @@
   - すべての始まり（おばきいさんのサイト）
 - [ナムコの知られざる天才スーパーハッカーが仕込んだ隠しメッセージの謎とそれを廻る都市伝説｜妖怪道中記](https://www.youtube.com/watch?v=ZGqmudIySQ8) 
   - 2021/12の火付け役
+- [PCエンジン妖怪道中記 パスワード解析Wiki](https://i486.mods.jp/yokaiwiki/)
+  - 初代解析ツールを作られた[Imaha486](https://twitter.com/Imaha486)さんのWiki
 
 ## ツール
 
