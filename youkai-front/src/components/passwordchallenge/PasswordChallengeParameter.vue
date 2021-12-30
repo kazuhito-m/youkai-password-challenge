@@ -14,8 +14,9 @@
       下のボタンをクリックすると、あなたのコンピュータの以下資源を利用します。
       <ul>
         <li>CPUの計算能力</li>
+        <li>LocalStrage(ブラウザに紐付いた記憶領域・ハードディスクやSSDなど)</li>
       </ul>
-      <a href="https://ja.wikipedia.org/wiki/Coinhive%E4%BA%8B%E4%BB%B6" target="_blank">神奈川県警に捕まりたくない</a> ので「CPU使うな！」という方はご遠慮下さい。<br/>自己責任でのボタンクリックをお願いします。
+      <a href="https://ja.wikipedia.org/wiki/Coinhive%E4%BA%8B%E4%BB%B6" target="_blank">神奈川県警に捕まりたくない</a> ので「勝手に使うな！」という方はご遠慮下さい。<br/>自己責任でのボタンクリックをお願いします。
     </v-card-text>
     <v-form ref="passwordInputForm">
       <v-container>
