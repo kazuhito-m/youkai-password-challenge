@@ -267,12 +267,14 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   private onChangeOfFromPasswordHex(): boolean {
-    const parsedPassword = this.parseHex(this.fromPasswordHex);
-    this.fromPassword = parsedPassword.toString();
+    const parsed = this.parseHex(this.fromPasswordHex);
+    this.fromPassword = parsed.toString();
     return true;
   }
 
   private onChangeOfToPasswordHex(): boolean {
+    const parsed = this.parseHex(this.toPasswordHex);
+    this.toPassword = parsed.toString();
     return true;
   }
 
@@ -284,6 +286,8 @@ export default class RangePasswordChallenge extends Vue {
     if (!hexChars) return Password.empty()
 
     const charCodes = hexChars.map(hex => parseInt(hex, 16));
+    if (charCodes.some(i => i === NaN)) return Password.empty();
+
     const password = new Password(this.converter as CodeToCharacterConverter, charCodes);
 
     return password.isInvalid()
