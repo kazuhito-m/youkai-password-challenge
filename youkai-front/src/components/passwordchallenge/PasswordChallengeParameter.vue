@@ -30,7 +30,7 @@
               maxlength="14"
               class="input-yokai-password"
               :disabled="nowExecuting"
-              @keypress="onKeyUp"
+              @keypress="onKeyPlessOfPassword"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="7" md="7">
@@ -41,6 +41,7 @@
               :disabled="nowExecuting"
               outlined
               maxlength="41"
+              @keypress="onKeyPlessOfPasswordHex"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -99,7 +100,7 @@
               maxlength="14"
               class="input-yokai-password"
               :disabled="nowExecuting"
-              @keypress="onKeyUp"
+              @keypress="onKeyPlessOfPassword"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="7" md="7">
@@ -110,6 +111,7 @@
               :disabled="nowExecuting"
               outlined
               maxlength="41"
+              @keypress="onKeyPlessOfPasswordHex"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -154,6 +156,8 @@ export default class RangePasswordChallenge extends Vue {
 
   private invalidate = false;
   private invalidateMessage = "";
+
+  private static readonly HEX_CHARS = " 0123456789ABCDEF";
 
   @Inject()
   private readonly converter?: CodeToCharacterConverter;
@@ -215,7 +219,7 @@ export default class RangePasswordChallenge extends Vue {
     return to.moreThan(from);
   }
 
-  private onKeyUp(event: KeyboardEvent): boolean {
+  private onKeyPlessOfPassword(event: KeyboardEvent): boolean {
     const keyName = event.code;
     if (keyName === 'Backspace' || keyName === 'Delete') return true;
 
@@ -224,6 +228,26 @@ export default class RangePasswordChallenge extends Vue {
     const upperKey = event.key.toUpperCase();
     const nextValid = !this.converter?.isInvalidChar(upperKey);
     if (nextValid) return true;
+
+    event.stopImmediatePropagation();
+    event.preventDefault();
+    return false;
+  }
+
+  private onKeyPlessOfPasswordHex(event: KeyboardEvent): boolean {
+    const keyName = event.code;
+    if (keyName === 'Backspace' || keyName === 'Delete') return true;
+
+    const inputChar = event.key.toUpperCase();
+    const charOk = keyName === 'Space'
+      || " 0123456789ABCDEF".indexOf(inputChar) > 0
+
+    const input = event.currentTarget as HTMLInputElement;
+    const nowValue = input.value;
+    const hex = nowValue.replaceAll(" ","");
+    const lengthOk = hex.length < Password.MAX_CHARS_LENGTH * 2;
+
+    if (charOk && lengthOk) return true;
 
     event.stopImmediatePropagation();
     event.preventDefault();
