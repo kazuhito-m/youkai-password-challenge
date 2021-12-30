@@ -42,6 +42,7 @@
               outlined
               maxlength="41"
               @keypress="onKeyPlessOfPasswordHex"
+              @change="onChangeOfFromPasswordHex"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -112,6 +113,7 @@
               outlined
               maxlength="41"
               @keypress="onKeyPlessOfPasswordHex"
+              @change="onChangeOfToPasswordHex"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -254,14 +256,39 @@ export default class RangePasswordChallenge extends Vue {
 
     const input = event.currentTarget as HTMLInputElement;
     const nowValue = input.value;
-    const hex = nowValue.replaceAll(" ","");
-    const lengthOk = hex.length < Password.MAX_CHARS_LENGTH * 3;
+    const hex = nowValue.replace(/\s+/,"");
+    const lengthOk = hex.length < Password.MAX_CHARS_LENGTH * 2;
 
     if (charOk && lengthOk) return true;
 
     event.stopImmediatePropagation();
     event.preventDefault();
     return false;
+  }
+
+  private onChangeOfFromPasswordHex(): boolean {
+    console.log(this.fromPasswordHex);
+    return true;
+  }
+
+  private onChangeOfToPasswordHex(): boolean {
+    return true;
+  }
+
+  public parseHex(hexText: string): Password {
+    let hex = "";
+    const hexChars: string[] = [];
+    const chars = hexText.split("");
+    for (let i = 0; i < chars.length; i++) {
+      hex += chars[i];
+      if (i % 2 === 0) continue;
+      hexChars.push(hex);
+      hex = "";
+    }
+    if (hex.length > 0) hexChars.push(hex);
+
+    // TODO 実実装
+    return Password.initialize(0);
   }
 
   private onRundomPasswordSet(): void {
