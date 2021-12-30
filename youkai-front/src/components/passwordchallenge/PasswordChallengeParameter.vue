@@ -119,8 +119,6 @@
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
-import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
-import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
 import Password from '@/domain/youkai/checkdigit/state/Password'
 import PasswordAttackService from '@/application/service/PasswordAttackService'
 
@@ -134,16 +132,9 @@ export default class RangePasswordChallenge extends Vue {
   private fromPassowrdHex = ' ';
   private toPassword = '';
   private toPassowrdHex = ' ';
-  private resultInfomation = ' ';
 
   @Inject()
   private readonly converter?: CodeToCharacterConverter;
-
-  @Inject()
-  private readonly calculator?: CheckDigitCalculator;
-
-  @Inject()
-  private readonly correctCheckDigits?: CorrectCheckDigits;
 
   @Inject()
   private readonly passwordAttackService?: PasswordAttackService;
@@ -160,7 +151,7 @@ export default class RangePasswordChallenge extends Vue {
     const maxPass = Password.muximumOf(Password.MAX_CHARS_LENGTH);
     this.toPassword = maxPass.toString();
     this.onChangeToPassword();
-}
+  }
 
   @Watch('fromPassword')
   private onChangeTromPassword(): void {
