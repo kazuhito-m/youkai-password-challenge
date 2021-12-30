@@ -122,7 +122,6 @@ export default class PasswordAttackStatus extends VuexModule {
 
     @Action({ rawError: true })
     private addInfomation(text: string): void {
-        console.log(text);
         const info = this.nowProgressInfomation;
         this.changeProgressInfomation(info + text + "\n");
     }
@@ -141,8 +140,6 @@ export default class PasswordAttackStatus extends VuexModule {
 
     @Action({ rawError: true })
     public onSetToPassword(password: string) {
-        console.log("onSetToPassowrd:" + password);
-        console.trace();
         this.changeToPassword(password);
     }
 }

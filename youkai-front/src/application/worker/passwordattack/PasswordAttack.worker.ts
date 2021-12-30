@@ -26,7 +26,6 @@ _w.onmessage = (event) => {
 };
 
 function execute(order: ExecuteOrder): void {
-    console.log(order);
     on = true;
 
     const passwordRange = AttackPasswordRange.of(order.fromPasswordText, order.toPasswordText);
@@ -80,7 +79,6 @@ function cancel() {
 }
 
 function onHitPassowrd(hitPassword: Password) {
-    console.log("パスワード見つかった！:" + hitPassword.toString())
     const result = new HitPasswordResult(hitPassword.toString());
     _w.postMessage(result);
 }

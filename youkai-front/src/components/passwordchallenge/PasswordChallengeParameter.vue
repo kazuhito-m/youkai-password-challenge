@@ -195,7 +195,6 @@ export default class RangePasswordChallenge extends Vue {
   @Watch('toPassword')
   private onChangeToPassword(): void {
     this.toPassword = this.fixPasswordWhenInvalid(this.toPassword);
-    console.log("onChangeToPasswordのtoPassword:" + this.toPassword)
     this.toPasswordHex = this.toHex(this.toPassword);
   }
 
@@ -264,7 +263,6 @@ export default class RangePasswordChallenge extends Vue {
 
   private onChangeOfToPasswordHex(): boolean {
     const parsed = HexText.parseHex(this.toPasswordHex);
-    console.log("onChangeのparsed.toString():" + parsed.toString())
     this.toPassword = parsed.toString();
     return true;
   }
