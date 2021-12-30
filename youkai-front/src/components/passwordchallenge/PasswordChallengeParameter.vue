@@ -173,7 +173,7 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   private get toPassword(): string {
-    return PasswordAttackStatusStore.nowToPassoword;
+    return PasswordAttackStatusStore.nowToPassword;
   }
 
   private set toPassword(value: string) {

@@ -29,7 +29,7 @@ export default class PasswordAttackStatus extends VuexModule {
         return this.fromPassword;
     }
 
-    public get nowToPassoword(): string {
+    public get nowToPassword(): string {
         return this.toPassword;
     }
 
