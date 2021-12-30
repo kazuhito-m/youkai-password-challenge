@@ -15,8 +15,8 @@ export default class PasswordAttackStatus extends VuexModule {
     private progressInfomation = "";
     private foundPassswords: string[] = [];
 
-    private fromPassword = "";
-    private toPassword = "";
+    private fromPassword = Password.minimumOf(Password.MAX_CHARS_LENGTH).toString();
+    private toPassword = Password.muximumOf(Password.MAX_CHARS_LENGTH).toString();
     private attackedCount = 0;
 
     private nickName = "";
@@ -63,6 +63,11 @@ export default class PasswordAttackStatus extends VuexModule {
     @Mutation
     private changeFromPassword(fromPassword: string) {
         this.fromPassword = fromPassword;
+    }
+
+    @Mutation
+    private changeToPassword(toPassword: string) {
+        this.toPassword = toPassword;
     }
 
     @Mutation
@@ -133,5 +138,17 @@ export default class PasswordAttackStatus extends VuexModule {
         const passs = this.nowFoundPasswords.slice();
         passs.push(password.toString());
         this.changeFoundPassswords(passs);
+    }
+
+    @Action({ rawError: true })
+    public onSetFromPassword(password: string) {
+        this.changeFromPassword(password);
+    }
+
+    @Action({ rawError: true })
+    public onSetToPassword(password: string) {
+        console.log("onSetToPassowrd:" + password);
+        console.trace();
+        this.changeToPassword(password);
     }
 }

@@ -152,9 +152,7 @@ import { PasswordAttackStatusStore } from "@/store";
 
 @Component
 export default class RangePasswordChallenge extends Vue {
-  private fromPassword = '';
   private fromPasswordHex = ' ';
-  private toPassword = '';
   private toPasswordHex = ' ';
 
   private invalidate = false;
@@ -166,22 +164,29 @@ export default class RangePasswordChallenge extends Vue {
   @Inject()
   private readonly passwordAttackService?: PasswordAttackService;
 
+  private get fromPassword(): string {
+    return PasswordAttackStatusStore.nowFromPassword;
+  }
+
+  private set fromPassword(value: string) {
+     PasswordAttackStatusStore.onSetFromPassword(value);
+  }
+
+  private get toPassword(): string {
+    return PasswordAttackStatusStore.nowToPassoword;
+  }
+
+  private set toPassword(value: string) {
+     PasswordAttackStatusStore.onSetToPassword(value);
+  }
+
   private mounted(): void {
-    if (!this.fromPassword) this.fromPassword = "";
-    if (this.fromPassword.trim().length > 0
-      || this.toPassword.trim().length > 0) return;
-
-    const minPass = Password.minimumOf(Password.MAX_CHARS_LENGTH);
-    this.fromPassword = minPass.toString();
-    this.onChangeTromPassword();
-
-    const maxPass = Password.muximumOf(Password.MAX_CHARS_LENGTH);
-    this.toPassword = maxPass.toString();
+    this.onChangeFromPassword();
     this.onChangeToPassword();
   }
 
   @Watch('fromPassword')
-  private onChangeTromPassword(): void {
+  private onChangeFromPassword(): void {
     this.fromPassword = this.fixPasswordWhenInvalid(this.fromPassword);
     this.fromPasswordHex = this.toHex(this.fromPassword);
   }
@@ -189,11 +194,12 @@ export default class RangePasswordChallenge extends Vue {
   @Watch('toPassword')
   private onChangeToPassword(): void {
     this.toPassword = this.fixPasswordWhenInvalid(this.toPassword);
+    console.log("onChangeToPasswordのtoPassword:" + this.toPassword)
     this.toPasswordHex = this.toHex(this.toPassword);
   }
 
   @Watch('fromPasswordHex')
-  private onChangeTromPasswordHex(): void {
+  private onChangeFromPasswordHex(): void {
     this.fromPasswordHex = HexText.fixPasswordHexWhenInvalid(this.fromPasswordHex);
   }
 
@@ -257,6 +263,7 @@ export default class RangePasswordChallenge extends Vue {
 
   private onChangeOfToPasswordHex(): boolean {
     const parsed = HexText.parseHex(this.toPasswordHex);
+    console.log("onChangeのparsed.toString():" + parsed.toString())
     this.toPassword = parsed.toString();
     return true;
   }
