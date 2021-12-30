@@ -53,6 +53,7 @@
                 outlined
                 class="mr-4"
                 :disabled="nowExecuting"
+                @click="onRundomPasswordSet"
               >
                   開始にランダム値をセット
               </v-btn>
@@ -229,9 +230,14 @@ export default class RangePasswordChallenge extends Vue {
     return false;
   }
 
+  private onRundomPasswordSet(): void {
+    const random = Password.generateRandom(Password.MAX_CHARS_LENGTH);
+    this.fromPassword = random.toString();
+  }
+
   private onClickStart(): void {
     if (!this.validateFromTo()) {
-      this. showInvalidateMessage("終了パスワードには開始パスワードより大きな値を入力して下さい。");
+      this.showInvalidateMessage("終了パスワードには開始パスワードより大きな値を入力して下さい。");
       return;
     }
 

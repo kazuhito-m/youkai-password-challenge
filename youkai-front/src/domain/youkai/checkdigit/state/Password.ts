@@ -114,4 +114,11 @@ export default class Password {
         const minCode = converter.maxCode();
         return Password.createOnlyOneCharOf(minCode, charCount, converter);
     }
+
+    public static generateRandom(charCount: number, converter = new CodeToCharacterConverter()): Password {
+        const charCodes: number[] = [];
+        for (let i = 0; i < charCount; i++)
+            charCodes.push(converter.randomCode());
+        return new Password(converter, charCodes);
+    }
 }
