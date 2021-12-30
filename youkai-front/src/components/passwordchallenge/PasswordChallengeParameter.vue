@@ -142,6 +142,7 @@
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
+import HexText from  './HexText'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import Password from '@/domain/youkai/checkdigit/state/Password'
 import PasswordAttackService from '@/application/service/PasswordAttackService'
@@ -158,8 +159,6 @@ export default class RangePasswordChallenge extends Vue {
 
   private invalidate = false;
   private invalidateMessage = "";
-
-  private static readonly HEX_CHARS = " 0123456789ABCDEF";
 
   @Inject()
   private readonly converter?: CodeToCharacterConverter;
@@ -195,12 +194,12 @@ export default class RangePasswordChallenge extends Vue {
 
   @Watch('fromPasswordHex')
   private onChangeTromPasswordHex(): void {
-    this.fromPasswordHex = this.fixPasswordHexWhenInvalid(this.fromPasswordHex);
+    this.fromPasswordHex = HexText.fixPasswordHexWhenInvalid(this.fromPasswordHex);
   }
 
   @Watch('toPasswordHex')
   private onChangeToPasswordHex(): void {
-    this.toPasswordHex = this.fixPasswordHexWhenInvalid(this.toPasswordHex);
+    this.toPasswordHex = HexText.fixPasswordHexWhenInvalid(this.toPasswordHex);
   }
 
   private fixPasswordWhenInvalid(password: string):string  {
@@ -211,13 +210,6 @@ export default class RangePasswordChallenge extends Vue {
 
   private toHex(password: string) : string {
     return Password.withText(password).dumpHexText()
-  }
-
-  private fixPasswordHexWhenInvalid(hex: string) {
-    if (!hex) return ""; // ×ボタンで、なぜかNullになるため。
-    return hex.trim()
-      .toUpperCase()
-      .replace(/\s+/g, " ");
   }
 
   private validatePassword(value: string): boolean | string {
@@ -250,16 +242,7 @@ export default class RangePasswordChallenge extends Vue {
     const keyName = event.code;
     if (keyName === 'Backspace' || keyName === 'Delete') return true;
 
-    const inputChar = event.key.toUpperCase();
-    const charOk = keyName === 'Space'
-      || RangePasswordChallenge.HEX_CHARS.indexOf(inputChar) > 0
-
-    const input = event.currentTarget as HTMLInputElement;
-    const nowValue = input.value;
-    const hex = nowValue.replace(/\s+/g, "");
-    const lengthOk = hex.length < Password.MAX_CHARS_LENGTH * 2;
-
-    if (charOk && lengthOk) return true;
+    if (HexText.validationPasswordHex(event)) return true;
 
     event.stopImmediatePropagation();
     event.preventDefault();
@@ -267,32 +250,15 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   private onChangeOfFromPasswordHex(): boolean {
-    const parsed = this.parseHex(this.fromPasswordHex);
+    const parsed = HexText.parseHex(this.fromPasswordHex);
     this.fromPassword = parsed.toString();
     return true;
   }
 
   private onChangeOfToPasswordHex(): boolean {
-    const parsed = this.parseHex(this.toPasswordHex);
+    const parsed = HexText.parseHex(this.toPasswordHex);
     this.toPassword = parsed.toString();
     return true;
-  }
-
-  public parseHex(hexText: string): Password {
-    const hexChars = hexText
-      .replace(/\s+/g, "")
-      .match(/.{2}/g);
-
-    if (!hexChars) return Password.empty()
-
-    const charCodes = hexChars.map(hex => parseInt(hex, 16));
-    if (charCodes.some(i => i === NaN)) return Password.empty();
-
-    const password = new Password(this.converter as CodeToCharacterConverter, charCodes);
-
-    return password.isInvalid()
-      ? Password.empty()
-      : password;
   }
 
   private onRundomPasswordSet(): void {

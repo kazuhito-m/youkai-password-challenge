@@ -3,8 +3,8 @@ import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeT
 
 export default class Password {
     constructor(
-        private readonly converter: CodeToCharacterConverter,
-        private readonly charCodes: number[]
+        private readonly charCodes: number[],
+        private readonly converter: CodeToCharacterConverter
     ) { }
 
     public static readonly MIN_CHARS_LENGTH = 3;
@@ -31,7 +31,7 @@ export default class Password {
             newCodes[i] = converter.incrementCode(before);
             if (newCodes[i] > before) break; // 繰り上がりなし
         }
-        return new Password(converter, newCodes);
+        return new Password(newCodes, converter);
     }
 
     public fixInvalid(): Password {
@@ -43,7 +43,7 @@ export default class Password {
             if (!converter.isInvalidCharCode(newCodes[i])) continue;
             newCodes[i] = converter.incrementCode(newCodes[i]);
         }
-        return new Password(converter, newCodes);
+        return new Password(newCodes, converter);
     }
 
     public isInvalid(): boolean {
@@ -101,12 +101,12 @@ export default class Password {
     public static withText(passwordText: string, converter = new CodeToCharacterConverter()): Password {
         const codes = passwordText.split("")
             .map(oneCher => converter.reverceConvert(oneCher));
-        return new Password(converter, codes);
+        return new Password(codes, converter);
     }
 
     private static createOnlyOneCharOf(charCode: number, charCount: number, converter = new CodeToCharacterConverter()) {
         const values = Array(charCount).fill(charCode);
-        return new Password(converter, values);
+        return new Password(values, converter);
     }
 
     public static minimumOf(charCount: number, converter = new CodeToCharacterConverter()): Password {
@@ -123,6 +123,6 @@ export default class Password {
         const charCodes: number[] = [];
         for (let i = 0; i < charCount; i++)
             charCodes.push(converter.randomCode());
-        return new Password(converter, charCodes);
+        return new Password(charCodes, converter);
     }
 }
