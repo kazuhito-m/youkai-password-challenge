@@ -17,14 +17,14 @@
       </ul>
       <a href="https://ja.wikipedia.org/wiki/Coinhive%E4%BA%8B%E4%BB%B6" target="_blank">神奈川県警に捕まりたくない</a> ので「CPU使うな！」という方はご遠慮下さい。<br/>自己責任でのボタンクリックをお願いします。
     </v-card-text>
-    <v-form ref="form">
+    <v-form ref="passwordInputForm">
       <v-container>
         <v-row>
           <v-col cols="12" sm="5" md="5">
             <v-text-field
               v-model="fromPassword"
               :counter="14"
-              :rules="[validateFromPassword]"
+              :rules="[validatePassword]"
               label="開始パスワード"
               required
               maxlength="14"
@@ -69,6 +69,7 @@
                 color="primary"
                 outlined
                 class="mr-4"
+                :disabled="!allValid"
                 @click="onClickStart"
               >
                   総当りチャレンジ開始
@@ -91,7 +92,7 @@
             <v-text-field
               v-model="toPassword"
               :counter="14"
-              :rules="[validateFromPassword]"
+              :rules="[validatePassword]"
               label="終了パスワード"
               required
               maxlength="14"
@@ -118,6 +119,8 @@
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
+import { VForm } from 'vuetify/lib/components';
+import Vuetify from 'vuetify/lib';
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import Password from '@/domain/youkai/checkdigit/state/Password'
 import PasswordAttackService from '@/application/service/PasswordAttackService'
@@ -175,8 +178,8 @@ export default class RangePasswordChallenge extends Vue {
     return Password.withText(password).dumpHexText()
   }
 
-  private validateFromPassword(): boolean | string {
-    let password = this.fromPassword;
+  private validatePassword(value: string): boolean | string {
+    let password = value;
     if (!password) password = ""; // ×ボタンで、なぜかNullになるため。
     const max = Password.MAX_CHARS_LENGTH;
     if (password.length !== max)
@@ -212,6 +215,15 @@ export default class RangePasswordChallenge extends Vue {
 
   private get nowExecuting(): boolean {
     return PasswordAttackStatusStore.nowExecuting;
+  }
+
+  private get allValid(): boolean {
+    // const form = this.$refs.passwordInputForm as any;
+    // const validationResult = form.validate();
+    // 本来なら上記の通りしたいのだが、動かないので自力でValidation。
+
+    return this.validatePassword(this.fromPassword) === true
+      &&  this.validatePassword(this.toPassword) === true;
   }
 }
 </script>
