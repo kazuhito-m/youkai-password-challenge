@@ -155,23 +155,33 @@ export default class RangePasswordChallenge extends Vue {
 
     const minPass = Password.minimumOf(Password.MAX_CHARS_LENGTH);
     this.fromPassword = minPass.toString();
-    this.fromPassowrdHex = minPass.dumpHexText();
+    this.onChangeTromPassword();
 
     const maxPass = Password.muximumOf(Password.MAX_CHARS_LENGTH);
     this.toPassword = maxPass.toString();
-    this.toPassowrdHex = maxPass.dumpHexText();
+    this.onChangeToPassword();
 }
 
   @Watch('fromPassword')
-  private onChangefromPassword(): void {
-    this.fixPasswordWhenInvalid();
-}
+  private onChangeTromPassword(): void {
+    this.fromPassword = this.fixPasswordWhenInvalid(this.fromPassword);
+    this.fromPassowrdHex = this.toHex(this.fromPassword);
+  }
 
-  private fixPasswordWhenInvalid():void  {
-    let password = this.fromPassword;
-    if (!password) password = ""; // ×ボタンで、なぜかNullになるため。
-    if (!this.converter?.isInvalidPassword(password)) return;
-    this.fromPassword = this.converter?.fixValidPassword(password);
+  @Watch('toPassword')
+  private onChangeToPassword(): void {
+    this.toPassword = this.fixPasswordWhenInvalid(this.toPassword);
+    this.toPassowrdHex = this.toHex(this.toPassword);
+  }
+
+  private fixPasswordWhenInvalid(password: string):string  {
+    if (!password) return ""; // ×ボタンで、なぜかNullになるため。
+    if (!this.converter?.isInvalidPassword(password)) return password;
+    return this.converter?.fixValidPassword(password);
+  }
+
+  private toHex(password: string) : string {
+    return Password.withText(password).dumpHexText()
   }
 
   private validateFromPassword(): boolean | string {
