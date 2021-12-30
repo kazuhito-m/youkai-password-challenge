@@ -42,6 +42,7 @@
           <v-col>
             <v-textarea
               v-model="progressInfomation"
+              ref="progressInfomationTextarea"
               label="進行状況"
               readonly
               outlined
@@ -87,7 +88,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { PasswordAttackStatusStore } from '@/store'
 
 @Component
@@ -116,7 +117,7 @@ export default class PasswordChallengeProgress extends Vue {
     const values = PasswordAttackStatusStore.nowFoundPasswords
 
     if (values.length === 0) {
-      this.hitPassword = ""
+      this.hitPassword = ''
       this.notifyHitPassword = false
       this.foundPasswordCount = 0
     } else {
@@ -127,6 +128,14 @@ export default class PasswordChallengeProgress extends Vue {
 
     if (values.length === 0) return ' '
     return values.join(', ')
+  }
+
+  @Watch('progressInfomation')
+  private onChangeProgressInfomation() {
+    const vuePart = this.$refs.progressInfomationTextarea as Vue
+    const ta = vuePart.$el.querySelector('textarea') as HTMLTextAreaElement
+    ta.value = this.progressInfomation // FIXME ライフサイクルを無視してHTMLElementに二重で設定してるのでやめたい。
+    ta.scrollTop = ta.scrollHeight
   }
 
   private plusWhenBlank(value: string): string {
