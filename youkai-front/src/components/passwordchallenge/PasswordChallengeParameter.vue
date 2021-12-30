@@ -211,8 +211,11 @@ export default class RangePasswordChallenge extends Vue {
     return Password.withText(password).dumpHexText()
   }
 
-  private fixPasswordHexWhenInvalid(value: string) {
-    return value.toUpperCase();
+  private fixPasswordHexWhenInvalid(hex: string) {
+    if (!hex) return ""; // ×ボタンで、なぜかNullになるため。
+    return hex.trim()
+      .toUpperCase()
+      .replace(/\s+/g, " ");
   }
 
   private validatePassword(value: string): boolean | string {
@@ -252,7 +255,7 @@ export default class RangePasswordChallenge extends Vue {
     const input = event.currentTarget as HTMLInputElement;
     const nowValue = input.value;
     const hex = nowValue.replaceAll(" ","");
-    const lengthOk = hex.length < Password.MAX_CHARS_LENGTH * 2;
+    const lengthOk = hex.length < Password.MAX_CHARS_LENGTH * 3;
 
     if (charOk && lengthOk) return true;
 
