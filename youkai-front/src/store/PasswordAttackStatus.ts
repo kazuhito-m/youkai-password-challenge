@@ -57,7 +57,6 @@ export default class PasswordAttackStatus extends VuexModule {
 
     @Mutation
     public changeExecuteState(executing: boolean) {
-        console.log("call changeExecuteState(" + executing);
         this.executing = executing;
     }
 
@@ -131,7 +130,6 @@ export default class PasswordAttackStatus extends VuexModule {
 
     @Action({ rawError: true })
     public onHitPassword(password: Password): void {
-        console.log("strageのonHIt:" + password.toString());
         const passs = this.nowFoundPasswords.slice();
         passs.push(password.toString());
         this.changeFoundPassswords(passs);

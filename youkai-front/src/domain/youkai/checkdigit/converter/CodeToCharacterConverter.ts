@@ -45,7 +45,6 @@ export default class CodeToCharacterConverter {
 
     public randomCode():number {
         const validChars = this.validCharacters();
-        console.log("validChars:" + validChars);
         const randomPos = Math.floor(Math.random() * validChars.length);
         const char = validChars[randomPos];
         return this.reverceConvert(char);
