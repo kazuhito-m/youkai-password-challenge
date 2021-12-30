@@ -32,11 +32,14 @@
 
 - [kei氏によるリポジトリ](https://github.com/kmikage/yokai-password/tree/main/passwords)
   - 暫定、おそらく近い将来置けなくなる
+  - [ツールやサイト等、ダウンロード時用チェックサム置き場](https://github.com/kmikage/yokai-password/blob/main/passwords/passwords.sha256)
 
 ## 付帯情報・パスワード解析のヒント
 
 - [GameStaff @ Wiki ナムコ（メーカー関係者の名前一覧）](https://w.atwiki.jp/game_staff/sp/pages/215.html)
-
+- [31F4 - 31FB の各要素の関係性と基本コードをまとめ](https://docs.google.com/spreadsheets/d/1Hp80gXzoL0JtVbnC6CloOi2x8q5kje0cZ4kcLL0XTIc/edit#gid=0)
+  - [Imaha486](https://twitter.com/Imaha486)さんによる分析資料
+  - 「枝刈りなどの最適化についても別シートに定義して追記いただけると助かります。」とのこと
 </template>
 
 <style>
