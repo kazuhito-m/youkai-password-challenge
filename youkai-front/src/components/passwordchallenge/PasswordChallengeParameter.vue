@@ -38,7 +38,7 @@
               v-model="fromPassowrdHex"
               value="a"
               label="コード(16進数)表現"
-              :disabled="fromPassowrdHex.trim().length === 0 || nowExecuting"
+              :disabled="nowExecuting"
               outlined
               maxlength="41"
             ></v-text-field>
@@ -106,7 +106,7 @@
               v-model="toPassowrdHex"
               value="a"
               label="コード(16進数)表現"
-              :disabled="fromPassowrdHex.trim().length === 0 || nowExecuting"
+              :disabled="nowExecuting"
               outlined
               maxlength="41"
             ></v-text-field>
@@ -114,13 +114,29 @@
         </v-row>
       </v-container>
     </v-form>
+    <v-snackbar
+      v-model="invalidate"
+      outlined
+      multi-line
+      color="red"
+    >
+      {{ invalidateMessage }}
+      <template #action="{ attrs }">
+        <v-btn
+          color="blue"
+          text
+          v-bind="attrs"
+          @click="invalidate = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-card>
 </template>
 
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
-import { VForm } from 'vuetify/lib/components';
-import Vuetify from 'vuetify/lib';
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import Password from '@/domain/youkai/checkdigit/state/Password'
 import PasswordAttackService from '@/application/service/PasswordAttackService'
@@ -135,6 +151,9 @@ export default class RangePasswordChallenge extends Vue {
   private fromPassowrdHex = ' ';
   private toPassword = '';
   private toPassowrdHex = ' ';
+
+  private invalidate = false;
+  private invalidateMessage = "";
 
   @Inject()
   private readonly converter?: CodeToCharacterConverter;
@@ -189,6 +208,13 @@ export default class RangePasswordChallenge extends Vue {
     return true;
   }
 
+  private validateFromTo(): boolean {
+    const from = Password.withText(this.fromPassword);
+    const to = Password.withText(this.toPassword);
+    // to > from
+    return to.moreThan(from);
+  }
+
   private onKeyUp(event: KeyboardEvent): boolean {
     const keyName = event.code;
     if (keyName === 'Backspace' || keyName === 'Delete') return true;
@@ -205,8 +231,18 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   private onClickStart(): void {
+    if (!this.validateFromTo()) {
+      this. showInvalidateMessage("終了パスワードには開始パスワードより大きな値を入力して下さい。");
+      return;
+    }
+
     const range = AttackPasswordRange.of(this.fromPassword, this.toPassword);
     this.passwordAttackService?.execute(range, PasswordAttackStatusStore);
+  }
+
+  private showInvalidateMessage(message: string) {
+      this.invalidateMessage = message;
+      this.invalidate = true;
   }
 
   private onClickStop(): void  {
