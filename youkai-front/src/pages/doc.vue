@@ -12,12 +12,11 @@
                 v-for="article in blog"
                 :key="article.slug"
               >
-                <v-list-item-content :class="{ 'blue--text': sortBy === article.createdAt }">
+                <v-list-item-content>
                   {{ article.createdAt }}:
                 </v-list-item-content>
                 <v-list-item-content
                   class="align-end"
-                  :class="{ 'blue--text': sortBy === key }"
                 >
                   <nuxt-link :to="'/tech/' + article.slug">
                     {{ article.title }}

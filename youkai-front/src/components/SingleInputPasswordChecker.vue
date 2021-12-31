@@ -61,11 +61,11 @@ import { Component, Inject, Vue, Watch } from 'vue-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
-import AttackCharacters from '@/domain/youkai/checkdigit/state/AttackCharacters'
+import AttackCharacters from '~/domain/youkai/checkdigit/state/Password'
 import A31F from '@/domain/youkai/checkdigit/state/A31F'
 
 @Component
-export default class SingleInputCheckDigitTry extends Vue {
+export default class SingleInputPasswordChecker extends Vue {
   private youkaiPassword = '';
   private calculatedCheckDigit = ' ';
   private resultInfomation = ' ';

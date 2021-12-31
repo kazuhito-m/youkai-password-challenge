@@ -38,6 +38,11 @@ export default class CodeToCharacterConverter {
         return table[table.length - 1];
     }
 
+    public maxCode(): number {
+        const table = this.incrementNextCodeTable;
+        return Math.max(...table);
+    }
+
     public isInvalidCharCode(code: number): boolean {
         return CodeToCharacterConverter.INVALID_CHAR === this.convert(code);
     }
