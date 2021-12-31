@@ -1,5 +1,5 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import AttackPasswordRange from '@/domain/youkai/attack/AttackPasswordRange';
 import Password from '~/domain/youkai/checkdigit/state/Password';
 
@@ -18,6 +18,7 @@ export default class PasswordAttackStatus extends VuexModule {
     private fromPassword = Password.minimumOf(Password.MAX_CHARS_LENGTH).toString();
     private toPassword = Password.muximumOf(Password.MAX_CHARS_LENGTH).toString();
     private attackedCount = 0;
+    private attackStartTime: Moment | null = null;
 
     private nickName = "";
 
@@ -47,6 +48,14 @@ export default class PasswordAttackStatus extends VuexModule {
 
     public get nowFoundPasswords(): string[] {
         return this.foundPassswords;
+    }
+
+    public get nowAttackedCount(): number {
+        return this.attackedCount;
+    }
+
+    public get nowAttackStartTime(): Moment | null {
+        return this.attackStartTime;
     }
 
     @Mutation
@@ -80,6 +89,11 @@ export default class PasswordAttackStatus extends VuexModule {
     }
 
     @Mutation
+    private changeAttackStartTime(attackStartTime: Moment | null) {
+        this.attackStartTime = attackStartTime;
+    }
+
+    @Mutation
     private changeStartPosition(startPosition: string) {
         this.startPosition = startPosition;
     }
@@ -101,6 +115,7 @@ export default class PasswordAttackStatus extends VuexModule {
         this.changeProgressInfomation("");
         this.changeFoundPassswords([]);
         this.changeAttackedCount(0);
+        this.changeAttackStartTime(moment());
     }
 
     @Action({ rawError: true })
