@@ -1,5 +1,10 @@
 <template lang="md">
 
+## 現在アクティブな解析場所
+
+- [「隠しパスワード解析選手権」Discord」](https://discord.com/invite/WzrDAQBfgj)
+  - このページを観て頂いた皆様、奮ってご参加下さい♪
+
 ## もともと探求してた人・企画
 
 - [PCE妖怪道中記：スタッフインフォメーションボード調査記録(常時情報募集中)](https://polymega.blog.jp/archives/78015705.html)
