@@ -8,6 +8,7 @@ import CancelOrder from '@/application/worker/passwordattack/order/CancelOrder';
 import WorkerResult from '@/application/worker/passwordattack/result/WorkerResult';
 import HitPasswordResult from '@/application/worker/passwordattack/result/HitPasswordResult';
 import { ResultType } from '@/application/worker/passwordattack/result/ResultType';
+import AttackIntervalResult from '../worker/passwordattack/result/AttackIntervalResult';
 
 export default class PasswordAttackService {
     private worker: PasswordAttackWorker | null = null;
@@ -25,6 +26,7 @@ export default class PasswordAttackService {
             if (resType === ResultType.EXIT) this.onExit(status);
             if (resType === ResultType.BEGIN_ATTACK_CHUNK) this.onBeginAttackChunk(result as BeginAttackChunkResult, status);
             if (resType === ResultType.HIT_PASSWORD) this.onHitPassword(result as HitPasswordResult, status);
+            if (resType === ResultType.ATTACK_INTERVAL) this.onAttackInterval(result as AttackIntervalResult, status);
         };
 
         const order = new ExecuteOrder(
@@ -58,5 +60,9 @@ export default class PasswordAttackService {
     private onHitPassword(result: HitPasswordResult, status: PasswordAttackStatus) {
         const password = Password.withText(result.hitPassword);
         status.onHitPassword(password);
+    }
+
+    private onAttackInterval(result: AttackIntervalResult, status: PasswordAttackStatus) {
+        status.onAttackInterval(result.attackedCount);
     }
 }

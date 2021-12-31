@@ -157,4 +157,9 @@ export default class PasswordAttackStatus extends VuexModule {
     public onSetToPassword(password: string) {
         this.changeToPassword(password);
     }
+
+    @Action({ rawError: true })
+    public onAttackInterval(attackedCount: number) {
+        this.changeAttackedCount(attackedCount);
+    }
 }

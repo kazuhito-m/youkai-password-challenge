@@ -5,6 +5,7 @@ import ExitResult from "./result/ExitResult";
 import StartResult from "./result/StartResult";
 import BeginAttackChunkResult from "./result/BeginAttackChunkResult";
 import HitPasswordResult from "./result/HitPasswordResult";
+import AttackIntervalResult from "./result/AttackIntervalResult";
 import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
 import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculator";
 import Password from "@/domain/youkai/checkdigit/state/Password";
@@ -88,7 +89,7 @@ function onStart() {
 }
 
 function onAttackInterval(attackedCount: number) {
-    console.log(`現在のアタック数:${attackedCount}`);
+    _w.postMessage(new AttackIntervalResult(attackedCount))
 }
 
 function onBeginAttackChunk(chunk: AttackPasswordRange) {
