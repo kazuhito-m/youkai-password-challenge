@@ -179,7 +179,7 @@ export default class PasswordChallengeProgress extends Vue {
     const now = moment();
     const elapsed = now.diff(startTime);
     const elapsedMoment = moment(elapsed);
-    const totalHour = Math.floor(elapsed / 36000000);
+    const totalHour = Math.floor(elapsed / 3600000);
     return totalHour + "時間" + elapsedMoment.format("mm分ss秒");
   }
   
