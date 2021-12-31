@@ -1,5 +1,10 @@
 <template lang="md">
 
+## 現在アクティブな解析場所
+
+- [「隠しパスワード解析選手権」Discord」](https://discord.com/invite/WzrDAQBfgj)
+  - このページを観て頂いた皆様、奮ってご参加下さい♪
+
 ## もともと探求してた人・企画
 
 - [PCE妖怪道中記：スタッフインフォメーションボード調査記録(常時情報募集中)](https://polymega.blog.jp/archives/78015705.html)
@@ -18,6 +23,7 @@
 - [【tanzaku氏作】妖怪道中記パスワード辞書アタックツール実行方法まとめ](http://i486.mods.jp/ichild/yokai-tanzaku)
 - [PCエンジン妖怪道中記 パスワード解析Wiki（まとめサイト）](https://i486.mods.jp/yokaiwiki/)
 - [Aios／GPU向け探索プログラム](https://github.com/Aios-Ciao/yokaifinder-gpu)
+- [botesan/skk辞書を使用してパスワードを検索するJava（Kotlin）のプログラム](https://drive.google.com/file/d/1-tg5JbAxd8jtuKIRExxd63HyVYDLNFau/view)
 
 ### Hit済パスワード分析・探索系
 
@@ -27,10 +33,6 @@
 - [水咲／ YokaiSearcher(tanzaku氏発見の424万件パスワード探査ツール)](https://github.com/Misaki0331/YokaiSearcher)
 - [Imaha486／同424万件のパスワードと辞書を照合するフィルタツール](https://i486.mods.jp/files/yokaisplit.zip)
 - [Imaha486／同424万件のパスワードをAND検索するツール](https://i486.mods.jp/files/yokailoop.zip )
-
-### 探索・解析双方やるもの
-
-- [botesan/skk辞書を使用してパスワードを検索するJava（Kotlin）のプログラム](https://drive.google.com/file/d/1-tg5JbAxd8jtuKIRExxd63HyVYDLNFau/view)
 
 ## Hit済みパスワードの置き場
 
