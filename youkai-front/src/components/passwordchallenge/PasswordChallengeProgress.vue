@@ -9,6 +9,15 @@
     <v-form ref="form">
       <v-container>
         <v-row>
+          <v-col cols="12" sm="12" md="12">
+            <v-card-actions>
+              経過時間 : {{ elapsedTime }}
+              <v-spacer></v-spacer>
+              アタック数 : {{ attackCount }} 回
+            </v-card-actions>
+          </v-col>
+        </v-row>
+        <v-row>
           <v-col cols="12" sm="5" md="5">
             <v-text-field
               v-model="startPosition"
@@ -40,8 +49,8 @@
         <v-row>
           <v-col>
             <v-textarea
-              v-model="progressInfomation"
               ref="progressInfomationTextarea"
+              v-model="progressInfomation"
               label="進行状況"
               readonly
               outlined
@@ -88,6 +97,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
+import moment  from 'moment';
 import { PasswordAttackStatusStore } from '@/store'
 
 @Component
@@ -110,6 +120,19 @@ export default class PasswordChallengeProgress extends Vue {
 
   private get progressInfomation(): string {
     return this.plusWhenBlank(PasswordAttackStatusStore.nowProgressInfomation)
+  }
+
+  private get attackCount(): string {
+    return PasswordAttackStatusStore.nowAttackedCount.toLocaleString();
+  }
+
+  private get elapsedTime(): string {
+    const start = PasswordAttackStatusStore.nowAttackStartTime;
+    if (!start) return "";
+
+    const now = moment();
+    const elapsed = now.diff(start);
+    return elapsed.toString();
   }
 
   private get foundPasswords(): string {
