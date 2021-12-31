@@ -24,6 +24,8 @@
 - [PCエンジン妖怪道中記 パスワード解析Wiki（まとめサイト）](https://i486.mods.jp/yokaiwiki/)
 - [Aios／GPU向け探索プログラム](https://github.com/Aios-Ciao/yokaifinder-gpu)
 - [botesan/skk辞書を使用してパスワードを検索するJava（Kotlin）のプログラム](https://drive.google.com/file/d/1-tg5JbAxd8jtuKIRExxd63HyVYDLNFau/view)
+- [kazuhito_m/Youkai03.exeのWebページ移植](http://youkaiosugi.com/)
+  - 本サイトのトップページ、インストール不要、遅いけどね
 
 ### Hit済パスワード分析・探索系
 
