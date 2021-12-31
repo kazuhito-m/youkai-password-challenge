@@ -97,7 +97,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
-import moment  from 'moment';
+import moment, { Moment }  from 'moment';
 import { PasswordAttackStatusStore } from '@/store'
 
 @Component
@@ -105,6 +105,8 @@ export default class PasswordChallengeProgress extends Vue {
   private notifyHitPassword = false
   private hitPassword = ''
   private foundPasswordCount = 0
+  private elapsedTime = ""
+  private timer: any | null = null;
 
   private get nowExecuting(): boolean {
     return PasswordAttackStatusStore.nowExecuting
@@ -124,15 +126,6 @@ export default class PasswordChallengeProgress extends Vue {
 
   private get attackCount(): string {
     return PasswordAttackStatusStore.nowAttackedCount.toLocaleString();
-  }
-
-  private get elapsedTime(): string {
-    const start = PasswordAttackStatusStore.nowAttackStartTime;
-    if (!start) return "";
-
-    const now = moment();
-    const elapsed = now.diff(start);
-    return elapsed.toString();
   }
 
   private get foundPasswords(): string {
@@ -160,6 +153,36 @@ export default class PasswordChallengeProgress extends Vue {
     ta.scrollTop = ta.scrollHeight
   }
 
+  @Watch('nowExecuting')
+  private onToggleExecuting():void {
+    if (this.nowExecuting) {
+      this.elapsedTime = "";
+      this.timer = setInterval(this.calculateElapsedTime, 1000);
+      return;
+    }
+    if (!this.timer) return;
+    clearInterval(this.timer);
+    this.timer = null;
+  }
+
+  private mounted() {
+    this.onToggleExecuting();
+  }
+
+  private calculateElapsedTime(): void {
+    const start = PasswordAttackStatusStore.nowAttackStartTime;
+    if (!start) return;
+    this.elapsedTime = this.makeElapsedTimeText(start);
+  }
+
+  private makeElapsedTimeText(startTime: Moment) {
+    const now = moment();
+    const elapsed = now.diff(startTime);
+    const elapsedMoment = moment(elapsed);
+    const totalHour = Math.floor(elapsed / 36000000);
+    return totalHour + "時間" + elapsedMoment.format("mm分ss秒");
+  }
+  
   private plusWhenBlank(value: string): string {
     return value.trim().length === 0 ? ' ' : value
   }
