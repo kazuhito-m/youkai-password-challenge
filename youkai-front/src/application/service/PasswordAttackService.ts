@@ -1,5 +1,6 @@
 import PasswordAttackWorker from 'worker-loader!~/application/worker/passwordattack/PasswordAttack.worker';
-import BeginAttackChunkResult from '../worker/passwordattack/result/BeginAttackChunkResult';
+import BeginAttackChunkResult from '@/application/worker/passwordattack/result/BeginAttackChunkResult';
+import AttackIntervalResult from '@/application/worker/passwordattack/result/AttackIntervalResult';
 import AttackPasswordRange from "@/domain/youkai/attack/AttackPasswordRange";
 import Password from '@/domain/youkai/checkdigit/state/Password';
 import PasswordAttackStatus from "@/store/PasswordAttackStatus";
@@ -8,7 +9,6 @@ import CancelOrder from '@/application/worker/passwordattack/order/CancelOrder';
 import WorkerResult from '@/application/worker/passwordattack/result/WorkerResult';
 import HitPasswordResult from '@/application/worker/passwordattack/result/HitPasswordResult';
 import { ResultType } from '@/application/worker/passwordattack/result/ResultType';
-import AttackIntervalResult from '../worker/passwordattack/result/AttackIntervalResult';
 
 export default class PasswordAttackService {
     private worker: PasswordAttackWorker | null = null;
