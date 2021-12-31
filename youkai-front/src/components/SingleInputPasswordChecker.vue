@@ -19,7 +19,7 @@
               maxlength="14"
               clearable
               class="input-yokai-password"
-              @keypress="onKeyUp"
+              @keypress="onKeyPless"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -141,7 +141,7 @@ export default class SingleInputPasswordChecker extends Vue {
     return true;
   }
 
-  private onKeyUp(event: KeyboardEvent): boolean {
+  private onKeyPless(event: KeyboardEvent): boolean {
     const keyName = event.code;
     if (keyName === 'Backspace' || keyName === 'Delete') return true;
 

@@ -8,7 +8,7 @@ export default class CorrectCheckDigits {
         private readonly calculator: CheckDigitCalculator,
     ) { }
 
-    private static readonly 無敵 = CorrectCheckDigits.of("534-030.565.81", "もう　これで　こわいもの　なんか　ありません", "無敵効果(体力ゼロで満タンにループ)を得られる14文字です。");
+    public static readonly 無敵 = CorrectCheckDigits.of("534-030.565.81", "もう　これで　こわいもの　なんか　ありません", "無敵効果(体力ゼロで満タンにループ)を得られる14文字です。");
 
     private static readonly CORRECTS = [
         CorrectCheckDigits.of("SPEED-UP", "こまい かずひこ な がめんに なりました。", "リセット後、画面4分割&高速プレイできるものです。"),

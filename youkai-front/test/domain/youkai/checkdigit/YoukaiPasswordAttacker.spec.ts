@@ -42,7 +42,7 @@ describe('YoukaiPasswordAttacker', () => {
 
     test.skip('パスワード_NAUSICAA_をコンティニュー機能を使って突き止める事が出来る', () => {
         const targetCheckDigit = A31F.createFromHexStrings8("45", "D7", "08", "9F", "AD", "38", "92", "0B");
-        const startPassword = new Password(new CodeToCharacterConverter(), [0, 0, 0, 0, 0, 16, 0, 0]);
+        const startPassword = new Password([0, 0, 0, 0, 0, 16, 0, 0], new CodeToCharacterConverter());
 
         const results = sut.execute(targetCheckDigit, startPassword);
 

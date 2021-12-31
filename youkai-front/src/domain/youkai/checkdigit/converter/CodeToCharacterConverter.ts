@@ -43,6 +43,13 @@ export default class CodeToCharacterConverter {
         return Math.max(...table);
     }
 
+    public randomCode():number {
+        const validChars = this.validCharacters();
+        const randomPos = Math.floor(Math.random() * validChars.length);
+        const char = validChars[randomPos];
+        return this.reverceConvert(char);
+    }
+
     public isInvalidCharCode(code: number): boolean {
         return CodeToCharacterConverter.INVALID_CHAR === this.convert(code);
     }

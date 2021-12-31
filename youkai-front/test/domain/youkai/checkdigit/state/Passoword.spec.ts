@@ -15,7 +15,7 @@ describe('Passoword', () => {
         const charTable = "****16******27******38******49******50*****-*******.**";
         const converter = new CodeToCharacterConverter(charTable);
 
-        const firstCode = new Password(converter, [4, 4]);
+        const firstCode = new Password([4, 4], converter);
         expect(firstCode.dumpHexText()).toEqual("04 04");
 
         const actual = firstCode.increment();
@@ -31,7 +31,7 @@ describe('Passoword', () => {
         const charTable = "****16******27******38******49******50*****-*******.**";
         const converter = new CodeToCharacterConverter(charTable);
 
-        const firstCode = new Password(converter, [51, 51, 4]);
+        const firstCode = new Password([51, 51, 4], converter);
         expect(firstCode.dumpHexText()).toEqual("33 33 04");
 
         const actual = firstCode.increment();
@@ -45,7 +45,7 @@ describe('Passoword', () => {
 
         const minimum = Password.initialize(6, converter);
 
-        const firstCode = new Password(converter, [51, 51, 51, 51, 51, 51]);
+        const firstCode = new Password([51, 51, 51, 51, 51, 51], converter);
         expect(firstCode.dumpHexText()).toEqual("33 33 33 33 33 33");
 
         const actual = firstCode.increment();
@@ -58,7 +58,7 @@ describe('Passoword', () => {
         const charTable = "****16******27******38******49******50*****-*******.**";
         const converter = new CodeToCharacterConverter(charTable);
 
-        const firstCode = new Password(converter, [0, 1, 2, 3]);
+        const firstCode = new Password([0, 1, 2, 3], converter);
         expect(firstCode.dumpHexText()).toEqual("00 01 02 03");
 
         const actual = firstCode.fixInvalid();
