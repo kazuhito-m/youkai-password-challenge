@@ -1,5 +1,5 @@
-import WorkerOrder from "./order/WorkerOrder";
 import { OrderType } from "./order/OrderType";
+import WorkerOrder from "./order/WorkerOrder";
 import ExecuteOrder from "./order/ExecuteOrder";
 import ExitResult from "./result/ExitResult";
 import StartResult from "./result/StartResult";
@@ -11,10 +11,13 @@ import CheckDigitCalculator from "@/domain/youkai/checkdigit/CheckDigitCalculato
 import Password from "@/domain/youkai/checkdigit/state/Password";
 import A31F from "@/domain/youkai/checkdigit/state/A31F";
 import CorrectCheckDigits from "@/domain/youkai/checkdigit/correct/CorrectCheckDigits";
+import CodeToCharacterConverter from "~/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
 
 const _w: Worker = self as any;
 
 const calculator = new CheckDigitCalculator();
+
+const converter = new CodeToCharacterConverter();
 
 let on = false;
 let attackedCount = 0;
@@ -58,7 +61,8 @@ function attack(passwordRange: AttackPasswordRange): void {
     }
 }
 
-const INTARCEPT_INTARVAL = 10000000;
+// 微調整。30秒くらいになるように。
+const INTARCEPT_INTARVAL = converter.validCharacters().length ** (CHANK_DIVIDE_POS - 1) * 3;
 
 function attackChunk(chunk: AttackPasswordRange, attackTargetCheckDigit: A31F): void {
     let password = chunk.formPassword;
