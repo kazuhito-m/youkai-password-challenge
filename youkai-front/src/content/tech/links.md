@@ -91,6 +91,11 @@ title: このアプリを作るに当たっての技術リンク集
 
 - PostgreSQLでcsvファイルのインポート
   - https://qiita.com/sf213471118/items/49a8c9e31930a761351a
+- PostgreSQLでCOPYする時はインデックスを削除すべし、数十倍高速化する
+  - https://www.xmisao.com/2014/07/21/remove-index-when-copying-data-to-postgresql.html
+- bashでのファイル分割
+  - https://atmarkit.itmedia.co.jp/ait/articles/1711/24/news016.html
+  - Postgresとは関係ないが、読ませる時に有利に成る可能性のため
 
 ### データベースサイズ縮小
 
