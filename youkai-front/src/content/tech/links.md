@@ -102,3 +102,5 @@ title: このアプリを作るに当たっての技術リンク集
 
 - PostgreSQLでMySQLのAUTO_INCREMENTを使う
   - https://qiita.com/shonansurvivors/items/4522f15c5e9a30860bc5
+- psqlで時間を測る
+  - https://blog.y-yuki.net/entry/2017/01/09/000000
