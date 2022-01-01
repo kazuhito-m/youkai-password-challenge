@@ -1,14 +1,13 @@
 package com.github.kazuhitom.youkai.server.presentation.api;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/test")
+@CrossOrigin("http://localhost:8081")
 public class TestController {
     @GetMapping
-    public String createLimitPrice() {
-        return "これがかえれば、API読んでるということ。";
+    public String createLimitPrice(@RequestParam("value") String value) {
+        return "これがかえれば、API読んでるということ。:" + value;
     }
 }
