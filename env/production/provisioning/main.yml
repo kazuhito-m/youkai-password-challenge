@@ -22,6 +22,12 @@
           - cron
           - certbot
           - python3-certbot-nginx
+          - language-pack-ja
+
+    - name: LOCALEとTimeZone設定
+      shell: |
+        cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+        update-locale LANG=ja_JP.UTF-8
 
     - name: cron を有効に
       shell: update-rc.d cron enable
