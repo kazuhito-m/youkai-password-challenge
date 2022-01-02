@@ -23,6 +23,10 @@ Cloud SQL Proxy を作業端末に仕込んで置く。
 ./cloud_sql_proxy -dir=/cloudsql -instances=[インスタンス接続文字列]
 ```
 
+サービス化しておくと、やりやすい。
+
+これをつないだ後は `localhost:5432` のPostgresServerとして振る舞う。
+
 ## 具体的な作業
 
 ### DB作成作業
@@ -48,7 +52,8 @@ CREATE EXTENSION pg_trgm;
 一般ユーザで行う。
 
 ```bash
- \timing
+\timing
+
 CREATE TABLE temp_password (
     password varchar(14)
 );
@@ -60,6 +65,8 @@ CREATE TABLE found_password (
     password varchar(14) NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
+
+DROP INDEX pg_trgm_idx_found_password_password;
 
 INSERT INTO found_password(password) SELECT password FROM temp_password;
 ```
@@ -89,6 +96,20 @@ CREATE INDEX pg_trgm_idx_found_password_password
 
 ## メモ
 
+### LocalのDockerコンテナ
+
+```bash
+INSERT INTO found_password(password) SELECT password FROM temp_password;
+43074982
+Time: 243703.526 ms (04:03.704)
+
+CREATE INDEX pg_trgm_idx_found_password_password
+  ON found_password    
+    USING gin(password gin_trgm_ops;              
+Time: 348565.713 ms (05:48.566)          
+```
+
+
 ### 共有CPUかつ強めのインスタンスでの計測
 
 共有CPU(MEM1.5GBだっけか)のマシンで計測。
@@ -111,5 +132,25 @@ youkai_password_challenge=> select count(*) from found_password WHERE password L
 (1 row)
 
 Time: 33350.426 ms (00:33.350)
-youkai_password_challenge=> 
 ```
+
+### メモリ3.75GBの共有CPUじゃないインスタンスでの計測
+
+```bash
+youkai_password_challenge=> \COPY temp_password(password) from './passwords.txt' with csv
+COPY 43078393
+Time: 75132.347 ms (01:15.132)
+
+youkai_password_challenge=> INSERT INTO found_password(password) SELECT password FROM temp_password;
+```
+
+なんかこの最中にインスタンスが落ちた。
+
+### メモリ6.5GBの共有CPUじゃないインスタンスでの計測
+
+```bash
+youkai_password_challenge=> \COPY temp_password(password) from './passwords.txt' with csv
+COPY 43078393
+Time: 75132.347 ms (01:15.132)
+
+youkai_password_challenge=> INSERT INTO found_password(password) SELECT password FROM temp_password;

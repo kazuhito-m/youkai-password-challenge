@@ -129,3 +129,7 @@ https://sys-guard.com/post-15640/
 
 - GCP Cloud SQLにCloud SQL Proxyで接続しよう。Systemd化してデーモン化！
   - https://sys-guard.com/post-15640/
+- Spring Boot on GCP - Cloud SQL
+  - https://spring-gcp.saturnism.me/app-dev/cloud-services/databases/cloud-sql
+  - SpringBootからのCloudSQLへのつなぎ方のいくつかが乗っている
+  - 今回、ここの[Cloud SQL Proxy](https://spring-gcp.saturnism.me/app-dev/cloud-services/databases/cloud-sql#cloud-sql-proxy)の方法を持って、localhost:5432 へのアクセスとして接続させている
