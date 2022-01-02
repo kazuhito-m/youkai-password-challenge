@@ -52,6 +52,33 @@
         dest: /etc/cron.monthly/
         mode: 0755
 
+    - name: Cloud SQL Proxy のインストール
+      get_url:
+        url: https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64
+        dest: /usr/bin/cloud_sql_proxy
+        mode: 0755
+
+    - name: Cloud SQL Proxy 用のディレクトリを作成
+      file:
+        path: /cloudsql
+        state: directory
+        owner: root
+        group: root
+        mode: 0777
+
+    - name: Cloud SQL Proxy のsystemdの設定ファイルをコピー
+      copy:
+        src: db/resources/cloud-sql-proxy.service
+        dest: /usr/lib/systemd/system/
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Cloud SQL Proxy のsystemdのスタート
+      service:
+        name: cloud-sql-proxy
+        state: started
+
     - name: youkai-server のuserのgroupを作成
       group:
         name: youkai

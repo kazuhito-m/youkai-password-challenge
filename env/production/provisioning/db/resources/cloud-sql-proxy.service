@@ -1,0 +1,14 @@
+[Unit]
+Description = Cloud SQL Proxy Daemon
+After = network.target
+
+[Service]
+ExecStart = /bin/cloud_sql_proxy -dir=/cloudsql -instances=[instance connect string]
+ExecStop = /bin/kill ${MAINPID}
+ExecReload = /bin/kill -HUP ${MAINPID}
+Restart = always
+Type = simple
+LimitNOFILE=65536
+
+[Install]
+WantedBy = multi-user.target
