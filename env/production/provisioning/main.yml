@@ -80,6 +80,14 @@
         group: root
         mode: 0644
 
+    - name: youkai-server のSpringBootの設定ファイルをコピー
+      copy:
+        src: app/resources/applicaiton.properties
+        dest: /var/opt/youkai-server/applicaiton.properties
+        owner: youkai
+        group: youkai
+        mode: 0644
+
     - name: youkai-server のデプロイスクリプトを配置
       copy:
         src: app/scripts/deploy.sh
