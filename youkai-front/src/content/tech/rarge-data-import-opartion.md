@@ -100,7 +100,7 @@ CREATE INDEX pg_trgm_idx_found_password_password
 
 ```bash
 CREATE INDEX btree_idx_found_password_password
-    ON found_password(password)
+    ON found_password(password);
 ```
 
 ## メモ
@@ -160,7 +160,44 @@ youkai_password_challenge=> INSERT INTO found_password(password) SELECT password
 ```bash
 \COPY temp_password(password) from './passwords.txt' with csv
 Time: 69656.307 ms (01:09.656) 
+
 INSERT INTO found_password(password) SELECT password FROM temp_password;
 INSERT 0 43078393
 Time: 739845.533 ms (12:19.846)
+
+CREATE INDEX pg_trgm_idx_found_password_password
+     ON found_password
+     USING gin(password gin_trgm_ops);
+Time: 685156.204 ms (11:25.156)
+
+CREATE INDEX btree_idx_found_password_password
+     ON found_password(password);
+Time: 163681.360 ms (02:43.681)
 ```
+
+```bash
+Time: 170.291 ms
+youkai_password_challenge=> SELECT count(password) from found_password WHERE password LIKE 'NMK%';
+ count 
+-------
+  3294
+(1 row)
+
+Time: 22.355 ms
+youkai_password_challenge=> SELECT count(password) from found_password WHERE password LIKE 'N%';
+  count  
+---------
+ 2245741
+(1 row)
+
+Time: 6044.153 ms (00:06.044)
+youkai_password_challenge=> SELECT count(password) from found_password WHERE password LIKE '%MIURA%';
+ count
+-------
+     4
+(1 row)
+
+Time: 21.830 ms
+```
+
+一文字、二文字検索はヤバイけれど、それ以外は全然早い。
