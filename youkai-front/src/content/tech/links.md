@@ -109,3 +109,15 @@ title: このアプリを作るに当たっての技術リンク集
   - https://qiita.com/shonansurvivors/items/4522f15c5e9a30860bc5
 - psqlで時間を測る
   - https://blog.y-yuki.net/entry/2017/01/09/000000
+
+--- 
+
+## Java系
+
+### SpringBoot - Cors関係
+
+- REST API で CORS を有効化
+  - https://spring.pleiades.io/guides/gs/rest-service-cors/
+- 今更ながらCORSの仕組みについてまとめようと思います
+  - https://rso.hateblo.jp/entry/2019/02/13/225329
+  - 一般知識
