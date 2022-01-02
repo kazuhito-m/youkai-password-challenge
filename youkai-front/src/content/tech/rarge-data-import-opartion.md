@@ -69,6 +69,9 @@ CREATE TABLE found_password (
 DROP INDEX pg_trgm_idx_found_password_password;
 
 INSERT INTO found_password(password) SELECT password FROM temp_password;
+
+DROP TABLE temp_password;
+VACUUM FULL;
 ```
 
 ## テーブル捨て＆ストレージ縮小
@@ -76,8 +79,7 @@ INSERT INTO found_password(password) SELECT password FROM temp_password;
 スーパーユーザで行う。
 
 ```bash
- \timing
-DROP TABLE temp_password;
+\timing
 VACUUM FULL;
 ```
 
@@ -86,13 +88,20 @@ VACUUM FULL;
 一般ユーザで行う。
 
 ```bash
- \timing
+\timing
 CREATE INDEX pg_trgm_idx_found_password_password
     ON found_password
     USING gin(password gin_trgm_ops);
 ```
 
 バカっぱやのローカルで4分、非力なクラウドで9時間かかる。
+
+遅かったら、以下のインデクスも張ってみる。
+
+```bash
+CREATE INDEX btree_idx_found_password_password
+    ON found_password(password)
+```
 
 ## メモ
 
@@ -149,8 +158,9 @@ youkai_password_challenge=> INSERT INTO found_password(password) SELECT password
 ### メモリ6.5GBの共有CPUじゃないインスタンスでの計測
 
 ```bash
-youkai_password_challenge=> \COPY temp_password(password) from './passwords.txt' with csv
-COPY 43078393
-Time: 75132.347 ms (01:15.132)
-
-youkai_password_challenge=> INSERT INTO found_password(password) SELECT password FROM temp_password;
+\COPY temp_password(password) from './passwords.txt' with csv
+Time: 69656.307 ms (01:09.656) 
+INSERT INTO found_password(password) SELECT password FROM temp_password;
+INSERT 0 43078393
+Time: 739845.533 ms (12:19.846)
+```
