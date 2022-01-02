@@ -1,4 +1,5 @@
-CREATE EXTENSION pg_trgm;
+-- FIXME ユーザをスーパーユーザにできないため、一時的に削除。
+-- CREATE EXTENSION pg_trgm;
 
 CREATE TABLE found_password (
     id SERIAL NOT NULL,
