@@ -64,3 +64,60 @@ title: このアプリを作るに当たっての技術リンク集
 
 - JavaScriptによるマルチスレッドの実現‐Concurrent.Threadの裏側
   - https://www.otwo.jp/blog/asynchronous-processing/
+
+---
+
+## Postgres系
+
+### 文字列検索の高速化手法
+
+- PostgreSQLの全文検索エンジンであるpg_trgmを使ってみる
+  - https://zatoima.github.io/postgresql-pg_trgm-about.html
+- How to install the additional module pg_trgm
+  - https://dba.stackexchange.com/questions/165300/how-to-install-the-additional-module-pg-trgm
+- pg_trgm(本家ドキュメント)
+  - https://www.postgresql.jp/document/13/html/pgtrgm.html
+- テキスト検索の方法とインデックス
+  - https://lets.postgresql.jp/documents/technical/text-processing/3#contains
+  - 「中間一致検索」で「pg_trgmが早い」ってなってたので、採用した
+
+### テキストインポート
+
+ざっくりとは、こんな感じ
+
+```sql
+\copy table_name(column_name) from './target.csv' with csv
+```
+
+- PostgreSQLでcsvファイルのインポート
+  - https://qiita.com/sf213471118/items/49a8c9e31930a761351a
+- PostgreSQLでCOPYする時はインデックスを削除すべし、数十倍高速化する
+  - https://www.xmisao.com/2014/07/21/remove-index-when-copying-data-to-postgresql.html
+- bashでのファイル分割
+  - https://atmarkit.itmedia.co.jp/ait/articles/1711/24/news016.html
+  - Postgresとは関係ないが、読ませる時に有利に成る可能性のため
+
+### データベースサイズ縮小
+
+- PostgreSQL VACUUM FULLせずに不要領域を削除する
+  - https://www.1x1.jp/blog/2007/11/postgresql_no_vacuum_full.html
+
+
+### 一般知識
+
+- PostgreSQLでMySQLのAUTO_INCREMENTを使う
+  - https://qiita.com/shonansurvivors/items/4522f15c5e9a30860bc5
+- psqlで時間を測る
+  - https://blog.y-yuki.net/entry/2017/01/09/000000
+
+--- 
+
+## Java系
+
+### SpringBoot - Cors関係
+
+- REST API で CORS を有効化
+  - https://spring.pleiades.io/guides/gs/rest-service-cors/
+- 今更ながらCORSの仕組みについてまとめようと思います
+  - https://rso.hateblo.jp/entry/2019/02/13/225329
+  - 一般知識

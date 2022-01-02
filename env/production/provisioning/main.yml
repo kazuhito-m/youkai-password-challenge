@@ -18,9 +18,16 @@
           - openjdk-17-jre-headless
           - nginx
           - postgresql-12
+          - postgresql-contrib
           - cron
           - certbot
           - python3-certbot-nginx
+          - language-pack-ja
+
+    - name: LOCALEとTimeZone設定
+      shell: |
+        cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+        update-locale LANG=ja_JP.UTF-8
 
     - name: cron を有効に
       shell: update-rc.d cron enable
@@ -71,6 +78,14 @@
         dest: /usr/lib/systemd/system/
         owner: root
         group: root
+        mode: 0644
+
+    - name: youkai-server のSpringBootの設定ファイルをコピー
+      copy:
+        src: app/resources/applicaiton.properties
+        dest: /var/opt/youkai-server/applicaiton.properties
+        owner: youkai
+        group: youkai
         mode: 0644
 
     - name: youkai-server のデプロイスクリプトを配置
