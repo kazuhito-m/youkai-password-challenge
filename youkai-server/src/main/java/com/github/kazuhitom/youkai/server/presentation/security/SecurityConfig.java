@@ -1,4 +1,4 @@
-package com.github.kazuhitom.youkai.server;
+package com.github.kazuhitom.youkai.server.presentation.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
