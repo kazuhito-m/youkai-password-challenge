@@ -63,6 +63,7 @@ ansible-playbook -v -i hosts -c local main.yml
 一度目だけは、手動で行う。
 
 ```bash
+sudo certbot --dry-run certonly --nginx -d ${host_name}
 sudo certbot --nginx -d ${host_name}
 sudo systemctl restart nginx
 ```
