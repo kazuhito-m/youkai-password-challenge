@@ -120,6 +120,6 @@ export default {
   },
 
   'google-gtag': {
-    id: 'G-1ZPK5FPXME',
+    id: 'G-SSP93CH50C',
   },
 }
