@@ -21,7 +21,7 @@ title: このアプリを作るに当たっての技術リンク集
 
 
 ## Vuex単体
-
+https://sys-guard.com/post-15640/
 - 30分で基礎がしっかりわかる【Vuex】-入門
   - https://qiita.com/moyegogo1020/items/0b471e08a227a26cb31b
 - Vuex公式 - Store
@@ -121,3 +121,11 @@ title: このアプリを作るに当たっての技術リンク集
 - 今更ながらCORSの仕組みについてまとめようと思います
   - https://rso.hateblo.jp/entry/2019/02/13/225329
   - 一般知識
+
+
+## GCP系
+
+### CloudSQL
+
+- GCP Cloud SQLにCloud SQL Proxyで接続しよう。Systemd化してデーモン化！
+  - https://sys-guard.com/post-15640/

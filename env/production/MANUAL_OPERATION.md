@@ -47,7 +47,7 @@ sshしたい場合「SSH->ブラウザウィンドウでカスタムポートを
 
 ```bash
 sudo apt-get update
-sudo apt-get install ansible git
+sudo apt-get install ansible
 ```
 
 ## ansible実行
