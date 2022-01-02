@@ -7,6 +7,10 @@ Youkai Password Challenge
 
 元プログラムは「パスワード3種を総当りでチェック・ディジットが通るパスワードをさがすプログラム」
 
+## Deploid Service
+
+<http://youkaiosugi.com>
+
 ## author
 
 Kazuhito Miura ( [@kazuhito_m](https://twitter.com/kazuhito_m "kazuhito_m on Twitter") )
