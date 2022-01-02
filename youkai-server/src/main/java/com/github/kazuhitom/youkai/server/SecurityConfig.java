@@ -11,6 +11,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @Configuration
 @EnableWebSecurity
@@ -24,12 +25,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${management.endpoints.web.cors.allowed-origins}")
     private String allowOrigins;
 
+    private List<String> allowOriginsList() {
+        return Stream.of(allowOrigins.split(","))
+                .map(String::trim)
+                .toList();
+    }
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
-        System.out.println("設定ファイルにあったはずのallowOrigins:" + allowOrigins);
-
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(allowOrigins));
+        configuration.setAllowedOrigins(allowOriginsList());
         configuration.setAllowedMethods(List.of("GET", "POST"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/api/**", configuration);
