@@ -17,8 +17,7 @@
         name:
           - openjdk-17-jre-headless
           - nginx
-          - postgresql-12
-          - postgresql-contrib
+          - postgresql-client
           - cron
           - certbot
           - python3-certbot-nginx
