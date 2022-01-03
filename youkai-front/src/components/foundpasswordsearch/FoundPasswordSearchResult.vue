@@ -3,9 +3,6 @@
     class="mx-auto"
     width="1200"
   >
-    <v-card-title class="headline">
-      検索結果
-    </v-card-title>
     <v-form ref="form">
       <v-container>
         <v-row>
@@ -18,8 +15,34 @@
         </v-row>
         <v-row>
           <v-col cols="12" sm="12" md="12">
-            xxx
-          </v-col>
+            <v-simple-table 
+              dense
+              height="670px"
+              fixed-header
+            >
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <th class="text-left">
+                        No.
+                      </th>
+                      <th class="text-left">
+                        パスワード
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      v-for="item in list"
+                      :key="item.name"
+                    >
+                      <td>{{ item.no }}</td>
+                      <td>{{ item.password }}</td>
+                    </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
+            </v-col>
         </v-row>
       </v-container>
     </v-form>
@@ -31,7 +54,19 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class FoundPasswordSearchResult extends Vue {
-  private fullCount = 0;
+  private fullCount = 0
+
+  private readonly list: any[] = []
+
+  private mounted(): void {
+    const list = this.list;
+    for (let i = 0; i < 50000; i++) {
+      list.push({
+        no: i + 1,
+        password: 'password' + i,
+      })
+    }
+  }
 }
 </script>
 
