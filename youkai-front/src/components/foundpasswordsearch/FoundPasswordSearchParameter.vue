@@ -4,7 +4,7 @@
     width="1200"
   >
     <v-card-title class="headline">
-      発見済みパスワード絞り込み検索
+      発見済パスワード絞り込み検索
     </v-card-title>
     <v-card-text>
       現在判明している4000万件以上のパスワードから絞り込み検索が行えます。</br>
