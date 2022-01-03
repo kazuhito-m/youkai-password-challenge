@@ -28,19 +28,21 @@ public class FoundPasswordController {
             @RequestParam("limit") int limit,
             @RequestParam("reverse") Optional<Boolean> reverse
     ) {
-        validation(query, limit);
+        String error = validation(query, limit);
+        if (error.length() > 0) throw new InvalidParameterException(error);
 
         FoundPasswordSearchCondition condition = FoundPasswordSearchCondition.of(query, offset, limit, reverse);
         FoundPasswords passwords = service.findOf(condition);
         return FoundPasswordsResponse.of(passwords);
     }
 
-    private void validation(String query, int limit) {
-        if (limit > 1000) throw new InvalidParameterException("offsetの設定値が大きすぎます。");
+    private String validation(String query, int limit) {
+        if (limit > 1000) return "offsetの設定値が大きすぎます。";
         String trimmed = query.trim();
-        if (trimmed.length() < 2) throw new InvalidParameterException("query文字列が短すぎます。");
-        if (trimmed.length() > Password.MAX_CHARS_LENGTH) throw new InvalidParameterException("query文字列が長すぎます。");
-        if (converter.isInvalidPassword(query)) throw new InvalidParameterException("query文字列にパスワードに使えない文字が使われています。");
+        if (trimmed.length() < 2) return "query文字列が短すぎます。";
+        if (trimmed.length() > Password.MAX_CHARS_LENGTH) return "query文字列が長すぎます。";
+        if (converter.isInvalidPassword(query)) return "query文字列にパスワードに使えない文字が使われています。";
+        return "";
     }
 
     public FoundPasswordController(FoundPasswordService service) {
