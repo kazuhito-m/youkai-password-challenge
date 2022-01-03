@@ -33,15 +33,16 @@
                 </thead>
                 <tbody>
                 <tr
-                    v-for="item in list"
-                    :key="item.name"
+                    v-for="password in passwords"
+                    :key="password.no"
                 >
-                    <td>{{ item.no }}</td>
-                    <td>{{ item.password }}</td>
+                    <td>{{ password.no }}</td>
+                    <td>{{ password.password }}</td>
                 </tr>
-                <tr>
+                <tr v-if="hasReadYetPasswords">
                     <td colspan="2">
-                      <infinite-loading 
+                      <infinite-loading
+                        v-if="hasReadYetPasswords" 
                         ref="infiniteLoading" 
                         spinner="spiral"
                         @infinite="infiniteHandler">
@@ -62,6 +63,9 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import InfiniteLoading from 'vue-infinite-loading'
+import PasswordViewModel from '@/store/PasswordViewModel'
+
+import { FoundConditionSearchStatusStore } from '@/store'
 
 @Component({
   components: {
@@ -69,29 +73,37 @@ import InfiniteLoading from 'vue-infinite-loading'
   },
 })
 export default class FoundPasswordSearchResult extends Vue {
-  private fullCount = 0
-
-  private readonly list: any[] = []
-
-  private mounted(): void {
-    this.add20Line();
+  private get passwords(): PasswordViewModel[] {
+    return FoundConditionSearchStatusStore.nowPasswords
   }
 
-  private add20Line() {
-    const list = this.list
-    const startSize = this.list.length;
-    for (let i = 0; i < 100; i++) {
-      const no = i + startSize + 1;
-      list.push({
-        no: no,
-        password: 'password:' + no,
-      })
-    }
+  private get fullCount(): number {
+    return FoundConditionSearchStatusStore.nowSearchedFullCount
   }
+
+  private get hasReadYetPasswords(): boolean {
+    return this.fullCount > 0
+      && this.passwords.length < this.fullCount;
+  }
+
+  private mounted(): void {}
+
+  // private add20Line() {
+  //   const list = this.list
+  //   const startSize = this.list.length;
+  //   for (let i = 0; i < 100; i++) {
+  //     const no = i + startSize + 1;
+  //     list.push({
+  //       no: no,
+  //       password: 'password:' + no,
+  //     })
+  //   }
+  // }
 
   private infiniteHandler() {
-    console.log("ここに来るのは？ずっと来てるの？")
-    this.add20Line();
+    if (!this.hasReadYetPasswords) return;
+    console.log('ここに来るのは？ずっと来てるの？')
+    // this.add20Line();
     const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
     infiniteLoading.stateChanger.loaded()
   }
@@ -99,22 +111,4 @@ export default class FoundPasswordSearchResult extends Vue {
 </script>
 
 <style scoped>
-.input-yokai-password {
-  ime-mode: disabled;
-}
-
-.infinite-scroll {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 680px;
-  margin: 100px 0;
-}
-
-.infinite-scroll-list-item {
-  height: 60px;
-  margin: 10px 0;
-  border-bottom: 1px solid #eaeaea;
-  padding-bottom: 10px;
-}
 </style>

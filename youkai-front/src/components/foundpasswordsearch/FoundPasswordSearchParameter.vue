@@ -42,7 +42,7 @@
                 outlined
                 class="mr-4"
                 :disabled="nowSearching"
-                @click="onClickSearch"
+                @click="onClearResultsAndCondition"
               >
                 条件&結果クリア
               </v-btn>
@@ -51,7 +51,7 @@
                 color="primary"
                 outlined
                 class="mr-4"
-                :disabled="nowSearching"
+                :disabled="nowSearching || !allValid"
                 @click="onClickSearch"
               >
                 パスワードを検索
@@ -99,7 +99,8 @@ export default class FoundPasswordSearchParameter extends Vue {
     FoundConditionSearchStatusStore.setReverceOrder(value)
   }
 
-  private mounted(): void {}
+  private mounted(): void {
+  }
 
   private vallidateSearchQuery(value: string): boolean | string {
     let password = value
@@ -128,7 +129,20 @@ export default class FoundPasswordSearchParameter extends Vue {
     return false
   }
 
-  private onClickSearch(): void {}
+  private get allValid(): boolean {
+    // const form = this.$refs.searchConditionForm as any;
+    // const validationResult = form.validate();
+    // FIXME 本来なら上記の通りしたいのだが、動かないので自力でValidation。
+    return this.vallidateSearchQuery(this.searchQuery) === true
+  }
+
+  private onClickSearch(): void {
+    FoundConditionSearchStatusStore.search();
+  }
+
+  private onClearResultsAndCondition(): void {
+    FoundConditionSearchStatusStore.clearResultsAndCondition();
+  }
 
   private fixSearchQueryWhenInvalid(): void {
     let password = this.searchQuery

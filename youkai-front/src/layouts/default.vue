@@ -68,6 +68,7 @@ import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckD
 import PasswordAttackService from '@/application/service/PasswordAttackService'
 import FoundPasswordService from '~/application/service/FoundPasswordService';
 import FoundPasswordTransfer from '~/infrastructure/transfer/youkai/foundpassword/FoundPasswordTransfer';
+import { FoundConditionSearchStatusStore } from '@/store'
 
 @Component({
   components: {
@@ -133,6 +134,9 @@ export default class extends Vue {
   public created() {
     const head = this.$store?.app?.head as any;
     this.selfVersion = head.selfVersion;
+
+    // FIXME 苦肉の策。StoreにDIする方法がわからないので、直々にセット。
+    FoundConditionSearchStatusStore.service = this.foundPasswordService;
   }
 }
 </script>
