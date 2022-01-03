@@ -1,7 +1,8 @@
 package com.github.kazuhitom.youkai.server.infrastructure.datasource.foundpassword;
 
-import com.github.kazuhitom.youkai.server.domain.model.foundpassword.FoundPassword;
 import com.github.kazuhitom.youkai.server.domain.model.foundpassword.FoundPasswordRepository;
+import com.github.kazuhitom.youkai.server.domain.model.foundpassword.FoundPasswordSearchCondition;
+import com.github.kazuhitom.youkai.server.domain.model.foundpassword.FoundPasswords;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,11 +12,14 @@ public class FoundPasswordDatasource implements FoundPasswordRepository {
     private final FoundPasswordDao dao;
 
     @Override
-    public List<FoundPassword> findOf(String part) {
-        return dao.selectOf(part)
-                .stream()
-                .map(FoundPasswordView::toDomain)
+    public FoundPasswords findOf(FoundPasswordSearchCondition condition) {
+        List<FoundPasswordView> records = dao.selectOf(condition);
+        if (records.isEmpty()) return FoundPasswords.empty();
+
+        List<String> values = records.stream()
+                .map(record -> record.password)
                 .toList();
+        return new FoundPasswords(values, records.get(0).fullCount);
     }
 
     public FoundPasswordDatasource(FoundPasswordDao dao) {

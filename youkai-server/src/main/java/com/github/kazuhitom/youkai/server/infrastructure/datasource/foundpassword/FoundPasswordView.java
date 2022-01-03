@@ -1,6 +1,5 @@
 package com.github.kazuhitom.youkai.server.infrastructure.datasource.foundpassword;
 
-import com.github.kazuhitom.youkai.server.domain.model.foundpassword.FoundPassword;
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 import org.seasar.doma.Table;
@@ -9,14 +8,10 @@ import org.seasar.doma.Table;
 @Table(name = "found_password")
 public class FoundPasswordView {
     @Id
-    private final String password;
-    private final long fullCount;
+    final String password;
+    final int fullCount;
 
-    public FoundPassword toDomain() {
-        return new FoundPassword(password);
-    }
-
-    public FoundPasswordView(String password, long fullCount) {
+    public FoundPasswordView(String password, int fullCount) {
         this.password = password;
         this.fullCount = fullCount;
     }
