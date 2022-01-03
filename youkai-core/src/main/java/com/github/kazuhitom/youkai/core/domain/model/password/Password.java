@@ -11,6 +11,10 @@ public class Password {
     private final int[] charCodes;
     private final CodeToCharacterConverter converter;
 
+    public static final int MIN_CHARS_LENGTH = 3;
+    public static final int MAX_CHARS_LENGTH = 14;
+
+
     public int getOf(int index) {
         return charCodes[index];
     }
@@ -26,7 +30,19 @@ public class Password {
             newCodes[i] = converter.incrementCode(before);
             if (newCodes[i] > before) break; // 繰り上がりなし
         }
-        return new Password(converter, newCodes);
+        return new Password(newCodes, converter);
+    }
+
+
+    public Password incrementSpecifyPosition(int position) {
+        int index = position;
+        int[] newCodes = Arrays.copyOf(charCodes, charCodes.length);
+        for (int i = index; i < newCodes.length; i++) {
+            int before = newCodes[i];
+            newCodes[i] = converter.incrementCode(before);
+            if (newCodes[i] > before) break; // 繰り上がりなし
+        }
+        return new Password(newCodes, converter);
     }
 
     public Password fixInvalid() {
@@ -37,7 +53,7 @@ public class Password {
             if (!converter.isInvalidCharCode(newCodes[i])) continue;
             newCodes[i] = converter.incrementCode(newCodes[i]);
         }
-        return new Password(converter, newCodes);
+        return new Password(newCodes, converter);
     }
 
     public boolean isInvalid() {
@@ -85,7 +101,7 @@ public class Password {
         int[] values = IntStream.range(0, charCount)
                 .map(i -> initialCode)
                 .toArray();
-        return new Password(converter, values);
+        return new Password(values, converter);
     }
 
 
@@ -97,15 +113,15 @@ public class Password {
         int[] codes = passwordText.chars()
                 .map(oneCher -> converter.reverceConvert((char) oneCher))
                 .toArray();
-        return new Password(converter, codes);
+        return new Password(codes, converter);
     }
 
     public Password(int... charCodes) {
-        this(new CodeToCharacterConverter(), charCodes);
+        this(charCodes, new CodeToCharacterConverter());
     }
 
-    public Password(CodeToCharacterConverter converter, int... charCodes) {
-        this.converter = converter;
+    public Password(int[] charCodes, CodeToCharacterConverter converter) {
         this.charCodes = charCodes;
+        this.converter = converter;
     }
 }

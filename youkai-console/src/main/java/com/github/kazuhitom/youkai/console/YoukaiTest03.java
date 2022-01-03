@@ -37,7 +37,7 @@ public class YoukaiTest03 {
         // コンテニュー
         if (args.length > 8) {
             int[] continueCodes = Arrays.stream(Arrays.copyOfRange(args, 8, args.length)).mapToInt(codeText -> Integer.parseInt(codeText, 16)).toArray();
-            password = new Password(converter, continueCodes);
+            password = new Password(continueCodes, converter);
             printf("前回の続きからコンテニューします : %s\n", password.dumpHexText());
             if (password.isInvalid()) {
                 password = password.fixInvalid();

@@ -21,7 +21,7 @@ class AttackCharactersTest {
         var charTable = "****16******27******38******49******50*****-*******.**";
         var converter = new CodeToCharacterConverter(charTable);
 
-        var firstCode = new Password(converter, 4, 4);
+        var firstCode = new Password(new int[]{4, 4}, converter);
         assertEquals("04 04", firstCode.dumpHexText());
 
         var actual = firstCode.increment();
@@ -38,7 +38,7 @@ class AttackCharactersTest {
         var charTable = "****16******27******38******49******50*****-*******.**";
         var converter = new CodeToCharacterConverter(charTable);
 
-        var firstCode = new Password(converter, 51, 51, 4);
+        var firstCode = new Password(new int[]{51, 51, 4}, converter);
         assertEquals("33 33 04", firstCode.dumpHexText());
 
         var actual = firstCode.increment();
@@ -53,7 +53,7 @@ class AttackCharactersTest {
 
         var minimum = Password.initialize(6, converter);
 
-        var firstCode = new Password(converter, 51, 51, 51, 51, 51, 51);
+        var firstCode = new Password(new int[]{51, 51, 51, 51, 51, 51}, converter);
         assertEquals("33 33 33 33 33 33", firstCode.dumpHexText());
 
         var actual = firstCode.increment();
@@ -67,7 +67,7 @@ class AttackCharactersTest {
         var charTable = "****16******27******38******49******50*****-*******.**";
         var converter = new CodeToCharacterConverter(charTable);
 
-        var firstCode = new Password(converter, 0, 1, 2, 3);
+        var firstCode = new Password(new int[]{0, 1, 2, 3}, converter);
         assertEquals("00 01 02 03", firstCode.dumpHexText());
 
         var actual = firstCode.fixInvalid();
