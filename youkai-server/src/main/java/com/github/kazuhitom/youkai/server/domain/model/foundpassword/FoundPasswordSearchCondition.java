@@ -9,6 +9,14 @@ public class FoundPasswordSearchCondition {
         return query;
     }
 
+    public int offset() {
+        return offset;
+    }
+
+    public int limit() {
+        return limit;
+    }
+
     public FoundPasswordSearchCondition(String query, int offset, int limit) {
         this.query = query;
         this.offset = offset;

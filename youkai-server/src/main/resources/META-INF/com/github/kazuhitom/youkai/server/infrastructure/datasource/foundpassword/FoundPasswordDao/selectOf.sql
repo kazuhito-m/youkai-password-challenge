@@ -4,6 +4,6 @@ SELECT
 FROM
     found_password
 WHERE
-    password LIKE /* @infix(condition.part()) */'TEST'
-LIMIT /* condition.limit() */ 1
-OFFSET /* condition.offset() */ 0
+    password LIKE /* @infix(condition.query()) */'TEST'
+LIMIT /* condition.limit() */1
+OFFSET /* condition.offset() */0
