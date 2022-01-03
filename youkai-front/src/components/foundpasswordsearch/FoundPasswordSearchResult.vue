@@ -8,8 +8,9 @@
         <v-row>
           <v-col cols="12" sm="12" md="12">
             <v-card-actions>
+              検索条件: {{ searchedConditionCaption }}
               <v-spacer></v-spacer>
-              引っかかった総件数 : {{ fullCount }} 件
+              {{ fullCountCaption }}
             </v-card-actions>
           </v-col>
         </v-row>
@@ -90,8 +91,21 @@ export default class FoundPasswordSearchResult extends Vue {
     return FoundConditionSearchStatusStore.nowSearchedDateTime
   }
 
+  private get searchedConditionCaption() {
+    if (FoundConditionSearchStatusStore.nowSearchedCondition === null) return ''
+    const condition = FoundConditionSearchStatusStore.nowSearchedCondition
+    const order = condition.reverce ? '(逆順)' : ''
+    return `"${condition.query}" ${order}`
+  }
+
+  private get fullCountCaption(): string {
+    if (FoundConditionSearchStatusStore.nowSearchedCondition === null) return ''
+    const count = FoundConditionSearchStatusStore.nowSearchedFullCount.toLocaleString()
+    return `引っかかった総件数 : ${count} 件`
+  }
+
   @Watch('searchedDateTime')
-  private onChangeFullCount(): void {
+  private onChangeSearchedDateTime(): void {
     // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
     const resultList = this.$refs.resultList as Vue
     resultList.$el.getElementsByTagName('div')[0].scrollTop = 0
