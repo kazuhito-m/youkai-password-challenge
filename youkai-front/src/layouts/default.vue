@@ -66,6 +66,8 @@ import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeT
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
 import PasswordAttackService from '@/application/service/PasswordAttackService'
+import FoundPasswordService from '~/application/service/FoundPasswordService';
+import FoundPasswordTransfer from '~/infrastructure/transfer/youkai/foundpassword/FoundPasswordTransfer';
 
 @Component({
   components: {
@@ -117,6 +119,9 @@ export default class extends Vue {
 
   @Provide()
   private readonly passwordAttackService = new PasswordAttackService();
+
+  @Provide()
+  private readonly foundPasswordService = new FoundPasswordService(new FoundPasswordTransfer(this.$axios));
 
   // this classs property & functions.
 
