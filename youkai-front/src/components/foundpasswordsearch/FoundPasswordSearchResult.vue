@@ -19,8 +19,11 @@
               dense
               height="670px"
               fixed-header
+              ref="resultList"
             >
-              <template v-slot:default>
+              <template
+                v-slot:default
+              >
                 <thead>
                 <tr>
                     <th class="text-left">
@@ -63,6 +66,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { Watch } from 'nuxt-property-decorator'
+import { Moment } from 'moment'
 import InfiniteLoading from 'vue-infinite-loading'
 import PasswordViewModel from '@/store/PasswordViewModel'
 
@@ -74,9 +78,6 @@ import { FoundConditionSearchStatusStore } from '@/store'
   },
 })
 export default class FoundPasswordSearchResult extends Vue {
-  @Watch('fullCount')
-  private onChangeFullCount(): void {}
-
   private get passwords(): PasswordViewModel[] {
     return FoundConditionSearchStatusStore.nowPasswords
   }
@@ -85,15 +86,23 @@ export default class FoundPasswordSearchResult extends Vue {
     return FoundConditionSearchStatusStore.nowSearchedFullCount
   }
 
+  private get searchedDateTime(): Moment | null {
+    return FoundConditionSearchStatusStore.nowSearchedDateTime
+  }
+
+  @Watch('searchedDateTime')
+  private onChangeFullCount(): void {
+    // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
+    const resultList = this.$refs.resultList as Vue
+    resultList.$el.getElementsByTagName('div')[0].scrollTop = 0
+  }
+
   private get hasReadYetPasswords(): boolean {
-    const passCount = this.passwords.length
-    const fullCount = this.fullCount
-    return fullCount > 0 && passCount > 0 && passCount < fullCount
+    return FoundConditionSearchStatusStore.hasReadYetPasswords
   }
 
   private infiniteHandler() {
     if (!this.hasReadYetPasswords) return
-    console.log('ここに来るのは？ずっと来てるの？')
 
     FoundConditionSearchStatusStore.searchRemainPasswords()
 

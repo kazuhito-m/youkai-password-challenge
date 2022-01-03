@@ -2,7 +2,7 @@ import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import FoundPasswordService from '@/application/service/FoundPasswordService';
 import FoundPasswordSearchCondition from '~/domain/youkai/foundpassword/FoundPasswordSearchCondition';
 import PasswordViewModel from './PasswordViewModel';
-import FoundPasswords from '~/domain/youkai/foundpassword/FoundPasswords';
+import moment, { Moment } from 'moment';
 
 @Module({
     name: 'FoundConditionSearchStatus',
@@ -15,6 +15,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
 
     private searchedCondition: FoundPasswordSearchCondition | null = null;
     private searchedFullCount: number = 0;
+    private searchedDateTime: Moment | null = null;
 
     private passwords: PasswordViewModel[] = [];
 
@@ -42,6 +43,18 @@ export default class FoundConditionSearchStatus extends VuexModule {
         return this.searchedCondition;
     }
 
+    public get nowSearchedDateTime(): Moment | null {
+        return this.searchedDateTime;
+    }
+
+    public get hasReadYetPasswords(): boolean {
+        const passCount = this.passwords.length
+        const fullCount = this.nowSearchedFullCount
+        return fullCount > 0
+            && passCount > 0
+            && passCount < fullCount
+    }
+
     @Mutation
     private changeConditionQuery(value: string) {
         this.conditionQuery = value;
@@ -62,10 +75,14 @@ export default class FoundConditionSearchStatus extends VuexModule {
         this.searchedFullCount = value;
     }
 
-
     @Mutation
     private changeSearchedCondition(value: FoundPasswordSearchCondition | null) {
         this.searchedCondition = value;
+    }
+
+    @Mutation
+    private changeSearchedDateTime(value: Moment | null) {
+        this.searchedDateTime = value;
     }
 
     @Action({ rawError: true })
@@ -90,6 +107,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
         this.changePasswords(viewModels);
         this.changeSearchedFullCount(results.fullCount);
         this.changeSearchedCondition(condition);
+        this.changeSearchedDateTime(moment());
     }
 
     @Action({ rawError: true })
@@ -126,6 +144,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
         this.changePasswords([]);
         this.changeSearchedFullCount(0);
         this.changeSearchedCondition(null);
+        this.changeSearchedDateTime(null);
     }
 
 
