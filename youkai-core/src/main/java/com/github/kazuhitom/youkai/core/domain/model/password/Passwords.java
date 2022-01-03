@@ -20,7 +20,7 @@ public class Passwords {
         int[] charCodes = IntStream.range(0, length)
                 .map(one -> generateRandomValidCharCode())
                 .toArray();
-        return new AttackCharacters(charCodes).toString();
+        return new Password(charCodes).toString();
     }
 
     private static int generateRandomValidCharCode() {

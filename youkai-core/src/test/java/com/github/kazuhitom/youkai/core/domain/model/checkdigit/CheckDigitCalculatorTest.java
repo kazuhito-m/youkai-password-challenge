@@ -1,6 +1,6 @@
 package com.github.kazuhitom.youkai.core.domain.model.checkdigit;
 
-import com.github.kazuhitom.youkai.core.domain.model.password.AttackCharacters;
+import com.github.kazuhitom.youkai.core.domain.model.password.Password;
 import com.github.kazuhitom.youkai.core.domain.model.password.Passwords;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ class CheckDigitCalculatorTest {
     private final CheckDigitCalculator sut = new CheckDigitCalculator();
 
     private String calc(String passwordText) {
-        var password = AttackCharacters.withText(passwordText);
+        var password = Password.withText(passwordText);
         var calculated = sut.calculate(password);
         return calculated.toString();
     }

@@ -1,9 +1,9 @@
 package com.github.kazuhitom.youkai.core.domain.model.checkdigit;
 
-import com.github.kazuhitom.youkai.core.domain.model.password.AttackCharacters;
+import com.github.kazuhitom.youkai.core.domain.model.password.Password;
 
 public class CheckDigitCalculator {
-    public A31F calculate(AttackCharacters password) {
+    public A31F calculate(Password password) {
         A31F a31f = A31F.prototypeOf(password.charLength());
         for (int charPosition = 0; charPosition < password.charLength(); charPosition++) {
             D8C0(password, a31f, charPosition);  // 文字数分だけ演算をカウント
@@ -11,7 +11,7 @@ public class CheckDigitCalculator {
         return a31f;
     }
 
-    private void D8C0(final AttackCharacters password, final A31F a31f, final int targetCharPosition) {
+    private void D8C0(final Password password, final A31F a31f, final int targetCharPosition) {
         final int targetCharCode = password.getOf(targetCharPosition);
         int shiftedCode = targetCharCode;
         for (int y = 0; y < 8; y++) {

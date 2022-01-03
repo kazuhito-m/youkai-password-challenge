@@ -2,7 +2,7 @@ package com.github.kazuhitom.youkai.core.domain.model.attack;
 
 import com.github.kazuhitom.youkai.core.domain.model.checkdigit.A31F;
 import com.github.kazuhitom.youkai.core.domain.model.checkdigit.CheckDigitCalculator;
-import com.github.kazuhitom.youkai.core.domain.model.password.AttackCharacters;
+import com.github.kazuhitom.youkai.core.domain.model.password.Password;
 
 import java.io.PrintStream;
 import java.time.LocalDateTime;
@@ -19,10 +19,10 @@ public class YoukaiPasswordAttacker {
 
     private static final double PROGRESS_OUTPUT_INTERVAL_MS = 115856201D;
 
-    public List<AttackCharacters> execute(A31F attackTargetCheckDigit, AttackCharacters startPassword, Consumer<AttackCharacters> hitPasswordEvent) {
-        List<AttackCharacters> results = new ArrayList<>();
-        AttackCharacters password = startPassword;
-        AttackCharacters minimum = startPassword.minimum();
+    public List<Password> execute(A31F attackTargetCheckDigit, Password startPassword, Consumer<Password> hitPasswordEvent) {
+        List<Password> results = new ArrayList<>();
+        Password password = startPassword;
+        Password minimum = startPassword.minimum();
         cancellation = false;
         double checkedCount = 0;
         try {
@@ -71,7 +71,7 @@ public class YoukaiPasswordAttacker {
         return results;
     }
 
-    public List<AttackCharacters> execute(A31F attackTargetCheckDigit, AttackCharacters startPassword) {
+    public List<Password> execute(A31F attackTargetCheckDigit, Password startPassword) {
         return execute(attackTargetCheckDigit, startPassword, (hit) -> {
         });
     }
@@ -90,7 +90,7 @@ public class YoukaiPasswordAttacker {
         printf(LocalDateTime.now().format(formatter) + " - ");
     }
 
-    private void dumpContinueCommand(AttackCharacters password, A31F attackTargetCheckDigit, double checkedCount) {
+    private void dumpContinueCommand(Password password, A31F attackTargetCheckDigit, double checkedCount) {
         printTime();
         printf("continue param : %s %s (%,.0f 回目,文字列: %s)\n", attackTargetCheckDigit, password.dumpHexText(), checkedCount, password);
     }
