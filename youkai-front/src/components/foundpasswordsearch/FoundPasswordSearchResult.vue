@@ -82,28 +82,17 @@ export default class FoundPasswordSearchResult extends Vue {
   }
 
   private get hasReadYetPasswords(): boolean {
-    return this.fullCount > 0
-      && this.passwords.length < this.fullCount;
+    const passCount = this.passwords.length
+    const fullCount = this.fullCount
+    return fullCount > 0 && passCount > 0 && passCount < fullCount
   }
 
-  private mounted(): void {}
-
-  // private add20Line() {
-  //   const list = this.list
-  //   const startSize = this.list.length;
-  //   for (let i = 0; i < 100; i++) {
-  //     const no = i + startSize + 1;
-  //     list.push({
-  //       no: no,
-  //       password: 'password:' + no,
-  //     })
-  //   }
-  // }
-
   private infiniteHandler() {
-    if (!this.hasReadYetPasswords) return;
+    if (!this.hasReadYetPasswords) return
     console.log('ここに来るのは？ずっと来てるの？')
-    // this.add20Line();
+
+    FoundConditionSearchStatusStore.searchRemainPasswords();
+    
     const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
     infiniteLoading.stateChanger.loaded()
   }

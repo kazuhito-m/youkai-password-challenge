@@ -70,6 +70,8 @@ export default class FoundConditionSearchStatus extends VuexModule {
 
     @Action({ rawError: true })
     public search(): void {
+        this.clearResults();
+
         const service = this.service as FoundPasswordService;
 
         const condition = new FoundPasswordSearchCondition(
@@ -91,14 +93,41 @@ export default class FoundConditionSearchStatus extends VuexModule {
     }
 
     @Action({ rawError: true })
+    public searchRemainPasswords(): void {
+        if (this.nowSearchedCondition === null) return;
+        const password = this.nowPasswords;
+        if (password.length >= this.nowSearchedFullCount) return;
+
+        const service = this.service as FoundPasswordService;
+
+        const condition = this.nowSearchedCondition.withOffsetOf(password.length);
+
+        const results = service.findOf(condition);
+
+        const addNo = password.length;
+        const viewModels = results.passwords
+            .map((result, i) => new PasswordViewModel(i + addNo, result));
+
+        const newPasswords = password.concat(viewModels);
+
+        this.changePasswords(newPasswords);
+    }
+
+    @Action({ rawError: true })
     public clearResultsAndCondition(): void {
         this.changeConditionQuery("");
-        this.changeReverceOrder(0);
+        this.changeReverceOrder(false);
 
+        this.clearResults();
+    }
+
+    @Action({ rawError: true })
+    public clearResults(): void {
         this.changePasswords([]);
         this.changeSearchedFullCount(0);
         this.changeSearchedCondition(null);
     }
+
 
     @Action({ rawError: true })
     public setConditionQuery(value: string) {

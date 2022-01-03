@@ -16,11 +16,13 @@ export default class FoundPasswordTransfer implements FoundPasswordRepository {
         if (condition.query === "AB") fullCount = 56789;
         if (condition.query === "XXX") fullCount = 12345;
         if (condition.query === "MIURA") fullCount = 543;
+        if (condition.query === "200") fullCount = 200;
+        if (condition.query === "201") fullCount = 201;
 
-        const remainCount = Math.min(condition.limit, fullCount - condition.offset)
+        let remainCount = Math.min(condition.limit, fullCount - condition.offset);
         const converter = new CodeToCharacterConverter();
         const result: string[] = [];
-        for (let i = 0; i < remainCount; i++) {
+        for (let i = 0; i <= remainCount; i++) {
             result.push(Password.generateRandom(14).toString());
         }
         return new FoundPasswords(result, fullCount);
