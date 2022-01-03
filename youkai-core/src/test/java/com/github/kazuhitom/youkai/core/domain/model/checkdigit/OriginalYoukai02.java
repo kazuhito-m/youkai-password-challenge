@@ -1,41 +1,49 @@
-package com.github.kazuhitom.youkai.console;
+package com.github.kazuhitom.youkai.core.domain.model.checkdigit;
 
 import com.github.kazuhitom.youkai.core.domain.model.password.converter.TextToCodeConverter;
 
 import java.util.Scanner;
 
-public class YoukaiTest02 {
+public class OriginalYoukai02 {
     private final static TextToCodeConverter converter = new TextToCodeConverter();
 
-    static char[] a31DC = new char[256];
-    static int i = 0;
-    static int stackApos = 0, stackXpos = 0, stackYpos = 0;
-    static int[] stackA = new int[256];
+    private char[] a31DC = new char[256];
+    private int i = 0;
+    private int stackApos = 0, stackXpos = 0, stackYpos = 0;
+    private int[] stackA = new int[256];
 
-    static int A = 0, X = 0, Y = 0, C = 0, Z = 0;
-    static int a31F6 = 0; // 文字列長さ
-    static int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
-    static int ror = 0;
-    static int loopmode = 0;
+    private int A = 0, X = 0, Y = 0, C = 0, Z = 0;
+    private int a31F6 = 0; // 文字列長さ
+    private int a31F4 = 0, a31F5 = 0, a31F7 = 0, a31F8 = 0, a31F9 = 0, a31FA = 0, a31FB = 0;
+    private int ror = 0;
+    private int loopmode = 0;
 
-    public static void main(String[] args) {
-        if (args.length == 0) {
-            System.out.println("yokai-test02 check digit $31F4 $31F5 simulator");
-            loopmode = 1;
-        } else {
-            a31DC = args[0].trim().toCharArray();
-        }
+//    public static void main(String[] args) {
+//        if (args.length == 0) {
+//            System.out.println("yokai-test02 check digit $31F4 $31F5 simulator");
+//            loopmode = 1;
+//        } else {
+//            a31DC = args[0].trim().toCharArray();
+//        }
+//
+//        LOOP();
+//    }
 
-        LOOP();
+    public String execute(String password) {
+        loopmode = 0;
+        a31DC = password.trim().toCharArray();
+        return LOOP();
     }
 
-    private static void LOOP() {
+    private String LOOP() {
         String input = "";
         if (loopmode == 1) {
             System.out.print("INPUT PASSWORD:");
             Scanner scanner = new Scanner(System.in);
             input = scanner.nextLine();
-            if (input.isBlank()) return;
+            if (input.isBlank()) return "";
+        } else {
+            input = String.valueOf(a31DC);
         }
         a31F6 = input.length();
         // ここで文字コードをコンバートしておく
@@ -53,20 +61,20 @@ public class YoukaiTest02 {
         A = 1;
         a31FA = A;
 
-        D86B();
+        return D86B();
     }
 
-    private static void D86B() {
+    private String D86B() {
         A = a31DC[X];
 
         D8BD:
         stackA[stackApos++] = A;
         Y = 8;
 
-        D8C0();
+        return D8C0();
     }
 
-    private static void D8C0() {
+    private String D8C0() {
         A = A << 1;
 
         if (A > 0xFF) {
@@ -108,8 +116,7 @@ public class YoukaiTest02 {
         A = stackA[--stackApos];
         Y--;
         if (Y > 0) {
-            D8C0();
-            return;
+            return D8C0();
         }
         A = stackA[--stackApos]; // ここまでで31F4と31F5算出完了
 
@@ -166,10 +173,10 @@ public class YoukaiTest02 {
         D87F:
         stackA[stackApos++] = A;
 
-        D880();
+        return D880();
     }
 
-    private static void D880() {
+    private String D880() {
         // 31FBを生成
         // Aを左ローテート
         A = A << 1;
@@ -191,8 +198,7 @@ public class YoukaiTest02 {
 
         A = stackA[--stackApos];
         if (Z == 0) {
-            D880(); // ローテ終わるまでループ
-            return;
+            return D880(); // ローテ終わるまでループ
         }
         //printf("a31FB=%x ",a31FB);
 
@@ -201,18 +207,26 @@ public class YoukaiTest02 {
 // 文字数分だけ演算をカウント
         X++;
         if (a31F6 != X) {
-            D86B();
-            return;
+            return D86B();
         }
 
-        System.out.printf("31F4 31F5 31F6 31F7 31F8 31F9 31FA 31FB\n");
-        System.out.printf("  %02X   %02X   %02X   %02X   %02X   %02X   %02X   %02X\n"
+//        System.out.printf("31F4 31F5 31F6 31F7 31F8 31F9 31FA 31FB\n");
+//        System.out.printf("  %02X   %02X   %02X   %02X   %02X   %02X   %02X   %02X\n"
+//                , a31F4, a31F5, a31F6, a31F7, a31F8, a31F9, a31FA, a31FB);
+
+        String result = String.format("%02X %02X %02X %02X %02X %02X %02X %02X"
                 , a31F4, a31F5, a31F6, a31F7, a31F8, a31F9, a31FA, a31FB);
+
+        // DEBUG
+//        System.out.println("CheckDigit:" + result);
+
 /*
 	printf("31F4 31F5 31F6 31F7 31F8 31F9\n");
 	printf("  %02X   %02X   %02X   %02X   %02X   %02X\n"
 		,a31F4,a31F5,a31F6,a31F7,a31F8,a31F9);
 */
-        if (loopmode == 1) LOOP();
+        if (loopmode == 1) return LOOP();
+
+        return result;
     }
 }
