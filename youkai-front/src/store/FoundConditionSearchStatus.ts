@@ -22,6 +22,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
     public service?: FoundPasswordService;
 
     private static readonly ONE_READ_REC_COUNT = 100;
+    public static readonly VIEW_LIMIT_COUNT = 50000;
 
     public get nowConditionQuery(): string {
         return this.conditionQuery;
@@ -100,9 +101,13 @@ export default class FoundConditionSearchStatus extends VuexModule {
 
         const results = service.findOf(condition);
 
-        const addNo = 1;
-        const viewModels = results.passwords
-            .map((result, i) => new PasswordViewModel(i + addNo, result));
+        let viewModels: PasswordViewModel[] = [];
+
+        if (results.fullCount < FoundConditionSearchStatus.VIEW_LIMIT_COUNT) {
+            const addNo = 1;
+            viewModels = results.passwords
+                .map((result, i) => new PasswordViewModel(i + addNo, result));
+        }
 
         this.changePasswords(viewModels);
         this.changeSearchedFullCount(results.fullCount);

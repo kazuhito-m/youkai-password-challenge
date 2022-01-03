@@ -61,6 +61,24 @@
         </v-row>
       </v-container>
     </v-form>
+    <v-snackbar
+      v-model="invalidate"
+      outlined
+      multi-line
+      color="secondary"
+    >
+      {{ invalidateMessage }}
+      <template #action="{ attrs }">
+        <v-btn
+          color="blue"
+          text
+          v-bind="attrs"
+          @click="invalidate = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-card>
 </template>
 
@@ -70,6 +88,7 @@ import { Watch } from 'nuxt-property-decorator'
 import { Moment } from 'moment'
 import InfiniteLoading from 'vue-infinite-loading'
 import PasswordViewModel from '@/store/PasswordViewModel'
+import FoundConditionSearchStatus from '~/store/FoundConditionSearchStatus'
 
 import { FoundConditionSearchStatusStore } from '@/store'
 
@@ -79,6 +98,9 @@ import { FoundConditionSearchStatusStore } from '@/store'
   },
 })
 export default class FoundPasswordSearchResult extends Vue {
+  private invalidate = false;
+  private invalidateMessage = ""; 
+
   private get passwords(): PasswordViewModel[] {
     return FoundConditionSearchStatusStore.nowPasswords
   }
@@ -100,12 +122,18 @@ export default class FoundPasswordSearchResult extends Vue {
 
   private get fullCountCaption(): string {
     if (FoundConditionSearchStatusStore.nowSearchedCondition === null) return ''
-    const count = FoundConditionSearchStatusStore.nowSearchedFullCount.toLocaleString()
+    const count = this.fullCount.toLocaleString()
     return `引っかかった総件数 : ${count} 件`
   }
 
   @Watch('searchedDateTime')
   private onChangeSearchedDateTime(): void {
+    const limitCount = FoundConditionSearchStatus.VIEW_LIMIT_COUNT;
+    if (this.fullCount > limitCount) {
+      this.invalidateMessage = `${limitCount.toLocaleString()}件以上は表示できません。`;
+      this.invalidate = true;
+    }
+
     // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
     const resultList = this.$refs.resultList as Vue
     resultList.$el.getElementsByTagName('div')[0].scrollTop = 0
