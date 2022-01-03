@@ -1,10 +1,10 @@
 package com.github.kazuhitom.youkai.console;
 
-import com.github.kazuhitom.youkai.console.checkdigit.CheckDigitCalculator;
-import com.github.kazuhitom.youkai.console.checkdigit.YoukaiPasswordAttacker;
-import com.github.kazuhitom.youkai.console.checkdigit.converter.CodeToCharacterConverter;
-import com.github.kazuhitom.youkai.console.checkdigit.state.A31F;
-import com.github.kazuhitom.youkai.console.checkdigit.state.AttackCharacters;
+import com.github.kazuhitom.youkai.core.domain.model.attack.YoukaiPasswordAttacker;
+import com.github.kazuhitom.youkai.core.domain.model.checkdigit.A31F;
+import com.github.kazuhitom.youkai.core.domain.model.checkdigit.CheckDigitCalculator;
+import com.github.kazuhitom.youkai.core.domain.model.password.AttackCharacters;
+import com.github.kazuhitom.youkai.core.domain.model.password.converter.CodeToCharacterConverter;
 import sun.misc.Signal;
 
 import java.io.PrintStream;

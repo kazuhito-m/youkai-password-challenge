@@ -1,6 +1,6 @@
 package com.github.kazuhitom.youkai.console;
 
-import com.github.kazuhitom.youkai.console.checkdigit.converter.TextToCodeConverter;
+import com.github.kazuhitom.youkai.core.domain.model.password.converter.TextToCodeConverter;
 
 import java.util.Scanner;
 
