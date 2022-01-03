@@ -104,7 +104,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
 
         const results = service.findOf(condition);
 
-        const addNo = password.length;
+        const addNo = password.length + 1;
         const viewModels = results.passwords
             .map((result, i) => new PasswordViewModel(i + addNo, result));
 

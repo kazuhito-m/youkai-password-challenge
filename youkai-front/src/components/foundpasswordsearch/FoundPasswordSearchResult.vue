@@ -62,6 +62,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { Watch } from 'nuxt-property-decorator'
 import InfiniteLoading from 'vue-infinite-loading'
 import PasswordViewModel from '@/store/PasswordViewModel'
 
@@ -73,6 +74,9 @@ import { FoundConditionSearchStatusStore } from '@/store'
   },
 })
 export default class FoundPasswordSearchResult extends Vue {
+  @Watch('fullCount')
+  private onChangeFullCount(): void {}
+
   private get passwords(): PasswordViewModel[] {
     return FoundConditionSearchStatusStore.nowPasswords
   }
@@ -91,8 +95,8 @@ export default class FoundPasswordSearchResult extends Vue {
     if (!this.hasReadYetPasswords) return
     console.log('ここに来るのは？ずっと来てるの？')
 
-    FoundConditionSearchStatusStore.searchRemainPasswords();
-    
+    FoundConditionSearchStatusStore.searchRemainPasswords()
+
     const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
     infiniteLoading.stateChanger.loaded()
   }

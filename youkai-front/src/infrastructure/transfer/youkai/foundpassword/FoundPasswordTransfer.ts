@@ -22,7 +22,7 @@ export default class FoundPasswordTransfer implements FoundPasswordRepository {
         let remainCount = Math.min(condition.limit, fullCount - condition.offset);
         const converter = new CodeToCharacterConverter();
         const result: string[] = [];
-        for (let i = 0; i <= remainCount; i++) {
+        for (let i = 0; i < remainCount; i++) {
             result.push(Password.generateRandom(14).toString());
         }
         return new FoundPasswords(result, fullCount);
