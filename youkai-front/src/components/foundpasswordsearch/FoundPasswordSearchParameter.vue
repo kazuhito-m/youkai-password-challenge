@@ -69,10 +69,10 @@ import Password from '@/domain/youkai/checkdigit/state/Password'
 import { Inject } from 'nuxt-property-decorator'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 
+import { FoundConditionSearchStatusStore } from '@/store'
+
 @Component
 export default class FoundPasswordSearchParameter extends Vue {
-  private searchQuery = ''
-  private checkReverceOrder = false
   private nowSearching = false
 
   @Inject()
@@ -81,6 +81,22 @@ export default class FoundPasswordSearchParameter extends Vue {
   @Watch('searchQuery')
   private onChangeSearchQuery(): void {
     this.fixSearchQueryWhenInvalid()
+  }
+
+  private get searchQuery(): string {
+    return FoundConditionSearchStatusStore.nowConditionQuery
+  }
+
+  private set searchQuery(value: string) {
+    FoundConditionSearchStatusStore.setConditionQuery(value)
+  }
+
+  private get checkReverceOrder(): boolean {
+    return FoundConditionSearchStatusStore.nowReverceOrder
+  }
+
+  private set checkReverceOrder(value: boolean) {
+    FoundConditionSearchStatusStore.setReverceOrder(value)
   }
 
   private mounted(): void {}
