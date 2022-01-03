@@ -15,22 +15,43 @@
         </v-row>
         <v-row>
           <v-col cols="12" sm="12" md="12">
-            <div class="infinite-scroll">
-              <ul class="infinite-scroll-list">
-                <li class="infinite-scroll-list-item" 
-                  v-for="i in this.count" 
-                  :key="i"
+            <v-simple-table 
+              dense
+              height="670px"
+              fixed-header
+            >
+              <template v-slot:default>
+                <thead>
+                <tr>
+                    <th class="text-left">
+                    No.
+                    </th>
+                    <th class="text-left">
+                    パスワード
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr
+                    v-for="item in list"
+                    :key="item.name"
                 >
-                  scroll {{ i }}
-                </li>
-              </ul>
-              <infinite-loading 
-                ref="infiniteLoading" 
-                spinner="spiral"
-                @infinite="infiniteHandler">
-                <div slot="no-results"/>
-              </infinite-loading>
-            </div>
+                    <td>{{ item.no }}</td>
+                    <td>{{ item.password }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                      <infinite-loading 
+                        ref="infiniteLoading" 
+                        spinner="spiral"
+                        @infinite="infiniteHandler">
+                        <div slot="no-results"/>
+                      </infinite-loading>
+                    </td>
+                </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
           </v-col>
         </v-row>
       </v-container>
@@ -50,26 +71,29 @@ import InfiniteLoading from 'vue-infinite-loading'
 export default class FoundPasswordSearchResult extends Vue {
   private fullCount = 0
 
-  private count = 20
-
   private readonly list: any[] = []
 
   private mounted(): void {
+    this.add20Line();
+  }
+
+  private add20Line() {
     const list = this.list
-    for (let i = 0; i < 50000; i++) {
+    const startSize = this.list.length;
+    for (let i = 0; i < 100; i++) {
+      const no = i + startSize + 1;
       list.push({
-        no: i + 1,
-        password: 'password' + i,
+        no: no,
+        password: 'password:' + no,
       })
     }
   }
 
   private infiniteHandler() {
-    setTimeout(() => {
-      this.count += 20
-      const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
-      infiniteLoading.stateChanger.loaded()
-    }, 1000)
+    console.log("ここに来るのは？ずっと来てるの？")
+    this.add20Line();
+    const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
+    infiniteLoading.stateChanger.loaded()
   }
 }
 </script>

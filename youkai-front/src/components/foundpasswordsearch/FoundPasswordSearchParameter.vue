@@ -10,7 +10,7 @@
       現在判明している4000万件以上のパスワードから絞り込み検索が行えます。</br>
       「この単語どうかな？」と思うもの在れば試してみて下さい。
     </v-card-text>
-    <v-form ref="passwordInputForm">
+    <v-form ref="searchConditionForm">
       <v-container>
         <v-row>
           <v-col cols="12" sm="12" md="12">
@@ -21,7 +21,7 @@
               label="検索文字列"
               required
               maxlength="14"
-              class="input-yokai-password"
+              class="input-query-condition"
               :disabled="nowSearching"
               @keypress="onKeyPless"
             ></v-text-field>
@@ -30,7 +30,22 @@
         <v-row >
           <v-col cols="12" sm="12" md="12">
             <v-card-actions>
+              <v-checkbox
+                v-model="checkReverceOrder"
+                label="逆順に並び替え"
+              ></v-checkbox>
+
               <v-spacer></v-spacer>
+              <v-btn
+                text
+                color="secondary"
+                outlined
+                class="mr-4"
+                :disabled="nowSearching"
+                @click="onClickSearch"
+              >
+                条件&結果クリア
+              </v-btn>
               <v-btn
                 text
                 color="primary"
@@ -39,7 +54,7 @@
                 :disabled="nowSearching"
                 @click="onClickSearch"
               >
-                  検索
+                パスワードを検索
               </v-btn>
             </v-card-actions>
           </v-col>
@@ -57,6 +72,7 @@ import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeT
 @Component
 export default class FoundPasswordSearchParameter extends Vue {
   private searchQuery = ''
+  private checkReverceOrder = false
   private nowSearching = false
 
   @Inject()
@@ -74,7 +90,7 @@ export default class FoundPasswordSearchParameter extends Vue {
     if (!password) password = '' // ×ボタンで、なぜかNullになるため。
     const min = 2
     const max = Password.MAX_CHARS_LENGTH
-    if (password.length < min && password.length > max)
+    if (password.length < min || password.length > max)
       return `${min}〜${max}文字以内で入力して下さい。`
     if (this.converter?.isInvalidPassword(password))
       return `"${this.converter?.validCharacters()}" の文字の範囲で入力して下さい。`
@@ -108,7 +124,7 @@ export default class FoundPasswordSearchParameter extends Vue {
 </script>
 
 <style scoped>
-.input-yokai-password {
+.input-query-condition {
   ime-mode: disabled;
 }
 </style>
