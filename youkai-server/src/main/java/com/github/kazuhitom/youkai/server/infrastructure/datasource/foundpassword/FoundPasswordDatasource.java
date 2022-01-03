@@ -19,7 +19,7 @@ public class FoundPasswordDatasource implements FoundPasswordRepository {
         List<String> values = records.stream()
                 .map(record -> record.password)
                 .toList();
-        return new FoundPasswords(values, records.get(0).fullCount);
+        return new FoundPasswords(values, records.get(0).full_count);
     }
 
     public FoundPasswordDatasource(FoundPasswordDao dao) {
