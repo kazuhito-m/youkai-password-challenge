@@ -85,20 +85,15 @@ export default class extends Vue {
   selfVersion = "";
 
   private readonly items = [
-    // {
-    //   icon: 'mdi-apps',
-    //   title: '発見済パスワード検索',
-    //   to: '/',
-    // },
-    // {
-    //   icon: 'mdi-apps',
-    //   title: '総当りチャレンジ',
-    //   to: '/challenge',
-    // },
+    {
+      icon: 'mdi-apps',
+      title: '発見済パスワード検索',
+      to: '/',
+    },
     {
       icon: 'mdi-apps',
       title: '総当りチャレンジ',
-      to: '/',
+      to: '/challenge',
     },
     {
       icon: 'mdi-apps',

@@ -10,6 +10,18 @@
             <v-card-actions>
               検索条件: {{ searchedConditionCaption }}
               <v-spacer></v-spacer>
+              <v-btn
+                v-if="enableDownloadFileButton"
+                :disabled="fileDownloaded"
+                elevation="2"
+                small
+                outlined
+                color="success"
+                @click="onClickDownLoadFileButton"
+              >
+                ファイルDL
+              </v-btn>
+              <v-spacer></v-spacer>
               {{ fullCountCaption }}
             </v-card-actions>
           </v-col>
@@ -87,7 +99,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Inject, Vue } from 'vue-property-decorator'
 import { Watch } from 'nuxt-property-decorator'
 import { Moment } from 'moment'
 import InfiniteLoading from 'vue-infinite-loading'
@@ -95,6 +107,7 @@ import PasswordViewModel from '@/store/PasswordViewModel'
 import FoundConditionSearchStatus from '~/store/FoundConditionSearchStatus'
 
 import { FoundConditionSearchStatusStore } from '@/store'
+import FoundPasswordService from '~/application/service/FoundPasswordService'
 
 @Component({
   components: {
@@ -105,6 +118,11 @@ export default class FoundPasswordSearchResult extends Vue {
   private invalidate = false
   private invalidateMessage = ''
   private invalidateError = true
+
+  private fileDownloaded = false
+
+  @Inject()
+  private foundPasswordService?: FoundPasswordService
 
   private get passwords(): PasswordViewModel[] {
     return FoundConditionSearchStatusStore.nowPasswords
@@ -123,7 +141,11 @@ export default class FoundPasswordSearchResult extends Vue {
   }
 
   private get nowSearching(): boolean {
-    return FoundConditionSearchStatusStore.nowSearching;
+    return FoundConditionSearchStatusStore.nowSearching
+  }
+
+  private get enableDownloadFileButton() {
+    return this.passwords.length > 0
   }
 
   private get searchedConditionCaption() {
@@ -145,6 +167,8 @@ export default class FoundPasswordSearchResult extends Vue {
     if (this.fullCount > limitCount)
       this.showWarn(`${limitCount.toLocaleString()}件以上は表示できません。`)
 
+    this.fileDownloaded = false
+
     // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
     const resultList = this.$refs.resultList as Vue
     resultList.$el.getElementsByTagName('div')[0].scrollTop = 0
@@ -153,7 +177,7 @@ export default class FoundPasswordSearchResult extends Vue {
   @Watch('raiseError')
   private onChangeRaiseError(): void {
     if (!this.raiseError) return
-    this.showError("通信エラーが発生しました。データが取得できません。")
+    this.showError('通信エラーが発生しました。データが取得できません。')
   }
 
   private get hasReadYetPasswords(): boolean {
@@ -168,6 +192,22 @@ export default class FoundPasswordSearchResult extends Vue {
     const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
     if (!infiniteLoading) return
     infiniteLoading.stateChanger.loaded()
+  }
+
+  private onClickDownLoadFileButton() {
+    this.fileDownloaded = true
+    const nowCondition = FoundConditionSearchStatusStore.nowSearchedCondition
+    if (!nowCondition) return
+    const service = this.foundPasswordService as FoundPasswordService
+    const download = service.downloadFileOf(nowCondition, this.passwords[0].password)
+    this.downloadByUrl(download.downloadUrl);
+  }
+
+  private downloadByUrl(url: string): void {
+    const link = document.createElement('a')
+    link.href = url
+    link.target = "_blank"
+    link.click()
   }
 
   private showError(message: string): void {

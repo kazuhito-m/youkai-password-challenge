@@ -103,7 +103,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
     }
 
     @Mutation
-    private changeSearching(value:boolean) {
+    private changeSearching(value: boolean) {
         this.searching = value;
     }
 

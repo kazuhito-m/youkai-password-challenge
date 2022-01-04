@@ -1,18 +1,18 @@
 <template>
   <v-layout>
-    <PasswordChallenge />
+    <FoundPasswordSearch />
   </v-layout>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import PasswordChallenge from '~/components/passwordchallenge/PasswordChallenge.vue'
+import FoundPasswordSearch from '@/components/foundpasswordsearch/FoundPasswordSearch.vue'
 
 @Component({
   components: {
-    PasswordChallenge,
+    FoundPasswordSearch,
   },
 })
-export default class Challenge extends Vue {
+export default class FoundPassword extends Vue {
 }
 </script>

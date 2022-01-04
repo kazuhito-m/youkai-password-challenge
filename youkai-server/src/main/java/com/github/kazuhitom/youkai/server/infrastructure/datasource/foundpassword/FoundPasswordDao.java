@@ -12,4 +12,7 @@ import java.util.List;
 public interface FoundPasswordDao {
     @Select
     List<FoundPasswordView> selectOf(FoundPasswordSearchCondition condition);
+
+    @Select
+    int countOf(FoundPasswordSearchCondition condition);
 }

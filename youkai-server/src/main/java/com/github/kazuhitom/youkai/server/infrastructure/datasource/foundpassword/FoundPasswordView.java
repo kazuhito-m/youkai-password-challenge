@@ -9,10 +9,8 @@ import org.seasar.doma.Table;
 public class FoundPasswordView {
     @Id
     final String password;
-    final int full_count;
 
-    public FoundPasswordView(String password, int full_count) {
+    public FoundPasswordView(String password) {
         this.password = password;
-        this.full_count = full_count;
     }
 }
