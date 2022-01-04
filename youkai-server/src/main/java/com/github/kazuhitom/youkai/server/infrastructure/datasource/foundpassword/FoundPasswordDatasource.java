@@ -13,13 +13,14 @@ public class FoundPasswordDatasource implements FoundPasswordRepository {
 
     @Override
     public FoundPasswords findOf(FoundPasswordSearchCondition condition) {
-        List<FoundPasswordView> records = dao.selectOf(condition);
-        if (records.isEmpty()) return FoundPasswords.empty();
+        int fullCount = dao.countOf(condition);
+        if (fullCount == 0) return FoundPasswords.empty();
 
-        List<String> values = records.stream()
+        List<String> values = dao.selectOf(condition)
+                .stream()
                 .map(record -> record.password)
                 .toList();
-        return new FoundPasswords(values, records.get(0).full_count);
+        return new FoundPasswords(values, fullCount);
     }
 
     public FoundPasswordDatasource(FoundPasswordDao dao) {

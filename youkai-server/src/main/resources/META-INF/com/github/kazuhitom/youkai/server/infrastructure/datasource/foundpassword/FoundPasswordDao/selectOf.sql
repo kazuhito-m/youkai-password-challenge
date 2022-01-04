@@ -1,6 +1,5 @@
 SELECT
-    password,
-    COUNT(password) OVER() AS full_count
+    password
 FROM
     found_password
 WHERE
