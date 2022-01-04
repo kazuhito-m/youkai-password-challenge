@@ -154,6 +154,8 @@ export default class FoundConditionSearchStatus extends VuexModule {
             return;
         }
 
+        if (results.fullCount > FoundConditionSearchStatus.VIEW_LIMIT_COUNT) return;
+
         const addNo = password.length + 1;
         const viewModels = results.passwords
             .map((result, i) => new PasswordViewModel(i + addNo, result));
