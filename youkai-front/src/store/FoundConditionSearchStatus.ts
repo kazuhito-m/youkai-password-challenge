@@ -16,6 +16,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
     private searchedCondition: FoundPasswordSearchCondition | null = null;
     private searchedFullCount: number = 0;
     private searchedDateTime: Moment | null = null;
+    private searchedError: boolean = false;
 
     private passwords: PasswordViewModel[] = [];
 
@@ -46,6 +47,10 @@ export default class FoundConditionSearchStatus extends VuexModule {
 
     public get nowSearchedDateTime(): Moment | null {
         return this.searchedDateTime;
+    }
+
+    public get nowSearchedError(): boolean {
+        return this.searchedError;
     }
 
     public get hasReadYetPasswords(): boolean {
@@ -86,6 +91,11 @@ export default class FoundConditionSearchStatus extends VuexModule {
         this.searchedDateTime = value;
     }
 
+    @Mutation
+    private changeSearchedError(value: boolean) {
+        this.searchedError = value;
+    }
+
     @Action({ rawError: true })
     public async searchAsync(): Promise<void> {
         this.clearResults();
@@ -98,31 +108,27 @@ export default class FoundConditionSearchStatus extends VuexModule {
             FoundConditionSearchStatus.ONE_READ_REC_COUNT,
             this.nowReverseOrder
         );
-
-        const results = await service.findOf(condition);
-
-        let viewModels: PasswordViewModel[] = [];
-
-        if (results.fullCount < FoundConditionSearchStatus.VIEW_LIMIT_COUNT) {
-            const addNo = 1;
-            viewModels = results.passwords
-                .map((result, i) => new PasswordViewModel(i + addNo, result));
-        }
-
-        this.changePasswords(viewModels);
-        this.changeSearchedFullCount(results.fullCount);
         this.changeSearchedCondition(condition);
+        this.changePasswords([]);
+
+        await this.findAndAddPasswordsAsync();
+
         this.changeSearchedDateTime(moment());
     }
 
     @Action({ rawError: true })
     public async searchRemainPasswordsAsync(): Promise<void> {
+        if (this.nowPasswords.length >= this.nowSearchedFullCount) return;
+        await this.findAndAddPasswordsAsync();
+    }
+
+    @Action({ rawError: true })
+    private async findAndAddPasswordsAsync(): Promise<void> {
         if (this.nowSearchedCondition === null) return;
-        const password = this.nowPasswords;
-        if (password.length >= this.nowSearchedFullCount) return;
 
         const service = this.service as FoundPasswordService;
 
+        const password = this.nowPasswords;
         const condition = this.nowSearchedCondition.withOffsetOf(password.length);
 
         const results = await service.findOf(condition);
@@ -134,6 +140,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
         const newPasswords = password.concat(viewModels);
 
         this.changePasswords(newPasswords);
+        this.changeSearchedFullCount(results.fullCount);
     }
 
     @Action({ rawError: true })
