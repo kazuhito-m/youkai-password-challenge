@@ -126,12 +126,20 @@ export default class FoundConditionSearchStatus extends VuexModule {
     private async findAndAddPasswordsAsync(): Promise<void> {
         if (this.nowSearchedCondition === null) return;
 
+        this.changeSearchedError(false);
+
         const service = this.service as FoundPasswordService;
 
         const password = this.nowPasswords;
         const condition = this.nowSearchedCondition.withOffsetOf(password.length);
 
         const results = await service.findOf(condition);
+
+        if (results.isError()) {
+            this.changeSearchedError(true);
+            this.clearResults();
+            return;
+        }
 
         const addNo = password.length + 1;
         const viewModels = results.passwords
