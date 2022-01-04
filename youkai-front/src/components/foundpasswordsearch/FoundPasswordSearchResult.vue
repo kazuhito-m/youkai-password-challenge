@@ -12,6 +12,8 @@
               <v-spacer></v-spacer>
               <v-btn
                 v-if="enableDownloadFileButton"
+                :disabled="fileDownloaded"
+                @click="onClickDownLoadFileButton"
                 elevation="2"
                 small
                 outlined
@@ -116,6 +118,8 @@ export default class FoundPasswordSearchResult extends Vue {
   private invalidateMessage = ''
   private invalidateError = true
 
+  private fileDownloaded = false
+
   private get passwords(): PasswordViewModel[] {
     return FoundConditionSearchStatusStore.nowPasswords
   }
@@ -159,6 +163,8 @@ export default class FoundPasswordSearchResult extends Vue {
     if (this.fullCount > limitCount)
       this.showWarn(`${limitCount.toLocaleString()}件以上は表示できません。`)
 
+    this.fileDownloaded = false;
+
     // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
     const resultList = this.$refs.resultList as Vue
     resultList.$el.getElementsByTagName('div')[0].scrollTop = 0
@@ -182,6 +188,18 @@ export default class FoundPasswordSearchResult extends Vue {
     const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
     if (!infiniteLoading) return
     infiniteLoading.stateChanger.loaded()
+  }
+
+  private onClickDownLoadFileButton() {
+    this.fileDownloaded = true;
+    this.downloadByUrl('https://yokaipw.ddns.net/files/passwords.zip', 'test.zip')
+  }
+
+  private downloadByUrl(url: string, localFileName: string):void {
+    const link = document.createElement('a')
+    link.download = localFileName;
+    link.href = url
+    link.click()
   }
 
   private showError(message: string): void {
