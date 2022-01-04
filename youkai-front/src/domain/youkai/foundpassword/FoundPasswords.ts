@@ -4,7 +4,13 @@ export default class FoundPasswords {
         public readonly fullCount: number
     ) { }
 
-    static error(): FoundPasswords {
-        return new FoundPasswords([], -1);
+    private static readonly COUNT_WHEN_ERROR = -1;
+
+    public isError(): boolean {
+        return this.fullCount === FoundPasswords.COUNT_WHEN_ERROR;
+    }
+
+    public static error(): FoundPasswords {
+        return new FoundPasswords([], FoundPasswords.COUNT_WHEN_ERROR);
     }
 }

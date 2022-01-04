@@ -11,11 +11,11 @@ export default class FoundPasswordTransfer implements FoundPasswordRepository {
 
     public async findOf(condition: FoundPasswordSearchCondition): Promise<FoundPasswords> {
         try {
-            const response = await this.axios.get<FoundPasswordResponse>('http://localhost:8080/api/foundpassword?query=MI&offset=1400&limit=20&reverse=true');
+            const response = await this.axios.get<FoundPasswordResponse>('foundpassword?query=MI&offset=1400&limit=20&reverse=true');
             const data = response.data;
             return new FoundPasswords(data.passwords, data.fullCount);
-        } catch (error) {
-            // if (error) console.log(`通信時エラー:${error.response.data}`);
+        } catch (error: any) {
+            console.log("通信時エラー", error);
             return FoundPasswords.error();
         }
     }
