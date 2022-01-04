@@ -1,9 +1,9 @@
+import { NuxtAxiosInstance } from "@nuxtjs/axios";
 import FoundPasswordRepository from "@/domain/youkai/foundpassword/FoundPasswordRepository";
 import FoundPasswordSearchCondition from "@/domain/youkai/foundpassword/FoundPasswordSearchCondition";
 import FoundPasswords from "@/domain/youkai/foundpassword/FoundPasswords";
-import { NuxtAxiosInstance } from "@nuxtjs/axios";
-import CodeToCharacterConverter from "~/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
-import Password from "~/domain/youkai/checkdigit/state/Password";
+import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
+import Password from "@/domain/youkai/checkdigit/state/Password";
 import FoundPasswordResponse from "./FoundPasswordResponse";
 
 export default class FoundPasswordTransfer implements FoundPasswordRepository {
@@ -11,7 +11,7 @@ export default class FoundPasswordTransfer implements FoundPasswordRepository {
 
     public async findOf(condition: FoundPasswordSearchCondition): Promise<FoundPasswords> {
         try {
-            const response = await this.axios.get<FoundPasswordResponse>('foundpassword?query=MI&offset=1400&limit=20&reverse=true');
+            const response = await this.axios.get<FoundPasswordResponse>('/api/foundpassword', { params: condition });
             const data = response.data;
             return new FoundPasswords(data.passwords, data.fullCount);
         } catch (error: any) {

@@ -149,6 +149,7 @@ export default class FoundPasswordSearchResult extends Vue {
     await FoundConditionSearchStatusStore.searchRemainPasswordsAsync()
 
     const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
+    if (!infiniteLoading) return;
     infiniteLoading.stateChanger.loaded()
   }
 }

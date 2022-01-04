@@ -58,7 +58,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.NODE_ENV === "production" ? "https://youkaiosugi.com/" : "http://localhost:8080/",
-    prefix: '/api',
+    // prefix: '/api',  // FIXME なぜか「効かない」ので使わない
+    debug: process.env.NODE_ENV !== "production",
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

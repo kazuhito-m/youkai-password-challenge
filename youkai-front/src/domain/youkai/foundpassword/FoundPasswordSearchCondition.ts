@@ -3,7 +3,7 @@ export default class FoundPasswordSearchCondition {
         public readonly query: string,
         public readonly offset: number,
         public readonly limit: number,
-        public readonly reverce: boolean
+        public readonly reverse: boolean
     ) {}
 
     public withOffsetOf(offset: number):FoundPasswordSearchCondition {
@@ -11,7 +11,7 @@ export default class FoundPasswordSearchCondition {
             this.query,
             offset,
             this.limit,
-            this.reverce
+            this.reverse
         );
     }
 }
