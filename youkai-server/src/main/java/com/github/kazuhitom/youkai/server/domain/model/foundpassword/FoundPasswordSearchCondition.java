@@ -8,6 +8,15 @@ public class FoundPasswordSearchCondition {
     private final int limit;
     private final boolean reverseOrder;
 
+    public FoundPasswordSearchCondition withLimitOf(int newLimit) {
+        return new FoundPasswordSearchCondition(
+                query,
+                offset,
+                newLimit,
+                reverseOrder
+        );
+    }
+
     public static FoundPasswordSearchCondition of(String query, int offset, int limit, Optional<Boolean> reverse) {
         return new FoundPasswordSearchCondition(
                 query,
