@@ -82,7 +82,7 @@ export default class SingleInputPasswordChecker extends Vue {
   private mounted(): void {
     if (!this.youkaiPassword) this.youkaiPassword = "";
     if (this.youkaiPassword.trim().length > 0) return;
-    const rondumCheckDigit = this.correctCheckDigits?.randomPickUpCorrectCheckDigit();
+    const rondumCheckDigit = CorrectCheckDigits.randomPickUpCorrectCheckDigit();
     if (!rondumCheckDigit) return;
     this.youkaiPassword = rondumCheckDigit.typicalPassowrd.toString();
   }
