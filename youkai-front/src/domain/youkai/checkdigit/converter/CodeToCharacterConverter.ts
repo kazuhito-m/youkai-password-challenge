@@ -19,7 +19,7 @@ export default class CodeToCharacterConverter {
         return this.codeToChar[code];
     }
 
-    public reverceConvert(passwordChar: string): number {
+    public reverseConvert(passwordChar: string): number {
         const oneChar = passwordChar.charAt(0); // 念の為
         for (let i = 0; i < this.codeToChar.length; i++) {
             if (this.codeToChar[i] === oneChar) return i;
@@ -47,7 +47,7 @@ export default class CodeToCharacterConverter {
         const validChars = this.validCharacters();
         const randomPos = Math.floor(Math.random() * validChars.length);
         const char = validChars[randomPos];
-        return this.reverceConvert(char);
+        return this.reverseConvert(char);
     }
 
     public isInvalidCharCode(code: number): boolean {

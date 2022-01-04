@@ -1,10 +1,10 @@
 package com.github.kazuhitom.youkai.console;
 
-import com.github.kazuhitom.youkai.console.checkdigit.CheckDigitCalculator;
-import com.github.kazuhitom.youkai.console.checkdigit.YoukaiPasswordAttacker;
-import com.github.kazuhitom.youkai.console.checkdigit.converter.CodeToCharacterConverter;
-import com.github.kazuhitom.youkai.console.checkdigit.state.A31F;
-import com.github.kazuhitom.youkai.console.checkdigit.state.AttackCharacters;
+import com.github.kazuhitom.youkai.core.domain.model.attack.YoukaiPasswordAttacker;
+import com.github.kazuhitom.youkai.core.domain.model.checkdigit.A31F;
+import com.github.kazuhitom.youkai.core.domain.model.checkdigit.CheckDigitCalculator;
+import com.github.kazuhitom.youkai.core.domain.model.password.Password;
+import com.github.kazuhitom.youkai.core.domain.model.password.converter.CodeToCharacterConverter;
 import sun.misc.Signal;
 
 import java.io.PrintStream;
@@ -29,7 +29,7 @@ public class YoukaiTest03 {
 
         // スタック配列クリア
         CodeToCharacterConverter converter = new CodeToCharacterConverter();
-        AttackCharacters password = AttackCharacters.initialize(attackTargetCheckDigit.charLength(), converter);
+        Password password = Password.initialize(attackTargetCheckDigit.charLength(), converter);
 
         printTime();
         printf("解析開始(Cntl + C でコンテニュー値を表示して終了)\n");
@@ -37,7 +37,7 @@ public class YoukaiTest03 {
         // コンテニュー
         if (args.length > 8) {
             int[] continueCodes = Arrays.stream(Arrays.copyOfRange(args, 8, args.length)).mapToInt(codeText -> Integer.parseInt(codeText, 16)).toArray();
-            password = new AttackCharacters(converter, continueCodes);
+            password = new Password(continueCodes, converter);
             printf("前回の続きからコンテニューします : %s\n", password.dumpHexText());
             if (password.isInvalid()) {
                 password = password.fixInvalid();

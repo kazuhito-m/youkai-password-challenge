@@ -13,6 +13,6 @@ import PasswordChallenge from '~/components/passwordchallenge/PasswordChallenge.
     PasswordChallenge,
   },
 })
-export default class Index extends Vue {
+export default class Challenge extends Vue {
 }
 </script>
