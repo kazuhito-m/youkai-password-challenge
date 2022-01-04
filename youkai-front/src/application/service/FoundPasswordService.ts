@@ -10,8 +10,8 @@ export default class FoundPasswordService {
         return await this.repository.findOf(condition);
     }
 
-    public downloadFileOf(condition: FoundPasswordSearchCondition): FoundPasswordSearchResultDownload {
-        const downloadUrl = this.repository.generateFileDownloadUrlOf(condition);
+    public downloadFileOf(condition: FoundPasswordSearchCondition, typicalPassowrd: string): FoundPasswordSearchResultDownload {
+        const downloadUrl = this.repository.generateFileDownloadUrlOf(condition, typicalPassowrd);
         return new FoundPasswordSearchResultDownload(downloadUrl, condition);
     }
 }

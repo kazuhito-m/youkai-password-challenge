@@ -199,7 +199,7 @@ export default class FoundPasswordSearchResult extends Vue {
     const nowCondition = FoundConditionSearchStatusStore.nowSearchedCondition
     if (!nowCondition) return
     const service = this.foundPasswordService as FoundPasswordService
-    const download = service.downloadFileOf(nowCondition)
+    const download = service.downloadFileOf(nowCondition, this.passwords[0].password)
     console.log(download.downloadUrl, download.localDownloadFileName())
     // this.downloadByUrl(download.downloadUrl, download.localDownloadFileName());
   }

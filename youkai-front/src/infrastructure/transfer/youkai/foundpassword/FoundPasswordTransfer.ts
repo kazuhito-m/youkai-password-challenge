@@ -20,13 +20,15 @@ export default class FoundPasswordTransfer implements FoundPasswordRepository {
         }
     }
 
-    public generateFileDownloadUrlOf(condition: FoundPasswordSearchCondition): string {
+    public generateFileDownloadUrlOf(condition: FoundPasswordSearchCondition, typicalPassowrd: string): string {
         const api = "/api/foundpassword/download";
         const head = this.axios.defaults.baseURL as string;
         const url = new URL(api, head);
         for (const [name, value] of Object.entries(condition)) {
             url.searchParams.append(name, value);
         }
+        url.searchParams.append("c", typicalPassowrd);
+
         return url.href;
     }
 }
