@@ -114,6 +114,10 @@ export default class FoundPasswordSearchResult extends Vue {
     return FoundConditionSearchStatusStore.nowSearchedDateTime
   }
 
+  private get raiseError(): boolean {
+    return FoundConditionSearchStatusStore.nowSearchedError
+  }
+
   private get searchedConditionCaption() {
     if (FoundConditionSearchStatusStore.nowSearchedCondition === null) return ''
     const condition = FoundConditionSearchStatusStore.nowSearchedCondition
@@ -136,6 +140,12 @@ export default class FoundPasswordSearchResult extends Vue {
     // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
     const resultList = this.$refs.resultList as Vue
     resultList.$el.getElementsByTagName('div')[0].scrollTop = 0
+  }
+
+  @Watch('raiseError')
+  private onChangeRaiseError(): void {
+    if (!this.raiseError) return
+    this.showError("通信エラーが発生しました。データが取得できません。")
   }
 
   private get hasReadYetPasswords(): boolean {

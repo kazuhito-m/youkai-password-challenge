@@ -10,6 +10,10 @@ export default class FoundPasswordTransfer implements FoundPasswordRepository {
     constructor(private readonly axios: NuxtAxiosInstance) { }
 
     public async findOf(condition: FoundPasswordSearchCondition): Promise<FoundPasswords> {
+        // DEBUG
+        if (condition.query === "ERROR") return FoundPasswords.error();
+        if (condition.query === "MANY") return new FoundPasswords([], 50001);
+        
         try {
             const response = await this.axios.get<FoundPasswordResponse>('/api/foundpassword', { params: condition });
             const data = response.data;
