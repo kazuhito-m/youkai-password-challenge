@@ -17,13 +17,13 @@
         <v-row>
           <v-col cols="12" sm="12" md="12">
             <v-simple-table 
+              ref="resultList"
               dense
               height="670px"
               fixed-header
-              ref="resultList"
             >
               <template
-                v-slot:default
+                #default
               >
                 <thead>
                 <tr>

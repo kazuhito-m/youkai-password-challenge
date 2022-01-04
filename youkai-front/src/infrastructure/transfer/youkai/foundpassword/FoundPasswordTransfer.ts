@@ -1,10 +1,10 @@
+// ignore lint rule becouse axios bug. see: https://github.com/nuxt-community/axios-module/issues/555
+/* eslint import/named: 0 */
 import { NuxtAxiosInstance } from "@nuxtjs/axios";
+import FoundPasswordResponse from "./FoundPasswordResponse";
 import FoundPasswordRepository from "@/domain/youkai/foundpassword/FoundPasswordRepository";
 import FoundPasswordSearchCondition from "@/domain/youkai/foundpassword/FoundPasswordSearchCondition";
 import FoundPasswords from "@/domain/youkai/foundpassword/FoundPasswords";
-import CodeToCharacterConverter from "@/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
-import Password from "@/domain/youkai/checkdigit/state/Password";
-import FoundPasswordResponse from "./FoundPasswordResponse";
 
 export default class FoundPasswordTransfer implements FoundPasswordRepository {
     constructor(private readonly axios: NuxtAxiosInstance) { }
@@ -18,22 +18,5 @@ export default class FoundPasswordTransfer implements FoundPasswordRepository {
             console.log("通信時エラー", error);
             return FoundPasswords.error();
         }
-    }
-
-    private test(condition: FoundPasswordSearchCondition) {
-        let fullCount = 0;
-        if (condition.query === "AB") fullCount = 56789;
-        if (condition.query === "XXX") fullCount = 12345;
-        if (condition.query === "MIURA") fullCount = 543;
-        if (condition.query === "200") fullCount = 200;
-        if (condition.query === "201") fullCount = 201;
-
-        let remainCount = Math.min(condition.limit, fullCount - condition.offset);
-        const converter = new CodeToCharacterConverter();
-        const result: string[] = [];
-        for (let i = 0; i < remainCount; i++) {
-            result.push(Password.generateRandom(14).toString());
-        }
-        return new FoundPasswords(result, fullCount);
     }
 }

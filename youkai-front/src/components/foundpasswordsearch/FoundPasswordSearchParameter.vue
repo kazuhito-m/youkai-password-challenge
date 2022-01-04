@@ -65,8 +65,8 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
-import Password from '@/domain/youkai/checkdigit/state/Password'
 import { Inject } from 'nuxt-property-decorator'
+import Password from '@/domain/youkai/checkdigit/state/Password'
 import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeToCharacterConverter'
 
 import { FoundConditionSearchStatusStore } from '@/store'
