@@ -99,7 +99,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Inject, Vue } from 'vue-property-decorator'
 import { Watch } from 'nuxt-property-decorator'
 import { Moment } from 'moment'
 import InfiniteLoading from 'vue-infinite-loading'
@@ -107,6 +107,7 @@ import PasswordViewModel from '@/store/PasswordViewModel'
 import FoundConditionSearchStatus from '~/store/FoundConditionSearchStatus'
 
 import { FoundConditionSearchStatusStore } from '@/store'
+import FoundPasswordService from '~/application/service/FoundPasswordService'
 
 @Component({
   components: {
@@ -119,6 +120,9 @@ export default class FoundPasswordSearchResult extends Vue {
   private invalidateError = true
 
   private fileDownloaded = false
+
+  @Inject()
+  private foundPasswordService?: FoundPasswordService
 
   private get passwords(): PasswordViewModel[] {
     return FoundConditionSearchStatusStore.nowPasswords
@@ -163,7 +167,7 @@ export default class FoundPasswordSearchResult extends Vue {
     if (this.fullCount > limitCount)
       this.showWarn(`${limitCount.toLocaleString()}件以上は表示できません。`)
 
-    this.fileDownloaded = false;
+    this.fileDownloaded = false
 
     // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
     const resultList = this.$refs.resultList as Vue
@@ -191,13 +195,18 @@ export default class FoundPasswordSearchResult extends Vue {
   }
 
   private onClickDownLoadFileButton() {
-    this.fileDownloaded = true;
-    this.downloadByUrl('https://yokaipw.ddns.net/files/passwords.zip', 'test.zip')
+    this.fileDownloaded = true
+    const nowCondition = FoundConditionSearchStatusStore.nowSearchedCondition
+    if (!nowCondition) return
+    const service = this.foundPasswordService as FoundPasswordService
+    const download = service.downloadFileOf(nowCondition)
+    console.log(download.downloadUrl, download.localDownloadFileName())
+    // this.downloadByUrl(download.downloadUrl, download.localDownloadFileName());
   }
 
-  private downloadByUrl(url: string, localFileName: string):void {
+  private downloadByUrl(url: string, localFileName: string): void {
     const link = document.createElement('a')
-    link.download = localFileName;
+    link.download = localFileName
     link.href = url
     link.click()
   }
