@@ -3,7 +3,6 @@ import moment, { Moment } from 'moment';
 import PasswordViewModel from './PasswordViewModel';
 import FoundPasswordService from '@/application/service/FoundPasswordService';
 import FoundPasswordSearchCondition from '~/domain/youkai/foundpassword/FoundPasswordSearchCondition';
-import FoundPasswordSearchResultDownload from '~/domain/youkai/foundpassword/download/FoundPasswordSearchResultDownload';
 
 @Module({
     name: 'FoundConditionSearchStatus',

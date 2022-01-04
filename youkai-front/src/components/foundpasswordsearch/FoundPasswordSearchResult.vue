@@ -13,11 +13,11 @@
               <v-btn
                 v-if="enableDownloadFileButton"
                 :disabled="fileDownloaded"
-                @click="onClickDownLoadFileButton"
                 elevation="2"
                 small
                 outlined
                 color="success"
+                @click="onClickDownLoadFileButton"
               >
                 ファイルDL
               </v-btn>
