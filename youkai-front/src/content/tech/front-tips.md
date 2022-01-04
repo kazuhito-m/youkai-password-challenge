@@ -11,6 +11,40 @@ title: フロントとNuxt.js&TypsScriptらへんの知識
   - https://blog.cloud-acct.com/posts/u-nuxtjs-axios/
 - 【Nuxt.js】TypeScript,asyncDataでnuxtjs/axiosを使う
   - https://qiita.com/shiro_kzy/items/cb64e4ad8f4de0ba97a0
+- 5分で分かる！ Nuxt.js + axiosでAPIを使ってみる。
+  - https://nxpg.net/blog/tech/?p=11992
+
+### エラーレスポンスのとり方
+
+- axios でエラーレスポンスを取得するにはどうしたらいいの？
+  - https://neos21.net/blog/2020/07/11-01.html
+
+### 本番・デバッグ切り替え、Proxy設定
+
+- なぜかCORS対策をしようとしてNuxt.js+axiosでproxyがうまく動かないあなたへ
+  - https://www.blog.umentu.work/nuxt-cors-axios-proxy/
+  - これを観て「Proxyは設定すまい」と考えた
+- 本番環境とローカル環境でenvファイルを分けるためにnuxt側の設定を修正
+  - https://zenn.dev/tanoken729/articles/5597d24953d28a
+  - コレが一般的なようだが、採用しなかった
+- Nuxt.js 2.6.2 / axios 5.0.0 で、axios の deafaults.baseUrl を設定するハナシ
+  - https://omiend.hatenablog.jp/entry/2019/04/18/191449
+- Nuxt.js の @nuxtjs/axios で proxy と baseURL の設定ができないときの対処法
+  - https://mseeeen.msen.jp/proxy-and-baseurl-settings-do-not-work-in-nuxt/
+- https://mseeeen.msen.jp/proxy-and-baseurl-settings-do-not-work-in-nuxt/
+  - https://blog.cloud-acct.com/posts/u-nuxtjs-axios/
+
+### ""でprefixを設定しても効かない問題
+
+- 2021年版 Nuxt.js + axios (module) 外部API利用 CORS 回避
+  - https://zenn.dev/code_diver/articles/dcf0ec9803cb55
+  - ここに書いてある通り、prefixを設定するも、全然効かない
+- Migration guides(From 4.x to 5.x)
+  - https://axios.nuxtjs.org/migration/
+  - これ関連で聞かなくなった？
+- どうしてもnuxtでaxiosが動かない時の留意点
+  - https://zenn.dev/ryuji_cre8ive/articles/dc42afd40a1147
+  - ココらへんをチェックしても、ダメだった
 
 ## 無限スクロール
 
