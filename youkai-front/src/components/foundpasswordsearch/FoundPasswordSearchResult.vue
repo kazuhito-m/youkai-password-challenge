@@ -65,7 +65,7 @@
       v-model="invalidate"
       outlined
       multi-line
-      color="secondary"
+      :color="invalidateError ? 'red' : 'secondary'"
     >
       {{ invalidateMessage }}
       <template #action="{ attrs }">
@@ -100,6 +100,7 @@ import { FoundConditionSearchStatusStore } from '@/store'
 export default class FoundPasswordSearchResult extends Vue {
   private invalidate = false
   private invalidateMessage = ''
+  private invalidateError = true
 
   private get passwords(): PasswordViewModel[] {
     return FoundConditionSearchStatusStore.nowPasswords
@@ -129,10 +130,8 @@ export default class FoundPasswordSearchResult extends Vue {
   @Watch('searchedDateTime')
   private onChangeSearchedDateTime(): void {
     const limitCount = FoundConditionSearchStatus.VIEW_LIMIT_COUNT
-    if (this.fullCount > limitCount) {
-      this.invalidateMessage = `${limitCount.toLocaleString()}件以上は表示できません。`
-      this.invalidate = true
-    }
+    if (this.fullCount > limitCount)
+      this.showWarn(`${limitCount.toLocaleString()}件以上は表示できません。`)
 
     // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
     const resultList = this.$refs.resultList as Vue
@@ -143,14 +142,28 @@ export default class FoundPasswordSearchResult extends Vue {
     return FoundConditionSearchStatusStore.hasReadYetPasswords
   }
 
-  private async infiniteHandler() {
+  private async infiniteHandler(): Promise<void> {
     if (!this.hasReadYetPasswords) return
 
     await FoundConditionSearchStatusStore.searchRemainPasswordsAsync()
 
     const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
-    if (!infiniteLoading) return;
+    if (!infiniteLoading) return
     infiniteLoading.stateChanger.loaded()
+  }
+
+  private showError(message: string): void {
+    this.showSnackBar(message, true)
+  }
+
+  private showWarn(message: string): void {
+    this.showSnackBar(message, false)
+  }
+
+  private showSnackBar(message: string, error: boolean): void {
+    this.invalidateMessage = message
+    this.invalidateError = error
+    this.invalidate = true
   }
 }
 </script>
