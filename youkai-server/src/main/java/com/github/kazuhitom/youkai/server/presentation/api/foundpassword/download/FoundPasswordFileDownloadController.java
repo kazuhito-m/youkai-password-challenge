@@ -50,7 +50,7 @@ public class FoundPasswordFileDownloadController {
         if (trimmed.length() < 2) return "query文字列が短すぎます。";
         if (trimmed.length() > Password.MAX_CHARS_LENGTH) return "query文字列が長すぎます。";
         if (service.isInvalidPasswordQuery(query)) return "query文字列にパスワードに使えない文字が使われています。";
-        if (!service.isInvalidPassword14(typicalPassword)) return "チェック値が不正。";
+        if (service.isInvalidPassword14(typicalPassword)) return "チェック値が不正。";
         return "";
     }
 
