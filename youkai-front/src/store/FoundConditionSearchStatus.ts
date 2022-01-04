@@ -1,5 +1,5 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
-import moment, { Moment } from 'moment';
+import moment, { Moment, now } from 'moment';
 import PasswordViewModel from './PasswordViewModel';
 import FoundPasswordService from '@/application/service/FoundPasswordService';
 import FoundPasswordSearchCondition from '~/domain/youkai/foundpassword/FoundPasswordSearchCondition';
@@ -19,6 +19,8 @@ export default class FoundConditionSearchStatus extends VuexModule {
     private searchedError: boolean = false;
 
     private passwords: PasswordViewModel[] = [];
+
+    private searching: boolean = false;
 
     public service?: FoundPasswordService;
 
@@ -51,6 +53,10 @@ export default class FoundConditionSearchStatus extends VuexModule {
 
     public get nowSearchedError(): boolean {
         return this.searchedError;
+    }
+
+    public get nowSearching(): boolean {
+        return this.searching;
     }
 
     public get hasReadYetPasswords(): boolean {
@@ -96,8 +102,15 @@ export default class FoundConditionSearchStatus extends VuexModule {
         this.searchedError = value;
     }
 
+    @Mutation
+    private changeSearching(value:boolean) {
+        this.searching = value;
+    }
+
     @Action({ rawError: true })
     public async searchAsync(): Promise<void> {
+        this.changeSearching(true);
+
         this.clearResults();
 
         const service = this.service as FoundPasswordService;
@@ -114,6 +127,8 @@ export default class FoundConditionSearchStatus extends VuexModule {
         await this.findAndAddPasswordsAsync();
 
         this.changeSearchedDateTime(moment());
+
+        this.changeSearching(false);
     }
 
     @Action({ rawError: true })

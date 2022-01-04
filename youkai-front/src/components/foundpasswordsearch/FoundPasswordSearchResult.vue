@@ -79,6 +79,10 @@
         </v-btn>
       </template>
     </v-snackbar>
+    <v-overlay :value="nowSearching" absolute>
+      <v-progress-circular indeterminate color="green" />
+      Now Serching...
+    </v-overlay>
   </v-card>
 </template>
 
@@ -116,6 +120,10 @@ export default class FoundPasswordSearchResult extends Vue {
 
   private get raiseError(): boolean {
     return FoundConditionSearchStatusStore.nowSearchedError
+  }
+
+  private get nowSearching(): boolean {
+    return FoundConditionSearchStatusStore.nowSearching;
   }
 
   private get searchedConditionCaption() {

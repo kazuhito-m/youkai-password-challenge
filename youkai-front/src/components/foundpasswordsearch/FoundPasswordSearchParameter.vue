@@ -58,8 +58,13 @@
               </v-btn>
             </v-card-actions>
           </v-col>
-        </v-row>      </v-container>
+        </v-row>      
+      </v-container>
     </v-form>
+    <v-overlay :value="nowSearching" absolute>
+      <v-progress-circular indeterminate color="green" />
+      Now Serching...
+    </v-overlay>
   </v-card>
 </template>
 
@@ -73,8 +78,6 @@ import { FoundConditionSearchStatusStore } from '@/store'
 
 @Component
 export default class FoundPasswordSearchParameter extends Vue {
-  private nowSearching = false
-
   @Inject()
   private readonly converter?: CodeToCharacterConverter
 
@@ -97,6 +100,10 @@ export default class FoundPasswordSearchParameter extends Vue {
 
   private set checkReverseOrder(value: boolean) {
     FoundConditionSearchStatusStore.setReverseOrder(value)
+  }
+
+  private get nowSearching(): boolean {
+    return FoundConditionSearchStatusStore.nowSearching;
   }
 
   private mounted(): void {
