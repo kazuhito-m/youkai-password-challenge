@@ -5,7 +5,7 @@ import FoundPasswordSearchCondition from "@/domain/youkai/foundpassword/FoundPas
 export default class FoundPasswordService {
     constructor(private readonly repository: FoundPasswordRepository) {}
 
-    public findOf(condition: FoundPasswordSearchCondition): FoundPasswords {
-        return this.repository.findOf(condition);
+    public async findOf(condition: FoundPasswordSearchCondition): Promise<FoundPasswords> {
+        return await this.repository.findOf(condition);
     }
 }

@@ -4,14 +4,23 @@ import FoundPasswords from "@/domain/youkai/foundpassword/FoundPasswords";
 import { NuxtAxiosInstance } from "@nuxtjs/axios";
 import CodeToCharacterConverter from "~/domain/youkai/checkdigit/converter/CodeToCharacterConverter";
 import Password from "~/domain/youkai/checkdigit/state/Password";
+import FoundPasswordResponse from "./FoundPasswordResponse";
 
 export default class FoundPasswordTransfer implements FoundPasswordRepository {
     constructor(private readonly axios: NuxtAxiosInstance) { }
 
-    public findOf(condition: FoundPasswordSearchCondition): FoundPasswords {
-        // TODO 実際のAPI呼び出し。
+    public async findOf(condition: FoundPasswordSearchCondition): Promise<FoundPasswords> {
+        try {
+            const response = await this.axios.get<FoundPasswordResponse>('http://localhost:8080/api/foundpassword?query=MI&offset=1400&limit=20&reverse=true');
+            const data = response.data;
+            return new FoundPasswords(data.passwords, data.fullCount);
+        } catch (error) {
+            // if (error) console.log(`通信時エラー:${error.response.data}`);
+            return FoundPasswords.error();
+        }
+    }
 
-        // 以下、ダミーコード
+    private test(condition: FoundPasswordSearchCondition) {
         let fullCount = 0;
         if (condition.query === "AB") fullCount = 56789;
         if (condition.query === "XXX") fullCount = 12345;

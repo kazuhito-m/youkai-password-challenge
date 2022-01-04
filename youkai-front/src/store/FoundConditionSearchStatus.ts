@@ -87,7 +87,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
     }
 
     @Action({ rawError: true })
-    public search(): void {
+    public async searchAsync(): Promise<void> {
         this.clearResults();
 
         const service = this.service as FoundPasswordService;
@@ -99,7 +99,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
             this.nowReverceOrder
         );
 
-        const results = service.findOf(condition);
+        const results = await service.findOf(condition);
 
         let viewModels: PasswordViewModel[] = [];
 
@@ -116,7 +116,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
     }
 
     @Action({ rawError: true })
-    public searchRemainPasswords(): void {
+    public async searchRemainPasswordsAsync(): Promise<void> {
         if (this.nowSearchedCondition === null) return;
         const password = this.nowPasswords;
         if (password.length >= this.nowSearchedFullCount) return;
@@ -125,7 +125,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
 
         const condition = this.nowSearchedCondition.withOffsetOf(password.length);
 
-        const results = service.findOf(condition);
+        const results = await service.findOf(condition);
 
         const addNo = password.length + 1;
         const viewModels = results.passwords

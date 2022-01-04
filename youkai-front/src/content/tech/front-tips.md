@@ -4,6 +4,9 @@ title: フロントとNuxt.js&TypsScriptらへんの知識
 
 ## Nust.js + Axios
 
+- Nuxt.js の axios-module（プラグイン）で開発環境と本番環境で取得先のURLを変えたい
+  - https://yoshinorin.net/2019/07/20/nuxt-js-axios-url-relative/
+  - これを忠実にトレースした
 - 【Nxut.js】axiosの初期設定を行う(baseURL・browserBaseURLを解説)
   - https://blog.cloud-acct.com/posts/u-nuxtjs-axios/
 - 【Nuxt.js】TypeScript,asyncDataでnuxtjs/axiosを使う

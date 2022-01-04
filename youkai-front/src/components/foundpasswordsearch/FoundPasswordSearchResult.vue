@@ -98,8 +98,8 @@ import { FoundConditionSearchStatusStore } from '@/store'
   },
 })
 export default class FoundPasswordSearchResult extends Vue {
-  private invalidate = false;
-  private invalidateMessage = ""; 
+  private invalidate = false
+  private invalidateMessage = ''
 
   private get passwords(): PasswordViewModel[] {
     return FoundConditionSearchStatusStore.nowPasswords
@@ -128,10 +128,10 @@ export default class FoundPasswordSearchResult extends Vue {
 
   @Watch('searchedDateTime')
   private onChangeSearchedDateTime(): void {
-    const limitCount = FoundConditionSearchStatus.VIEW_LIMIT_COUNT;
+    const limitCount = FoundConditionSearchStatus.VIEW_LIMIT_COUNT
     if (this.fullCount > limitCount) {
-      this.invalidateMessage = `${limitCount.toLocaleString()}件以上は表示できません。`;
-      this.invalidate = true;
+      this.invalidateMessage = `${limitCount.toLocaleString()}件以上は表示できません。`
+      this.invalidate = true
     }
 
     // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
@@ -143,10 +143,10 @@ export default class FoundPasswordSearchResult extends Vue {
     return FoundConditionSearchStatusStore.hasReadYetPasswords
   }
 
-  private infiniteHandler() {
+  private async infiniteHandler() {
     if (!this.hasReadYetPasswords) return
 
-    FoundConditionSearchStatusStore.searchRemainPasswords()
+    await FoundConditionSearchStatusStore.searchRemainPasswordsAsync()
 
     const infiniteLoading = this.$refs.infiniteLoading as InfiniteLoading
     infiniteLoading.stateChanger.loaded()
