@@ -200,13 +200,11 @@ export default class FoundPasswordSearchResult extends Vue {
     if (!nowCondition) return
     const service = this.foundPasswordService as FoundPasswordService
     const download = service.downloadFileOf(nowCondition, this.passwords[0].password)
-    console.log(download.downloadUrl, download.localDownloadFileName())
-    // this.downloadByUrl(download.downloadUrl, download.localDownloadFileName());
+    this.downloadByUrl(download.downloadUrl);
   }
 
-  private downloadByUrl(url: string, localFileName: string): void {
+  private downloadByUrl(url: string): void {
     const link = document.createElement('a')
-    link.download = localFileName
     link.href = url
     link.click()
   }
