@@ -11,7 +11,7 @@ import moment, { Moment } from 'moment';
 })
 export default class FoundConditionSearchStatus extends VuexModule {
     private conditionQuery: string = "";
-    private reverceOrder = false;
+    private reverseOrder = false;
 
     private searchedCondition: FoundPasswordSearchCondition | null = null;
     private searchedFullCount: number = 0;
@@ -28,8 +28,8 @@ export default class FoundConditionSearchStatus extends VuexModule {
         return this.conditionQuery;
     }
 
-    public get nowReverceOrder(): boolean {
-        return this.reverceOrder;
+    public get nowReverseOrder(): boolean {
+        return this.reverseOrder;
     }
 
     public get nowPasswords(): PasswordViewModel[] {
@@ -62,8 +62,8 @@ export default class FoundConditionSearchStatus extends VuexModule {
     }
 
     @Mutation
-    private changeReverceOrder(value: boolean) {
-        this.reverceOrder = value;
+    private changeReverseOrder(value: boolean) {
+        this.reverseOrder = value;
     }
 
     @Mutation
@@ -96,7 +96,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
             this.nowConditionQuery,
             0,
             FoundConditionSearchStatus.ONE_READ_REC_COUNT,
-            this.nowReverceOrder
+            this.nowReverseOrder
         );
 
         const results = await service.findOf(condition);
@@ -139,7 +139,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
     @Action({ rawError: true })
     public clearResultsAndCondition(): void {
         this.changeConditionQuery("");
-        this.changeReverceOrder(false);
+        this.changeReverseOrder(false);
 
         this.clearResults();
     }
@@ -159,7 +159,7 @@ export default class FoundConditionSearchStatus extends VuexModule {
     }
 
     @Action({ rawError: true })
-    public setReverceOrder(value: boolean) {
-        this.changeReverceOrder(value);
+    public setReverseOrder(value: boolean) {
+        this.changeReverseOrder(value);
     }
 }

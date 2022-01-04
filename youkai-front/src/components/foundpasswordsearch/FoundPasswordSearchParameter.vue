@@ -31,7 +31,7 @@
           <v-col cols="12" sm="12" md="12">
             <v-card-actions>
               <v-checkbox
-                v-model="checkReverceOrder"
+                v-model="checkReverseOrder"
                 label="逆順に並び替え"
               ></v-checkbox>
 
@@ -91,12 +91,12 @@ export default class FoundPasswordSearchParameter extends Vue {
     FoundConditionSearchStatusStore.setConditionQuery(value)
   }
 
-  private get checkReverceOrder(): boolean {
-    return FoundConditionSearchStatusStore.nowReverceOrder
+  private get checkReverseOrder(): boolean {
+    return FoundConditionSearchStatusStore.nowReverseOrder
   }
 
-  private set checkReverceOrder(value: boolean) {
-    FoundConditionSearchStatusStore.setReverceOrder(value)
+  private set checkReverseOrder(value: boolean) {
+    FoundConditionSearchStatusStore.setReverseOrder(value)
   }
 
   private mounted(): void {

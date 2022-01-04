@@ -116,7 +116,7 @@ export default class FoundPasswordSearchResult extends Vue {
   private get searchedConditionCaption() {
     if (FoundConditionSearchStatusStore.nowSearchedCondition === null) return ''
     const condition = FoundConditionSearchStatusStore.nowSearchedCondition
-    const order = condition.reverce ? '(逆順)' : ''
+    const order = condition.reverse ? '(逆順)' : ''
     return `"${condition.query}" ${order}`
   }
 

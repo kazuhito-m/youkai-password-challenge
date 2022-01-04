@@ -100,7 +100,7 @@ export default class Password {
 
     public static withText(passwordText: string, converter = new CodeToCharacterConverter()): Password {
         const codes = passwordText.split("")
-            .map(oneCher => converter.reverceConvert(oneCher));
+            .map(oneCher => converter.reverseConvert(oneCher));
         return new Password(codes, converter);
     }
 
