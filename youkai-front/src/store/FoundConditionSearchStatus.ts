@@ -1,5 +1,5 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
-import moment, { Moment, now } from 'moment';
+import moment, { Moment } from 'moment';
 import PasswordViewModel from './PasswordViewModel';
 import FoundPasswordService from '@/application/service/FoundPasswordService';
 import FoundPasswordSearchCondition from '~/domain/youkai/foundpassword/FoundPasswordSearchCondition';
@@ -112,8 +112,6 @@ export default class FoundConditionSearchStatus extends VuexModule {
         this.changeSearching(true);
 
         this.clearResults();
-
-        const service = this.service as FoundPasswordService;
 
         const condition = new FoundPasswordSearchCondition(
             this.nowConditionQuery,
