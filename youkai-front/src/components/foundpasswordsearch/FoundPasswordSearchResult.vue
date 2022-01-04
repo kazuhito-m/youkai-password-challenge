@@ -10,6 +10,16 @@
             <v-card-actions>
               検索条件: {{ searchedConditionCaption }}
               <v-spacer></v-spacer>
+              <v-btn
+                v-if="enableDownloadFileButton"
+                elevation="2"
+                small
+                outlined
+                color="success"
+              >
+                ファイルDL
+              </v-btn>
+              <v-spacer></v-spacer>
               {{ fullCountCaption }}
             </v-card-actions>
           </v-col>
@@ -123,7 +133,11 @@ export default class FoundPasswordSearchResult extends Vue {
   }
 
   private get nowSearching(): boolean {
-    return FoundConditionSearchStatusStore.nowSearching;
+    return FoundConditionSearchStatusStore.nowSearching
+  }
+
+  private get enableDownloadFileButton() {
+    return this.passwords.length > 0
   }
 
   private get searchedConditionCaption() {
@@ -153,7 +167,7 @@ export default class FoundPasswordSearchResult extends Vue {
   @Watch('raiseError')
   private onChangeRaiseError(): void {
     if (!this.raiseError) return
-    this.showError("通信エラーが発生しました。データが取得できません。")
+    this.showError('通信エラーが発生しました。データが取得できません。')
   }
 
   private get hasReadYetPasswords(): boolean {
