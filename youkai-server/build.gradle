@@ -27,8 +27,10 @@ dependencies {
     annotationProcessor "org.seasar.doma:doma:${domaVersion}"
     implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.6.0'
 
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
