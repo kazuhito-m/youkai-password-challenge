@@ -9,7 +9,7 @@
 
 - [PCE妖怪道中記：スタッフインフォメーションボード調査記録(常時情報募集中)](https://polymega.blog.jp/archives/78015705.html)
   - すべての始まり（おばきいさんのサイト）
-- [ナムコの知られざる天才スーパーハッカーが仕込んだ隠しメッセージの謎とそれを廻る都市伝説｜妖怪道中記](https://www.youtube.com/watch?v=ZGqmudIySQ8) 
+- [ナムコの知られざる天才スーパーハッカーが仕込んだ隠しメッセージの謎とそれを廻る都市伝説｜妖怪道中記](https://www.youtube.com/watch?v=ZGqmudIySQ8)
   - 2021/12の火付け役
 - [PCエンジン妖怪道中記 パスワード解析Wiki](https://i486.mods.jp/yokaiwiki/)
   - 初代解析ツールを作られた[Imaha486](https://twitter.com/Imaha486)さんのWiki
@@ -39,8 +39,12 @@
 ## Hit済みパスワードの置き場
 
 - [kei氏によるリポジトリ](https://github.com/kmikage/yokai-password/tree/main/passwords)
-  - 暫定、おそらく近い将来置けなくなる
   - [ツールやサイト等、ダウンロード時用チェックサム置き場](https://github.com/kmikage/yokai-password/blob/main/passwords/passwords.sha256)
+
+## Hit済みパスワードの解析情報
+
+- PCE妖怪道中記-解析情報共有スプレッドシート - 「絶対に真ではないパスワード条件」シート
+  - https://docs.google.com/spreadsheets/d/1Hp80gXzoL0JtVbnC6CloOi2x8q5kje0cZ4kcLL0XTIc/edit#gid=738842620
 
 ## 付帯情報・パスワード解析のヒント
 
