@@ -35,6 +35,7 @@
 - [水咲／ YokaiSearcher(tanzaku氏発見の4700万件パスワード探査ツール)](https://github.com/Misaki0331/YokaiSearcher)
 - [Imaha486／同4700万件のパスワードと辞書を照合するフィルタツール](https://i486.mods.jp/files/yokaisplit.zip)
 - [Imaha486／同4700万件のパスワードをAND検索するツール](https://i486.mods.jp/files/yokailoop.zip )
+- [@syn_z](https://twitter.com/syn_z) / [パスワードデータ検索プログラム](http://syn-k.sakura.ne.jp/youkai2/)
 
 ## Hit済みパスワードの置き場
 
