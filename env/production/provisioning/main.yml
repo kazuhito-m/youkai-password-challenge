@@ -108,8 +108,24 @@
 
     - name: youkai-server のSpringBootの設定ファイルをコピー
       copy:
-        src: app/resources/applicaiton.properties
-        dest: /var/opt/youkai-server/applicaiton.properties
+        src: app/resources/application.properties
+        dest: /var/opt/youkai-server/application.properties
+        owner: youkai
+        group: youkai
+        mode: 0644
+
+    - name: youkai-server のLogの出力ディレクトリ作成
+      file:
+        path: /var/log/youkai-server
+        state: directory
+        owner: youkai
+        group: youkai
+        mode: 0755
+
+    - name: youkai-server のLogの設定ファイルをコピー
+      copy:
+        src: app/resources/logback.xml
+        dest: /var/opt/youkai-server/logback.xml
         owner: youkai
         group: youkai
         mode: 0644
