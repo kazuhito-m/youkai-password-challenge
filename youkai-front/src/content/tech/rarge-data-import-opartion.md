@@ -1,7 +1,7 @@
 ---
 title: 巨大パスワードデータのインポート手順
 ---
- 
+
 デカ過ぎる＆手順を間違えるとめちゃくちゃ時間がかかるので、特殊手順として文字に残す。
 
 ## 大まかな手順
@@ -34,7 +34,7 @@ Cloud SQL Proxy を作業端末に仕込んで置く。
 スーパーユーザで行う
 
 ```bash
-CREATE USER youkai_user WITH  PASSWORD 'youkai_password';
+CREATE USER youkai_user WITH PASSWORD 'youkai_password';
 CREATE DATABASE youkai_password_challenge ENCODING 'UTF8' LC_COLLATE 'C' TEMPLATE 'template0';
 ALTER DATABASE youkai_password_challenge SET timezone TO 'Asia/Tokyo';
 ```
@@ -54,33 +54,23 @@ CREATE EXTENSION pg_trgm;
 ```bash
 \timing
 
-CREATE TABLE temp_password (
-    password varchar(14)
-);
-
-\COPY temp_password(password) from './passwords.txt' with csv
+DROP TABLE found_password;
 
 CREATE TABLE found_password (
     id SERIAL NOT NULL,
-    password varchar(14) NOT NULL UNIQUE,
+    password VARCHAR(14),
     PRIMARY KEY (id)
 );
 
-DROP INDEX pg_trgm_idx_found_password_password;
+\COPY found_password(password) from './passwords.txt' with csv
+  
+ALTER TABLE found_password 
+  ALTER COLUMN password
+  SET NOT NULL;
 
-INSERT INTO found_password(password) SELECT password FROM temp_password;
-
-DROP TABLE temp_password;
-VACUUM FULL;
-```
-
-## テーブル捨て＆ストレージ縮小
-
-スーパーユーザで行う。
-
-```bash
-\timing
-VACUUM FULL;
+ALTER TABLE found_password 
+  ADD CONSTRAINT found_password_password_unique_key
+  UNIQUE(password);
 ```
 
 ## インデックス貼り
@@ -103,6 +93,15 @@ CREATE INDEX btree_idx_found_password_password
     ON found_password(password);
 ```
 
+## テーブル捨て＆ストレージ縮小
+
+スーパーユーザで行う。
+
+```bash
+\timing
+VACUUM FULL;
+```
+
 ## メモ
 
 ### LocalのDockerコンテナ
@@ -117,7 +116,6 @@ CREATE INDEX pg_trgm_idx_found_password_password
     USING gin(password gin_trgm_ops;              
 Time: 348565.713 ms (05:48.566)          
 ```
-
 
 ### 共有CPUかつ強めのインスタンスでの計測
 
