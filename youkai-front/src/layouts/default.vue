@@ -40,7 +40,7 @@
         <Nuxt />
       </v-container>
     </v-main>
-   
+
     <v-footer app>
       <span>
         &copy; {{ new Date().getFullYear() }}
@@ -49,11 +49,12 @@
         <v-icon>mdi-twitter</v-icon>kazuhito_m
       </a>
       <v-spacer></v-spacer>
+      ver.
       <a
         class="no-efect-link"
         target="_new"
         href="https://github.com/kazuhito-m/youkai-password-challenge/releases"
-      >ver. {{ selfVersion }}</a>
+      >{{ selfVersion }}</a>
     </v-footer>
 
   </v-app>
@@ -173,6 +174,5 @@ html {
 .no-efect-link:active
 {
   text-decoration: none;
-  color: white;
 }
 </style>
