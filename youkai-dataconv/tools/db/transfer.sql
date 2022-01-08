@@ -87,6 +87,8 @@ TRUNCATE TABLE temp_word;
 INSERT INTO word_dictionary (word, category) SELECT word, '動詞' FROM temp_word;
 TRUNCATE TABLE temp_word;
 
+DROP TABLE temp_word;
+
 -- 重複チェック
 -- duplicate_delete.sql 参照
 
