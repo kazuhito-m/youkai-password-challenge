@@ -203,3 +203,24 @@ WHERE id IN (
         CHAR_LENGTH(word) > 2
 )
 ;
+
+-- 試しに「繋がってるやつ」だけをテンプテーブルにとって見る
+CREATE TABLE temp_used_word (
+    id INTEGER
+);
+
+INSERT INTO temp_used_word (id)
+SELECT
+    big_words.id
+FROM (
+    SELECT
+        id,
+        word
+    FROM
+        word_dictionary
+    WHERE
+        CHAR_LENGTH(word) >= 4
+) AS big_words
+INNER JOIN found_password
+ON (found_password.password LIKE '%' || big_words.word || '%')
+;
