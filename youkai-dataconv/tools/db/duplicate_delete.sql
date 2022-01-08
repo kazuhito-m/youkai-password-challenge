@@ -180,3 +180,26 @@ WHERE
             word_cnt > 1
     )
 ;
+
+-- 逆引きして「引っかかららないデータ」を削除する
+SELECT
+    COUNT(word_dictionary.id)
+FROM
+    found_password INNER JOIN word_dictionary
+    ON (found_password.password NOT LIKE '%' || word_dictionary.word || '%')
+WHERE
+    CHAR_LENGTH(word) > 2
+;
+
+
+DELETE FROM word_dictionary
+WHERE id IN (
+    SELECT
+        word_dictionary.id
+    FROM
+        found_password INNER JOIN word_dictionary
+        ON (found_password.password NOT LIKE '%' || word_dictionary.word || '%')
+    WHERE
+        CHAR_LENGTH(word) > 2
+)
+;

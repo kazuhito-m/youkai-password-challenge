@@ -44,3 +44,4 @@ FROM
 WHERE
     word_dictionary.only_middle = FALSE
 ;
+-- 21分程度

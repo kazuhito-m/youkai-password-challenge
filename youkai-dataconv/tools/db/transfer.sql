@@ -93,22 +93,89 @@ TRUNCATE TABLE temp_word;
 -- 集計処理
 -- aggregation_processing.sql
 
+
+-- 制約・インデックス付与
+ALTER TABLE logical_retio
+    ADD CONSTRAINT pk_logical_retio
+    PRIMARY KEY(password_id, word_id);
+
+ALTER TABLE logical_retio
+    ADD FOREIGN KEY (password_id)
+    REFERENCES found_password(id);
+
+ALTER TABLE logical_retio
+    ADD FOREIGN KEY (word_id)
+    REFERENCES word_dictionary(id);
+
+
 -- 点数あり確認
 
+SELECT COUNT(password) FROM (
 SELECT
-    POINTS.password,
-    POINTS.point
+    found_password.password AS password,
+    point2.point AS point
+FROM (
+    SELECT *
+    FROM (
+        SELECT
+            password_id,
+            COUNT(password_id) AS point
+        FROM
+            logical_retio
+        GROUP BY
+            password_id
+    ) As points
+    WHERE
+        points.point > 1
+) AS point2 INNER JOIN found_password
+ON (point2.password_id = found_password.id)
+WHERE
+    point > 11
+ORDER BY
+    point DESC
+
+) count_test;
+
+
+-- 何の品詞が引っかかってるのか確認
+SELECT
+    ranking_top_60.password,
+    ranking_top_60.point,
+    word_dictionary.word,
+    word_dictionary.category,
+    word_dictionary.only_middle
+
 FROM (
     SELECT
+        found_password.id AS password_id,
         found_password.password AS password,
-        COUNT(found_password.password) AS point
-    FROM
-        logical_retio INNER JOIN found_password
-        ON (logical_retio.password_id = found_password.id)
-    GROUP BY
-        found_password.password
-) AS POINTS
-WHERE
-    POINTS.point > 1
+        point2.point AS point
+    FROM (
+        SELECT *
+        FROM (
+            SELECT
+                password_id,
+                COUNT(password_id) AS point
+            FROM
+                logical_retio
+            GROUP BY
+                password_id
+        ) As points
+        WHERE
+            points.point > 11
+    ) AS point2 INNER JOIN found_password
+    ON (point2.password_id = found_password.id)
+    WHERE
+        point > 11
+) AS ranking_top_60 INNER JOIN logical_retio
+ON (ranking_top_60.password_id = logical_retio.password_Id)
+INNER JOIN word_dictionary
+ON (logical_retio.word_id = word_dictionary.id)
 ORDER BY
-    POINTS.point DESC;
+    ranking_top_60.point DESC,
+    ranking_top_60.password ASC,
+    word_dictionary.only_middle DESC,
+    word_dictionary.category ASC,
+    word_dictionary.word ASC
+;
+
