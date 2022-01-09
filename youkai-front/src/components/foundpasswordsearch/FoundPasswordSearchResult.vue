@@ -29,7 +29,7 @@
         <v-row dense no-gutters v-if="enableAllMissMatchPart">
           <v-col cols="12" sm="12" md="12">
             <v-card-actions>
-              <strong>”全部ハズレ”</strong>が確認できたらご協力お願いします。
+              <strong>”ハズレ”</strong>が確認できたらご協力お願いします。
               <v-spacer></v-spacer>
               <v-btn
                 :disabled="!enableSendAllMissMatchPasswordButton"
@@ -96,7 +96,7 @@
       v-model="invalidate"
       outlined
       multi-line
-      :color="invalidateError ? 'red' : 'secondary'"
+      :color="snackBarColor"
     >
       {{ invalidateMessage }}
       <template #action="{ attrs }">
@@ -136,7 +136,7 @@ import FoundPasswordService from '~/application/service/FoundPasswordService'
 export default class FoundPasswordSearchResult extends Vue {
   private invalidate = false
   private invalidateMessage = ''
-  private invalidateError = true
+  private snackBarColor = ''
 
   private fileDownloaded = false
   private missMatchPasswordSent = false;
@@ -263,21 +263,27 @@ export default class FoundPasswordSearchResult extends Vue {
 
   private onClickSendAllMissMatchPassword() {
 
-    this.showWarn(`${this.fullCount}件のパスワードを”ハズレ”として報告しました。ご協力ありがとうございます。`);
+    this.showInfomation(`${this.fullCount}件のパスワードを”ハズレ”報告しました。ありがとうございます。`);
     this.missMatchPasswordSent = true;
   }
 
   private showError(message: string): void {
+    this.snackBarColor = 'red';
     this.showSnackBar(message, true)
   }
 
   private showWarn(message: string): void {
+    this.snackBarColor = 'secondary';
+    this.showSnackBar(message, false)
+  }
+
+  private showInfomation(message: string): void {
+    this.snackBarColor = 'success';
     this.showSnackBar(message, false)
   }
 
   private showSnackBar(message: string, error: boolean): void {
     this.invalidateMessage = message
-    this.invalidateError = error
     this.invalidate = true
   }
 }
