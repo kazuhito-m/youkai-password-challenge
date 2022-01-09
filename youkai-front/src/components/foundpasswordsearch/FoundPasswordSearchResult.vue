@@ -5,7 +5,7 @@
   >
     <v-form ref="form">
       <v-container>
-        <v-row>
+        <v-row dense no-gutters>
           <v-col cols="12" sm="12" md="12">
             <v-card-actions>
               検索条件: {{ searchedConditionCaption }}
@@ -26,6 +26,24 @@
             </v-card-actions>
           </v-col>
         </v-row>
+        <v-row dense no-gutters v-if="enableAllMissMatchPart">
+          <v-col cols="12" sm="12" md="12">
+            <v-card-actions>
+              <strong>”全部ハズレ”</strong>が確認できたらご協力お願いします。
+              <v-spacer></v-spacer>
+              <v-btn
+                :disabled="!enableSendAllMissMatchPasswordButton"
+                elevation="2"
+                small
+                outlined
+                color="deep-orange"
+                @click="onClickSendAllMissMatchPassword"
+              >
+                全部"ハズレ"として報告
+              </v-btn>
+            </v-card-actions>
+          </v-col>
+        </v-row>
         <v-row>
           <v-col cols="12" sm="12" md="12">
             <v-simple-table 
@@ -33,6 +51,7 @@
               dense
               height="670px"
               fixed-header
+              @scroll="alert('test')"
             >
               <template
                 #default
@@ -120,6 +139,8 @@ export default class FoundPasswordSearchResult extends Vue {
   private invalidateError = true
 
   private fileDownloaded = false
+  private missMatchPasswordSent = false;
+  private scrolledPasswordsAllEnd = false;
 
   @Inject()
   private foundPasswordService?: FoundPasswordService
@@ -148,7 +169,18 @@ export default class FoundPasswordSearchResult extends Vue {
     return this.passwords.length > 0
   }
 
-  private get searchedConditionCaption() {
+  private get enableAllMissMatchPart(): boolean {
+    const count = this.fullCount;
+    return count > 0 && count <= 200;
+  }
+
+  private get enableSendAllMissMatchPasswordButton(): boolean {
+    return this.scrolledPasswordsAllEnd
+      && !this.missMatchPasswordSent
+      && this.passwords.length >= this.fullCount;
+  }
+
+  private get searchedConditionCaption(): string {
     if (FoundConditionSearchStatusStore.nowSearchedCondition === null) return ''
     const condition = FoundConditionSearchStatusStore.nowSearchedCondition
     const order = condition.reverse ? '(逆順)' : ''
@@ -161,6 +193,12 @@ export default class FoundPasswordSearchResult extends Vue {
     return `引っかかった総件数 : ${count} 件`
   }
 
+  private get passwordTableDiv(): HTMLDivElement {
+    // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
+    const resultList = this.$refs.resultList as Vue
+    return resultList.$el.getElementsByTagName('div')[0]
+  }
+
   @Watch('searchedDateTime')
   private onChangeSearchedDateTime(): void {
     const limitCount = FoundConditionSearchStatus.VIEW_LIMIT_COUNT
@@ -168,10 +206,11 @@ export default class FoundPasswordSearchResult extends Vue {
       this.showWarn(`${limitCount.toLocaleString()}件以上は表示できません。`)
 
     this.fileDownloaded = false
+    this.missMatchPasswordSent = false;
+    this.scrolledPasswordsAllEnd = false;
 
-    // FIXME だいぶ「構造を知っている」ので、もうちょっと抽象的にしたい。
-    const resultList = this.$refs.resultList as Vue
-    resultList.$el.getElementsByTagName('div')[0].scrollTop = 0
+    this.passwordTableDiv.scrollTop = 0;
+    this.onScrollPasswordTableDiv();
   }
 
   @Watch('raiseError')
@@ -194,6 +233,18 @@ export default class FoundPasswordSearchResult extends Vue {
     infiniteLoading.stateChanger.loaded()
   }
 
+  private mounted() {
+    const div = this.passwordTableDiv;
+    div.addEventListener('scroll', this.onScrollPasswordTableDiv, false);
+  }
+
+  private onScrollPasswordTableDiv() {
+    if (!this.enableAllMissMatchPart) return;
+    const div = this.passwordTableDiv;
+    if (div.scrollHeight - Math.round(div.scrollTop) !== div.clientHeight) return;
+    this.scrolledPasswordsAllEnd = true;
+  }
+
   private onClickDownLoadFileButton() {
     this.fileDownloaded = true
     const nowCondition = FoundConditionSearchStatusStore.nowSearchedCondition
@@ -208,6 +259,10 @@ export default class FoundPasswordSearchResult extends Vue {
     link.href = url
     link.target = "_blank"
     link.click()
+  }
+
+  private onClickSendAllMissMatchPassword() {
+    this.missMatchPasswordSent = true;
   }
 
   private showError(message: string): void {
