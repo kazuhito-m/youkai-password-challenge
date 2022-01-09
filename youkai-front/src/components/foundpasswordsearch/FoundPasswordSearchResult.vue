@@ -124,9 +124,10 @@ import { Moment } from 'moment'
 import InfiniteLoading from 'vue-infinite-loading'
 import PasswordViewModel from '@/store/PasswordViewModel'
 import FoundConditionSearchStatus from '~/store/FoundConditionSearchStatus'
+import FoundPasswordService from '@/application/service/FoundPasswordService'
+import HazurePasswordService from '@/application/service/HazurePasswordService'
 
 import { FoundConditionSearchStatusStore } from '@/store'
-import FoundPasswordService from '~/application/service/FoundPasswordService'
 
 @Component({
   components: {
@@ -144,6 +145,9 @@ export default class FoundPasswordSearchResult extends Vue {
 
   @Inject()
   private foundPasswordService?: FoundPasswordService
+
+  @Inject()
+  private hazurePasswordService?: HazurePasswordService;
 
   private get passwords(): PasswordViewModel[] {
     return FoundConditionSearchStatusStore.nowPasswords
@@ -261,7 +265,11 @@ export default class FoundPasswordSearchResult extends Vue {
     link.click()
   }
 
-  private onClickSendAllMissMatchPassword() {
+  private async onClickSendAllMissMatchPassword() {
+    const service = this.hazurePasswordService as HazurePasswordService;
+    const target = this.passwords.map(i => i.password);
+    const result = await service.register(target);
+    if (!result) this.showError('通信エラーが発生しました。ハズレパスの登録に失敗しました。');
 
     this.showInfomation(`${this.fullCount}件のパスワードを”ハズレ”報告しました。ありがとうございます。`);
     this.missMatchPasswordSent = true;

@@ -12,6 +12,7 @@ export default class HazurePasswordTransfer implements HazurePasswordRepository 
             const url = "https://yokai-server-vunudhkwpa-an.a.run.app/api/import/rejected";
             const response = await this.axios.post<RegisterHazurePasswordsResponse>(url, passwords);
             const data = response.data;
+            console.log(response);
             return data.rejected > 0;
         } catch (error: any) {
             console.log("通信時エラー", error);
