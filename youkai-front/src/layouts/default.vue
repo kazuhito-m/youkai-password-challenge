@@ -67,8 +67,10 @@ import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeT
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
 import PasswordAttackService from '@/application/service/PasswordAttackService'
-import FoundPasswordService from '~/application/service/FoundPasswordService';
-import FoundPasswordTransfer from '~/infrastructure/transfer/youkai/foundpassword/FoundPasswordTransfer';
+import FoundPasswordService from '@/application/service/FoundPasswordService';
+import FoundPasswordTransfer from '@/infrastructure/transfer/youkai/foundpassword/FoundPasswordTransfer';
+import HazurePasswordService from '@/application/service/HazurePasswordService';
+import HazurePasswordTransfer from '@/infrastructure/transfer/youkai/password/hazure/HazurePasswordTransfer';
 import { FoundConditionSearchStatusStore } from '@/store'
 
 @Component({
@@ -129,6 +131,9 @@ export default class extends Vue {
 
   @Provide()
   private readonly foundPasswordService = new FoundPasswordService(new FoundPasswordTransfer(this.$axios));
+
+  @Provide()
+  private readonly hazurePasswordService = new HazurePasswordService(new HazurePasswordTransfer(this.$axios));
 
   // this classs property & functions.
 
