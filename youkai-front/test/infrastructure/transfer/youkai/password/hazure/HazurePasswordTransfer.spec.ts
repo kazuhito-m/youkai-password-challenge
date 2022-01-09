@@ -1,6 +1,5 @@
 import axios from 'axios';
 import RegisterHazurePasswordsResponse from '~/infrastructure/transfer/youkai/password/hazure/RegisterHazurePasswordsResponse';
-import HazurePasswordTransfer from '~/infrastructure/transfer/youkai/password/hazure/HazurePasswordTransfer';
 
 describe('HazurePasswordTransfer', () => {
     test.skip('axiosで通信を試す', async () => {
