@@ -26,7 +26,7 @@
             </v-card-actions>
           </v-col>
         </v-row>
-        <v-row dense no-gutters v-if="enableAllMissMatchPart">
+        <v-row v-if="enableAllMissMatchPart" dense no-gutters>
           <v-col cols="12" sm="12" md="12">
             <v-card-actions>
               <strong>”ハズレ”</strong>が確認できたらご協力お願いします。
@@ -277,20 +277,20 @@ export default class FoundPasswordSearchResult extends Vue {
 
   private showError(message: string): void {
     this.snackBarColor = 'red';
-    this.showSnackBar(message, true)
+    this.showSnackBar(message)
   }
 
   private showWarn(message: string): void {
     this.snackBarColor = 'secondary';
-    this.showSnackBar(message, false)
+    this.showSnackBar(message)
   }
 
   private showInfomation(message: string): void {
     this.snackBarColor = 'success';
-    this.showSnackBar(message, false)
+    this.showSnackBar(message)
   }
 
-  private showSnackBar(message: string, error: boolean): void {
+  private showSnackBar(message: string): void {
     this.invalidateMessage = message
     this.invalidate = true
   }
