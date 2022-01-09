@@ -262,6 +262,8 @@ export default class FoundPasswordSearchResult extends Vue {
   }
 
   private onClickSendAllMissMatchPassword() {
+
+    this.showWarn(`${this.fullCount}件のパスワードを”ハズレ”として報告しました。ご協力ありがとうございます。`);
     this.missMatchPasswordSent = true;
   }
 
