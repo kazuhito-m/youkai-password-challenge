@@ -49,7 +49,7 @@
             <v-simple-table 
               ref="resultList"
               dense
-              height="670px"
+              height="672px"
               fixed-header
               @scroll="alert('test')"
             >
