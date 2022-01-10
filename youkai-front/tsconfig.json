@@ -29,6 +29,7 @@
       "@nuxt/content",
       "@types/node",
       "@types/jest",
+      "gtag.js",
       "vuetify"
     ],
     "typeRoots": [
