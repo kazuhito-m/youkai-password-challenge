@@ -250,6 +250,12 @@ DROP TABLE temp_used_word2;
 DELETE FROM
     word_dictionary
 WHERE
-    id NOT IN (SELECT id FROM temp_used_word);
+    NOT EXISTS (
+        SELECT 1
+        FROM temp_used_word
+        WHERE
+            id = word_dictionary.id
+    )
+;
 
 DROP TABLE temp_used_word;

@@ -38,7 +38,6 @@ CREATE INDEX btree_idx_word_dictionary_only_middle
     ON word_dictionary(only_middle);
 
 
-
 -- パスワードの点数
 --CREATE TABLE logical_retio (
 --    password_id INTEGER NOT NULL,
