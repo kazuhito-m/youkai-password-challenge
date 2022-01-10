@@ -46,6 +46,12 @@ title: フロントとNuxt.js&TypsScriptらへんの知識
   - https://zenn.dev/ryuji_cre8ive/articles/dc42afd40a1147
   - ココらへんをチェックしても、ダメだった
 
+### GoogleAnalitics4(gatag)周り
+
+- NuxtでGoogleアナリティクス（gtag.js）を実装する
+  - https://qiita.com/tochiji/items/bcab969b60c67a9754e6
+- 
+
 ## 無限スクロール
 
 - Nuxt.jsとvue-infinite-loadingを使って無限スクロールを実装する

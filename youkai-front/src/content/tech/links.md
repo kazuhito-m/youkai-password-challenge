@@ -133,3 +133,20 @@ https://sys-guard.com/post-15640/
   - https://spring-gcp.saturnism.me/app-dev/cloud-services/databases/cloud-sql
   - SpringBootからのCloudSQLへのつなぎ方のいくつかが乗っている
   - 今回、ここの[Cloud SQL Proxy](https://spring-gcp.saturnism.me/app-dev/cloud-services/databases/cloud-sql#cloud-sql-proxy)の方法を持って、localhost:5432 へのアクセスとして接続させている
+
+## HTTP
+
+### CORS
+
+- CORS を分かってないから動くコード書いて理解する
+  - https://qiita.com/mochizukikotaro/items/6b72ad595db8a6b5514f#step6-post-%E3%81%A7applicationjson-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B%E3%81%9D%E3%81%97%E3%81%A6%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%92%E7%9C%BA%E3%82%81%E3%82%8B
+- CORSエラーが出てしまったらヘッダー情報を追加しよう
+  - https://qiita.com/mtoutside/items/cee708841cad7e02f85c
+- JavaScriptでAPIを叩いたらCORSエラーになった話
+  - https://qiita.com/Kohei-Sato-1221/items/0c64ebb9b3d3c38ff37b
+- XMLHttpRequestを使っていたらCORSエラー?がでた
+  - https://kiwasalog.com/caprice/xhr-cors.html
+- 【JavaScript】blocked by CORS policy エラーの簡単な解決法
+  - https://pisuke-code.com/js-blocked-by-cors-policy-error/
+- CORS とは？
+  - https://javascript.keicode.com/newjs/what-is-cors.php#2-1
