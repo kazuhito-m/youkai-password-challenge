@@ -14,7 +14,7 @@ export default class HazurePasswordTransfer implements HazurePasswordRepository 
             const response = await axios.post<RegisterHazurePasswordsResponse>(url, passwords);
             const data = response.data;
             console.log(response);
-            return data.rejected > 0;
+            return data.rejected >= 0;
         } catch (error: any) {
             console.log("通信時エラー", error);
             return false;
