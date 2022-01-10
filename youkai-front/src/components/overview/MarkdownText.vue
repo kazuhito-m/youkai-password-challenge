@@ -116,7 +116,7 @@ __現在、「”真の14桁パスワード”と思しきもの」はまだ見�
   - 西園寺公望さん、[@botesan](https://twitter.com/botesan)さん、over80さんらにより「目検による”ハズレ”パスワードの確認結果報告」が連日届く
     - 一日、一人で約1000〜8000件程の確認率なので尋常じゃない貢献である
       - 省略したがそれが一週間以上続いている
-    - その全てが、 kei さんにより、ご自身のデータ集積サイトに取り込まれる
+    - その全てが [@kei9298p](https://twitter.com/kei9298p)さんにより、[ご自身の集積サイト](https://github.com/kmikage/yokai-password/tree/main/rejected_passwords)に取り込まれる
 </template>
 
 <style>

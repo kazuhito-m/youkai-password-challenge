@@ -43,7 +43,7 @@
 
 - [kazuhito_m/発見済パスワード絞り込み検索ページ](http://youkaiosugi.com/)
   - 本サイトのトップページ
-- [tanzaku/抽出済みパスワードを”偽”か”真”かを記録できるウェブアプリ](https://yokai-server-vunudhkwpa-an.a.run.app/)
+- [tanzaku/抽出済みパスワードを”偽”か”真”かを記録できるページ](https://yokai-server-vunudhkwpa-an.a.run.app/)
   - [優先して探すパスワード/確認図みの”偽”パスワードのテキストファイル(txt)をアップロードするページ](https://yokai-server-vunudhkwpa-an.a.run.app/admin)
 
 ## Hit済みパスワードの置き場
