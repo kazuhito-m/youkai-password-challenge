@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <title>テスト用</title>
+</head>
+<body>
+<button id="sendTest">送信してみる</button>
+</body>
+<script>
+function onSendTest() {
+//    const host = "http://localhost:8080";
+    const host = "https://youkaiosugi.com";
+    const param = "/api/foundpassword?query=MIURA&offset=0&limit=20";
+    const url = host + param;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    const onLoad = () => {
+        alert(xhr.getAllResponseHeaders() + "\n---\n" + xhr.responseText);
+    }
+    xhr.addEventListener("load", onLoad, false);
+    xhr.onerror = () => {
+        alert(xhr.getAllResponseHeaders() + "\n---\n" + xhr.status + ", " + xhr.readyState + ", " + xhr.statusText);
+    }
+    xhr.send();
+}
+
+const button = document.getElementById('sendTest');
+button.onclick = onSendTest;
+</script>
+</html>
