@@ -266,11 +266,14 @@ export default class FoundPasswordSearchResult extends Vue {
   }
 
   private async onClickSendAllMissMatchPassword() {
+    this.missMatchPasswordSent = true;
+
     const service = this.hazurePasswordService as HazurePasswordService;
     const target = this.passwords.map(i => i.password);
     const result = await service.register(target);
     if (!result)  {
       this.showError('通信エラーが発生しました。ハズレパスワードの登録に失敗しました。');
+      this.missMatchPasswordSent = false;
       return;
     }
 
