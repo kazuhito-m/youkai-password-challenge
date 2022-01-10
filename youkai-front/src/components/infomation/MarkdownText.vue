@@ -24,8 +24,8 @@
 - [PCエンジン妖怪道中記 パスワード解析Wiki（まとめサイト）](https://i486.mods.jp/yokaiwiki/)
 - [Aios／GPU向け探索プログラム](https://github.com/Aios-Ciao/yokaifinder-gpu)
 - [botesan/skk辞書を使用してパスワードを検索するJava（Kotlin）のプログラム](https://drive.google.com/file/d/1-tg5JbAxd8jtuKIRExxd63HyVYDLNFau/view)
-- [kazuhito_m/Youkai03.exeのWebページ移植](http://youkaiosugi.com/)
-  - 本サイトのトップページ、インストール不要、遅いけどね
+- [kazuhito_m/Youkai03.exeのWebページ移植](https://youkaiosugi.com/challenge)
+  - 本サイトの1ページ、インストール不要、遅いけどね
 
 ### Hit済パスワード分析・探索系
 
@@ -33,9 +33,18 @@
 
 - [kei／発見されたパスワードの管理・変換](https://github.com/kmikage/yokai-password)
 - [水咲／ YokaiSearcher(tanzaku氏発見の4700万件パスワード探査ツール)](https://github.com/Misaki0331/YokaiSearcher)
-- [Imaha486／同4700万件のパスワードと辞書を照合するフィルタツール](https://i486.mods.jp/files/yokaisplit.zip)
-- [Imaha486／同4700万件のパスワードをAND検索するツール](https://i486.mods.jp/files/yokailoop.zip )
 - [@syn_z](https://twitter.com/syn_z) / [パスワードデータ検索プログラム](http://syn-k.sakura.ne.jp/youkai2/)
+- [Imaha486／同4700万件のパスワード分析ツールパック](https://i486.mods.jp/yokai/yokai-toolpack.zip)
+  - 随時作りづつけている「解析するためのツール」のパック
+  - [ツールの説明(記事:【随時更新】妖怪道中記パスワード解析 on Discord)](http://i486.mods.jp/ichild/yokai-on-discord)
+  - [ツールの使い方・ユースケース(記事:妖怪道中記パスワード絞り込み技法)](http://i486.mods.jp/ichild/yokai-filters)
+
+### Hit済パスワード分析・探索系(Web)
+
+- [kazuhito_m/発見済パスワード絞り込み検索ページ](http://youkaiosugi.com/)
+  - 本サイトのトップページ
+- [tanzaku/抽出済みパスワードを”偽”か”真”かを記録できるウェブアプリ](https://yokai-server-vunudhkwpa-an.a.run.app/)
+  - [優先して探すパスワード/確認図みの”偽”パスワードのテキストファイル(txt)をアップロードするページ](https://yokai-server-vunudhkwpa-an.a.run.app/admin)
 
 ## Hit済みパスワードの置き場
 
