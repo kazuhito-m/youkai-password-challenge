@@ -251,6 +251,8 @@ export default class FoundPasswordSearchResult extends Vue {
 
   private onClickDownLoadFileButton() {
     this.fileDownloaded = true
+    this.trackClickEvent("FoundPasswordSearchResult", "onClickDownLoadFileButton");
+
     const nowCondition = FoundConditionSearchStatusStore.nowSearchedCondition
     if (!nowCondition) return
     const service = this.foundPasswordService as FoundPasswordService
@@ -267,6 +269,7 @@ export default class FoundPasswordSearchResult extends Vue {
 
   private async onClickSendAllMissMatchPassword() {
     this.missMatchPasswordSent = true;
+    this.trackClickEvent("FoundPasswordSearchResult", "onClickSendAllMissMatchPassword");
 
     const service = this.hazurePasswordService as HazurePasswordService;
     const target = this.passwords.map(i => i.password);
@@ -299,6 +302,14 @@ export default class FoundPasswordSearchResult extends Vue {
   private showSnackBar(message: string): void {
     this.invalidateMessage = message
     this.invalidate = true
+  }
+
+  private trackClickEvent(action: string, label: string): void {
+    this.$gtag('event', 'click', {
+      'event_category': action,
+      'event_label': label,
+      'value': 1
+    });
   }
 }
 </script>
