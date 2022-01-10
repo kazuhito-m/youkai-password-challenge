@@ -1,12 +1,12 @@
 // ignore lint rule becouse axios bug. see: https://github.com/nuxt-community/axios-module/issues/555
 /* eslint import/named: 0 */
-// import { NuxtAxiosInstance } from "@nuxtjs/axios";
+import { NuxtAxiosInstance } from "@nuxtjs/axios";
 import axios from 'axios';
 import RegisterHazurePasswordsResponse from "./RegisterHazurePasswordsResponse";
 import HazurePasswordRepository from "@/domain/youkai/password/hazure/HazurePasswordRepository";
 
 export default class HazurePasswordTransfer implements HazurePasswordRepository {
-    // constructor(private readonly axios: NuxtAxiosInstance) { }
+    constructor(private readonly axios: NuxtAxiosInstance) { }
 
     public async register(passwords: string[]): Promise<boolean> {
         try {

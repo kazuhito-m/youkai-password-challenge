@@ -133,8 +133,8 @@ export default class extends Vue {
   private readonly foundPasswordService = new FoundPasswordService(new FoundPasswordTransfer(this.$axios));
 
   @Provide()
-  private readonly hazurePasswordService = new HazurePasswordService(new HazurePasswordTransfer());
-  // private readonly hazurePasswordService = new HazurePasswordService(new HazurePasswordTransfer(this.$axios));
+  // private readonly hazurePasswordService = new HazurePasswordService(new HazurePasswordTransfer());
+  private readonly hazurePasswordService = new HazurePasswordService(new HazurePasswordTransfer(this.$axios));
 
   // this classs property & functions.
 
