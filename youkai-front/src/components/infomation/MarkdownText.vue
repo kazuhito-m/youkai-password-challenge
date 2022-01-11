@@ -1,3 +1,5 @@
+<template lang="md">
+
 ## まとめサイト
 - [これまでのあらすじ - Yokai Password Challenge](https://youkaiosugi.com/overview)
 - [PCエンジン妖怪道中記 パスワード解析Wiki（まとめサイト）](https://i486.mods.jp/yokaiwiki/)
@@ -83,3 +85,8 @@
   - 絶対に真ではないパスワード条件
   - 「枝刈りなどの最適化についても別シートに定義して追記いただけると助かります。」
 - [GameStaff @ Wiki ナムコ（メーカー関係者の名前一覧）](https://w.atwiki.jp/game_staff/sp/pages/215.html)
+
+</template>
+
+<style>
+</style>
