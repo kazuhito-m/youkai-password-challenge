@@ -2,4 +2,4 @@ rootProject.name = 'youkai-password-challenge'
 
 include 'youkai-front', 'youkai-core', 'youkai-server'
 include 'youkai-core', 'youkai-console'
-
+include 'youkai-dataconv'

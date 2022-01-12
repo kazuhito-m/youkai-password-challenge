@@ -273,6 +273,8 @@ export default class RangePasswordChallenge extends Vue {
   }
 
   private onClickStart(): void {
+    this.trackClickEvent("RangePasswordChallenge", "onClickStart");
+
     if (!this.validateFromTo()) {
       this.showInvalidateMessage("終了パスワードには開始パスワードより大きな値を入力して下さい。");
       return;
@@ -308,6 +310,14 @@ export default class RangePasswordChallenge extends Vue {
 
     return this.validatePassword(this.fromPassword) === true
       &&  this.validatePassword(this.toPassword) === true;
+  }
+
+  private trackClickEvent(action: string, label: string): void {
+    this.$gtag('event', 'click', {
+      'event_category': action,
+      'event_label': label,
+      'value': 1
+    });
   }
 }
 </script>

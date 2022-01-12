@@ -40,7 +40,7 @@
         <Nuxt />
       </v-container>
     </v-main>
-   
+
     <v-footer app>
       <span>
         &copy; {{ new Date().getFullYear() }}
@@ -49,11 +49,12 @@
         <v-icon>mdi-twitter</v-icon>kazuhito_m
       </a>
       <v-spacer></v-spacer>
+      ver.
       <a
         class="no-efect-link"
         target="_new"
         href="https://github.com/kazuhito-m/youkai-password-challenge/releases"
-      >ver. {{ selfVersion }}</a>
+      >{{ selfVersion }}</a>
     </v-footer>
 
   </v-app>
@@ -66,8 +67,10 @@ import CodeToCharacterConverter from '@/domain/youkai/checkdigit/converter/CodeT
 import CheckDigitCalculator from '@/domain/youkai/checkdigit/CheckDigitCalculator'
 import CorrectCheckDigits from '@/domain/youkai/checkdigit/correct/CorrectCheckDigits'
 import PasswordAttackService from '@/application/service/PasswordAttackService'
-import FoundPasswordService from '~/application/service/FoundPasswordService';
-import FoundPasswordTransfer from '~/infrastructure/transfer/youkai/foundpassword/FoundPasswordTransfer';
+import FoundPasswordService from '@/application/service/FoundPasswordService';
+import FoundPasswordTransfer from '@/infrastructure/transfer/youkai/foundpassword/FoundPasswordTransfer';
+import HazurePasswordService from '@/application/service/HazurePasswordService';
+import HazurePasswordTransfer from '@/infrastructure/transfer/youkai/password/hazure/HazurePasswordTransfer';
 import { FoundConditionSearchStatusStore } from '@/store'
 
 @Component({
@@ -129,6 +132,10 @@ export default class extends Vue {
   @Provide()
   private readonly foundPasswordService = new FoundPasswordService(new FoundPasswordTransfer(this.$axios));
 
+  @Provide()
+  // private readonly hazurePasswordService = new HazurePasswordService(new HazurePasswordTransfer());
+  private readonly hazurePasswordService = new HazurePasswordService(new HazurePasswordTransfer(this.$axios));
+
   // this classs property & functions.
 
   public created() {
@@ -173,6 +180,5 @@ html {
 .no-efect-link:active
 {
   text-decoration: none;
-  color: white;
 }
 </style>

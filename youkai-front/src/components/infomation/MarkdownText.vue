@@ -47,6 +47,7 @@
   - [kazuhito_m氏](https://twitter.com/kazuhito_m)
 
 ## Hit済みパスワード
+[@tanzaku_sub](https://twitter.com/tanzaku_sub) さんが掘り当てた「4700万件の当たりパスワード」に「意味在るものがあるか」「正解っぽいものがあるか」を検索・分析するためのツール群です。
 
 - [妖怪道中記 解析パスワード配布処](https://yokaipw.ddns.net/)
   - [kei氏](https://twitter.com/kei9298p)
@@ -62,11 +63,45 @@
 - [パスワードと辞書を照合するフィルタツール](https://i486.mods.jp/files/yokaisplit.zip)
    - [Imaha486氏](https://twitter.com/Imaha486)
 
-- [パスワードをAND検索するツール](https://i486.mods.jp/files/yokailoop.zip )
+- [パスワードデータ検索プログラム](http://syn-k.sakura.ne.jp/youkai2/)
+　- [@syn_z氏](https://twitter.com/syn_z)
+
+- [分析ツールパック](https://i486.mods.jp/yokai/yokai-toolpack.zip)
+  - 随時作りづつけている「解析するためのツール」のパック
+  - [Imaha486氏](https://twitter.com/Imaha486)
+   - [ツールの説明(記事:【随時更新】妖怪道中記パスワード解析 on Discord)](http://i486.mods.jp/ichild/yokai-on-discord)
+   - [ツールの使い方・ユースケース(記事:妖怪道中記パスワード絞り込み技法)](http://i486.mods.jp/ichild/yokai-filters)
+
+### Hit済パスワード分析
+
+- [kazuhito_m/発見済パスワード絞り込み検索ページ](http://youkaiosugi.com/)
+  - 本サイトのトップページ
+
+- [tanzaku/抽出済みパスワードを”偽”か”真”かを記録できるページ](https://yokai-server-vunudhkwpa-an.a.run.app/)
+  - [優先して探すパスワード/確認図みの”偽”パスワードのテキストファイル(txt)をアップロードするページ](https://yokai-server-vunudhkwpa-an.a.run.app/admin)
+
+- [Youkai Password Challenge](https://youkaiosugi.com/challenge)
+  - [kazuhito_m氏](https://twitter.com/kazuhito_m)
+
+## Hit済みパスワード
+
+- [妖怪道中記 解析パスワード配布処](https://yokaipw.ddns.net/)
+  - [kei氏](https://twitter.com/kei9298p)
+  - Hitした全パスワードのまとめ
+
+### Hit済パスワード分析・探索
+
+- [YokaiSearcher](https://github.com/Misaki0331/YokaiSearcher)
+  - [水咲氏](https://twitter.com/0x7FF)
+  - Windows版 パスワード検索ツール
+
+- [パスワードと辞書を照合するフィルタツール](https://i486.mods.jp/files/yokaisplit.zip)
    - [Imaha486氏](https://twitter.com/Imaha486)
 
-## パスワード解析資料
+- [パスワードをAND検索するツール](https://i486.mods.jp/files/yokailoop.zip )
+  - [Imaha486氏](https://twitter.com/Imaha486)
 
+## パスワード解析資料
 ## チェックディジット算出ロジック 解析資料
 
 - [31F4 - 31FB の各要素の関係性と基本コードをまとめ](https://docs.google.com/spreadsheets/d/1Hp80gXzoL0JtVbnC6CloOi2x8q5kje0cZ4kcLL0XTIc/edit#gid=0)
@@ -77,7 +112,7 @@
   - [@ko_noike氏](https://twitter.com/ko_noike) 
 - [チェックディジット算出フロー](https://cdn.discordapp.com/attachments/924502560314892360/925917918070448229/flo.png)
   - [@aios_ciao氏](https://twitter.com/aios_ciao)
-    - ゲーム内における、チェックディジット算出ロジックのフローチャート
+  - ゲーム内における、チェックディジット算出ロジックのフローチャート
 
 ## パスワード解析のヒント(分析資料)
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <title>テスト用</title>
+</head>
+<body>
+<input type="text" id="password" required minlength="14" maxlength="14" size="15">
+<button id="sendTest">送信してみる</button>
+</body>
+<script>
+function onSendTest() {
+    const input = document.getElementById('password');
+    const text = input.value;
+    alert('"' + text + '" を送信します。');
+
+    const url = "https://yokai-server-vunudhkwpa-an.a.run.app/api/import/rejected";
+    fetch(url,{
+        method: 'POST',
+        // cache: 'no-cache',
+        // mode: 'cors',
+        // redirect: 'follow',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: '[ "' + text + '" ]'
+    })
+    .then(response => {
+        response.text().then(function(text) {
+            alert(text);
+        });
+    });
+}
+
+const button = document.getElementById('sendTest');
+button.onclick = onSendTest;
+</script>
+</html>

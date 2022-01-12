@@ -144,6 +144,7 @@ export default class FoundPasswordSearchParameter extends Vue {
   }
 
   private async onClickSearch(): Promise<void> {
+    this.trackClickEvent("FoundPasswordSearchParameter", "onClickSearch");
     await FoundConditionSearchStatusStore.searchAsync();
   }
 
@@ -156,6 +157,14 @@ export default class FoundPasswordSearchParameter extends Vue {
     if (!password) password = '' // ×ボタンで、なぜかNullになるため。
     if (!this.converter?.isInvalidPassword(password)) return
     this.searchQuery = this.converter?.fixValidPassword(password)
+  }
+
+  private trackClickEvent(action: string, label: string): void {
+    this.$gtag('event', 'click', {
+      'event_category': action,
+      'event_label': label,
+      'value': 1
+    });
   }
 }
 </script>
