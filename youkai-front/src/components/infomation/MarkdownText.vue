@@ -64,7 +64,7 @@
    - [Imaha486氏](https://twitter.com/Imaha486)
 
 - [パスワードデータ検索プログラム](http://syn-k.sakura.ne.jp/youkai2/)
-　- [@syn_z氏](https://twitter.com/syn_z)
+  - [@syn_z氏](https://twitter.com/syn_z)
 
 - [分析ツールパック](https://i486.mods.jp/yokai/yokai-toolpack.zip)
   - 随時作りづつけている「解析するためのツール」のパック
@@ -102,19 +102,19 @@
   - [Imaha486氏](https://twitter.com/Imaha486)
 
 ## パスワード解析資料
-## チェックディジット算出ロジック 解析資料
+
+### チェックディジット算出ロジック 解析資料
 
 - [31F4 - 31FB の各要素の関係性と基本コードをまとめ](https://docs.google.com/spreadsheets/d/1Hp80gXzoL0JtVbnC6CloOi2x8q5kje0cZ4kcLL0XTIc/edit#gid=0)
   - [Imaha486氏](https://twitter.com/Imaha486)
   - 「枝刈りなどの最適化についても別シートに定義して追記いただけると助かります。」とのこと
-
 - [kounoikeさんによる「$31F4/$31F5枝狩り考察」資料](https://gist.github.com/kounoike/340c1dbf684bc2cc5dd0169b1f824317)
   - [@ko_noike氏](https://twitter.com/ko_noike) 
 - [チェックディジット算出フロー](https://cdn.discordapp.com/attachments/924502560314892360/925917918070448229/flo.png)
   - [@aios_ciao氏](https://twitter.com/aios_ciao)
   - ゲーム内における、チェックディジット算出ロジックのフローチャート
 
-## パスワード解析のヒント(分析資料)
+### パスワード解析のヒント(分析資料)
 
 - [PCE妖怪道中記-解析情報共有スプレッドシート](https://docs.google.com/spreadsheets/d/1Hp80gXzoL0JtVbnC6CloOi2x8q5kje0cZ4kcLL0XTIc/edit#gid=738842620)
   - 絶対に真ではないパスワード条件
