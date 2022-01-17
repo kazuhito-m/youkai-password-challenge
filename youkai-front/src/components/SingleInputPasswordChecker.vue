@@ -12,11 +12,11 @@
           <v-col cols="12" sm="8" md="12">
             <v-text-field
               v-model="youkaiPassword"
-              :counter="14"
+              :counter="passwordCharMaxLength"
               :rules="[validateYoukaiPassword]"
               label="妖怪的なパスワード"
               required
-              maxlength="14"
+              :maxlength="passwordCharMaxLength"
               clearable
               class="input-yokai-password"
               @keypress="onKeyPless"
@@ -79,6 +79,10 @@ export default class SingleInputPasswordChecker extends Vue {
   @Inject()
   private readonly correctCheckDigits?: CorrectCheckDigits;
 
+  private get passwordCharMaxLength(): number {
+    return CorrectCheckDigits.passwordMaxCharLength();
+  }
+
   private mounted(): void {
     if (!this.youkaiPassword) this.youkaiPassword = "";
     if (this.youkaiPassword.trim().length > 0) return;
@@ -133,7 +137,7 @@ export default class SingleInputPasswordChecker extends Vue {
     let password = this.youkaiPassword;
     if (!password) password = ""; // ×ボタンで、なぜかNullになるため。
     const min = AttackCharacters.MIN_CHARS_LENGTH;
-    const max = AttackCharacters.MAX_CHARS_LENGTH;
+    const max = this.passwordCharMaxLength;
     if (password.length < min || password.length > max) 
       return `${min}文字から${max}文字の範囲で入力して下さい。`;
     if (this.converter?.isInvalidPassword(password))

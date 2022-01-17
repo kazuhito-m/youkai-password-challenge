@@ -65,6 +65,12 @@ export default class CorrectCheckDigits {
         return corrects[randomIndex];
     }
 
+    public static passwordMaxCharLength(): number {
+        return CorrectCheckDigits.CORRECTS
+            .map(cd => cd.typicalPassowrd.charLength())
+            .reduce((left, right) => Math.max(left, right));
+    }
+
     private static of(
         typicalPassowrdText: string,
         originalMessage: string,
