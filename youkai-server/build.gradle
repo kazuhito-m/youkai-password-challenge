@@ -7,13 +7,7 @@ plugins {
 
 sourceCompatibility = versions.sourceCompatibility
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
-dependencies {
+sadependencies {
     implementation project(':youkai-core')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
