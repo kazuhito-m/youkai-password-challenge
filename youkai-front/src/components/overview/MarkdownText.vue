@@ -82,7 +82,7 @@ __現在、「”真の14桁パスワード”と思しきもの」はまだ見�
 - 2022/01/04
   - [@kazuhito_m](https://twitter.com/kazuhito_m) により「現在判明しているパスワードを検索出来るページ」が作成される
     - [発見済パスワード絞り込み検索](https://youkaiosugi.com/) ※本サイトのトップページ
-  - over80さん、Luzulyさん、西園寺公望さん、[@botesan](https://twitter.com/botesan)さんらにより「ハズレパスの選別」が進む
+  - over80さん、Luzulyさん、@ @西園寺公望さん、[@botesan](https://twitter.com/botesan)さんらにより「ハズレパスの選別」が進む
 - 2022/01/05
   - [@ko_noike](https://twitter.com/ko_noike) さんとその自作ツールにより「通り得るパスワードは 47,315,374件」という事が追認される
     - 正確には [@kei](https://twitter.com/kei9298p) さんの手により「現在のデータを全部合わせた件数を確認」することにより判明
@@ -113,7 +113,7 @@ __現在、「”真の14桁パスワード”と思しきもの」はまだ見�
     - クリックされた場合、前述の [パスワードを表示して”偽”か”真”かのボタンを押すページ](https://yokai-server-vunudhkwpa-an.a.run.app/) のサイトに送られる
   - [@Imaha486](https://twitter.com/Imaha486) さんにより「指定した区切り文字を一度しか出現させず、そこから後ろは終端まで全て（インチキ）ローマ字変換できなければNG」絞り込みツールが開発される
     - 当人曰く「かなり乱暴なツール」とのこと
-  - 西園寺公望さん、[@botesan](https://twitter.com/botesan)さん、over80さんらにより「目検による”ハズレ”パスワードの確認結果報告」が連日届く
+  - @西園寺公望さん、[@botesan](https://twitter.com/botesan)さん、over80さんらにより「目検による”ハズレ”パスワードの確認結果報告」が連日届く
     - 一日、一人で約1000〜8000件程の確認率なので尋常じゃない貢献である
       - 省略したがそれが一週間以上続いている
     - その全てが [@kei9298p](https://twitter.com/kei9298p)さんにより、[ご自身の集積サイト](https://github.com/kmikage/yokai-password/tree/main/rejected_passwords)に取り込まれる
@@ -166,12 +166,11 @@ __現在、「”真の14桁パスワード”と思しきもの」はまだ見�
   - [@Imaha486](https://twitter.com/Imaha486) さんにより、ツールのアップグレード
     - 連続文字の除去機能を追加
 - 2022/02/19
-  - 目検による”ハズレ”パスワードの確認結果報告」がほぼ毎日継続して報告される
-    - 西園寺公望さん、[@botesan](https://twitter.com/botesan)さん、[@Imaha486](https://twitter.com/Imaha486) さん らの手による
+  - 目検による”ハズレ”パスワードの確認結果報告」が、有志の手によりほぼ毎日継続して報告される
+    - @西園寺公望さん、[@botesan](https://twitter.com/botesan)さん、[@Imaha486](https://twitter.com/Imaha486) さん らの手による
     - まとめのタイミングを失っていたのだが、1月中旬からほぼ一ヶ月間途切れず有志の手により続けられてきた
     - それらが [@kei](https://twitter.com/kei9298p) さんの手により [集積サイト](https://github.com/kmikage/yokai-password/tree/main/rejected_passwords) にまとめられている
       - 現在、 ハズレパス総数 : 693,011、ユニークなハズレパス : 670,650
-  - 有志の手により「ハズレパスワードの目剣
 - 2022/02/20
   - @げーむおやじ さんから `なむこむな!756-2311` という「有意に見えて、かつ唯一」なパスワードが「気になるもの」として [Discordの雑談チャンネル](https://discord.com/channels/924501371963736085/924501371963736088) に報告される
     - `756-2311` は当時のナムコ本社電話番号かつ「既発見のパスワード」の一つ
