@@ -101,6 +101,9 @@
 - [パスワードをAND検索するツール](https://i486.mods.jp/files/yokailoop.zip )
   - [Imaha486氏](https://twitter.com/Imaha486)
 
+- [ハズレパス用検索ツール](https://drive.google.com/file/d/10Dw5xngJMdrfjCilZhCugh6tLwBjnnat/view) 
+  - [@botesan](https://twitter.com/botesan) 
+
 ## パスワード解析資料
 
 ### チェックディジット算出ロジック 解析資料
@@ -108,7 +111,7 @@
 - [31F4 - 31FB の各要素の関係性と基本コードをまとめ](https://docs.google.com/spreadsheets/d/1Hp80gXzoL0JtVbnC6CloOi2x8q5kje0cZ4kcLL0XTIc/edit#gid=0)
   - [Imaha486氏](https://twitter.com/Imaha486)
   - 「枝刈りなどの最適化についても別シートに定義して追記いただけると助かります。」とのこと
-- [kounoikeさんによる「$31F4/$31F5枝狩り考察」資料](https://gist.github.com/kounoike/340c1dbf684bc2cc5dd0169b1f824317)
+- [こーのいけ さんによる「$31F4/$31F5枝狩り考察」資料](https://gist.github.com/kounoike/340c1dbf684bc2cc5dd0169b1f824317)
   - [@ko_noike氏](https://twitter.com/ko_noike) 
 - [チェックディジット算出フロー](https://cdn.discordapp.com/attachments/924502560314892360/925917918070448229/flo.png)
   - [@aios_ciao氏](https://twitter.com/aios_ciao)

@@ -124,6 +124,60 @@ __現在、「”真の14桁パスワード”と思しきもの」はまだ見�
   - 上記情報にて「特定ワードの検索」をする協力者が増える
 - 2022/01/14
   - Discrodの参加人数が200アカウントを超える
+- 2022/01/19
+  - Discord内の抽出部屋チャンネルにて「パスワードの傾向」について「自然文ではないのではないか？」などの議論がなされる
+    - [@Imaha486](https://twitter.com/Imaha486) さんが傾向を解析し、 @82239さん、 @お餅のkerohiraさん、@Luzulyさん、[@水咲](https://twitter.com/0x7FF)さん、[@kei](https://twitter.com/kei9298p) さんらがより議論が
+- 2022/01/21
+  - [@kei](https://twitter.com/kei9298p) さんの呼びかけで「妖怪道中記パスワード解析系のWebサイトを持ってる者同士での横の連携を図ろう」という取り組みが提案される
+    - 一環として pklion さんによる [解析パスワード配布処](https://yokaipw.ddns.net/) の改善が行われる
+  - [@botesan](https://twitter.com/botesan) さんにより [ハズレパス用検索ツール](https://drive.google.com/file/d/10Dw5xngJMdrfjCilZhCugh6tLwBjnnat/view) が作られる
+- 2022/01/23
+  - [@Imaha486](https://twitter.com/Imaha486) さんにより [新たな除外条件](https://media.discordapp.net/attachments/925131877688434700/934775094503432232/unknown.png?width=788&height=330) のアイディアが表明される
+- 2022/01/24
+  - [@kei](https://twitter.com/kei9298p) さんの呼びかけにより、多くの人が参加している「ハズレデータの目検」データの「統合」が行われる
+    - 具体的には [@tanakazu_sub](https://twitter.com/tanzaku_sub)さんの持っている [パスワードを表示して”偽”か”真”かのボタンを押すページ](https://yokai-server-vunudhkwpa-an.a.run.app/) のデータを、[@kei9298p](https://twitter.com/kei9298p)さんの[集積サイト](https://github.com/kmikage/yokai-password/tree/main/rejected_passwords) に日イチで取り込む仕組みに
+- 2022/01/26
+  - [@Imaha486](https://twitter.com/Imaha486) さんにより、ツールのアップグレード
+    - 位置指定デリートを実装
+- 2022/01/27
+  - [@Imaha486](https://twitter.com/Imaha486) さんにより [新たな除外条件](https://media.discordapp.net/attachments/925131877688434700/935913603427622932/unknown.png?width=488&height=468) のアイディアが表明される
+- 2022/01/28
+  - [@botesan](https://twitter.com/botesan) さんにより [ハズレパス用検索ツール](https://drive.google.com/file/d/10Dw5xngJMdrfjCilZhCugh6tLwBjnnat/view) のアップグレード
+    - 抽出済みファイルを取り込んで検索結果に反映する機能を追加
+- 2022/01/30
+  - [@kei](https://twitter.com/kei9298p) さん、[@Imaha486](https://twitter.com/Imaha486) さんにより [今やってる活動のまとめ](/matome.png) が行われる
+- 2022/02/02
+  - [@Imaha486](https://twitter.com/Imaha486) さんにのアイディアから、過去判明したパスワードをヒントにした探索が @kagura1050さん、[@こーのいけ](https://twitter.com/ko_noike)さん、[@tanakazu_sub](https://twitter.com/tanzaku_sub)さんにより開始される
+    - 既判明のパスワード [MONITORのメッセージ](http://retrofreak.blog.jp/archives/78015705.html) の後半がチェックディジットに見えることから
+- 2022/02/06
+  - [@Imaha486](https://twitter.com/Imaha486) さんにより「パターンに寄る絞り込みと、そこで絞られたものの目検出」が続けられる
+    - アルファベットの母音の関係上、存在しないであろう組み合わせの省き
+    - 「ローマ字+記号+頭1桁無視」と「ローマ字+記号+末尾2桁無視」省き、は存在せず、など
+- 2022/02/07
+  - [@botesan](https://twitter.com/botesan) さんにより [ハズレパス用検索ツール](https://drive.google.com/file/d/10Dw5xngJMdrfjCilZhCugh6tLwBjnnat/view) のアップグレード
+    - 一部フォントの変更と対象外パスワードを登録しないように修正など
+- 2022/02/14
+  - [4ST(@4STUDIO4)](https://twitter.com/4STUDIO4) さんにより「そろそろ水野さん(当時の関係者)に凸ってみるべきですかねぇ」の可能性を示唆
+    - 水野さんも「覚えているとは限らない」とした上で
+- 2022/02/16
+  - [@Imaha486](https://twitter.com/Imaha486) さんにより「ゼビ語」が使われてる可能性を疑うも、[4ST(@4STUDIO4)](https://twitter.com/4STUDIO4) さんにより関係者ヒアリングで否定される
+    - 宇田川さん「水野氏はゼビ語は使わないかなぁ。浅田さんを皮肉った造語かもしれませんしフィルター設計が難しいのかなぁ」との返信
+- 2022/02/18
+  - [@Imaha486](https://twitter.com/Imaha486) さんにより、ツールのアップグレード
+    - 連続文字の除去機能を追加
+- 2022/02/19
+  - 目検による”ハズレ”パスワードの確認結果報告」がほぼ毎日継続して報告される
+    - 西園寺公望さん、[@botesan](https://twitter.com/botesan)さん、[@Imaha486](https://twitter.com/Imaha486) さん らの手による
+    - まとめのタイミングを失っていたのだが、1月中旬からほぼ一ヶ月間途切れず有志の手により続けられてきた
+    - それらが [@kei](https://twitter.com/kei9298p) さんの手により [集積サイト](https://github.com/kmikage/yokai-password/tree/main/rejected_passwords) にまとめられている
+      - 現在、 ハズレパス総数 : 693,011、ユニークなハズレパス : 670,650
+  - 有志の手により「ハズレパスワードの目剣
+- 2022/02/20
+  - @げーむおやじ さんから `なむこむな!756-2311` という「有意に見えて、かつ唯一」なパスワードが「気になるもの」として [Discordの雑談チャンネル](https://discord.com/channels/924501371963736085/924501371963736088) に報告される
+    - `756-2311` は当時のナムコ本社電話番号かつ「既発見のパスワード」の一つ
+    - `むな!` はパスワード入力画面に表示されている文字を反時計回りで入力したもの
+  - [@Imaha486](https://twitter.com/Imaha486) さんにより、すかさず [4ST(@4STUDIO4)](https://twitter.com/4STUDIO4) さんへ「関係者確認の依頼」が行われる
+
 </template>
 
 <style>
