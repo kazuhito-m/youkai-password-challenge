@@ -10,6 +10,8 @@ __なむこむな！756-2311__
 
 参加した全ての皆様、おめでとうございます&お疲れ様でした。
 
+- [パスワード解析に挑んだ勇者達の名簿](https://docs.google.com/spreadsheets/d/1Hp80gXzoL0JtVbnC6CloOi2x8q5kje0cZ4kcLL0XTIc/edit#gid=164422823)
+- [パスワード解析orハズレパスワード探索の貢献者](https://github.com/kmikage/yokai-password/#%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%BC%E6%96%87%E5%AD%97%E3%82%B3%E3%83%BC%E3%83%89%E9%A0%86)
 
 ## 時系列
 
