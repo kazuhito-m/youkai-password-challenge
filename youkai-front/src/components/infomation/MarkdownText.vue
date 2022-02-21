@@ -116,8 +116,6 @@
 - [チェックディジット算出フロー](https://cdn.discordapp.com/attachments/924502560314892360/925917918070448229/flo.png)
   - [@aios_ciao氏](https://twitter.com/aios_ciao)
   - ゲーム内における、チェックディジット算出ロジックのフローチャート
-- [こーのいけ さんによる「妖怪道中記パスワード解析 列挙アルゴリズム改良法 ～挟み撃ち法～」資料](https://docs.google.com/presentation/d/1JX6LaE_EUTyoF_oeBORXN-JIYkrnbtp-oo1q7FnwsJg/edit#slide=id.p)
-  - [@ko_noike氏](https://twitter.com/ko_noike)
 
 ### パスワード解析のヒント(分析資料)
 
