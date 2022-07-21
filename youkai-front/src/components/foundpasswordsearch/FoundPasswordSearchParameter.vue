@@ -162,7 +162,7 @@ export default class FoundPasswordSearchParameter extends Vue {
     return this.vallidateSearchQuery(this.searchQuery) === true
   }
 
-  private async onClickSearch(): Promise<void> {
+  private onClickSearch(): void {
     // this.trackClickEvent("FoundPasswordSearchParameter", "onClickSearch");
     // await FoundConditionSearchStatusStore.searchAsync();
 
