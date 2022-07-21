@@ -12,6 +12,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest ]
         jdk: [ 17 ]
+        node: [16.15.0]
 
     runs-on: ${{ matrix.os }}
 
@@ -95,27 +96,32 @@ jobs:
           asset_name: ${{ steps.get_binary_names.outputs.CONSOLE_JAR_NAME }}
           asset_content_type: application/zip
 
-      - name: Deploy
-        id: deploy
-        run: |
-          echo "${SSH_KEY}" > ./keyfile
-          chmod 400 ./keyfile
-          ssh -oStrictHostKeyChecking=no -p ${SSH_PORT} -i ./keyfile ${SSH_USER_AND_HOST} /var/opt/youkai-server/deploy.sh ${TAG_NAME}
-          rm ./keyfile
-        env:
-          TAG_NAME: ${{ steps.get_tag_name.outputs.TAG_NAME }}
-          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-          SSH_PORT: ${{ secrets.DEPLOY_SSH_PORT }}
-          SSH_USER_AND_HOST: ${{ secrets.DEPLOY_SSH_USER_AND_HOST }}
+      # Build and Deploy fron only
 
-      - name: Notify Slack
-        uses: 8398a7/action-slack@v3
+      - name: Setup node env
+        uses: actions/setup-node@v3
         with:
-          status: ${{ job.status }}
-          author_name: Tagによるビルド・リリース・デプロイ結果 - Youkai Password Challenge
-          fields: repo,message,commit,author,action,eventName,workflow,pullRequest
-          mention: 'U0HKET970'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: ./youkai-front/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        working-directory: ./youkai-front/
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Build for gh-pages dist
+        working-directory: ./youkai-front/
+        run: npm run generate
+
+      - name: Deploy for gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./youkai-front/dist
