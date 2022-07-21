@@ -53,6 +53,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/google-gtag',
     '@nuxt/content',
+    '@nuxtjs/google-adsense',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -126,4 +127,7 @@ export default {
   'google-gtag': {
     id: 'G-SSP93CH50C',
   },
+  'google-adsense': {
+    id: 'ca-pub-5057344970486670'
+  }
 }
