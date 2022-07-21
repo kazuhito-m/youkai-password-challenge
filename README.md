@@ -7,6 +7,14 @@ Youkai Password Challenge
 
 元プログラムは「パスワード3種を総当りでチェック・ディジットが通るパスワードをさがすプログラム」
 
+## Note/Remarks
+
+現在は、検索等の昨日はもう役目を終えているため、動いていません。
+
+実質 `youkai-front` だけがメンテされており、それだけがデプロイされている状況です。
+
+(以下のサイトも、一部機能動きません。)
+
 ## Deploid Service
 
 <https://youkaiosugi.com>
