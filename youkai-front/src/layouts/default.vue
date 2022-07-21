@@ -90,8 +90,13 @@ export default class extends Vue {
   private readonly items = [
     {
       icon: 'mdi-apps',
-      title: '発見済パスワード検索',
+      title: 'これまでのあらすじ',
       to: '/',
+    },
+    {
+      icon: 'mdi-apps',
+      title: '発見済パスワード検索',
+      to: '/foundpassword',
     },
     {
       icon: 'mdi-apps',
@@ -102,11 +107,6 @@ export default class extends Vue {
       icon: 'mdi-apps',
       title: 'パスワード確認',
       to: '/checker',
-    },
-    {
-      icon: 'mdi-apps',
-      title: 'これまでのあらすじ',
-      to: '/overview',
     },
     {
       icon: 'mdi-apps',
