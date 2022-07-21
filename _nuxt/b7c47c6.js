@@ -28,7 +28,7 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
 // CONCATENATED MODULE: ./src/components/infomation/MarkdownText.vue?vue&type=template&id=618e1c32&lang=md&
 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(86);
+var componentNormalizer = __webpack_require__(74);
 
 // CONCATENATED MODULE: ./src/components/infomation/MarkdownText.vue
 
@@ -143,7 +143,7 @@ infomationvue_type_script_lang_ts_Infomation = __decorate([Object(lib["Component
 // CONCATENATED MODULE: ./src/pages/infomation.vue?vue&type=script&lang=ts&
  /* harmony default export */ var pages_infomationvue_type_script_lang_ts_ = (infomationvue_type_script_lang_ts_); 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(86);
+var componentNormalizer = __webpack_require__(74);
 
 // EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
 var installComponents = __webpack_require__(104);

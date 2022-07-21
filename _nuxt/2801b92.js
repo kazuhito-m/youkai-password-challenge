@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[19],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
 
 /***/ 659:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -13,19 +13,19 @@
 
 /***/ }),
 
-/***/ 752:
+/***/ 748:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/index.vue?vue&type=template&id=311d5e3f&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"center"}},[_c('v-col',{attrs:{"cols":"12","sm":"8","md":"8"}},[_c('v-card',[_c('v-card-title',{staticClass:"headline"},[_vm._v("\n            これまでのあらすじ\n          ")]),_vm._v(" "),_c('v-card-text',[_c('MarkdownText')],1)],1)],1)],1)],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/foundpassword.vue?vue&type=template&id=32ac0b0a&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('FoundPasswordSearch')],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/index.vue?vue&type=template&id=311d5e3f&
+// CONCATENATED MODULE: ./src/pages/foundpassword.vue?vue&type=template&id=32ac0b0a&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
 var es_reflect_construct = __webpack_require__(58);
@@ -51,10 +51,10 @@ var es_object_get_own_property_descriptor = __webpack_require__(14);
 // EXTERNAL MODULE: ./node_modules/vue-property-decorator/lib/index.js + 14 modules
 var lib = __webpack_require__(134);
 
-// EXTERNAL MODULE: ./src/components/overview/MarkdownText.vue + 2 modules
-var MarkdownText = __webpack_require__(705);
+// EXTERNAL MODULE: ./src/components/foundpasswordsearch/FoundPasswordSearch.vue + 4 modules
+var FoundPasswordSearch = __webpack_require__(740);
 
-// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/index.vue?vue&type=script&lang=ts&
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/foundpassword.vue?vue&type=script&lang=ts&
 
 
 
@@ -81,54 +81,39 @@ var __decorate = undefined && undefined.__decorate || function (decorators, targ
 
 
 
-var pagesvue_type_script_lang_ts_index = /*#__PURE__*/function (_Vue) {
-  Object(inherits["a" /* default */])(index, _Vue);
+var foundpasswordvue_type_script_lang_ts_FoundPassword = /*#__PURE__*/function (_Vue) {
+  Object(inherits["a" /* default */])(FoundPassword, _Vue);
 
-  var _super = _createSuper(index);
+  var _super = _createSuper(FoundPassword);
 
-  function index() {
-    Object(classCallCheck["a" /* default */])(this, index);
+  function FoundPassword() {
+    Object(classCallCheck["a" /* default */])(this, FoundPassword);
 
     return _super.apply(this, arguments);
   }
 
-  return index;
+  return FoundPassword;
 }(lib["Vue"]);
 
-pagesvue_type_script_lang_ts_index = __decorate([Object(lib["Component"])({
+foundpasswordvue_type_script_lang_ts_FoundPassword = __decorate([Object(lib["Component"])({
   components: {
-    MarkdownText: MarkdownText["default"]
+    FoundPasswordSearch: FoundPasswordSearch["default"]
   }
-})], pagesvue_type_script_lang_ts_index);
-/* harmony default export */ var pagesvue_type_script_lang_ts_ = (pagesvue_type_script_lang_ts_index);
-// CONCATENATED MODULE: ./src/pages/index.vue?vue&type=script&lang=ts&
- /* harmony default export */ var src_pagesvue_type_script_lang_ts_ = (pagesvue_type_script_lang_ts_); 
+})], foundpasswordvue_type_script_lang_ts_FoundPassword);
+/* harmony default export */ var foundpasswordvue_type_script_lang_ts_ = (foundpasswordvue_type_script_lang_ts_FoundPassword);
+// CONCATENATED MODULE: ./src/pages/foundpassword.vue?vue&type=script&lang=ts&
+ /* harmony default export */ var pages_foundpasswordvue_type_script_lang_ts_ = (foundpasswordvue_type_script_lang_ts_); 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(86);
+var componentNormalizer = __webpack_require__(74);
 
 // EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
 var installComponents = __webpack_require__(104);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
-var VCard = __webpack_require__(681);
-
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
-var components_VCard = __webpack_require__(650);
-
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(741);
-
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
-var VContainer = __webpack_require__(644);
-
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VLayout.js
 var VLayout = __webpack_require__(659);
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(742);
-
-// CONCATENATED MODULE: ./src/pages/index.vue
+// CONCATENATED MODULE: ./src/pages/foundpassword.vue
 
 
 
@@ -137,7 +122,7 @@ var VRow = __webpack_require__(742);
 /* normalize component */
 
 var component = Object(componentNormalizer["a" /* default */])(
-  src_pagesvue_type_script_lang_ts_,
+  pages_foundpasswordvue_type_script_lang_ts_,
   render,
   staticRenderFns,
   false,
@@ -147,18 +132,12 @@ var component = Object(componentNormalizer["a" /* default */])(
   
 )
 
-/* harmony default export */ var pages = __webpack_exports__["default"] = (component.exports);
+/* harmony default export */ var foundpassword = __webpack_exports__["default"] = (component.exports);
 
 /* vuetify-loader */
 
 
-
-
-
-
-
-
-installComponents_default()(component, {VCard: VCard["a" /* default */],VCardText: components_VCard["c" /* VCardText */],VCardTitle: components_VCard["d" /* VCardTitle */],VCol: VCol["a" /* default */],VContainer: VContainer["a" /* default */],VLayout: VLayout["a" /* default */],VRow: VRow["a" /* default */]})
+installComponents_default()(component, {VLayout: VLayout["a" /* default */]})
 
 
 /***/ })

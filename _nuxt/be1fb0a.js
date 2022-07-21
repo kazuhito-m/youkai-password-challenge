@@ -66,7 +66,7 @@ var runtime = __webpack_require__(67);
 // CONCATENATED MODULE: ./src/pages/tech/_slug.vue?vue&type=script&lang=ts&
  /* harmony default export */ var tech_slugvue_type_script_lang_ts_ = (_slugvue_type_script_lang_ts_); 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(86);
+var componentNormalizer = __webpack_require__(74);
 
 // EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
 var installComponents = __webpack_require__(104);

@@ -15,7 +15,7 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
 // CONCATENATED MODULE: ./src/components/infomation/MarkdownText.vue?vue&type=template&id=618e1c32&lang=md&
 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(86);
+var componentNormalizer = __webpack_require__(74);
 
 // CONCATENATED MODULE: ./src/components/infomation/MarkdownText.vue
 
