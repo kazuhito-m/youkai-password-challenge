@@ -65,7 +65,24 @@
       <v-progress-circular indeterminate color="green" />
       Now Serching...
     </v-overlay>
-  </v-card>
+     <v-snackbar
+      v-model="showEndServiceInfomation"
+      outlined
+      multi-line
+      color="blue"
+    >
+      検索サービスは終了しました。ご協力ありがとうございました。
+      <template #action="{ attrs }">
+        <v-btn
+          color="blue"
+          text
+          v-bind="attrs"
+          @click="showEndServiceInfomation = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar> </v-card>
 </template>
 
 <script lang="ts">
@@ -85,6 +102,8 @@ export default class FoundPasswordSearchParameter extends Vue {
   private onChangeSearchQuery(): void {
     this.fixSearchQueryWhenInvalid()
   }
+
+  public showEndServiceInfomation = false;
 
   private get searchQuery(): string {
     return FoundConditionSearchStatusStore.nowConditionQuery
@@ -144,8 +163,10 @@ export default class FoundPasswordSearchParameter extends Vue {
   }
 
   private async onClickSearch(): Promise<void> {
-    this.trackClickEvent("FoundPasswordSearchParameter", "onClickSearch");
-    await FoundConditionSearchStatusStore.searchAsync();
+    // this.trackClickEvent("FoundPasswordSearchParameter", "onClickSearch");
+    // await FoundConditionSearchStatusStore.searchAsync();
+
+    this.showEndServiceInfomation = true;
   }
 
   private onClearResultsAndCondition(): void {
