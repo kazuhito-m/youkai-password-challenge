@@ -1,5 +1,8 @@
 <template lang="md">
 
+このページは、PCエンジン版 [#妖怪道中記](https://twitter.com/hashtag/%E5%A6%96%E6%80%AA%E9%81%93%E4%B8%AD%E8%A8%98) の発売から35年以上経ったにもかかわらず
+未解明だった謎に挑んだ [#隠しパスワード解析選手権](https://twitter.com/hashtag/%E9%9A%A0%E3%81%97%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E8%A7%A3%E6%9E%90%E9%81%B8%E6%89%8B%E6%A8%A9?src=hashtag_click&f=live) が開催されていた当時の記録である。
+
 [@kazuhito_m](https://twitter.com/kazuhito_m) の「独断と偏見」なので、正しいことは一次ソースを当たって下さい。
 
 ---
