@@ -20,12 +20,12 @@
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/index.vue?vue&type=template&id=3850a306&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"top"}},[_c('v-col',{attrs:{"cols":"10","sm":"8","md":"8"}},[_c('v-card',[_c('v-card-title',{staticClass:"headline"},[_vm._v(" これまでのあらすじ ")]),_vm._v(" "),_c('v-card-text',[_c('MarkdownText')],1)],1)],1),_vm._v(" "),_c('v-col',{attrs:{"cols":"2","sm":"2","md":"2"}},[_c('v-card',[_c('div',[_c('adsbygoogle',{attrs:{"ad-slot":1285563562,"ad-style":{ display: 'block' },"ad-format":'auto'}})],1)])],1)],1)],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/index.vue?vue&type=template&id=5201a97d&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"top"}},[_c('v-col',{attrs:{"cols":"10","sm":"8","md":"8"}},[_c('v-card',[_c('v-card-title',{staticClass:"headline"},[_vm._v(" これまでのあらすじ ")]),_vm._v(" "),_c('v-card-text',[_c('MarkdownText')],1)],1)],1),_vm._v(" "),_c('v-col',{attrs:{"cols":"2","sm":"2","md":"2"}},[_c('div',[_c('adsbygoogle',{attrs:{"ad-slot":1285563562,"ad-style":{ display: 'block' },"ad-format":'auto'}})],1)])],1)],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/index.vue?vue&type=template&id=3850a306&
+// CONCATENATED MODULE: ./src/pages/index.vue?vue&type=template&id=5201a97d&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
 var es_reflect_construct = __webpack_require__(58);
