@@ -2,6 +2,7 @@
     <v-container>
       <v-row justify="center" align="center">
         <v-col cols="12" sm="6" md="6">
+          <AdSideways />
           <PasswordChallengeParameter />
         </v-col>
         <v-col cols="12" sm="6" md="6"> 

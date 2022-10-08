@@ -12,6 +12,9 @@
             </v-card-text>
           </v-card>
         </v-col>
+        <v-col cols="2" sm="2" md="1">
+          <AdVertical />
+        </v-col>
       </v-row>
     </v-container>
   </v-layout>
