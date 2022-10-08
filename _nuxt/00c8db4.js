@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[17],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
 
 /***/ 659:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -13,7 +13,7 @@
 
 /***/ }),
 
-/***/ 747:
+/***/ 748:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79,7 +79,7 @@ var VCard = __webpack_require__(681);
 var components_VCard = __webpack_require__(650);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(741);
+var VCol = __webpack_require__(742);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(644);
@@ -97,7 +97,7 @@ var VListItem = __webpack_require__(131);
 var components_VList = __webpack_require__(98);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(742);
+var VRow = __webpack_require__(743);
 
 // CONCATENATED MODULE: ./src/pages/doc.vue
 
