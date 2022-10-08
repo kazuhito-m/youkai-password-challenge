@@ -11,13 +11,7 @@
           </v-card>
         </v-col>
         <v-col cols="2" sm="2" md="2">
-          <div>
-            <adsbygoogle
-              :ad-slot="1285563562"
-              :ad-style="{ display: 'block' }"
-              :ad-format="'auto'"
-            />
-          </div>
+          <AdVertical />
         </v-col>
       </v-row>
     </v-container>
@@ -27,10 +21,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import MarkdownText from '@/components/overview/MarkdownText.vue'
+import AdVertical from '@/components/googleadsense/AdVertical.vue'
 
 @Component({
   components: {
     MarkdownText,
+    AdVertical
   },
 })
 export default class index extends Vue {}
