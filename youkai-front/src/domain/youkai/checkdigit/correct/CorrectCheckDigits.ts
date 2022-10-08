@@ -20,7 +20,7 @@ export default class CorrectCheckDigits {
         CorrectCheckDigits.of("PC-ENGINE", "ＭＡＤＥ　ＩＮ　ＪＡＰＡＮ", "おそらくメッセージが出るだけです。"),
         CorrectCheckDigits.of("NEC", "(空文字)", "メッセージが出るだけ…なのだが、18文字の皮肉がリリース前に消されたらしい。"),
         CorrectCheckDigits.of("MIZUNO", "わたしの　きかくした　このげーむ　いかがですか？", "おそらくメッセージが出るだけです。"),
-        CorrectCheckDigits.of("6809", "ＰＬＥＡＳＥ　ＩＮＳＥＲＴ　６８０９　ＣＡＥＤ", "おそらくメッセージが出るだけです。"),
+        CorrectCheckDigits.of("6809", "ＰＬＥＡＳＥ　ＩＮＳＥＲＴ　６８０９　ＣＡＲＤ", "おそらくメッセージが出るだけです。"),
         CorrectCheckDigits.of("MONITOR", "２Ｄ８８　５１　６２　０Ｅ　ＦＤ　３９　０３　ＣＢ　２６", "おそらくメッセージが出るだけです。"),
         CorrectCheckDigits.of("YAMASHITA", "わたしは　かようきょくが　だいきらい", "おそらくメッセージが出るだけです。"),
         CorrectCheckDigits.of("MICHIYO", "３めんが　くりあ　できないよー！", "おそらくメッセージが出るだけです。"),
