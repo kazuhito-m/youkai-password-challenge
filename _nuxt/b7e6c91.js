@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[27],[
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[24],[
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10113,10 +10113,7 @@ __webpack_require__.d(components_namespaceObject, "SingleInputPasswordChecker", 
 __webpack_require__.d(components_namespaceObject, "FoundpasswordsearchFoundPasswordSearch", function() { return FoundpasswordsearchFoundPasswordSearch; });
 __webpack_require__.d(components_namespaceObject, "FoundpasswordsearchFoundPasswordSearchParameter", function() { return FoundpasswordsearchFoundPasswordSearchParameter; });
 __webpack_require__.d(components_namespaceObject, "FoundpasswordsearchFoundPasswordSearchResult", function() { return FoundpasswordsearchFoundPasswordSearchResult; });
-__webpack_require__.d(components_namespaceObject, "GoogleadsenseAdSideways", function() { return GoogleadsenseAdSideways; });
 __webpack_require__.d(components_namespaceObject, "GoogleadsenseAdVertical", function() { return GoogleadsenseAdVertical; });
-__webpack_require__.d(components_namespaceObject, "GoogleadsenseAdVertical2", function() { return GoogleadsenseAdVertical2; });
-__webpack_require__.d(components_namespaceObject, "GoogleadsenseAdVertical3", function() { return GoogleadsenseAdVertical3; });
 __webpack_require__.d(components_namespaceObject, "InfomationMarkdownText", function() { return InfomationMarkdownText; });
 __webpack_require__.d(components_namespaceObject, "OverviewMarkdownText", function() { return OverviewMarkdownText; });
 __webpack_require__.d(components_namespaceObject, "PasswordchallengeHexText", function() { return PasswordchallengeHexText; });
@@ -10309,31 +10306,31 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var router_fcf7cfb4 = function _fcf7cfb4() {
-  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/challenge */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, 745)));
+  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/challenge */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, 745)));
 };
 
 var router_22652138 = function _22652138() {
-  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/checker */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, 746)));
+  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/checker */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, 746)));
 };
 
 var router_1bb2cabb = function _1bb2cabb() {
-  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/doc */[__webpack_require__.e(0), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, 747)));
+  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/doc */[__webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, 747)));
 };
 
 var router_619a9160 = function _619a9160() {
-  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/foundpassword */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, 748)));
+  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/foundpassword */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, 748)));
 };
 
 var router_072afb23 = function _072afb23() {
-  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/infomation */[__webpack_require__.e(0), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, 749)));
+  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/infomation */[__webpack_require__.e(0), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, 749)));
 };
 
 var router_1e1b479e = function _1e1b479e() {
-  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/tech/_slug */[__webpack_require__.e(0), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, 750)));
+  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/tech/_slug */[__webpack_require__.e(0), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, 750)));
 };
 
 var router_0a5d0295 = function _0a5d0295() {
-  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/index */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(23)]).then(__webpack_require__.bind(null, 751)));
+  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/index */[__webpack_require__.e(0), __webpack_require__.e(5), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, 751)));
 };
 
 var emptyFn = function emptyFn() {};
@@ -11089,7 +11086,7 @@ var components_Loading = function Loading() {
   });
 };
 var SingleInputPasswordChecker = function SingleInputPasswordChecker() {
-  return Promise.all(/* import() | components/single-input-password-checker */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, 681)).then(function (c) {
+  return Promise.all(/* import() | components/single-input-password-checker */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, 681)).then(function (c) {
     return wrapFunctional(c.default || c);
   });
 };
@@ -11108,28 +11105,13 @@ var FoundpasswordsearchFoundPasswordSearchResult = function FoundpasswordsearchF
     return wrapFunctional(c.default || c);
   });
 };
-var GoogleadsenseAdSideways = function GoogleadsenseAdSideways() {
-  return __webpack_require__.e(/* import() | components/googleadsense-ad-sideways */ 11).then(__webpack_require__.bind(null, 752)).then(function (c) {
-    return wrapFunctional(c.default || c);
-  });
-};
 var GoogleadsenseAdVertical = function GoogleadsenseAdVertical() {
   return Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 454)).then(function (c) {
     return wrapFunctional(c.default || c);
   });
 };
-var GoogleadsenseAdVertical2 = function GoogleadsenseAdVertical2() {
-  return __webpack_require__.e(/* import() | components/googleadsense-ad-vertical2 */ 12).then(__webpack_require__.bind(null, 753)).then(function (c) {
-    return wrapFunctional(c.default || c);
-  });
-};
-var GoogleadsenseAdVertical3 = function GoogleadsenseAdVertical3() {
-  return __webpack_require__.e(/* import() | components/googleadsense-ad-vertical3 */ 13).then(__webpack_require__.bind(null, 754)).then(function (c) {
-    return wrapFunctional(c.default || c);
-  });
-};
 var InfomationMarkdownText = function InfomationMarkdownText() {
-  return __webpack_require__.e(/* import() | components/infomation-markdown-text */ 14).then(__webpack_require__.bind(null, 705)).then(function (c) {
+  return __webpack_require__.e(/* import() | components/infomation-markdown-text */ 11).then(__webpack_require__.bind(null, 705)).then(function (c) {
     return wrapFunctional(c.default || c);
   });
 };
@@ -11139,7 +11121,7 @@ var OverviewMarkdownText = function OverviewMarkdownText() {
   });
 };
 var PasswordchallengeHexText = function PasswordchallengeHexText() {
-  return __webpack_require__.e(/* import() | components/passwordchallenge-hex-text */ 15).then(__webpack_require__.bind(null, 665)).then(function (c) {
+  return __webpack_require__.e(/* import() | components/passwordchallenge-hex-text */ 12).then(__webpack_require__.bind(null, 665)).then(function (c) {
     return wrapFunctional(c.default || c);
   });
 };
@@ -11149,12 +11131,12 @@ var PasswordchallengePasswordChallenge = function PasswordchallengePasswordChall
   });
 };
 var PasswordchallengePasswordChallengeParameter = function PasswordchallengePasswordChallengeParameter() {
-  return Promise.all(/* import() | components/passwordchallenge-password-challenge-parameter */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, 702)).then(function (c) {
+  return Promise.all(/* import() | components/passwordchallenge-password-challenge-parameter */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, 702)).then(function (c) {
     return wrapFunctional(c.default || c);
   });
 };
 var PasswordchallengePasswordChallengeProgress = function PasswordchallengePasswordChallengeProgress() {
-  return Promise.all(/* import() | components/passwordchallenge-password-challenge-progress */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, 703)).then(function (c) {
+  return Promise.all(/* import() | components/passwordchallenge-password-challenge-progress */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, 703)).then(function (c) {
     return wrapFunctional(c.default || c);
   });
 };
@@ -11215,7 +11197,8 @@ var framework = __webpack_require__(131);
         "info": "#26a69a",
         "warning": "#ffc107",
         "error": "#dd2c00",
-        "success": "#00e676"
+        "success": "#00e676",
+        "anchor": "#49a6e2"
       }
     }
   }
@@ -11720,7 +11703,7 @@ function getSlotName(node) {
 
 
 var loadContent = function loadContent() {
-  return __webpack_require__.e(/* import() | content/plugin.js */ 28).then(__webpack_require__.bind(null, 744));
+  return __webpack_require__.e(/* import() | content/plugin.js */ 25).then(__webpack_require__.bind(null, 744));
 };
 
 vue_runtime_esm["default"].component(nuxt_content.name, nuxt_content);
@@ -12436,7 +12419,7 @@ function _createApp() {
               head: {
                 "titleTemplate": "Youkai Password Challenge",
                 "title": "Youkai Password Challenge",
-                "selfVersion": "0.3.13",
+                "selfVersion": "0.3.14",
                 "meta": [{
                   "charset": "utf-8"
                 }, {
@@ -19363,7 +19346,7 @@ function _register() {
 
           case 2:
             _context.next = 4;
-            return __webpack_require__.e(/* import() */ 29).then(__webpack_require__.bind(null, 631));
+            return __webpack_require__.e(/* import() */ 26).then(__webpack_require__.bind(null, 631));
 
           case 4:
             _yield$import = _context.sent;

@@ -1258,7 +1258,7 @@ var CorrectCheckDigits_CorrectCheckDigits = /*#__PURE__*/function () {
 
 
 CorrectCheckDigits_CorrectCheckDigits.無敵 = CorrectCheckDigits_CorrectCheckDigits.of("534-030.565.81", "もう　これで　こわいもの　なんか　ありません", "無敵効果(体力ゼロで満タンにループ)を得られる14文字です。");
-CorrectCheckDigits_CorrectCheckDigits.CORRECTS = [CorrectCheckDigits_CorrectCheckDigits.of("SPEED-UP", "こまい かずひこ な がめんに なりました。", "リセット後、画面4分割&高速プレイできるものです。"), CorrectCheckDigits_CorrectCheckDigits.of("OHAYOUKAWADA", "いつでも ３めんから すたーと します", "リセット後、3面からスタートできるものです。"), CorrectCheckDigits_CorrectCheckDigits.of("UDADAGAWA", "いつでも ４めんから すたーと します", "リセット後、４面からスタートできるものです。"), CorrectCheckDigits_CorrectCheckDigits.of("S.62.08.22", "いつでも ５めんから すたーと します", "リセット後、５面からスタートできるものです。"), CorrectCheckDigits_CorrectCheckDigits.of("KOBAYASHI", "ぼくは みゅーじっくの ぷろぐらむを つくったのだ", "メッセージが出るのみです。"), CorrectCheckDigits_CorrectCheckDigits.of("KAWADA", "このきょくは とっても くろうして つくりました", "メッセージが出るのみです。"), CorrectCheckDigits_CorrectCheckDigits.of("PC-ENGINE", "ＭＡＤＥ　ＩＮ　ＪＡＰＡＮ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NEC", "(空文字)", "メッセージが出るだけ…なのだが、18文字の皮肉がリリース前に消されたらしい。"), CorrectCheckDigits_CorrectCheckDigits.of("MIZUNO", "わたしの　きかくした　このげーむ　いかがですか？", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("6809", "ＰＬＥＡＳＥ　ＩＮＳＥＲＴ　６８０９　ＣＡＥＤ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("MONITOR", "２Ｄ８８　５１　６２　０Ｅ　ＦＤ　３９　０３　ＣＢ　２６", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("YAMASHITA", "わたしは　かようきょくが　だいきらい", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("MICHIYO", "３めんが　くりあ　できないよー！", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("YAGI", "そこのかのじょ つうりんぐ いこうよー", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("YUKIHIKO", "ばいくを あんかで ゆずってください", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("KOMAI", "たっきゅう しようよー", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("KAZUHIKO", "えんちゃん みてるーっ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("756-2311", "はい．なむこです", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NAMCO", "げーむせんたーでも あそんでくださいね", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NAMCOT", "なむこっと じょうほうきょく いつもきいてくれてるかな？", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NAGAMATSU", "ぼくは でぃふぇんだーが すきなんだ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("AKIRA", "えへ えへっ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NAUSICAA", "らぴゅたも はいっています さがしてください", "おそらくメッセージが出るだけです。('EXEUICAA'というパスでもOK)"), CorrectCheckDigits_CorrectCheckDigits.of("LAPUTA", "ほうとうに あるとおもった？ あんたも ひまだねー", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("68000", "ＢＲＥＡＫ　ＡＷＡＹ　ＦＲＯＭ　ＴＨＥ　ＰＡＳＴ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("6502", "６８０９なんかに まけませんよ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("HAL", "ぼくは　ＦＣのＧＡＬＡＸＩＡＮも　つくりました。", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("KID", "ぼくの つくる ドラゴンスピリット かってね！", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("KUMI.HANAOKA", "(空文字)", "おそらくリリース前に消されたメッセージ。"), CorrectCheckDigits_CorrectCheckDigits.of("HARUHISA.UDAGAWA", "(空文字)", "おそらくリリース前に消されたメッセージ。"), CorrectCheckDigits_CorrectCheckDigits.of("HENTAIOSUGI", "いつでも ２めんから すたーと します", "ステージ2へワープできる11文字です。"), CorrectCheckDigits_CorrectCheckDigits.of("818-6104", "この ぷろぐらむの しつもんには おこたえできません", "効果が謎の8文字です。"), CorrectCheckDigits_CorrectCheckDigits.無敵];
+CorrectCheckDigits_CorrectCheckDigits.CORRECTS = [CorrectCheckDigits_CorrectCheckDigits.of("SPEED-UP", "こまい かずひこ な がめんに なりました。", "リセット後、画面4分割&高速プレイできるものです。"), CorrectCheckDigits_CorrectCheckDigits.of("OHAYOUKAWADA", "いつでも ３めんから すたーと します", "リセット後、3面からスタートできるものです。"), CorrectCheckDigits_CorrectCheckDigits.of("UDADAGAWA", "いつでも ４めんから すたーと します", "リセット後、４面からスタートできるものです。"), CorrectCheckDigits_CorrectCheckDigits.of("S.62.08.22", "いつでも ５めんから すたーと します", "リセット後、５面からスタートできるものです。"), CorrectCheckDigits_CorrectCheckDigits.of("KOBAYASHI", "ぼくは みゅーじっくの ぷろぐらむを つくったのだ", "メッセージが出るのみです。"), CorrectCheckDigits_CorrectCheckDigits.of("KAWADA", "このきょくは とっても くろうして つくりました", "メッセージが出るのみです。"), CorrectCheckDigits_CorrectCheckDigits.of("PC-ENGINE", "ＭＡＤＥ　ＩＮ　ＪＡＰＡＮ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NEC", "(空文字)", "メッセージが出るだけ…なのだが、18文字の皮肉がリリース前に消されたらしい。"), CorrectCheckDigits_CorrectCheckDigits.of("MIZUNO", "わたしの　きかくした　このげーむ　いかがですか？", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("6809", "ＰＬＥＡＳＥ　ＩＮＳＥＲＴ　６８０９　ＣＡＲＤ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("MONITOR", "２Ｄ８８　５１　６２　０Ｅ　ＦＤ　３９　０３　ＣＢ　２６", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("YAMASHITA", "わたしは　かようきょくが　だいきらい", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("MICHIYO", "３めんが　くりあ　できないよー！", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("YAGI", "そこのかのじょ つうりんぐ いこうよー", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("YUKIHIKO", "ばいくを あんかで ゆずってください", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("KOMAI", "たっきゅう しようよー", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("KAZUHIKO", "えんちゃん みてるーっ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("756-2311", "はい．なむこです", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NAMCO", "げーむせんたーでも あそんでくださいね", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NAMCOT", "なむこっと じょうほうきょく いつもきいてくれてるかな？", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NAGAMATSU", "ぼくは でぃふぇんだーが すきなんだ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("AKIRA", "えへ えへっ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("NAUSICAA", "らぴゅたも はいっています さがしてください", "おそらくメッセージが出るだけです。('EXEUICAA'というパスでもOK)"), CorrectCheckDigits_CorrectCheckDigits.of("LAPUTA", "ほうとうに あるとおもった？ あんたも ひまだねー", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("68000", "ＢＲＥＡＫ　ＡＷＡＹ　ＦＲＯＭ　ＴＨＥ　ＰＡＳＴ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("6502", "６８０９なんかに まけませんよ", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("HAL", "ぼくは　ＦＣのＧＡＬＡＸＩＡＮも　つくりました。", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("KID", "ぼくの つくる ドラゴンスピリット かってね！", "おそらくメッセージが出るだけです。"), CorrectCheckDigits_CorrectCheckDigits.of("KUMI.HANAOKA", "(空文字)", "おそらくリリース前に消されたメッセージ。"), CorrectCheckDigits_CorrectCheckDigits.of("HARUHISA.UDAGAWA", "(空文字)", "おそらくリリース前に消されたメッセージ。"), CorrectCheckDigits_CorrectCheckDigits.of("HENTAIOSUGI", "いつでも ２めんから すたーと します", "ステージ2へワープできる11文字です。"), CorrectCheckDigits_CorrectCheckDigits.of("818-6104", "この ぷろぐらむの しつもんには おこたえできません", "効果が謎の8文字です。"), CorrectCheckDigits_CorrectCheckDigits.無敵];
 
 /***/ }),
 
@@ -1290,7 +1290,7 @@ if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(30).default
-var update = add("5b4526e0", content, true, {"sourceMap":false});
+var update = add("220b2c32", content, true, {"sourceMap":false});
 
 /***/ }),
 
@@ -1315,12 +1315,12 @@ var update = add("0883f874", content, true, {"sourceMap":false});
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/layouts/default.vue?vue&type=template&id=81bf5576&scoped=true&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/layouts/default.vue?vue&type=template&id=0537aede&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-app',{attrs:{"dark":""}},[_c('v-navigation-drawer',{attrs:{"clipped":"","right":"","fixed":"","permanent":"","app":""}},[_c('v-list',_vm._l((_vm.items),function(item,i){return _c('v-list-item',{key:i,attrs:{"to":item.to,"router":"","exact":""}},[_c('v-list-item-action',[_c('v-icon',[_vm._v(_vm._s(item.icon))])],1),_vm._v(" "),_c('v-list-item-content',[_c('v-list-item-title',{domProps:{"textContent":_vm._s(item.title)}})],1)],1)}),1),_vm._v(" "),_c('AdVertical')],1),_vm._v(" "),_c('v-app-bar',{attrs:{"clipped-right":true,"fixed":"","app":""}},[_c('v-toolbar-title',{staticStyle:{"cursor":"pointer"},on:{"click":function($event){return _vm.$router.push('/')}}},[_vm._v("\n      Youkai Password Challenge\n    ")]),_vm._v(" "),_c('v-spacer'),_vm._v(" "),_c('TweetButton')],1),_vm._v(" "),_c('v-main',[_c('v-container',{staticStyle:{"overflow":"auto"},attrs:{"xs12":""}},[_c('Nuxt')],1)],1),_vm._v(" "),_c('v-footer',{attrs:{"app":""}},[_c('span',[_vm._v("\n      © "+_vm._s(new Date().getFullYear())+"\n    ")]),_vm._v(" "),_c('a',{staticClass:"auther-link",attrs:{"target":"_new","href":"https://twitter.com/kazuhito_m"}},[_c('v-icon',[_vm._v("mdi-twitter")]),_vm._v("kazuhito_m\n    ")],1),_vm._v(" "),_c('v-spacer'),_vm._v("\n    ver.\n    "),_c('a',{staticClass:"no-efect-link",attrs:{"target":"_new","href":"https://github.com/kazuhito-m/youkai-password-challenge/releases"}},[_vm._v(_vm._s(_vm.selfVersion))])],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/layouts/default.vue?vue&type=template&id=81bf5576&scoped=true&
+// CONCATENATED MODULE: ./src/layouts/default.vue?vue&type=template&id=0537aede&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
 var es_reflect_construct = __webpack_require__(58);
@@ -1438,7 +1438,7 @@ var es_regexp_to_string = __webpack_require__(53);
 
 // CONCATENATED MODULE: ./node_modules/worker-loader/dist/cjs.js!./src/application/worker/passwordattack/PasswordAttack.worker.ts
 function Worker_fn() {
-  return new Worker(__webpack_require__.p + "77b0b97.worker.js");
+  return new Worker(__webpack_require__.p + "2f2ae66.worker.js");
 }
 
 // EXTERNAL MODULE: ./src/domain/youkai/attack/AttackPasswordRange.ts
@@ -2018,8 +2018,8 @@ defaultvue_type_script_lang_ts_default_1 = __decorate([Object(nuxt_property_deco
 /* harmony default export */ var defaultvue_type_script_lang_ts_ = (defaultvue_type_script_lang_ts_default_1);
 // CONCATENATED MODULE: ./src/layouts/default.vue?vue&type=script&lang=ts&
  /* harmony default export */ var layouts_defaultvue_type_script_lang_ts_ = (defaultvue_type_script_lang_ts_); 
-// EXTERNAL MODULE: ./src/layouts/default.vue?vue&type=style&index=0&id=81bf5576&scoped=true&lang=css&
-var defaultvue_type_style_index_0_id_81bf5576_scoped_true_lang_css_ = __webpack_require__(528);
+// EXTERNAL MODULE: ./src/layouts/default.vue?vue&type=style&index=0&id=0537aede&scoped=true&lang=css&
+var defaultvue_type_style_index_0_id_0537aede_scoped_true_lang_css_ = __webpack_require__(528);
 
 // EXTERNAL MODULE: ./src/layouts/default.vue?vue&type=style&index=1&lang=css&
 var defaultvue_type_style_index_1_lang_css_ = __webpack_require__(530);
@@ -2086,7 +2086,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   staticRenderFns,
   false,
   null,
-  "81bf5576",
+  "0537aede",
   null
   
 )
@@ -2981,8 +2981,8 @@ webpackContext.id = 527;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_81bf5576_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(418);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_81bf5576_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_81bf5576_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_0537aede_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(418);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_0537aede_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_0537aede_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
 
 
@@ -2995,7 +2995,7 @@ webpackContext.id = 527;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(29);
 var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".container[data-v-81bf5576]{display:flex;height:100%;width:100%;max-width:none;padding-right:0;padding-left:0;margin-right:unset;margin-left:unset;position:absolute}[data-v-81bf5576] ::-webkit-scrollbar{overflow:hidden}", ""]);
+___CSS_LOADER_EXPORT___.push([module.i, ".container[data-v-0537aede]{display:flex;height:100%;width:100%;max-width:none;padding-right:0;padding-left:0;margin-right:unset;margin-left:unset;position:absolute}", ""]);
 // Exports
 module.exports = ___CSS_LOADER_EXPORT___;
 
@@ -3020,7 +3020,7 @@ module.exports = ___CSS_LOADER_EXPORT___;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(29);
 var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "html{overflow-y:hidden}.auther-link,.no-efect-link,.no-efect-link:active,.no-efect-link:hover,.no-efect-link:link,.no-efect-link:visited{text-decoration:none}", ""]);
+___CSS_LOADER_EXPORT___.push([module.i, "html{overflow-y:hidden}.auther-link,.no-efect-link,.no-efect-link:active,.no-efect-link:hover,.no-efect-link:link,.no-efect-link:visited{text-decoration:none}.v-navigation-drawer__content{height:100%;overflow-y:hidden}", ""]);
 // Exports
 module.exports = ___CSS_LOADER_EXPORT___;
 
@@ -3356,4 +3356,4 @@ installComponents_default()(component, {VApp: VApp["a" /* default */]})
 
 /***/ })
 
-},[[462,26,8,27]]]);
+},[[462,23,8,24]]]);

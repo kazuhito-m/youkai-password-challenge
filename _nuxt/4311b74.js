@@ -13,19 +13,19 @@
 
 /***/ }),
 
-/***/ 745:
+/***/ 748:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/challenge.vue?vue&type=template&id=04162920&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('PasswordChallenge')],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/foundpassword.vue?vue&type=template&id=32ac0b0a&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('FoundPasswordSearch')],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/challenge.vue?vue&type=template&id=04162920&
+// CONCATENATED MODULE: ./src/pages/foundpassword.vue?vue&type=template&id=32ac0b0a&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
 var es_reflect_construct = __webpack_require__(58);
@@ -51,10 +51,10 @@ var es_object_get_own_property_descriptor = __webpack_require__(15);
 // EXTERNAL MODULE: ./node_modules/vue-property-decorator/lib/index.js + 14 modules
 var lib = __webpack_require__(132);
 
-// EXTERNAL MODULE: ./src/components/passwordchallenge/PasswordChallenge.vue + 4 modules
-var PasswordChallenge = __webpack_require__(738);
+// EXTERNAL MODULE: ./src/components/foundpasswordsearch/FoundPasswordSearch.vue + 4 modules
+var FoundPasswordSearch = __webpack_require__(739);
 
-// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/challenge.vue?vue&type=script&lang=ts&
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/foundpassword.vue?vue&type=script&lang=ts&
 
 
 
@@ -81,28 +81,28 @@ var __decorate = undefined && undefined.__decorate || function (decorators, targ
 
 
 
-var challengevue_type_script_lang_ts_Challenge = /*#__PURE__*/function (_Vue) {
-  Object(inherits["a" /* default */])(Challenge, _Vue);
+var foundpasswordvue_type_script_lang_ts_FoundPassword = /*#__PURE__*/function (_Vue) {
+  Object(inherits["a" /* default */])(FoundPassword, _Vue);
 
-  var _super = _createSuper(Challenge);
+  var _super = _createSuper(FoundPassword);
 
-  function Challenge() {
-    Object(classCallCheck["a" /* default */])(this, Challenge);
+  function FoundPassword() {
+    Object(classCallCheck["a" /* default */])(this, FoundPassword);
 
     return _super.apply(this, arguments);
   }
 
-  return Challenge;
+  return FoundPassword;
 }(lib["Vue"]);
 
-challengevue_type_script_lang_ts_Challenge = __decorate([Object(lib["Component"])({
+foundpasswordvue_type_script_lang_ts_FoundPassword = __decorate([Object(lib["Component"])({
   components: {
-    PasswordChallenge: PasswordChallenge["default"]
+    FoundPasswordSearch: FoundPasswordSearch["default"]
   }
-})], challengevue_type_script_lang_ts_Challenge);
-/* harmony default export */ var challengevue_type_script_lang_ts_ = (challengevue_type_script_lang_ts_Challenge);
-// CONCATENATED MODULE: ./src/pages/challenge.vue?vue&type=script&lang=ts&
- /* harmony default export */ var pages_challengevue_type_script_lang_ts_ = (challengevue_type_script_lang_ts_); 
+})], foundpasswordvue_type_script_lang_ts_FoundPassword);
+/* harmony default export */ var foundpasswordvue_type_script_lang_ts_ = (foundpasswordvue_type_script_lang_ts_FoundPassword);
+// CONCATENATED MODULE: ./src/pages/foundpassword.vue?vue&type=script&lang=ts&
+ /* harmony default export */ var pages_foundpasswordvue_type_script_lang_ts_ = (foundpasswordvue_type_script_lang_ts_); 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__(65);
 
@@ -113,7 +113,7 @@ var installComponents_default = /*#__PURE__*/__webpack_require__.n(installCompon
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VLayout.js
 var VLayout = __webpack_require__(656);
 
-// CONCATENATED MODULE: ./src/pages/challenge.vue
+// CONCATENATED MODULE: ./src/pages/foundpassword.vue
 
 
 
@@ -122,7 +122,7 @@ var VLayout = __webpack_require__(656);
 /* normalize component */
 
 var component = Object(componentNormalizer["a" /* default */])(
-  pages_challengevue_type_script_lang_ts_,
+  pages_foundpasswordvue_type_script_lang_ts_,
   render,
   staticRenderFns,
   false,
@@ -132,7 +132,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   
 )
 
-/* harmony default export */ var challenge = __webpack_exports__["default"] = (component.exports);
+/* harmony default export */ var foundpassword = __webpack_exports__["default"] = (component.exports);
 
 /* vuetify-loader */
 
