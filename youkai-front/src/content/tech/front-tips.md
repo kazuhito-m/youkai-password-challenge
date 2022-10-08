@@ -56,6 +56,11 @@ title: フロントとNuxt.js&TypsScriptらへんの知識
 - Nuxt.jsにGoogle Adsenseを導入する方法
   - https://nishimura.club/nuxt-google-adsense
 
+## Nuxt.js + Veutify
+
+- リンクのベース色を変更する方法
+  - https://stackoverflow.com/questions/72095821/how-do-i-change-link-color-in-vuetify-components-without-changing-primary-color
+
 ## 無限スクロール
 
 - Nuxt.jsとvue-infinite-loadingを使って無限スクロールを実装する
