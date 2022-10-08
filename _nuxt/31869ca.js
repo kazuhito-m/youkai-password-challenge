@@ -577,12 +577,12 @@ var component = Object(componentNormalizer["a" /* default */])(
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/checker.vue?vue&type=template&id=28a19325&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"center"}},[_c('v-col',{attrs:{"cols":"10","sm":"8","md":"6"}},[_c('SingleInputPasswordChecker')],1),_vm._v(" "),_c('v-col',{attrs:{"cols":"2","sm":"2","md":"1"}},[_c('AdVertical2')],1)],1)],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/checker.vue?vue&type=template&id=594d93e3&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"top"}},[_c('v-col',{attrs:{"cols":"10","sm":"8","md":"6"}},[_c('SingleInputPasswordChecker')],1),_vm._v(" "),_c('v-col',{attrs:{"cols":"2","sm":"2","md":"1"}},[_c('AdVertical2')],1)],1)],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/checker.vue?vue&type=template&id=28a19325&
+// CONCATENATED MODULE: ./src/pages/checker.vue?vue&type=template&id=594d93e3&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
 var es_reflect_construct = __webpack_require__(58);
