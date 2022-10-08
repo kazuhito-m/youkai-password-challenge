@@ -11,15 +11,13 @@
           </v-card>
         </v-col>
         <v-col cols="2" sm="2" md="2">
-          <v-card>
-            <div>
-              <adsbygoogle
-                :ad-slot="1285563562"
-                :ad-style="{ display: 'block' }"
-                :ad-format="'auto'"
-              />
-            </div>
-          </v-card>
+          <div>
+            <adsbygoogle
+              :ad-slot="1285563562"
+              :ad-style="{ display: 'block' }"
+              :ad-format="'auto'"
+            />
+          </div>
         </v-col>
       </v-row>
     </v-container>
