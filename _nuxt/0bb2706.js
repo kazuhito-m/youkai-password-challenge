@@ -12461,7 +12461,7 @@ function _createApp() {
               head: {
                 "titleTemplate": "Youkai Password Challenge",
                 "title": "Youkai Password Challenge",
-                "selfVersion": "0.3.2",
+                "selfVersion": "0.3.3",
                 "meta": [{
                   "charset": "utf-8"
                 }, {
