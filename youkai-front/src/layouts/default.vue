@@ -1,7 +1,6 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-model="drawer"
       clipped
       right
       fixed
@@ -23,6 +22,7 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <AdVertical />
     </v-navigation-drawer>
     <v-app-bar :clipped-right="true" fixed app>
       <v-toolbar-title
@@ -33,7 +33,6 @@
       </v-toolbar-title>
       <v-spacer />
       <TweetButton />
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>
     <v-main>
       <v-container xs12 style="overflow:auto">
@@ -72,16 +71,16 @@ import FoundPasswordTransfer from '@/infrastructure/transfer/youkai/foundpasswor
 import HazurePasswordService from '@/application/service/HazurePasswordService';
 import HazurePasswordTransfer from '@/infrastructure/transfer/youkai/password/hazure/HazurePasswordTransfer';
 import { FoundConditionSearchStatusStore } from '@/store'
+import AdVertical from '@/components/googleadsense/AdVertical.vue';
 
 @Component({
   components: {
     TweetButton,
+    AdVertical
   },
 })
 
 export default class extends Vue {
-  drawer = false
-
   right = true
   rightDrawer = true
 
@@ -160,6 +159,10 @@ export default class extends Vue {
   margin-right: unset;
   margin-left: unset;
   position: absolute;
+}
+
+::v-deep ::-webkit-scrollbar {
+ overflow: hidden
 }
 </style>
 
