@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-container>
-      <v-row justify="center" align="center">
+      <v-row justify="center" align="top">
         <v-col cols="10" sm="8" md="6">
           <SingleInputPasswordChecker />
         </v-col>
