@@ -1,7 +1,7 @@
 <template lang="md">
 
 ## まとめサイト
-- [これまでのあらすじ - Yokai Password Challenge](https://youkaiosugi.com/overview)
+- [これまでのあらすじ - Yokai Password Challenge](https://youkaiosugi.com/)
 - [PCエンジン妖怪道中記 パスワード解析Wiki（まとめサイト）](https://i486.mods.jp/yokaiwiki/)
 
 ## 解析場所（チャット）
