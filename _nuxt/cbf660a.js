@@ -1,12 +1,25 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[20,12,18],{
 
-/***/ 665:
+/***/ 660:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _src_components_VGrid_grid_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(216);
+/* harmony import */ var _src_components_VGrid_grid_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_src_components_VGrid_grid_sass__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(217);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(_grid__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])('layout'));
+
+/***/ }),
+
+/***/ 664:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(666);
+var content = __webpack_require__(665);
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
@@ -16,7 +29,7 @@ var update = add("5c8fbe94", content, true, {"sourceMap":false});
 
 /***/ }),
 
-/***/ 666:
+/***/ 665:
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
@@ -30,13 +43,13 @@ module.exports = ___CSS_LOADER_EXPORT___;
 
 /***/ }),
 
-/***/ 667:
+/***/ 666:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(673);
+var content = __webpack_require__(672);
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
@@ -46,18 +59,18 @@ var update = add("403c8d26", content, true, {"sourceMap":false});
 
 /***/ }),
 
-/***/ 672:
+/***/ 671:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleInputPasswordChecker_vue_vue_type_style_index_0_id_5f27b244_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(667);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleInputPasswordChecker_vue_vue_type_style_index_0_id_5f27b244_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(666);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleInputPasswordChecker_vue_vue_type_style_index_0_id_5f27b244_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleInputPasswordChecker_vue_vue_type_style_index_0_id_5f27b244_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
 
 
 /***/ }),
 
-/***/ 673:
+/***/ 672:
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
@@ -71,7 +84,7 @@ module.exports = ___CSS_LOADER_EXPORT___;
 
 /***/ }),
 
-/***/ 680:
+/***/ 679:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -306,7 +319,7 @@ SingleInputPasswordCheckervue_type_script_lang_ts_SingleInputPasswordChecker = _
 // CONCATENATED MODULE: ./src/components/SingleInputPasswordChecker.vue?vue&type=script&lang=ts&
  /* harmony default export */ var components_SingleInputPasswordCheckervue_type_script_lang_ts_ = (SingleInputPasswordCheckervue_type_script_lang_ts_); 
 // EXTERNAL MODULE: ./src/components/SingleInputPasswordChecker.vue?vue&type=style&index=0&id=5f27b244&scoped=true&lang=css&
-var SingleInputPasswordCheckervue_type_style_index_0_id_5f27b244_scoped_true_lang_css_ = __webpack_require__(672);
+var SingleInputPasswordCheckervue_type_style_index_0_id_5f27b244_scoped_true_lang_css_ = __webpack_require__(671);
 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__(74);
@@ -316,28 +329,28 @@ var installComponents = __webpack_require__(104);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
-var VCard = __webpack_require__(683);
+var VCard = __webpack_require__(682);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
 var components_VCard = __webpack_require__(650);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(743);
+var VCol = __webpack_require__(745);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(644);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VForm/VForm.js
-var VForm = __webpack_require__(720);
+var VForm = __webpack_require__(721);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(744);
+var VRow = __webpack_require__(746);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTextField/VTextField.js + 3 modules
-var VTextField = __webpack_require__(681);
+var VTextField = __webpack_require__(680);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTextarea/VTextarea.js
-var VTextarea = __webpack_require__(700);
+var VTextarea = __webpack_require__(699);
 
 // CONCATENATED MODULE: ./src/components/SingleInputPasswordChecker.vue
 
@@ -377,7 +390,7 @@ installComponents_default()(component, {VCard: VCard["a" /* default */],VCardTex
 
 /***/ }),
 
-/***/ 700:
+/***/ 699:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -398,9 +411,9 @@ installComponents_default()(component, {VCard: VCard["a" /* default */],VCardTex
 /* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(87);
 /* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _src_components_VTextarea_VTextarea_sass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(665);
+/* harmony import */ var _src_components_VTextarea_VTextarea_sass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(664);
 /* harmony import */ var _src_components_VTextarea_VTextarea_sass__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_src_components_VTextarea_VTextarea_sass__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _VTextField_VTextField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(681);
+/* harmony import */ var _VTextField_VTextField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(680);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(20);
 
 
@@ -515,6 +528,195 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_11__[/* default */
     }
   }
 }));
+
+/***/ }),
+
+/***/ 705:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/googleadsense/AdVertical2.vue?vue&type=template&id=fea75e70&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('adsbygoogle',{attrs:{"ad-slot":5518082928,"ad-style":{ display: 'block' },"ad-format":'auto',"full-width-responsive":true}})],1)}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/googleadsense/AdVertical2.vue?vue&type=template&id=fea75e70&
+
+// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+var componentNormalizer = __webpack_require__(74);
+
+// CONCATENATED MODULE: ./src/components/googleadsense/AdVertical2.vue
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(componentNormalizer["a" /* default */])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var AdVertical2 = __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ 750:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/checker.vue?vue&type=template&id=28a19325&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"center"}},[_c('v-col',{attrs:{"cols":"10","sm":"8","md":"6"}},[_c('SingleInputPasswordChecker')],1),_vm._v(" "),_c('v-col',{attrs:{"cols":"2","sm":"2","md":"1"}},[_c('AdVertical2')],1)],1)],1)],1)}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/pages/checker.vue?vue&type=template&id=28a19325&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
+var es_reflect_construct = __webpack_require__(58);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
+var classCallCheck = __webpack_require__(4);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js + 1 modules
+var inherits = __webpack_require__(31);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js + 1 modules
+var possibleConstructorReturn = __webpack_require__(26);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
+var getPrototypeOf = __webpack_require__(13);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
+var esm_typeof = __webpack_require__(11);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
+var es_object_get_own_property_descriptor = __webpack_require__(14);
+
+// EXTERNAL MODULE: ./node_modules/vue-property-decorator/lib/index.js + 14 modules
+var lib = __webpack_require__(134);
+
+// EXTERNAL MODULE: ./src/components/SingleInputPasswordChecker.vue + 4 modules
+var SingleInputPasswordChecker = __webpack_require__(679);
+
+// EXTERNAL MODULE: ./src/components/googleadsense/AdVertical2.vue + 2 modules
+var AdVertical2 = __webpack_require__(705);
+
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/checker.vue?vue&type=script&lang=ts&
+
+
+
+
+
+
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+  var c = arguments.length,
+      r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+      d;
+  if ((typeof Reflect === "undefined" ? "undefined" : Object(esm_typeof["a" /* default */])(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+    if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  }
+  return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var checkervue_type_script_lang_ts_Checker = /*#__PURE__*/function (_Vue) {
+  Object(inherits["a" /* default */])(Checker, _Vue);
+
+  var _super = _createSuper(Checker);
+
+  function Checker() {
+    Object(classCallCheck["a" /* default */])(this, Checker);
+
+    return _super.apply(this, arguments);
+  }
+
+  return Checker;
+}(lib["Vue"]);
+
+checkervue_type_script_lang_ts_Checker = __decorate([Object(lib["Component"])({
+  components: {
+    SingleInputPasswordChecker: SingleInputPasswordChecker["default"],
+    AdVertical2: AdVertical2["default"]
+  }
+})], checkervue_type_script_lang_ts_Checker);
+/* harmony default export */ var checkervue_type_script_lang_ts_ = (checkervue_type_script_lang_ts_Checker);
+// CONCATENATED MODULE: ./src/pages/checker.vue?vue&type=script&lang=ts&
+ /* harmony default export */ var pages_checkervue_type_script_lang_ts_ = (checkervue_type_script_lang_ts_); 
+// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+var componentNormalizer = __webpack_require__(74);
+
+// EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
+var installComponents = __webpack_require__(104);
+var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
+var VCol = __webpack_require__(745);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
+var VContainer = __webpack_require__(644);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VLayout.js
+var VLayout = __webpack_require__(660);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
+var VRow = __webpack_require__(746);
+
+// CONCATENATED MODULE: ./src/pages/checker.vue
+
+
+
+
+
+/* normalize component */
+
+var component = Object(componentNormalizer["a" /* default */])(
+  pages_checkervue_type_script_lang_ts_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var checker = __webpack_exports__["default"] = (component.exports);
+
+/* nuxt-component-imports */
+installComponents_default()(component, {SingleInputPasswordChecker: __webpack_require__(679).default})
+
+
+/* vuetify-loader */
+
+
+
+
+
+installComponents_default()(component, {VCol: VCol["a" /* default */],VContainer: VContainer["a" /* default */],VLayout: VLayout["a" /* default */],VRow: VRow["a" /* default */]})
+
 
 /***/ })
 
