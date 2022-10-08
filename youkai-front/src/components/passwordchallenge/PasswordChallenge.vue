@@ -2,7 +2,6 @@
     <v-container>
       <v-row justify="center" align="center">
         <v-col cols="12" sm="6" md="6">
-          <AdSideways />
           <PasswordChallengeParameter />
         </v-col>
         <v-col cols="12" sm="6" md="6"> 
@@ -16,13 +15,11 @@
 import { Component, Vue } from 'vue-property-decorator'
 import PasswordChallengeParameter from '@/components/passwordchallenge/PasswordChallengeParameter.vue'
 import PasswordChallengeProgress from '@/components/passwordchallenge/PasswordChallengeProgress.vue'
-import AdSideways from '@/components/googleadsense/AdSideways.vue'
 
 @Component({
   components: {
     PasswordChallengeParameter,
     PasswordChallengeProgress,
-    AdSideways,
   },
 })
 export default class PasswordChallenge extends Vue {
