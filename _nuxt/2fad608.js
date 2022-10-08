@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[5],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[5,10],{
 
 /***/ 666:
 /***/ (function(module, exports, __webpack_require__) {
@@ -703,13 +703,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
   }
 }));
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(742);
+var VCol = __webpack_require__(743);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(644);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VForm/VForm.js
-var VForm = __webpack_require__(719);
+var VForm = __webpack_require__(720);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VOverlay/VOverlay.js
 var VOverlay = __webpack_require__(203);
@@ -718,7 +718,7 @@ var VOverlay = __webpack_require__(203);
 var VProgressCircular = __webpack_require__(204);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(743);
+var VRow = __webpack_require__(744);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSnackbar/VSnackbar.js
 var VSnackbar = __webpack_require__(669);
@@ -1180,13 +1180,13 @@ var VCard = __webpack_require__(681);
 var components_VCard = __webpack_require__(650);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(742);
+var VCol = __webpack_require__(743);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(644);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VForm/VForm.js
-var VForm = __webpack_require__(719);
+var VForm = __webpack_require__(720);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VOverlay/VOverlay.js
 var VOverlay = __webpack_require__(203);
@@ -1195,10 +1195,10 @@ var VOverlay = __webpack_require__(203);
 var VProgressCircular = __webpack_require__(204);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(743);
+var VRow = __webpack_require__(744);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VDataTable/VSimpleTable.js
-var VSimpleTable = __webpack_require__(744);
+var VSimpleTable = __webpack_require__(745);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSnackbar/VSnackbar.js
 var VSnackbar = __webpack_require__(669);
@@ -1246,19 +1246,58 @@ installComponents_default()(component, {VBtn: VBtn["a" /* default */],VCard: VCa
 
 /***/ }),
 
-/***/ 741:
+/***/ 704:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/foundpasswordsearch/FoundPasswordSearch.vue?vue&type=template&id=c0266ea6&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"center"}},[_c('v-col',{attrs:{"cols":"12","sm":"6","md":"6"}},[_c('v-card',[_c('div',[_c('adsbygoogle',{attrs:{"ad-slot":2708086751,"ad-style":{ display: 'block' },"ad-format":'auto'}})],1)]),_vm._v(" "),_c('FoundPasswordSearchParameter')],1),_vm._v(" "),_c('v-col',{attrs:{"cols":"12","sm":"6","md":"6"}},[_c('FoundPasswordSearchResult')],1)],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/googleadsense/AdSideways.vue?vue&type=template&id=9aa66772&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('adsbygoogle',{attrs:{"ad-slot":2708086751,"ad-style":{ display: 'block' },"ad-format":'auto'}})],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/foundpasswordsearch/FoundPasswordSearch.vue?vue&type=template&id=c0266ea6&
+// CONCATENATED MODULE: ./src/components/googleadsense/AdSideways.vue?vue&type=template&id=9aa66772&
+
+// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+var componentNormalizer = __webpack_require__(74);
+
+// CONCATENATED MODULE: ./src/components/googleadsense/AdSideways.vue
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(componentNormalizer["a" /* default */])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var AdSideways = __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ 742:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/foundpasswordsearch/FoundPasswordSearch.vue?vue&type=template&id=372eb9c4&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"center"}},[_c('v-col',{attrs:{"cols":"12","sm":"6","md":"6"}},[_c('AdSideways'),_vm._v(" "),_c('FoundPasswordSearchParameter')],1),_vm._v(" "),_c('v-col',{attrs:{"cols":"12","sm":"6","md":"6"}},[_c('FoundPasswordSearchResult')],1)],1)],1)}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/foundpasswordsearch/FoundPasswordSearch.vue?vue&type=template&id=372eb9c4&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
 var es_reflect_construct = __webpack_require__(58);
@@ -1290,6 +1329,9 @@ var FoundPasswordSearchParameter = __webpack_require__(700);
 // EXTERNAL MODULE: ./src/components/foundpasswordsearch/FoundPasswordSearchResult.vue + 4 modules
 var FoundPasswordSearchResult = __webpack_require__(703);
 
+// EXTERNAL MODULE: ./src/components/googleadsense/AdSideways.vue + 2 modules
+var AdSideways = __webpack_require__(704);
+
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/foundpasswordsearch/FoundPasswordSearch.vue?vue&type=script&lang=ts&
 
 
@@ -1318,6 +1360,7 @@ var __decorate = undefined && undefined.__decorate || function (decorators, targ
 
 
 
+
 var FoundPasswordSearchvue_type_script_lang_ts_FoundPasswordSearch = /*#__PURE__*/function (_Vue) {
   Object(inherits["a" /* default */])(FoundPasswordSearch, _Vue);
 
@@ -1335,7 +1378,8 @@ var FoundPasswordSearchvue_type_script_lang_ts_FoundPasswordSearch = /*#__PURE__
 FoundPasswordSearchvue_type_script_lang_ts_FoundPasswordSearch = __decorate([Object(lib["Component"])({
   components: {
     FoundPasswordSearchParameter: FoundPasswordSearchParameter["default"],
-    FoundPasswordSearchResult: FoundPasswordSearchResult["default"]
+    FoundPasswordSearchResult: FoundPasswordSearchResult["default"],
+    AdSideways: AdSideways["default"]
   }
 })], FoundPasswordSearchvue_type_script_lang_ts_FoundPasswordSearch);
 /* harmony default export */ var FoundPasswordSearchvue_type_script_lang_ts_ = (FoundPasswordSearchvue_type_script_lang_ts_FoundPasswordSearch);
@@ -1348,17 +1392,14 @@ var componentNormalizer = __webpack_require__(74);
 var installComponents = __webpack_require__(104);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
-var VCard = __webpack_require__(681);
-
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(742);
+var VCol = __webpack_require__(743);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(644);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(743);
+var VRow = __webpack_require__(744);
 
 // CONCATENATED MODULE: ./src/components/foundpasswordsearch/FoundPasswordSearch.vue
 
@@ -1386,8 +1427,7 @@ var component = Object(componentNormalizer["a" /* default */])(
 
 
 
-
-installComponents_default()(component, {VCard: VCard["a" /* default */],VCol: VCol["a" /* default */],VContainer: VContainer["a" /* default */],VRow: VRow["a" /* default */]})
+installComponents_default()(component, {VCol: VCol["a" /* default */],VContainer: VContainer["a" /* default */],VRow: VRow["a" /* default */]})
 
 
 /***/ })

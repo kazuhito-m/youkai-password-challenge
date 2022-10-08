@@ -407,13 +407,13 @@ var VCard = __webpack_require__(681);
 var components_VCard = __webpack_require__(650);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(742);
+var VCol = __webpack_require__(743);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(644);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VForm/VForm.js
-var VForm = __webpack_require__(719);
+var VForm = __webpack_require__(720);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VOverlay/VOverlay.js
 var VOverlay = __webpack_require__(203);
@@ -422,10 +422,10 @@ var VOverlay = __webpack_require__(203);
 var VProgressCircular = __webpack_require__(204);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(743);
+var VRow = __webpack_require__(744);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VDataTable/VSimpleTable.js
-var VSimpleTable = __webpack_require__(744);
+var VSimpleTable = __webpack_require__(745);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSnackbar/VSnackbar.js
 var VSnackbar = __webpack_require__(669);
@@ -473,7 +473,7 @@ installComponents_default()(component, {VBtn: VBtn["a" /* default */],VCard: VCa
 
 /***/ }),
 
-/***/ 719:
+/***/ 720:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

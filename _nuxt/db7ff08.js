@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[21,11],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[22,12],{
 
 /***/ 659:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -13,7 +13,7 @@
 
 /***/ }),
 
-/***/ 704:
+/***/ 705:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52,7 +52,7 @@ var component = Object(componentNormalizer["a" /* default */])(
 
 /***/ }),
 
-/***/ 750:
+/***/ 751:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91,7 +91,7 @@ var es_object_get_own_property_descriptor = __webpack_require__(14);
 var lib = __webpack_require__(134);
 
 // EXTERNAL MODULE: ./src/components/infomation/MarkdownText.vue + 2 modules
-var MarkdownText = __webpack_require__(704);
+var MarkdownText = __webpack_require__(705);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/infomation.vue?vue&type=script&lang=ts&
 
@@ -156,7 +156,7 @@ var VCard = __webpack_require__(681);
 var components_VCard = __webpack_require__(650);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(742);
+var VCol = __webpack_require__(743);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(644);
@@ -165,7 +165,7 @@ var VContainer = __webpack_require__(644);
 var VLayout = __webpack_require__(659);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(743);
+var VRow = __webpack_require__(744);
 
 // CONCATENATED MODULE: ./src/pages/infomation.vue
 
