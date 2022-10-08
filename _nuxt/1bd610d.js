@@ -1,19 +1,19 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[24,13,14],{
 
-/***/ 660:
+/***/ 656:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _src_components_VGrid_grid_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(216);
+/* harmony import */ var _src_components_VGrid_grid_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(211);
 /* harmony import */ var _src_components_VGrid_grid_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_src_components_VGrid_grid_sass__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(217);
+/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(212);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_grid__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])('layout'));
 
 /***/ }),
 
-/***/ 706:
+/***/ 707:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28,7 +28,7 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
 // CONCATENATED MODULE: ./src/components/infomation/MarkdownText.vue?vue&type=template&id=092fee0b&lang=md&
 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(74);
+var componentNormalizer = __webpack_require__(65);
 
 // CONCATENATED MODULE: ./src/components/infomation/MarkdownText.vue
 
@@ -52,7 +52,7 @@ var component = Object(componentNormalizer["a" /* default */])(
 
 /***/ }),
 
-/***/ 707:
+/***/ 708:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67,7 +67,7 @@ var staticRenderFns = []
 // CONCATENATED MODULE: ./src/components/googleadsense/AdVertical3.vue?vue&type=template&id=5360bfb0&
 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(74);
+var componentNormalizer = __webpack_require__(65);
 
 // CONCATENATED MODULE: ./src/components/googleadsense/AdVertical3.vue
 
@@ -91,7 +91,7 @@ var component = Object(componentNormalizer["a" /* default */])(
 
 /***/ }),
 
-/***/ 753:
+/***/ 752:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -115,25 +115,25 @@ var classCallCheck = __webpack_require__(4);
 var inherits = __webpack_require__(31);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js + 1 modules
-var possibleConstructorReturn = __webpack_require__(26);
+var possibleConstructorReturn = __webpack_require__(25);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(13);
+var getPrototypeOf = __webpack_require__(12);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
 var esm_typeof = __webpack_require__(11);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
-var es_object_get_own_property_descriptor = __webpack_require__(14);
+var es_object_get_own_property_descriptor = __webpack_require__(15);
 
 // EXTERNAL MODULE: ./node_modules/vue-property-decorator/lib/index.js + 14 modules
-var lib = __webpack_require__(134);
+var lib = __webpack_require__(132);
 
 // EXTERNAL MODULE: ./src/components/infomation/MarkdownText.vue + 2 modules
-var MarkdownText = __webpack_require__(706);
+var MarkdownText = __webpack_require__(707);
 
 // EXTERNAL MODULE: ./src/components/googleadsense/AdVertical3.vue + 2 modules
-var AdVertical3 = __webpack_require__(707);
+var AdVertical3 = __webpack_require__(708);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/infomation.vue?vue&type=script&lang=ts&
 
@@ -187,29 +187,29 @@ infomationvue_type_script_lang_ts_Infomation = __decorate([Object(lib["Component
 // CONCATENATED MODULE: ./src/pages/infomation.vue?vue&type=script&lang=ts&
  /* harmony default export */ var pages_infomationvue_type_script_lang_ts_ = (infomationvue_type_script_lang_ts_); 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(74);
+var componentNormalizer = __webpack_require__(65);
 
 // EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
-var installComponents = __webpack_require__(104);
+var installComponents = __webpack_require__(103);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
-var VCard = __webpack_require__(682);
+var VCard = __webpack_require__(684);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
-var components_VCard = __webpack_require__(650);
+var components_VCard = __webpack_require__(646);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(745);
+var VCol = __webpack_require__(744);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
-var VContainer = __webpack_require__(644);
+var VContainer = __webpack_require__(640);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VLayout.js
-var VLayout = __webpack_require__(660);
+var VLayout = __webpack_require__(656);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(746);
+var VRow = __webpack_require__(745);
 
 // CONCATENATED MODULE: ./src/pages/infomation.vue
 
