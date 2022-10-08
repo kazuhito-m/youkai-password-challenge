@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[24],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[26],{
 
 /***/ 659:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -73,7 +73,7 @@ var installComponents = __webpack_require__(104);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
-var VCard = __webpack_require__(681);
+var VCard = __webpack_require__(683);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
 var components_VCard = __webpack_require__(650);
