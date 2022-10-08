@@ -16,10 +16,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import SingleInputPasswordChecker from '@/components/SingleInputPasswordChecker.vue'
+import AdVertical from '@/components/googleadsense/AdVertical.vue'
 
 @Component({
   components: {
     SingleInputPasswordChecker,
+    AdVertical,
   },
 })
 export default class Checker extends Vue {

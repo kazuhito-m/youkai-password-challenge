@@ -23,10 +23,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import MarkdownText from '@/components/infomation/MarkdownText.vue'
+import AdVertical from '@/components/googleadsense/AdVertical.vue'
 
 @Component({
   components: {
     MarkdownText,
+    AdVertical,
   },
 })
 export default class Infomation extends Vue {

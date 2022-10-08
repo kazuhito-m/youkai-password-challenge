@@ -16,11 +16,13 @@
 import { Component, Vue } from 'vue-property-decorator'
 import PasswordChallengeParameter from '@/components/passwordchallenge/PasswordChallengeParameter.vue'
 import PasswordChallengeProgress from '@/components/passwordchallenge/PasswordChallengeProgress.vue'
+import AdSideways from '@/components/googleadsense/AdSideways.vue'
 
 @Component({
   components: {
     PasswordChallengeParameter,
     PasswordChallengeProgress,
+    AdSideways,
   },
 })
 export default class PasswordChallenge extends Vue {
