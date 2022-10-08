@@ -4,6 +4,7 @@
       clipped
       right
       fixed
+      permanent
       app
     >
       <v-list>
@@ -81,6 +82,8 @@ import AdVertical from '@/components/googleadsense/AdVertical.vue';
 })
 
 export default class extends Vue {
+  drawer = false
+
   right = true
   rightDrawer = true
 
