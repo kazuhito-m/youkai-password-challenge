@@ -128,6 +128,7 @@ export default {
     id: 'G-SSP93CH50C',
   },
   'google-adsense': {
-    id: 'ca-pub-5057344970486670'
+    id: 'ca-pub-5057344970486670',
+    pageLevelAds: false
   }
 }
