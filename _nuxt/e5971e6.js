@@ -13,7 +13,7 @@
 
 /***/ }),
 
-/***/ 750:
+/***/ 747:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73,13 +73,13 @@ var installComponents = __webpack_require__(103);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
-var VCard = __webpack_require__(684);
+var VCard = __webpack_require__(683);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
 var components_VCard = __webpack_require__(646);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(744);
+var VCol = __webpack_require__(741);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(640);
@@ -97,7 +97,7 @@ var VListItem = __webpack_require__(129);
 var components_VList = __webpack_require__(98);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(745);
+var VRow = __webpack_require__(742);
 
 // CONCATENATED MODULE: ./src/pages/doc.vue
 

@@ -1290,7 +1290,7 @@ if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(30).default
-var update = add("e7c85ed4", content, true, {"sourceMap":false});
+var update = add("5b4526e0", content, true, {"sourceMap":false});
 
 /***/ }),
 
@@ -1310,56 +1310,17 @@ var update = add("0883f874", content, true, {"sourceMap":false});
 
 /***/ }),
 
-/***/ 441:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/googleadsense/AdVertical.vue?vue&type=template&id=202985d1&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('adsbygoogle',{attrs:{"ad-slot":1285563562,"ad-style":{ display: 'block' },"ad-format":'auto',"full-width-responsive":true}})],1)}
-var staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/components/googleadsense/AdVertical.vue?vue&type=template&id=202985d1&
-
-// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(65);
-
-// CONCATENATED MODULE: ./src/components/googleadsense/AdVertical.vue
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(componentNormalizer["a" /* default */])(
-  script,
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var AdVertical = __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ 452:
+/***/ 451:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/layouts/default.vue?vue&type=template&id=d6fd0c4c&scoped=true&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-app',{attrs:{"dark":""}},[_c('v-navigation-drawer',{attrs:{"clipped":"","right":"","fixed":"","app":""}},[_c('v-list',_vm._l((_vm.items),function(item,i){return _c('v-list-item',{key:i,attrs:{"to":item.to,"router":"","exact":""}},[_c('v-list-item-action',[_c('v-icon',[_vm._v(_vm._s(item.icon))])],1),_vm._v(" "),_c('v-list-item-content',[_c('v-list-item-title',{domProps:{"textContent":_vm._s(item.title)}})],1)],1)}),1),_vm._v(" "),_c('AdVertical')],1),_vm._v(" "),_c('v-app-bar',{attrs:{"clipped-right":true,"fixed":"","app":""}},[_c('v-toolbar-title',{staticStyle:{"cursor":"pointer"},on:{"click":function($event){return _vm.$router.push('/')}}},[_vm._v("\n      Youkai Password Challenge\n    ")]),_vm._v(" "),_c('v-spacer'),_vm._v(" "),_c('TweetButton')],1),_vm._v(" "),_c('v-main',[_c('v-container',{staticStyle:{"overflow":"auto"},attrs:{"xs12":""}},[_c('Nuxt')],1)],1),_vm._v(" "),_c('v-footer',{attrs:{"app":""}},[_c('span',[_vm._v("\n      © "+_vm._s(new Date().getFullYear())+"\n    ")]),_vm._v(" "),_c('a',{staticClass:"auther-link",attrs:{"target":"_new","href":"https://twitter.com/kazuhito_m"}},[_c('v-icon',[_vm._v("mdi-twitter")]),_vm._v("kazuhito_m\n    ")],1),_vm._v(" "),_c('v-spacer'),_vm._v("\n    ver.\n    "),_c('a',{staticClass:"no-efect-link",attrs:{"target":"_new","href":"https://github.com/kazuhito-m/youkai-password-challenge/releases"}},[_vm._v(_vm._s(_vm.selfVersion))])],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/layouts/default.vue?vue&type=template&id=81bf5576&scoped=true&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-app',{attrs:{"dark":""}},[_c('v-navigation-drawer',{attrs:{"clipped":"","right":"","fixed":"","permanent":"","app":""}},[_c('v-list',_vm._l((_vm.items),function(item,i){return _c('v-list-item',{key:i,attrs:{"to":item.to,"router":"","exact":""}},[_c('v-list-item-action',[_c('v-icon',[_vm._v(_vm._s(item.icon))])],1),_vm._v(" "),_c('v-list-item-content',[_c('v-list-item-title',{domProps:{"textContent":_vm._s(item.title)}})],1)],1)}),1),_vm._v(" "),_c('AdVertical')],1),_vm._v(" "),_c('v-app-bar',{attrs:{"clipped-right":true,"fixed":"","app":""}},[_c('v-toolbar-title',{staticStyle:{"cursor":"pointer"},on:{"click":function($event){return _vm.$router.push('/')}}},[_vm._v("\n      Youkai Password Challenge\n    ")]),_vm._v(" "),_c('v-spacer'),_vm._v(" "),_c('TweetButton')],1),_vm._v(" "),_c('v-main',[_c('v-container',{staticStyle:{"overflow":"auto"},attrs:{"xs12":""}},[_c('Nuxt')],1)],1),_vm._v(" "),_c('v-footer',{attrs:{"app":""}},[_c('span',[_vm._v("\n      © "+_vm._s(new Date().getFullYear())+"\n    ")]),_vm._v(" "),_c('a',{staticClass:"auther-link",attrs:{"target":"_new","href":"https://twitter.com/kazuhito_m"}},[_c('v-icon',[_vm._v("mdi-twitter")]),_vm._v("kazuhito_m\n    ")],1),_vm._v(" "),_c('v-spacer'),_vm._v("\n    ver.\n    "),_c('a',{staticClass:"no-efect-link",attrs:{"target":"_new","href":"https://github.com/kazuhito-m/youkai-password-challenge/releases"}},[_vm._v(_vm._s(_vm.selfVersion))])],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/layouts/default.vue?vue&type=template&id=d6fd0c4c&scoped=true&
+// CONCATENATED MODULE: ./src/layouts/default.vue?vue&type=template&id=81bf5576&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
 var es_reflect_construct = __webpack_require__(58);
@@ -1389,7 +1350,7 @@ var es_object_get_own_property_descriptor = __webpack_require__(15);
 var nuxt_property_decorator_umd = __webpack_require__(51);
 
 // EXTERNAL MODULE: ./src/components/sosial/TweetButton.vue + 4 modules
-var TweetButton = __webpack_require__(454);
+var TweetButton = __webpack_require__(453);
 
 // EXTERNAL MODULE: ./src/domain/youkai/checkdigit/converter/CodeToCharacterConverter.ts
 var CodeToCharacterConverter = __webpack_require__(78);
@@ -1934,7 +1895,7 @@ var HazurePasswordTransfer_HazurePasswordTransfer = /*#__PURE__*/function () {
 var store = __webpack_require__(166);
 
 // EXTERNAL MODULE: ./src/components/googleadsense/AdVertical.vue + 2 modules
-var AdVertical = __webpack_require__(441);
+var AdVertical = __webpack_require__(454);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/layouts/default.vue?vue&type=script&lang=ts&
 
@@ -1985,6 +1946,7 @@ var defaultvue_type_script_lang_ts_default_1 = /*#__PURE__*/function (_Vue) {
     Object(classCallCheck["a" /* default */])(this, default_1);
 
     _this = _super.apply(this, arguments);
+    _this.drawer = false;
     _this.right = true;
     _this.rightDrawer = true;
     _this.selfVersion = "";
@@ -2056,8 +2018,8 @@ defaultvue_type_script_lang_ts_default_1 = __decorate([Object(nuxt_property_deco
 /* harmony default export */ var defaultvue_type_script_lang_ts_ = (defaultvue_type_script_lang_ts_default_1);
 // CONCATENATED MODULE: ./src/layouts/default.vue?vue&type=script&lang=ts&
  /* harmony default export */ var layouts_defaultvue_type_script_lang_ts_ = (defaultvue_type_script_lang_ts_); 
-// EXTERNAL MODULE: ./src/layouts/default.vue?vue&type=style&index=0&id=d6fd0c4c&scoped=true&lang=css&
-var defaultvue_type_style_index_0_id_d6fd0c4c_scoped_true_lang_css_ = __webpack_require__(528);
+// EXTERNAL MODULE: ./src/layouts/default.vue?vue&type=style&index=0&id=81bf5576&scoped=true&lang=css&
+var defaultvue_type_style_index_0_id_81bf5576_scoped_true_lang_css_ = __webpack_require__(528);
 
 // EXTERNAL MODULE: ./src/layouts/default.vue?vue&type=style&index=1&lang=css&
 var defaultvue_type_style_index_1_lang_css_ = __webpack_require__(530);
@@ -2106,7 +2068,7 @@ var VNavigationDrawer = __webpack_require__(644);
 var VSpacer = __webpack_require__(643);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VToolbar/index.js
-var VToolbar = __webpack_require__(446);
+var VToolbar = __webpack_require__(445);
 
 // CONCATENATED MODULE: ./src/layouts/default.vue
 
@@ -2124,7 +2086,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   staticRenderFns,
   false,
   null,
-  "d6fd0c4c",
+  "81bf5576",
   null
   
 )
@@ -2152,7 +2114,7 @@ installComponents_default()(component, {VApp: VApp["a" /* default */],VAppBar: V
 
 /***/ }),
 
-/***/ 453:
+/***/ 452:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2311,7 +2273,7 @@ installComponents_default()(component, {VOverlay: VOverlay["a" /* default */],VP
 
 /***/ }),
 
-/***/ 454:
+/***/ 453:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2427,6 +2389,45 @@ var component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var sosial_TweetButton = __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ 454:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/googleadsense/AdVertical.vue?vue&type=template&id=202985d1&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('adsbygoogle',{attrs:{"ad-slot":1285563562,"ad-style":{ display: 'block' },"ad-format":'auto',"full-width-responsive":true}})],1)}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/googleadsense/AdVertical.vue?vue&type=template&id=202985d1&
+
+// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+var componentNormalizer = __webpack_require__(65);
+
+// CONCATENATED MODULE: ./src/components/googleadsense/AdVertical.vue
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(componentNormalizer["a" /* default */])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var AdVertical = __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
@@ -2980,8 +2981,8 @@ webpackContext.id = 527;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_d6fd0c4c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(418);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_d6fd0c4c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_d6fd0c4c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_81bf5576_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(418);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_81bf5576_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_3_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_3_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_3_oneOf_1_2_node_modules_nuxt_components_dist_loader_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_default_vue_vue_type_style_index_0_id_81bf5576_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
 
 
@@ -2994,7 +2995,7 @@ webpackContext.id = 527;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(29);
 var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".container[data-v-d6fd0c4c]{display:flex;height:100%;width:100%;max-width:none;padding-right:0;padding-left:0;margin-right:unset;margin-left:unset;position:absolute}[data-v-d6fd0c4c] ::-webkit-scrollbar{overflow:hidden}", ""]);
+___CSS_LOADER_EXPORT___.push([module.i, ".container[data-v-81bf5576]{display:flex;height:100%;width:100%;max-width:none;padding-right:0;padding-left:0;margin-right:unset;margin-left:unset;position:absolute}[data-v-81bf5576] ::-webkit-scrollbar{overflow:hidden}", ""]);
 // Exports
 module.exports = ___CSS_LOADER_EXPORT___;
 

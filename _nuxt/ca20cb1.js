@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6,11,15,17],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6,15,17],{
 
 /***/ 657:
 /***/ (function(module, exports, __webpack_require__) {
@@ -6,7 +6,7 @@
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(669);
+var content = __webpack_require__(668);
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
@@ -22,7 +22,7 @@ var update = add("87be5900", content, true, {"sourceMap":false});
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(673);
+var content = __webpack_require__(672);
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
@@ -111,46 +111,7 @@ HexText.HEX_CHARS = " 0123456789ABCDEF";
 
 /***/ }),
 
-/***/ 666:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/googleadsense/AdSideways.vue?vue&type=template&id=54c63309&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('adsbygoogle',{attrs:{"ad-slot":3106460433,"ad-style":{ display: 'block' },"ad-format":'auto',"full-width-responsive":true}})],1)}
-var staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/components/googleadsense/AdSideways.vue?vue&type=template&id=54c63309&
-
-// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(65);
-
-// CONCATENATED MODULE: ./src/components/googleadsense/AdSideways.vue
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(componentNormalizer["a" /* default */])(
-  script,
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var AdSideways = __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ 668:
+/***/ 667:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -161,7 +122,7 @@ var component = Object(componentNormalizer["a" /* default */])(
 
 /***/ }),
 
-/***/ 669:
+/***/ 668:
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
@@ -175,7 +136,7 @@ module.exports = ___CSS_LOADER_EXPORT___;
 
 /***/ }),
 
-/***/ 672:
+/***/ 671:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -186,7 +147,7 @@ module.exports = ___CSS_LOADER_EXPORT___;
 
 /***/ }),
 
-/***/ 673:
+/***/ 672:
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
@@ -200,7 +161,7 @@ module.exports = ___CSS_LOADER_EXPORT___;
 
 /***/ }),
 
-/***/ 703:
+/***/ 702:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -509,7 +470,7 @@ PasswordChallengeParametervue_type_script_lang_ts_RangePasswordChallenge = __dec
 // CONCATENATED MODULE: ./src/components/passwordchallenge/PasswordChallengeParameter.vue?vue&type=script&lang=ts&
  /* harmony default export */ var passwordchallenge_PasswordChallengeParametervue_type_script_lang_ts_ = (PasswordChallengeParametervue_type_script_lang_ts_); 
 // EXTERNAL MODULE: ./src/components/passwordchallenge/PasswordChallengeParameter.vue?vue&type=style&index=0&id=60f2b010&scoped=true&lang=css&
-var PasswordChallengeParametervue_type_style_index_0_id_60f2b010_scoped_true_lang_css_ = __webpack_require__(668);
+var PasswordChallengeParametervue_type_style_index_0_id_60f2b010_scoped_true_lang_css_ = __webpack_require__(667);
 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__(65);
@@ -519,37 +480,37 @@ var installComponents = __webpack_require__(103);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js
-var VBtn = __webpack_require__(670);
+var VBtn = __webpack_require__(669);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
-var VCard = __webpack_require__(684);
+var VCard = __webpack_require__(683);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
 var components_VCard = __webpack_require__(646);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(744);
+var VCol = __webpack_require__(741);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(640);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VForm/VForm.js
-var VForm = __webpack_require__(721);
+var VForm = __webpack_require__(718);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js
 var VProgressCircular = __webpack_require__(630);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(745);
+var VRow = __webpack_require__(742);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSnackbar/VSnackbar.js
-var VSnackbar = __webpack_require__(671);
+var VSnackbar = __webpack_require__(670);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VSpacer.js
 var VSpacer = __webpack_require__(643);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTextField/VTextField.js + 3 modules
-var VTextField = __webpack_require__(683);
+var VTextField = __webpack_require__(682);
 
 // CONCATENATED MODULE: ./src/components/passwordchallenge/PasswordChallengeParameter.vue
 
@@ -593,7 +554,7 @@ installComponents_default()(component, {VBtn: VBtn["a" /* default */],VCard: VCa
 
 /***/ }),
 
-/***/ 704:
+/***/ 703:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -808,7 +769,7 @@ PasswordChallengeProgressvue_type_script_lang_ts_PasswordChallengeProgress = __d
 // CONCATENATED MODULE: ./src/components/passwordchallenge/PasswordChallengeProgress.vue?vue&type=script&lang=ts&
  /* harmony default export */ var passwordchallenge_PasswordChallengeProgressvue_type_script_lang_ts_ = (PasswordChallengeProgressvue_type_script_lang_ts_); 
 // EXTERNAL MODULE: ./src/components/passwordchallenge/PasswordChallengeProgress.vue?vue&type=style&index=0&id=877981ec&scoped=true&lang=css&
-var PasswordChallengeProgressvue_type_style_index_0_id_877981ec_scoped_true_lang_css_ = __webpack_require__(672);
+var PasswordChallengeProgressvue_type_style_index_0_id_877981ec_scoped_true_lang_css_ = __webpack_require__(671);
 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__(65);
@@ -818,40 +779,40 @@ var installComponents = __webpack_require__(103);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js
-var VBtn = __webpack_require__(670);
+var VBtn = __webpack_require__(669);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
-var VCard = __webpack_require__(684);
+var VCard = __webpack_require__(683);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
 var components_VCard = __webpack_require__(646);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(744);
+var VCol = __webpack_require__(741);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(640);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VForm/VForm.js
-var VForm = __webpack_require__(721);
+var VForm = __webpack_require__(718);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js
 var VProgressCircular = __webpack_require__(630);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(745);
+var VRow = __webpack_require__(742);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSnackbar/VSnackbar.js
-var VSnackbar = __webpack_require__(671);
+var VSnackbar = __webpack_require__(670);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VSpacer.js
 var VSpacer = __webpack_require__(643);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTextField/VTextField.js + 3 modules
-var VTextField = __webpack_require__(683);
+var VTextField = __webpack_require__(682);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTextarea/VTextarea.js
-var VTextarea = __webpack_require__(700);
+var VTextarea = __webpack_require__(699);
 
 // CONCATENATED MODULE: ./src/components/passwordchallenge/PasswordChallengeProgress.vue
 
@@ -895,19 +856,19 @@ installComponents_default()(component, {VBtn: VBtn["a" /* default */],VCard: VCa
 
 /***/ }),
 
-/***/ 741:
+/***/ 738:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/passwordchallenge/PasswordChallenge.vue?vue&type=template&id=64bf92f3&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"center"}},[_c('v-col',{attrs:{"cols":"12","sm":"6","md":"6"}},[_c('AdSideways'),_vm._v(" "),_c('PasswordChallengeParameter')],1),_vm._v(" "),_c('v-col',{attrs:{"cols":"12","sm":"6","md":"6"}},[_c('PasswordChallengeProgress')],1)],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/passwordchallenge/PasswordChallenge.vue?vue&type=template&id=c08e5c44&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"center"}},[_c('v-col',{attrs:{"cols":"12","sm":"6","md":"6"}},[_c('PasswordChallengeParameter')],1),_vm._v(" "),_c('v-col',{attrs:{"cols":"12","sm":"6","md":"6"}},[_c('PasswordChallengeProgress')],1)],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/passwordchallenge/PasswordChallenge.vue?vue&type=template&id=64bf92f3&
+// CONCATENATED MODULE: ./src/components/passwordchallenge/PasswordChallenge.vue?vue&type=template&id=c08e5c44&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
 var es_reflect_construct = __webpack_require__(58);
@@ -934,13 +895,10 @@ var es_object_get_own_property_descriptor = __webpack_require__(15);
 var lib = __webpack_require__(132);
 
 // EXTERNAL MODULE: ./src/components/passwordchallenge/PasswordChallengeParameter.vue + 4 modules
-var PasswordChallengeParameter = __webpack_require__(703);
+var PasswordChallengeParameter = __webpack_require__(702);
 
 // EXTERNAL MODULE: ./src/components/passwordchallenge/PasswordChallengeProgress.vue + 4 modules
-var PasswordChallengeProgress = __webpack_require__(704);
-
-// EXTERNAL MODULE: ./src/components/googleadsense/AdSideways.vue + 2 modules
-var AdSideways = __webpack_require__(666);
+var PasswordChallengeProgress = __webpack_require__(703);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/passwordchallenge/PasswordChallenge.vue?vue&type=script&lang=ts&
 
@@ -970,7 +928,6 @@ var __decorate = undefined && undefined.__decorate || function (decorators, targ
 
 
 
-
 var PasswordChallengevue_type_script_lang_ts_PasswordChallenge = /*#__PURE__*/function (_Vue) {
   Object(inherits["a" /* default */])(PasswordChallenge, _Vue);
 
@@ -988,8 +945,7 @@ var PasswordChallengevue_type_script_lang_ts_PasswordChallenge = /*#__PURE__*/fu
 PasswordChallengevue_type_script_lang_ts_PasswordChallenge = __decorate([Object(lib["Component"])({
   components: {
     PasswordChallengeParameter: PasswordChallengeParameter["default"],
-    PasswordChallengeProgress: PasswordChallengeProgress["default"],
-    AdSideways: AdSideways["default"]
+    PasswordChallengeProgress: PasswordChallengeProgress["default"]
   }
 })], PasswordChallengevue_type_script_lang_ts_PasswordChallenge);
 /* harmony default export */ var PasswordChallengevue_type_script_lang_ts_ = (PasswordChallengevue_type_script_lang_ts_PasswordChallenge);
@@ -1003,13 +959,13 @@ var installComponents = __webpack_require__(103);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(744);
+var VCol = __webpack_require__(741);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
 var VContainer = __webpack_require__(640);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(745);
+var VRow = __webpack_require__(742);
 
 // CONCATENATED MODULE: ./src/components/passwordchallenge/PasswordChallenge.vue
 
