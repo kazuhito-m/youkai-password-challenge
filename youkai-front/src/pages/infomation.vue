@@ -13,7 +13,7 @@
           </v-card>
         </v-col>
         <v-col cols="2" sm="2" md="1">
-          <AdVertical />
+          <AdVertical3 />
         </v-col>
       </v-row>
     </v-container>
@@ -23,12 +23,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import MarkdownText from '@/components/infomation/MarkdownText.vue'
-import AdVertical from '@/components/googleadsense/AdVertical.vue'
+import AdVertical3 from '@/components/googleadsense/AdVertical3.vue'
 
 @Component({
   components: {
     MarkdownText,
-    AdVertical,
+    AdVertical3,
   },
 })
 export default class Infomation extends Vue {

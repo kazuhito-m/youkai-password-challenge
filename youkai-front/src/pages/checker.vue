@@ -6,7 +6,7 @@
           <SingleInputPasswordChecker />
         </v-col>
         <v-col cols="2" sm="2" md="1">
-          <AdVertical />
+          <AdVertical2 />
         </v-col>
       </v-row>
     </v-container>
@@ -16,12 +16,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import SingleInputPasswordChecker from '@/components/SingleInputPasswordChecker.vue'
-import AdVertical from '@/components/googleadsense/AdVertical.vue'
+import AdVertical2 from '@/components/googleadsense/AdVertical2.vue'
 
 @Component({
   components: {
     SingleInputPasswordChecker,
-    AdVertical,
+    AdVertical2,
   },
 })
 export default class Checker extends Vue {
