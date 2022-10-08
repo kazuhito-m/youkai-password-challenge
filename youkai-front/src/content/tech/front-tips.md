@@ -50,7 +50,11 @@ title: フロントとNuxt.js&TypsScriptらへんの知識
 
 - NuxtでGoogleアナリティクス（gtag.js）を実装する
   - https://qiita.com/tochiji/items/bcab969b60c67a9754e6
-- 
+
+### GoogleAdsense周り
+
+- Nuxt.jsにGoogle Adsenseを導入する方法
+  - https://nishimura.club/nuxt-google-adsense
 
 ## 無限スクロール
 
