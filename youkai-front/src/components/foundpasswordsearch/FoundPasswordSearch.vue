@@ -1,14 +1,23 @@
 <template>
-    <v-container>
-      <v-row justify="center" align="center">
-        <v-col cols="12" sm="6" md="6">
-          <FoundPasswordSearchParameter />
-        </v-col>
-        <v-col cols="12" sm="6" md="6"> 
-          <FoundPasswordSearchResult />
-        </v-col>
-      </v-row>
-    </v-container>
+  <v-container>
+    <v-row justify="center" align="center">
+      <v-col cols="12" sm="6" md="6">
+        <v-card>
+          <div>
+            <adsbygoogle
+              :ad-slot="2708086751"
+              :ad-style="{ display: 'block' }"
+              :ad-format="'auto'"
+            />
+          </div>
+        </v-card>
+        <FoundPasswordSearchParameter />
+      </v-col>
+      <v-col cols="12" sm="6" md="6">
+        <FoundPasswordSearchResult />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -22,6 +31,5 @@ import FoundPasswordSearchResult from '@/components/foundpasswordsearch/FoundPas
     FoundPasswordSearchResult,
   },
 })
-export default class FoundPasswordSearch extends Vue {
-}
+export default class FoundPasswordSearch extends Vue {}
 </script>
