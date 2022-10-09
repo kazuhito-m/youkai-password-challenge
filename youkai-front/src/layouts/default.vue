@@ -162,11 +162,6 @@ export default class extends Vue {
   margin-left: unset;
   position: absolute;
 }
-
-.v-navigation-drawer__content {
-    height: 100% !important;
-    overflow-y: hidden !important;
-}
 </style>
 
 <style>
@@ -186,5 +181,10 @@ html {
 .no-efect-link:active
 {
   text-decoration: none;
+}
+
+.v-navigation-drawer__content {
+    height: 100% !important;
+    overflow-y: hidden !important;
 }
 </style>
