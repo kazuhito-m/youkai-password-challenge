@@ -188,7 +188,9 @@ __なむこむな！756-2311__
     - `むな!` はパスワード入力画面に表示されている文字を反時計回りで入力したもの
   - [@Imaha486](https://twitter.com/Imaha486) さんにより、すかさず [4ST(@4STUDIO4)](https://twitter.com/4STUDIO4) さんへ「関係者確認の依頼」が行われる
   - [4ST(@4STUDIO4)](https://twitter.com/4STUDIO4) さんにより [宇田川さん(開発者)への確認と”合ってる”判定](https://twitter.com/4STUDIO4/status/1495305937216622593) が行われ「隠しパスワード解析選手権」は幕を下ろす
-
+- 2022/10/15
+  - [4ST(@4STUDIO4)](https://twitter.com/4STUDIO4) さんが、 [#隠しパスワード解析選手権](https://twitter.com/search?q=%23%E9%9A%A0%E3%81%97%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E8%A7%A3%E6%9E%90%E9%81%B8%E6%89%8B%E6%A8%A9) をまとめた動画をYouTubeに公開
+    - [発売から35年、妖怪道中記・隠しパスワード完全解明までの一部始終～531垓分の1を探し求めた男たち～](https://www.youtube.com/watch?v=xoe9yWfjTzU)
 </template>
 
 <style>
