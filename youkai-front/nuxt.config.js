@@ -122,13 +122,7 @@ export default {
   srcDir: 'src/',
 
   router: {
-    base: '/',
-    extendRoutes(routes, resolve) {
-      routes.push({
-        path: '/*',
-        redirect: '/'
-      })
-    }
+    base: '/'
   },
 
   'google-gtag': {
