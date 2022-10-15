@@ -3356,4 +3356,4 @@ installComponents_default()(component, {VApp: VApp["a" /* default */]})
 
 /***/ })
 
-},[[462,23,8,24]]]);
+},[[462,24,8,25]]]);

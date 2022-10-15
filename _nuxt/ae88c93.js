@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[24],[
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[25],[
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10325,8 +10325,12 @@ var router_072afb23 = function _072afb23() {
   return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/infomation */[__webpack_require__.e(0), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, 749)));
 };
 
+var router_d9dc30f4 = function _d9dc30f4() {
+  return Object(utils["m" /* interopDefault */])(__webpack_require__.e(/* import() | pages/overview */ 22).then(__webpack_require__.bind(null, 752)));
+};
+
 var router_1e1b479e = function _1e1b479e() {
-  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/tech/_slug */[__webpack_require__.e(0), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, 750)));
+  return Object(utils["m" /* interopDefault */])(Promise.all(/* import() | pages/tech/_slug */[__webpack_require__.e(0), __webpack_require__.e(23)]).then(__webpack_require__.bind(null, 750)));
 };
 
 var router_0a5d0295 = function _0a5d0295() {
@@ -10363,6 +10367,10 @@ var routerOptions = {
     component: router_072afb23,
     name: "infomation"
   }, {
+    path: "/overview",
+    component: router_d9dc30f4,
+    name: "overview"
+  }, {
     path: "/tech/:slug?",
     component: router_1e1b479e,
     name: "tech-slug"
@@ -10370,9 +10378,6 @@ var routerOptions = {
     path: "/",
     component: router_0a5d0295,
     name: "index"
-  }, {
-    path: "/*",
-    redirect: "/"
   }],
   fallback: false
 };
@@ -11706,7 +11711,7 @@ function getSlotName(node) {
 
 
 var loadContent = function loadContent() {
-  return __webpack_require__.e(/* import() | content/plugin.js */ 25).then(__webpack_require__.bind(null, 744));
+  return __webpack_require__.e(/* import() | content/plugin.js */ 26).then(__webpack_require__.bind(null, 744));
 };
 
 vue_runtime_esm["default"].component(nuxt_content.name, nuxt_content);
@@ -12422,7 +12427,7 @@ function _createApp() {
               head: {
                 "titleTemplate": "Youkai Password Challenge",
                 "title": "Youkai Password Challenge",
-                "selfVersion": "0.3.17",
+                "selfVersion": "0.3.18",
                 "meta": [{
                   "charset": "utf-8"
                 }, {
@@ -19349,7 +19354,7 @@ function _register() {
 
           case 2:
             _context.next = 4;
-            return __webpack_require__.e(/* import() */ 26).then(__webpack_require__.bind(null, 631));
+            return __webpack_require__.e(/* import() */ 27).then(__webpack_require__.bind(null, 631));
 
           case 4:
             _yield$import = _context.sent;
