@@ -10370,6 +10370,9 @@ var routerOptions = {
     path: "/",
     component: router_0a5d0295,
     name: "index"
+  }, {
+    path: "/*",
+    redirect: "/"
   }],
   fallback: false
 };
@@ -12419,7 +12422,7 @@ function _createApp() {
               head: {
                 "titleTemplate": "Youkai Password Challenge",
                 "title": "Youkai Password Challenge",
-                "selfVersion": "0.3.16",
+                "selfVersion": "0.3.17",
                 "meta": [{
                   "charset": "utf-8"
                 }, {
