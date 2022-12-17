@@ -134,3 +134,5 @@ jobs:
         with:
           webhook:
             ${{ secrets.DISCORD_WEBHOOK_URL }}
+        if: always()
+ 
