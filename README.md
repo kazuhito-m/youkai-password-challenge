@@ -19,6 +19,15 @@ Youkai Password Challenge
 
 <https://youkaiosugi.com>
 
-## author
+## Prerequisite
+
+開発に必要な環境。
+
+- Java(JDK)
+  - `.github/workflows/ci.yml` の `jdk` の値を参照
+- Node.js/npm
+  - `./youkai-front/build.gradle` の `node` の値を参照
+
+## Author
 
 Kazuhito Miura ( [@kazuhito_m](https://twitter.com/kazuhito_m "kazuhito_m on Twitter") )
