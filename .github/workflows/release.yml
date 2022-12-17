@@ -51,6 +51,9 @@ jobs:
         env:
           TAG_NAME: ${{ steps.get_tag_name.outputs.TAG_NAME }}
 
+      - name: Debug abend
+        run: exit 1
+
       - name: Build binary
         run: ./gradlew clean build
 
