@@ -34,6 +34,7 @@ npm-debug.log*
 node_modules/
 .npm
 dist
+.vscode/
 
 ### this appliation custom settings. ###
 /youkai-server/src/main/resources/public

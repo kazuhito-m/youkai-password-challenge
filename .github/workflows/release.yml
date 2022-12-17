@@ -11,8 +11,8 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        jdk: [ 17 ]
-        node: [16.15.0]
+        jdk: [ 19 ]
+        node: [19.3.0]
 
     runs-on: ${{ matrix.os }}
 
