@@ -124,4 +124,10 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./youkai-front/dist
+          publish_dir: ./youkai-front/distd
+
+      - name: Notify Discord
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook:
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
