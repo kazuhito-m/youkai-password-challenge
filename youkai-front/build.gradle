@@ -10,8 +10,8 @@ repositories {
 
 // node & npm settings for Nuxt.js build.
 node {
-  version = '19.3.0'
-  npmVersion = '9.2.0'
+  version = '16.19.0'
+  npmVersion = '8.19.3'
   download = true
 }
 
