@@ -25,7 +25,7 @@ module.exports = {
     "vue/multi-word-component-names": [
       'error',
       {
-        "ignores": [ "Index", "doc" ]
+        "ignores": [ "Index", "doc", "overview" ]
       },
     ],
     "import/no-webpack-loader-syntax": "off"
