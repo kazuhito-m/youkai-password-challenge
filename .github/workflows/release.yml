@@ -96,7 +96,7 @@ jobs:
           asset_name: ${{ steps.get_binary_names.outputs.CONSOLE_JAR_NAME }}
           asset_content_type: application/zip
 
-      # Build and Deploy fron only
+      # Build and Deploy frort only
 
       - name: Setup node env
         uses: actions/setup-node@v3
@@ -124,7 +124,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./youkai-front/distd
+          publish_dir: ./youkai-front/dist
 
       - name: Notify Discord
         uses: sarisia/actions-status-discord@v1
