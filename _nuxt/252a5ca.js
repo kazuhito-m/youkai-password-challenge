@@ -1,6 +1,6 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[16],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[20],{
 
-/***/ 656:
+/***/ 657:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13,22 +13,22 @@
 
 /***/ }),
 
-/***/ 745:
+/***/ 752:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/challenge.vue?vue&type=template&id=04162920&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('PasswordChallenge')],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/index.vue?vue&type=template&id=311d5e3f&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',[_c('v-container',[_c('v-row',{attrs:{"justify":"center","align":"center"}},[_c('v-col',{attrs:{"cols":"12","sm":"8","md":"8"}},[_c('v-card',[_c('v-card-title',{staticClass:"headline"},[_vm._v("\n            これまでのあらすじ\n          ")]),_vm._v(" "),_c('v-card-text',[_c('MarkdownText')],1)],1)],1)],1)],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/challenge.vue?vue&type=template&id=04162920&
+// CONCATENATED MODULE: ./src/pages/index.vue?vue&type=template&id=311d5e3f&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
-var es_reflect_construct = __webpack_require__(58);
+var es_reflect_construct = __webpack_require__(55);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
 var classCallCheck = __webpack_require__(4);
@@ -46,15 +46,15 @@ var getPrototypeOf = __webpack_require__(12);
 var esm_typeof = __webpack_require__(11);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
-var es_object_get_own_property_descriptor = __webpack_require__(15);
+var es_object_get_own_property_descriptor = __webpack_require__(14);
 
 // EXTERNAL MODULE: ./node_modules/vue-property-decorator/lib/index.js + 14 modules
 var lib = __webpack_require__(132);
 
-// EXTERNAL MODULE: ./src/components/passwordchallenge/PasswordChallenge.vue + 4 modules
-var PasswordChallenge = __webpack_require__(738);
+// EXTERNAL MODULE: ./src/components/overview/MarkdownText.vue + 2 modules
+var MarkdownText = __webpack_require__(741);
 
-// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/challenge.vue?vue&type=script&lang=ts&
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/index.vue?vue&type=script&lang=ts&
 
 
 
@@ -81,28 +81,28 @@ var __decorate = undefined && undefined.__decorate || function (decorators, targ
 
 
 
-var challengevue_type_script_lang_ts_Challenge = /*#__PURE__*/function (_Vue) {
-  Object(inherits["a" /* default */])(Challenge, _Vue);
+var pagesvue_type_script_lang_ts_index = /*#__PURE__*/function (_Vue) {
+  Object(inherits["a" /* default */])(index, _Vue);
 
-  var _super = _createSuper(Challenge);
+  var _super = _createSuper(index);
 
-  function Challenge() {
-    Object(classCallCheck["a" /* default */])(this, Challenge);
+  function index() {
+    Object(classCallCheck["a" /* default */])(this, index);
 
     return _super.apply(this, arguments);
   }
 
-  return Challenge;
+  return index;
 }(lib["Vue"]);
 
-challengevue_type_script_lang_ts_Challenge = __decorate([Object(lib["Component"])({
+pagesvue_type_script_lang_ts_index = __decorate([Object(lib["Component"])({
   components: {
-    PasswordChallenge: PasswordChallenge["default"]
+    MarkdownText: MarkdownText["default"]
   }
-})], challengevue_type_script_lang_ts_Challenge);
-/* harmony default export */ var challengevue_type_script_lang_ts_ = (challengevue_type_script_lang_ts_Challenge);
-// CONCATENATED MODULE: ./src/pages/challenge.vue?vue&type=script&lang=ts&
- /* harmony default export */ var pages_challengevue_type_script_lang_ts_ = (challengevue_type_script_lang_ts_); 
+})], pagesvue_type_script_lang_ts_index);
+/* harmony default export */ var pagesvue_type_script_lang_ts_ = (pagesvue_type_script_lang_ts_index);
+// CONCATENATED MODULE: ./src/pages/index.vue?vue&type=script&lang=ts&
+ /* harmony default export */ var src_pagesvue_type_script_lang_ts_ = (pagesvue_type_script_lang_ts_); 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__(65);
 
@@ -110,10 +110,25 @@ var componentNormalizer = __webpack_require__(65);
 var installComponents = __webpack_require__(103);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VLayout.js
-var VLayout = __webpack_require__(656);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
+var VCard = __webpack_require__(684);
 
-// CONCATENATED MODULE: ./src/pages/challenge.vue
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
+var components_VCard = __webpack_require__(647);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
+var VCol = __webpack_require__(742);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
+var VContainer = __webpack_require__(641);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VLayout.js
+var VLayout = __webpack_require__(657);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
+var VRow = __webpack_require__(743);
+
+// CONCATENATED MODULE: ./src/pages/index.vue
 
 
 
@@ -122,7 +137,7 @@ var VLayout = __webpack_require__(656);
 /* normalize component */
 
 var component = Object(componentNormalizer["a" /* default */])(
-  pages_challengevue_type_script_lang_ts_,
+  src_pagesvue_type_script_lang_ts_,
   render,
   staticRenderFns,
   false,
@@ -132,12 +147,18 @@ var component = Object(componentNormalizer["a" /* default */])(
   
 )
 
-/* harmony default export */ var challenge = __webpack_exports__["default"] = (component.exports);
+/* harmony default export */ var pages = __webpack_exports__["default"] = (component.exports);
 
 /* vuetify-loader */
 
 
-installComponents_default()(component, {VLayout: VLayout["a" /* default */]})
+
+
+
+
+
+
+installComponents_default()(component, {VCard: VCard["a" /* default */],VCardText: components_VCard["c" /* VCardText */],VCardTitle: components_VCard["d" /* VCardTitle */],VCol: VCol["a" /* default */],VContainer: VContainer["a" /* default */],VLayout: VLayout["a" /* default */],VRow: VRow["a" /* default */]})
 
 
 /***/ })

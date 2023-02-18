@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[21,11],{
 
-/***/ 656:
+/***/ 657:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13,7 +13,7 @@
 
 /***/ }),
 
-/***/ 705:
+/***/ 706:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52,7 +52,7 @@ var component = Object(componentNormalizer["a" /* default */])(
 
 /***/ }),
 
-/***/ 749:
+/***/ 750:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67,7 +67,7 @@ var staticRenderFns = []
 // CONCATENATED MODULE: ./src/pages/infomation.vue?vue&type=template&id=bf56307c&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.reflect.construct.js
-var es_reflect_construct = __webpack_require__(58);
+var es_reflect_construct = __webpack_require__(55);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
 var classCallCheck = __webpack_require__(4);
@@ -85,13 +85,13 @@ var getPrototypeOf = __webpack_require__(12);
 var esm_typeof = __webpack_require__(11);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
-var es_object_get_own_property_descriptor = __webpack_require__(15);
+var es_object_get_own_property_descriptor = __webpack_require__(14);
 
 // EXTERNAL MODULE: ./node_modules/vue-property-decorator/lib/index.js + 14 modules
 var lib = __webpack_require__(132);
 
 // EXTERNAL MODULE: ./src/components/infomation/MarkdownText.vue + 2 modules
-var MarkdownText = __webpack_require__(705);
+var MarkdownText = __webpack_require__(706);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--13-0!./node_modules/ts-loader??ref--13-1!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/infomation.vue?vue&type=script&lang=ts&
 
@@ -150,22 +150,22 @@ var installComponents = __webpack_require__(103);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
-var VCard = __webpack_require__(683);
+var VCard = __webpack_require__(684);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
-var components_VCard = __webpack_require__(646);
+var components_VCard = __webpack_require__(647);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(741);
+var VCol = __webpack_require__(742);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
-var VContainer = __webpack_require__(640);
+var VContainer = __webpack_require__(641);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VLayout.js
-var VLayout = __webpack_require__(656);
+var VLayout = __webpack_require__(657);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-var VRow = __webpack_require__(742);
+var VRow = __webpack_require__(743);
 
 // CONCATENATED MODULE: ./src/pages/infomation.vue
 
